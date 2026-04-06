@@ -3,245 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Infrastructure Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Vidhya Sree Devaraju | AI & Infrastructure Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --az-blue: #0078d4;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1); 
+            --ai-purple: #8b5cf6;
             --bg-deep: #050a18;
-            --text-main: #e2e8f0;
-            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            --card-bg: #111827;
+            --text-dim: #94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: var(--text-main); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
+        body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: #e2e8f0; line-height: 1.6; }
 
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; height: 80px; background: rgba(5, 10, 24, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid var(--glass-border); padding: 0 5%; display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.4rem; color: #fff; }
-        .nav-links ul { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: #b0b9c3; font-weight: 400; transition: var(--transition); }
-        .nav-links a:hover { color: var(--az-blue); }
+        nav { 
+            position: fixed; width: 100%; padding: 15px 5%; 
+            background: rgba(5, 10, 24, 0.95); backdrop-filter: blur(10px); 
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08); 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--az-blue); font-size: 1.3rem; }
+        .nav-socials a { color: #fff; margin-left: 20px; font-size: 1.2rem; opacity: 0.7; transition: 0.3s; }
+        .nav-socials a:hover { opacity: 1; color: var(--ai-purple); }
 
-        /* Hero Header */
-        header { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #1a202c 0%, var(--bg-deep) 100%); padding-top: 100px; }
-        .profile-pic-wrap { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--az-blue); overflow: hidden; margin-bottom: 25px; box-shadow: 0 0 30px rgba(0, 120, 212, 0.3); }
-        .profile-pic-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        header h1 { font-family: 'Poppins', sans-serif; font-size: 3.8rem; line-height: 1.1; margin-bottom: 10px; color: #fff; }
-        header p { font-size: 1.3rem; color: var(--az-blue); font-weight: 300; margin-bottom: 30px; }
+        header { 
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; background: radial-gradient(circle at center, #1e1b4b 0%, var(--bg-deep) 100%); padding: 120px 20px 60px;
+        }
+        .profile-img-wrap { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--ai-purple); overflow: hidden; margin-bottom: 25px; box-shadow: 0 0 40px rgba(139, 92, 246, 0.3); }
+        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; color: #fff; margin-bottom: 10px; }
+        .typing-text { color: var(--ai-purple); font-weight: 600; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        h2.sec-title { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; margin-bottom: 30px; color: var(--az-blue); display: flex; align-items: center; gap: 10px; }
+
+        .card { background: var(--card-bg); padding: 35px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 30px; transition: 0.3s; }
+        .card:hover { border-color: var(--ai-purple); transform: translateY(-5px); }
         
-        .social-bar a { color: #fff; font-size: 1.8rem; margin: 0 15px; opacity: 0.7; transition: var(--transition); }
-        .social-bar a:hover { opacity: 1; transform: scale(1.1); color: var(--az-blue); }
+        .ai-badge { background: linear-gradient(90deg, var(--az-blue), var(--ai-purple)); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 15px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-
-        /* Filter Controls */
-        .controls { text-align: center; margin: 4rem 0 2rem; }
-        .btn { background: var(--glass); border: 1px solid var(--glass-border); color: #b0b9c3; padding: 10px 25px; border-radius: 50px; cursor: pointer; transition: var(--transition); margin: 5px; font-weight: 500;}
-        .btn.active, .btn:hover { background: var(--az-blue); color: #fff; border-color: var(--az-blue); transform: translateY(-3px); }
-
-        /* Content Sections */
-        section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .sec-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; margin-bottom: 3rem; color: #fff; border-left: 5px solid var(--az-blue); padding-left: 15px; }
-        .card { background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 40px; border-radius: 15px; border: 1px solid var(--glass-border); transition: var(--transition); }
-        .card:hover { border-color: var(--az-blue); background: rgba(255, 255, 255, 0.05); }
-
-        .job-title { font-size: 1.7rem; color: #fff; font-family: 'Poppins', sans-serif; }
-        .job-meta { color: var(--az-blue); font-weight: 600; margin-bottom: 10px; display: block; }
-        .stat-badge { background: rgba(0, 120, 212, 0.15); border: 1px solid rgba(0, 120, 212, 0.3); color: var(--az-blue); padding: 5px 15px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; margin-right: 10px; margin-bottom: 10px; display: inline-block; }
-
-        .feature-list { list-style: none; margin-top: 15px; }
+        .feature-list { list-style: none; }
         .feature-list li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 0.95rem; color: #cbd5e1; }
-        .feature-list li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: var(--az-blue); }
+        .feature-list li::before { content: "\f121"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: var(--ai-purple); }
 
-        /* Hobbies */
-        .hobbies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .hobby-card { position: relative; border-radius: 15px; overflow: hidden; height: 350px; border: 1px solid var(--glass-border); }
-        .hobby-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .hobby-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,10,24,0.95), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: var(--transition); }
-        .hobby-card:hover img { transform: scale(1.1); }
-        .hobby-card:hover .hobby-overlay { opacity: 1; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .tag { background: #1e293b; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.1); }
 
-        footer { text-align: center; padding: 60px; color: #8b949e; border-top: 1px solid rgba(255,255,255,0.05); }
+        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .hobby-card { position: relative; border-radius: 12px; overflow: hidden; height: 300px; border: 1px solid rgba(255,255,255,0.1); }
+        .hobby-card img { width: 100%; height: 100%; object-fit: cover; }
+        .hobby-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,10,24,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
 
-        /* Functionality Classes */
-        .hide { display: none !important; }
-        .show { display: block !important; }
-
-        #copyToast { visibility: hidden; min-width: 250px; background-color: #238636; color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 1001; bottom: 30px; left: 50%; transform: translateX(-50%); font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        #copyToast.reveal { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-brand">VIDHYA SREE</div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Experience</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
-                <li><a href="#contact">Connect</a></li>
-            </ul>
+        <div class="brand">VIDHYA SREE DEVARAJU</div>
+        <div class="nav-socials">
+            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://medium.com" target="_blank"><i class="fa-brands fa-medium"></i></a>
+            <a href="mailto:vidya98sree@gmail.com"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </nav>
 
     <header>
-        <div class="profile-pic-wrap">
+        <div class="profile-img-wrap">
             <img src="profile.jpg" alt="Vidhya Sree Devaraju">
         </div>
         <h1>Vidhya Sree Devaraju</h1>
-        <p>Software Engineer | Azure Infrastructure & Capacity Specialist</p>
-        <div class="social-bar">
-            <a href="javascript:void(0)" onclick="copyEmail()" title="Copy Email: vidya98sree@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://medium.com" target="_blank" title="Medium Blog"><i class="fa-brands fa-medium"></i></a>
-        </div>
+        <p>Software Developer (8 Years Exp) | <span class="typing-text">AI & Infrastructure Automation Specialist</span></p>
+        <p style="color: var(--text-dim); margin-top: 10px; max-width: 700px;">Optimizing Azure SQL DB Capacity through Data-Driven Operations and Automated Workflows.</p>
     </header>
 
     <div class="container">
-        
-        <section id="about">
-            <h2 class="sec-title">Technical Evolution</h2>
+
+        <section id="azure-sql">
+            <h2 class="sec-title"><i class="fa-solid fa-microchip"></i> Azure SQL DB Capacity & AI Operations</h2>
             <div class="card">
-                <p style="font-size: 1.1rem; font-weight: 300; color: #fff;">
-                    Transitioning from a <strong>B.Com in Computers (2018)</strong> to managing business-critical infrastructure at <strong>Microsoft</strong>, my career is a testament to continuous technical growth. I specialize in driving <strong>cloud resiliency</strong>, decommissioning complex legacy hardware, and automating operational workflows to eliminate toil.
+                <div class="ai-badge"><i class="fa-solid fa-robot"></i> Operational AI Integration</div>
+                <span style="color: var(--az-blue); font-weight: 600; display: block; margin-bottom: 10px;">Microsoft Onsite (Redmond) | 2023 – Present</span>
+                
+                <ul class="feature-list">
+                    <li><strong>Operational AI:</strong> Actively learning and applying AI tools into daily operational workflows to boost team productivity and accelerate incident Root Cause Analysis (RCA).</li>
+                    <li><strong>RCS Workflow Automation:</strong> Continuously engineered and refined RCS automation workflows to execute commands with built-in validation and dynamic retry logic, accelerating the resolution of high-priority TRs.</li>
+                    <li><strong>Process Automation:</strong> Identifying repeat incident patterns and proposed automated, script-ready workflows to eliminate operational toil.</li>
+                    <li><strong>Data-Driven Operations:</strong> Shifted the operational paradigm from reactive, manual investigations to proactive, data-driven capacity analysis and readiness using advanced DAX queries in Power BI.</li>
+                    <li><strong>Proactive Capacity Management:</strong> Played a central role in short-term planning, absorbing sudden demand spikes to ensure uninterrupted service stability.</li>
+                    <li><strong>Infrastructure Modernization:</strong> Achieved 100% adoption of PaaSv2 and historic milestone in Gen3/Gen4 decommissioning with a 98.28% return rate for Gen7.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag">Kusto (KQL)</span> <span class="tag">Azure SQL DB</span> <span class="tag">Power BI (DAX)</span> <span class="tag">IcM Telemetry</span> <span class="tag">RCS Automation</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="cosmos-db">
+            <h2 class="sec-title"><i class="fa-solid fa-database"></i> Azure Cosmos DB Engineering</h2>
+            <div class="card">
+                <span style="color: var(--az-blue); font-weight: 600; display: block; margin-bottom: 10px;">Microsoft Client (Offshore) | 2019 – 2021</span>
+                
+                <p style="font-weight:700; margin-bottom:10px; color: #fff;">Module I: Dashboard Team</p>
+                <ul class="feature-list">
+                    <li>Individually developed a module which calculates the total Azure Spend for subscriptions using secure <strong>AAD Token</strong> authentication.</li>
+                    <li>Automated user notifications via <strong>MS-Flows</strong> for Azure cost anomalies and exceptions.</li>
+                </ul>
+
+                <p style="font-weight:700; margin: 20px 0 10px; color: #fff;">Module II: Engineering Systems</p>
+                <ul class="feature-list">
+                    <li>Automated daily IcM reporting using <strong>MS-Flows</strong> triggered by build failures in the CI/CD pipeline.</li>
+                    <li>Authored PowerShell scripts for disk cleanups and Windows updates in Azure scale sets and file servers.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="in-house">
+            <h2 class="sec-title"><i class="fa-solid fa-code"></i> Full-Stack Development Roots</h2>
+            <div class="card">
+                <span style="color: var(--az-blue); font-weight: 600; display: block; margin-bottom: 10px;">Quadrant Resources | 2018 – 2019</span>
+                
+                <ul class="feature-list">
+                    <li><strong>WATS Portal:</strong> Developed an Event Management System for Washington Telugu Samithi including secure PayPal/payment integrations and ticketing.</li>
+                    <li><strong>Office Management:</strong> Designed systems to track performance and tasks, including an integrated team chat module.</li>
+                    <li><strong>Identity & Mobile:</strong> Implemented SSO via <strong>IdentityServer3</strong> and created mobile builds using <strong>Apache Cordova</strong>.</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag">.NET MVC 4.0</span> <span class="tag">C#</span> <span class="tag">Entity Framework 6</span> <span class="tag">SQL 2012</span> <span class="tag">IdentityServer3</span> <span class="tag">Bootstrap</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="story">
+            <h2 class="sec-title"><i class="fa-solid fa-user-graduate"></i> Technical Evolution</h2>
+            <div class="card" style="background: rgba(0, 120, 212, 0.05);">
+                <p style="font-size: 1.1rem;">
+                    I passed out my graduation in <strong>2018 with a B.Com in Computers</strong>. While my foundation was in commerce, my passion was always in software. Over the last <strong>8 years</strong>, I have specialized in building robust web and mobile applications using <strong>ASP.NET Core, React, Node.js, and Xamarin</strong>. 
+                    <br><br>
+                    My goal is to create software that not only meets current requirements but also scales for the future, leveraging <strong>AI integration</strong> and <strong>cloud platform optimization</strong> to deliver measurable value to global organizations.
                 </p>
             </div>
         </section>
 
-        <div class="controls">
-            <button class="btn active" id="btn-all" onclick="filterData('all')">Full Career Data</button>
-            <button class="btn" id="btn-infra" onclick="filterData('infra')">Infrastructure/Capacity</button>
-            <button class="btn" id="btn-dev" onclick="filterData('dev')">Full-Stack Dev</button>
-        </div>
-
-        <section id="work">
-            <div class="infra data-section show" style="margin-bottom: 40px;">
-                <div class="card" style="border-left: 5px solid var(--az-blue);">
-                    <span class="job-meta">Microsoft Onsite (Redmond) | 2023 - Present</span>
-                    <h3 class="job-title">Azure SQL DB Capacity Management Lead</h3>
-                    
-                    <div style="margin: 15px 0;">
-                        <span class="stat-badge">100% Gen3/Gen4 Decom</span>
-                        <span class="stat-badge">98.28% Gen7 Return Rate</span>
-                        <span class="stat-badge">91.8% Zonal Completion</span>
-                    </div>
-
-                    <ul class="feature-list">
-                        <li><strong>Proactive Capacity:</strong> Lead short-term capacity planning for Azure SQL DB worldwide, actively absorbing demand spikes.</li>
-                        <li><strong>Standardized Triage:</strong> Streamlined investigation workflows via KQL (Kusto), SQL, and IcM telemetry.</li>
-                        <li><strong>Modernization:</strong> Successfully achieved 100% adoption of PaaSv2 ahead of projected timelines.</li>
-                        <li><strong>SPO Optimization:</strong> Transitioned SPO pool apps to modern Gen7/Gen8 hardware, mitigating long-standing incidents.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="dev data-section show" style="margin-bottom: 40px;">
-                <div class="card" style="border-left: 5px solid #238636;">
-                    <span class="job-meta">Microsoft Client (Offshore) | 2019 - 2021</span>
-                    <h3 class="job-title">Software Engineer - Cosmos DB</h3>
-                    
-                    <p style="margin-top: 10px; font-weight: 600; color: #fff;">Dashboard & Engineering Systems Team</p>
-                    <ul class="feature-list">
-                        <li><strong>Module Development:</strong> Individually built spend calculation modules for multi-environment subscriptions.</li>
-                        <li><strong>Security & Automation:</strong> Implemented AAD Token integration and MS Flow notification triggers for cost exceptions.</li>
-                        <li><strong>Operations:</strong> Managed CI/CD monitoring and authored PowerShell scripts for disk cleanups and scale set updates.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="dev data-section show">
-                <div class="card" style="border-left: 5px solid var(--accent);">
-                    <span class="job-meta">Quadrant Resources | 2018 - 2019</span>
-                    <h3 class="job-title">Full-Stack Software Developer</h3>
-                    
-                    <ul class="feature-list">
-                        <li><strong>WATS Portal:</strong> Developed the Event Management System for Washington Telugu Samithi (Ticketing/Browsing).</li>
-                        <li><strong>Identity Solutions:</strong> Implemented SSO functionality for mobile/web using IdentityServer3.</li>
-                        <li><strong>Office Management:</strong> Built task-tracking and attendance portals from database design to UI.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <section id="hobbies">
-            <h2 class="sec-title">Personal Passions</h2>
-            <div class="hobbies-grid">
+            <h2 class="sec-title"><i class="fa-solid fa-leaf"></i> Life Style & Passions</h2>
+            <div class="hobby-grid">
                 <div class="hobby-card">
-                    <img src="tulips.jpg" alt="Tulip Photography">
+                    <img src="tulips.jpg" alt="Nature Photography">
                     <div class="hobby-overlay">
-                        <h3>Photography</h3>
-                        <p>Specializing in nature and macro tulip photography.</p>
+                        <h3>Nature Photography</h3>
+                        <p>Finding perspective through landscapes and tulips.</p>
                     </div>
                 </div>
                 <div class="hobby-card">
-                    <img src="biryani.jpg" alt="Culinary">
+                    <img src="cooking.jpg" alt="Vegetarian Cooking">
                     <div class="hobby-overlay">
-                        <h3>Culinary Plating</h3>
-                        <p>Combining engineering precision with aesthetic plating.</p>
+                        <h3>Vegetarian Culinary</h3>
+                        <p>I love cooking high-quality vegetarian foods and creative plating.</p>
                     </div>
                 </div>
                 <div class="hobby-card">
-                    <img src="violin.JPG" alt="Violin">
+                    <img src="violin.JPG" alt="Carnatic Music">
                     <div class="hobby-overlay">
-                        <h3>Music & Theory</h3>
-                        <p>Learning the violin and exploring rhythmic harmony.</p>
+                        <h3>Carnatic Music</h3>
+                        <p>Actively learning and exploring rhythmic harmony.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" style="text-align: center; border: none; padding: 6rem 0;">
-            <button class="btn active" onclick="copyEmail()" style="padding: 15px 40px; font-size: 1.2rem;">
-                <i class="fa-solid fa-copy"></i> Copy Business Email
-            </button>
-            <div style="margin-top: 20px; color: #8b949e;">vidya98sree@gmail.com</div>
-        </section>
     </div>
 
-    <div id="copyToast">✅ Email copied to clipboard!</div>
-
     <footer>
-        <p>Managed 125 rings in 90 days. Passionate about Cloud & Automation.</p>
-        <p style="margin-top: 15px; color: #fff;">
+        <p>Vidhya Sree Devaraju | Redmond, Washington</p>
+        <p style="margin-top: 15px; color: #fff; font-size: 0.9rem;">
             &copy; 2026 <strong>All Rights Reserved. Vidhya Sree Devaraju</strong>
         </p>
     </footer>
 
     <script>
         function copyEmail() {
-            const email = "vidya98sree@gmail.com";
-            navigator.clipboard.writeText(email).then(() => {
-                var toast = document.getElementById("copyToast");
-                toast.className = "reveal";
-                setTimeout(function(){ toast.className = toast.className.replace("reveal", ""); }, 3000);
-            });
-        }
-
-        function filterData(category) {
-            var btns = document.getElementsByClassName("btn");
-            for (let i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
-            document.getElementById("btn-" + category).classList.add("active");
-
-            var sections = document.getElementsByClassName("data-section");
-            for (let i = 0; i < sections.length; i++) {
-                if (category === "all") {
-                    sections[i].classList.add("show");
-                    sections[i].classList.remove("hide");
-                } else if (sections[i].classList.contains(category)) {
-                    sections[i].classList.add("show");
-                    sections[i].classList.remove("hide");
-                } else {
-                    sections[i].classList.add("hide");
-                    sections[i].classList.remove("show");
-                }
-            }
+            navigator.clipboard.writeText("vidya98sree@gmail.com");
+            alert("Email copied to clipboard!");
         }
     </script>
 </body>
