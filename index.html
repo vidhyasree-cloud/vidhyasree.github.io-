@@ -3,38 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio & Blog</title>
+    <title>My Portfolio & Resume</title>
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 2rem;
             color: #333;
         }
         nav { margin-bottom: 2rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; }
-        nav a { margin-right: 1rem; text-decoration: none; color: #0066cc; }
+        nav a { margin-right: 1rem; text-decoration: none; color: #0066cc; font-weight: bold; }
         .section { margin-bottom: 3rem; }
+        h1 { margin-bottom: 0.2rem; }
+        h2 { border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; margin-top: 2.5rem; }
+        h3 { margin-bottom: 0.2rem; color: #222; }
+        
+        .job { margin-bottom: 2rem; }
+        .job-title { font-weight: bold; font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .company-date { color: #555; font-style: italic; margin-top: 0; font-size: 0.95rem; }
+        .job ul { margin-top: 0.5rem; padding-left: 1.5rem; }
+        .job li { margin-bottom: 0.5rem; }
+
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .skill-category-title { font-weight: bold; margin-bottom: 0.5rem; color: #0066cc; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; margin: 0; }
+        .skills-list li { background: #f4f4f4; border: 1px solid #ddd; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#blog">Blog</a>
-        <a href="#gallery">Photography</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education & Certs</a>
     </nav>
 
     <div class="section" id="about">
-        <h1>Hello, I'm a Software Developer.</h1>
-        <p>Welcome to my personal slice of the internet. This is where I share my code, my resume, and my latest photo galleries.</p>
+        <h1>[Your Name]</h1>
+        <h3>Software & SRE/DevOps Engineer</h3>
+        <p>Results-driven Software & SRE/DevOps Engineer with 8+ years’ experience spanning CI/CD pipeline automation, scalable full-stack development, and high-availability enterprise cloud infrastructure. Proven track record orchestrating massive fleet migrations (Azure SQL DB, Cosmos DB) and engineering automated workflows to eliminate operational toil and ensure 99.9% reliability.</p>
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a> | GitHub: <a href="https://github.com/yourusername">@yourusername</a> | LinkedIn: <a href="#">Your Profile</a></p>
     </div>
 
-    <div class="section" id="gallery">
-        <h2>Latest Photos</h2>
-        <p><em>Placeholder: Spring Tulip Gallery - Skagit Valley</em></p>
+    <div class="section" id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="job">
+            <div class="job-title">Site Reliability Engineer – Azure SQL DB Capacity Management</div>
+            <p class="company-date">Microsoft | Redmond, WA — April 2023 to Present</p>
+            <ul>
+                <li><strong>Infrastructure DevOps:</strong> Executed multi-year RDFE to PaaSv2 conversion via automated deployment pipelines, decommissioning 125 rings in 90 days. Drove complex SPO to Gen8 and MAZ migrations.</li>
+                <li><strong>Proactive Operations:</strong> Manage daily capacity monitoring. Direct end-to-end triage for complex live-site IcM alerts (GEO DR events, placement preferences), absorbing demand spikes to ensure high availability.</li>
+                <li><strong>Automation Engineering:</strong> Engineered custom RCS automation workflows with dynamic retry logic to accelerate MTTR. Integrated operational AI tools to shift from manual to proactive troubleshooting.</li>
+                <li><strong>Technical Debt Reduction:</strong> Reached historic milestone by decommissioning 100% of legacy Gen3/Gen4 hardware and achieving a 98.28% return rate for Gen7 (National Clouds).</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-title">Software Engineer – Azure Cosmos DB</div>
+            <p class="company-date">Microsoft | Hyderabad, India — December 2019 to September 2022</p>
+            <ul>
+                <li><strong>Backend Automation & DevOps:</strong> Developed Azure Functions to automate routine tasks and managed CI/CD deployments via Azure DevOps to guarantee smooth, zero-downtime feature rollouts.</li>
+                <li><strong>Cost Monitoring Architecture:</strong> Independently built a critical module calculating total Azure spend across subscriptions; engineered MS-Flows to proactively alert users of financial anomalies.</li>
+                <li><strong>Full-Stack Features:</strong> Enhanced Azure Cosmos DB dashboard UI (C# .NET MVC) for better operational visibility and collaborated on advanced Power BI reports for comprehensive data visualization.</li>
+                <li><strong>Security & Reliability:</strong> Contributed to secure AAD token authentication and resolved complex Cosmos DB incident tickets, ensuring strict code quality via TDD and unit testing.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-title">Full Stack Developer</div>
+            <p class="company-date">Quadrant Resources | Hyderabad, India — May 2018 to November 2019</p>
+            <ul>
+                <li><strong>App Development:</strong> Spearheaded full-stack development of scalable internal web applications utilizing ASP.NET Core, MVC 4.0, Node.js, EF6, React, and Bootstrap.</li>
+                <li><strong>Event Management & API Integration:</strong> Engineered an event-driven architecture with secure PayPal integration and automated ticketing workflows to streamline organizational events.</li>
+                <li><strong>Office Management Portal:</strong> Developed a portal to track employee performance, assign tasks, and facilitate internal communication via custom chat and email integrations.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section" id="skills">
+        <h2>Technical Skills</h2>
+        
+        <div class="skills-grid">
+            <div>
+                <div class="skill-category-title">Cloud & DevOps</div>
+                <ul class="skills-list">
+                    <li>Azure SQL DB</li>
+                    <li>Azure Cosmos DB</li>
+                    <li>Azure Functions</li>
+                    <li>Azure DevOps (CI/CD)</li>
+                    <li>Hardware Lifecycle (Gen3-8)</li>
+                    <li>GEO DR Architecture</li>
+                    <li>Git & RCS Automation</li>
+                    <li>MS Power Automate</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="skill-category-title">Software Engineering</div>
+                <ul class="skills-list">
+                    <li>C# & ASP.NET Core</li>
+                    <li>.NET MVC 4.0</li>
+                    <li>React & Node.js</li>
+                    <li>RESTful APIs</li>
+                    <li>Event-Driven Architecture</li>
+                    <li>OOP & TDD</li>
+                    <li>Agile / Scrum</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="skill-category-title">Data & Telemetry</div>
+                <ul class="skills-list">
+                    <li>KQL (Kusto)</li>
+                    <li>SQL Server & T-SQL</li>
+                    <li>Power BI & DAX</li>
+                    <li>Entity Framework 6</li>
+                    <li>IcM Telemetry</li>
+                    <li>Root Cause Analysis</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="skill-category-title">Front-End UI</div>
+                <ul class="skills-list">
+                    <li>HTML5 & CSS3</li>
+                    <li>Bootstrap & Xamarin</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="education">
+        <h2>Education & Certifications</h2>
+        
+        <div class="job">
+            <div class="job-title">Az-204 Developing Solutions for Microsoft</div>
+            <p class="company-date">Certification</p>
+        </div>
+
+        <div class="job">
+            <div class="job-title">Bachelor of Commerce & Computers</div>
+            <p class="company-date">Osmania University — 2015 to 2018</p>
+        </div>
     </div>
 
 </body>
