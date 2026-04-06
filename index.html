@@ -3,221 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Code, Camera & Kitchen</title>
+    <title>Professional Portfolio | Software & SRE Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* Modern Reset & Professional Color Palette */
         :root {
-            --primary: #005A9C; /* Microsoft Blue */
-            --secondary: #00b4d8;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
-            --accent: #ff7e5f;
+            --primary: #005A9C;
+            --accent: #00b4d8;
+            --dark: #0f172a;
+            --text: #334155;
+            --bg: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.9);
         }
+
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 0;
-            color: var(--dark);
-            background-color: #f0f2f5;
+            line-height: 1.6;
         }
-        
-        /* Sticky Navigation Bar */
+
+        /* HERO HEADER */
+        header {
+            height: 75vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .profile-pic {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        header h1 { font-size: 3.8rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
+        header p { font-size: 1.3rem; font-weight: 300; color: #94a3b8; max-width: 800px; margin-top: 1rem; }
+
+        /* SOCIAL BUTTONS */
+        .social-hero { display: flex; gap: 1rem; margin-top: 2.5rem; }
+        .btn-social {
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        .btn-social:hover { background: white; color: var(--dark); transform: translateY(-3px); }
+        .btn-primary { background: var(--primary); border: none; }
+
+        /* NAVIGATION */
         nav {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: var(--glass);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
+            padding: 1.2rem;
             gap: 2.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 1000;
         }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
-        /* Hero Header Section */
-        header {
-            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-        .profile-pic {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            margin-bottom: 1.5rem;
-        }
-        header h1 { font-size: 3rem; margin: 0 0 0.5rem 0; letter-spacing: -1px; }
-        header p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: #cbd5e1; font-weight: 300; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
 
-        /* Main Layout Containers */
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        .section-title { font-size: 1.8rem; border-bottom: 4px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2.5rem; color: var(--dark); }
-        .card { background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2.5rem; border: 1px solid #eef2f7; }
+        /* TIMELINE SECTION */
+        .story-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+        .section-tag { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; margin-bottom: 1rem; display: block; }
         
-        /* The Journey Timeline */
-        .timeline { border-left: 3px solid var(--primary); padding-left: 2.5rem; margin-left: 1rem; }
-        .timeline-item { position: relative; margin-bottom: 3rem; }
+        .timeline { border-left: 2px solid #e2e8f0; padding-left: 2.5rem; margin-top: 2rem; }
+        .timeline-item { margin-bottom: 4rem; position: relative; }
         .timeline-item::before {
-            content: ''; position: absolute; left: -3.35rem; top: 0.3rem; width: 1.2rem; height: 1.2rem;
+            content: ''; position: absolute; left: -3.2rem; top: 0.4rem; width: 1.2rem; height: 1.2rem;
             background: var(--primary); border-radius: 50%; border: 4px solid white; box-shadow: 0 0 0 2px var(--primary);
         }
-        .timeline-date { font-weight: bold; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-        .timeline-item h3 { margin: 0 0 0.5rem 0; font-size: 1.4rem; color: #222; }
+        .timeline-date { font-weight: bold; color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 0.5rem; }
 
-        /* Project & Work Grid */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .project-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.5rem; transition: 0.3s; }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .project-card h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; }
+        /* PROJECTS GRID */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .project-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            transition: 0.4s;
+        }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15,23,42,0.08); border-color: var(--primary); }
+        .tech-pill { background: #f1f5f9; padding: 5px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; color: #475569; display: inline-block; margin-top: 1rem; margin-right: 5px; }
 
-        /* Tech Skill Badges */
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; list-style: none; margin-top: 1rem; }
-        .skills-list li { background: #e0f2fe; color: #0369a1; padding: 0.4rem 1.2rem; border-radius: 25px; font-size: 0.85rem; font-weight: 600; border: 1px solid #bae6fd; }
+        /* GALLERY & LIFESTYLE */
+        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.5rem; }
+        .gallery img { width: 100%; height: 280px; object-fit: cover; border-radius: 16px; transition: 0.5s; cursor: pointer; }
+        .gallery img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-        /* Creative Gallery (Photos/Cooking) */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1 / 1; background-color: #ddd; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay { position: absolute; inset: 0; background: rgba(0, 90, 156, 0.7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; opacity: 0; transition: 0.3s; padding: 1rem; text-align: center; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .blog-cta {
+            background: var(--dark);
+            color: white;
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 4rem 0;
+            background-image: radial-gradient(circle at top right, rgba(0, 180, 216, 0.15), transparent);
+        }
 
-        /* Music Highlight */
-        .music-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2.5rem; border-radius: 15px; display: flex; align-items: center; gap: 2rem; margin-top: 2rem; }
-        .music-icon { font-size: 3.5rem; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        footer { text-align: center; padding: 6rem 0; background: #0f172a; color: #94a3b8; }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            header h1 { font-size: 2.2rem; }
-            nav { gap: 1rem; font-size: 0.8rem; }
-            .music-card { flex-direction: column; text-align: center; }
+            .story-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.8rem; }
+            .gallery { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#story">My Story</a>
-        <a href="#experience">Engineering</a>
-        <a href="#life">Photography & Cooking</a>
-    </nav>
-
     <header>
-        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="profile.jpg" alt="Profile" class="profile-pic">
         <h1>VIDHYA SREE DEVARAJU</h1>
-        <p>Software & SRE Engineer | Cloud Architect | Photographer | Cooking</p>
+        <p>Software & SRE Engineer | Specializing in Azure SQL DB Capacity & Global Cloud Reliability</p>
+        
+        <div class="social-hero">
+            <a href="linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" class="btn-social btn-primary">LinkedIn</a>
+            <a href="vidya98sree@gmail.com" target="_blank" class="btn-social btn-primary">Gmail</a>
+            <a href="medium.com (Blog)" target="_blank" class="btn-social">Medium Blog</a>
+            <a href="https://github.com/yourusername" target="_blank" class="btn-social">GitHub</a>
+        </div>
     </header>
 
+    <nav>
+        <a href="#story">Journey</a>
+        <a href="#projects">Engineering</a>
+        <a href="#blog">Blog</a>
+        <a href="#life">Life & Lens</a>
+    </nav>
+
     <div class="container">
-
-        <div class="card" id="story">
-            <h2 class="section-title">My Story: From Commerce to Cloud</h2>
+        
+        <section id="story" class="story-grid">
+            <div>
+                <span class="section-tag">The Timeline</span>
+                <h2 style="font-size: 2.5rem; letter-spacing: -1px;">Evolution of an Engineer</h2>
+                <p>My journey is defined by a transition from a Commerce-centric academic background into the heart of Cloud Engineering. I specialize in bridging the gap between business requirements and highly available, automated infrastructure.</p>
+                <p>With an 8-year track record of growth, I have evolved from building local internal portals to managing mission-critical global databases at Microsoft.</p>
+            </div>
             <div class="timeline">
-                
                 <div class="timeline-item">
-                    <span class="timeline-date">2015 - 2018: The Hybrid Foundation</span>
-                    <h3>B.Com in Computers (Osmania University)</h3>
-                    <p>My academic foundation blended business logic with computer science. While it wasn't in the curriculum, I spent my college years obsessed with <strong>Web & Mobile App Design</strong>, self-teaching UI/UX and front-end development from every external source I could find.</p>
+                    <span class="timeline-date">2023 - Present</span>
+                    <strong>SRE: Azure SQL DB Capacity Management | Microsoft</strong>
+                    <p>Driving global fleet stability, proactive capacity planning, and massive infrastructure modernization efforts (RDFE to PaaSv2).</p>
                 </div>
-
                 <div class="timeline-item">
-                    <span class="timeline-date">2018: From Passion to Profession</span>
-                    <h3>Engineering Trainee (6 Months)</h3>
-                    <p>After graduation, I committed to the technical path. I spent 6 months as an intensive trainee, mastering C#, .NET ecosystems, and foundational coding concepts to transition my self-taught interests into a professional engineering career.</p>
+                    <span class="timeline-date">2019 - 2021</span>
+                    <strong>Software Developer: Cosmos DB | Microsoft</strong>
+                    <p>Engineered financial surveillance modules, automated CI/CD pipelines, and improved globally distributed database dashboards.</p>
                 </div>
-
                 <div class="timeline-item">
-                    <span class="timeline-date">2018 - 2019: Junior Developer Phase</span>
-                    <h3>Junior Developer | Quadrant Technologies</h3>
-                    <p>Started my full-time journey building internal portals and event management systems. This was where I first bridged the gap between commerce requirements and robust software solutions.</p>
+                    <span class="timeline-date">2018 - 2019</span>
+                    <strong>Junior Developer: In-House Projects | Quadrant Tech</strong>
+                    <p>Developed enterprise-grade ticketing engines (WATS), travel management portals (SRK Travels), and internal Office Management Portals.</p>
                 </div>
-
                 <div class="timeline-item">
-                    <span class="timeline-date">2019 - 2026: The 8-Year Evolution</span>
-                    <h3>SRE & Cloud Engineering | Microsoft</h3>
-                    <p>An 8-year evolution from building small web apps to managing massive cloud infrastructure. Today, at Microsoft, I focus on <strong>Azure SQL DB Capacity & Reliability</strong>, turning operational toil into automated efficiency at a global scale.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="card" id="experience">
-            <h2 class="section-title">Engineering & Architecture</h2>
-            <div class="grid-2">
-                <div class="project-card">
-                    <h3>Infrastructure Modernization</h3>
-                    <p>Executed the multi-year RDFE to PaaSv2 conversion, decommissioning 125 rings in 90 days with zero service disruption.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Data-Driven Operations</h3>
-                    <p>Developed end-to-end Power BI & KQL dashboards for capacity planning, shifting the team from reactive triage to proactive readiness.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Azure Cost Architecture</h3>
-                    <p>Engineered financial modules monitoring millions in Azure spend, integrated with AAD authentication and automated alerting.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Internal Portal Systems</h3>
-                    <p>Designed and built full-stack management portals using .NET MVC and React, focused on performance tracking and task automation.</p>
+                    <span class="timeline-date">2018 (Early)</span>
+                    <strong>The Transformation | Trainee Period</strong>
+                    <p>Learned Software Engineering from scratch. Spent 6 months in intensive training at Quadrant Technologies to bridge the gap from B.Com to C#/.NET Development.</p>
                 </div>
             </div>
+        </section>
 
-            <h3 style="margin-top: 2rem;">The Technical Arsenal</h3>
-            <ul class="skills-list">
-                <li>Azure SQL DB</li><li>Azure Cosmos DB</li><li>C# / .NET Core</li><li>Kusto (KQL)</li><li>CI/CD Pipelines</li><li>React & Node.js</li><li>Power BI</li><li>T-SQL</li>
-            </ul>
-        </div>
-
-        <div id="life">
-            <h2 class="section-title">Life, Lens & Kitchen</h2>
-            <div class="card">
-                <h3>My Creative Outlets</h3>
-                <p>When I step away from the keyboard, I am an <strong>avid cook</strong> and a dedicated photographer. I approach a new recipe with the same mindset as a new codebase: experimenting, iterating, and perfecting until the result is exceptional.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="tulips.jpg" alt="Spring Tulips">
-                        <div class="gallery-overlay">Skagit Valley Tulips</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="nature.jpg" alt="Nature Photography">
-                        <div class="gallery-overlay">Capturing Nature</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="biryani.jpg" alt="Cooking">
-                        <div class="gallery-overlay">Culinary Experiments</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="plating.jpg" alt="Food Presentation">
-                        <div class="gallery-overlay">The Art of Plating</div>
-                    </div>
+        <section id="projects" style="margin-top: 6rem;">
+            <span class="section-tag">Key Contributions</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 4rem;">Technical Accomplishments</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Fleet Migration Engine</h3>
+                    <p>Managed the massive decommissioning of 100% of legacy Gen3/Gen4 hardware while ensuring zero customer disruption for Azure SQL DB.</p>
+                    <span class="tech-pill">Azure DevOps</span><span class="tech-pill">SRE</span><span class="tech-pill">KQL</span>
+                </div>
+                <div class="project-card">
+                    <h3>Azure Spend Analytics</h3>
+                    <p>Built a critical surveillance module for Cosmos DB calculating total Azure spend with automated anomaly alerting.</p>
+                    <span class="tech-pill">C# .NET</span><span class="tech-pill">Azure Functions</span><span class="tech-pill">AAD</span>
+                </div>
+                <div class="project-card">
+                    <h3>WATS Portal Architecture</h3>
+                    <p>Engineered an event management system with a secure ticketing engine and PayPal API integration for the Washington Telugu Samithi.</p>
+                    <span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL Server</span><span class="tech-pill">Bootstrap</span>
+                </div>
+                <div class="project-card">
+                    <h3>Global Backlog Dashboards</h3>
+                    <p>Architected end-to-end Power BI solutions tracking vendor ICM queues and team resolution metrics globally.</p>
+                    <span class="tech-pill">Power BI</span><span class="tech-pill">DAX</span><span class="tech-pill">Telemetry</span>
                 </div>
             </div>
+        </section>
 
-            <div class="music-card">
-                <div class="music-icon">🎧</div>
-                <div class="music-text">
-                    <h3 style="margin-top: 0;">Currently on Repeat: Telugu Beats</h3>
-                    <p>My daily soundtrack is fueled by Telugu music. Whether I'm debugging or designing, artists like <strong>Sid Sriram</strong> (especially "Neevalle") provide the perfect rhythm for a productive day.</p>
-                </div>
+        <section id="blog" class="blog-cta">
+            <span class="section-tag" style="color: var(--accent);">Writing</span>
+            <h2 style="font-size: 2.5rem;">Insights on Medium</h2>
+            <p style="color: #cbd5e1; margin-bottom: 2.5rem;">Sharing my experiences in Site Reliability Engineering, Azure Cloud, and the non-traditional path to tech.</p>
+            <a href="YOUR_MEDIUM_URL" target="_blank" class="btn-social btn-primary" style="padding: 1.1rem 3.5rem;">Visit My Blog</a>
+        </section>
+
+        <section id="life">
+            <span class="section-tag">Life & Lens</span>
+            <h2 style="font-size: 2.5rem;">Photography & Culinary Arts</h2>
+            <p>Whether in the tulip fields of Skagit Valley or the kitchen perfecting a biryani, I approach every passion with an "avid cook" mindset—constant iteration and a drive for quality.</p>
+            <div class="gallery">
+                <img src="tulips.jpg" alt="Photography">
+                <img src="biryani.jpg" alt="Culinary">
+                <img src="nature.jpg" alt="Nature">
+                <img src="plating.jpg" alt="Plating">
             </div>
-        </div>
-
+        </section>
     </div>
 
-    <footer style="text-align: center; padding: 3rem; color: #666; font-size: 0.9rem;">
-        <p>&copy; 2026 | Built with Code & Passion</p>
+    <footer>
+        <h3 style="color: white;">Connect & Collaborate</h3>
+        <p>Site Reliability Engineer at Microsoft | Passionate Photographer | Avid Cook</p>
+        <div class="social-hero" style="justify-content: center; margin-top: 1rem;">
+            <a href="YOUR_LINKEDIN_URL" class="btn-social">LinkedIn</a>
+            <a href="YOUR_MEDIUM_URL" class="btn-social">Medium</a>
+        </div>
+        <p style="margin-top: 5rem; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 | Built for Resilience</p>
     </footer>
 
 </body>
