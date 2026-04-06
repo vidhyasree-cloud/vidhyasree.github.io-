@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Journey: Code, Camera & Kitchen</title>
+    <title>Portfolio | Code, Camera & Kitchen</title>
     <style>
-        /* Modern Reset & Base Styles */
+        /* Modern Reset & Professional Color Palette */
         :root {
-            --primary: #005A9C;
+            --primary: #005A9C; /* Microsoft Blue */
             --secondary: #00b4d8;
             --dark: #1a1a1a;
             --light: #f8f9fa;
-            --gray: #6c757d;
+            --accent: #ff7e5f;
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -23,7 +23,7 @@
             background-color: #f0f2f5;
         }
         
-        /* Sticky Navigation */
+        /* Sticky Navigation Bar */
         nav {
             position: sticky;
             top: 0;
@@ -33,73 +33,74 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             z-index: 1000;
         }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 1rem; transition: color 0.3s; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
-        /* Hero Header */
+        /* Hero Header Section */
         header {
-            background: linear-gradient(135deg, var(--dark) 0%, #2a3b4c 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
             color: white;
             padding: 6rem 2rem;
             text-align: center;
         }
-        header h1 { font-size: 3.5rem; margin: 0 0 1rem 0; letter-spacing: -1px; }
-        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #cbd5e1; }
-
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 1rem;
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
         }
+        header h1 { font-size: 3rem; margin: 0 0 0.5rem 0; letter-spacing: -1px; }
+        header p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; color: #cbd5e1; font-weight: 300; }
 
-        /* Main Container */
+        /* Main Layout Containers */
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        .section-title { font-size: 2rem; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2rem; }
-
-        /* Card Layouts */
-        .card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 2rem; }
+        .section-title { font-size: 1.8rem; border-bottom: 4px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2.5rem; color: var(--dark); }
+        .card { background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 2.5rem; border: 1px solid #eef2f7; }
         
-        /* Story Timeline */
-        .timeline { border-left: 3px solid var(--primary); padding-left: 2rem; margin-left: 1rem; }
-        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        /* The Journey Timeline */
+        .timeline { border-left: 3px solid var(--primary); padding-left: 2.5rem; margin-left: 1rem; }
+        .timeline-item { position: relative; margin-bottom: 3rem; }
         .timeline-item::before {
-            content: ''; position: absolute; left: -2.75rem; top: 0.2rem; width: 1rem; height: 1rem;
+            content: ''; position: absolute; left: -3.35rem; top: 0.3rem; width: 1.2rem; height: 1.2rem;
             background: var(--primary); border-radius: 50%; border: 4px solid white; box-shadow: 0 0 0 2px var(--primary);
         }
-        .timeline-date { font-weight: bold; color: var(--primary); margin-bottom: 0.5rem; display: block;}
-        
-        /* Two Column Grids */
+        .timeline-date { font-weight: bold; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .timeline-item h3 { margin: 0 0 0.5rem 0; font-size: 1.4rem; color: #222; }
+
+        /* Project & Work Grid */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .project-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--secondary); }
+        .project-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.5rem; transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .project-card h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; }
 
-        /* Skills Badges */
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
-        .skills-list li { background: #e0f2fe; color: #0369a1; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+        /* Tech Skill Badges */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; list-style: none; margin-top: 1rem; }
+        .skills-list li { background: #e0f2fe; color: #0369a1; padding: 0.4rem 1.2rem; border-radius: 25px; font-size: 0.85rem; font-weight: 600; border: 1px solid #bae6fd; }
 
-        /* Photography & Cooking Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-        .gallery-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1 / 1; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        /* Creative Gallery (Photos/Cooking) */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1 / 1; background-color: #ddd; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
         .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 1rem; opacity: 0; transition: opacity 0.3s; }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(0, 90, 156, 0.7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; opacity: 0; transition: 0.3s; padding: 1rem; text-align: center; }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
 
-        /* Music Section */
-        .music-card { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); color: var(--dark); padding: 2rem; border-radius: 12px; display: flex; align-items: center; gap: 2rem;}
-        .music-text { flex: 1; }
-        .music-icon { font-size: 4rem; }
+        /* Music Highlight */
+        .music-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2.5rem; border-radius: 15px; display: flex; align-items: center; gap: 2rem; margin-top: 2rem; }
+        .music-icon { font-size: 3.5rem; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
+        /* Mobile Optimization */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
-            nav { flex-wrap: wrap; gap: 1rem; padding: 1rem; }
+            header h1 { font-size: 2.2rem; }
+            nav { gap: 1rem; font-size: 0.8rem; }
             .music-card { flex-direction: column; text-align: center; }
         }
     </style>
@@ -108,8 +109,8 @@
 
     <nav>
         <a href="#story">My Story</a>
-        <a href="#experience">Tech & SRE</a>
-        <a href="#life">Life, Lens & Kitchen</a>
+        <a href="#experience">Engineering</a>
+        <a href="#life">Photography & Cooking</a>
     </nav>
 
     <header>
@@ -121,81 +122,85 @@
     <div class="container">
 
         <div class="card" id="story">
-            <h2 class="section-title">My Story into Tech</h2>
+            <h2 class="section-title">My Story: From Commerce to Cloud</h2>
             <div class="timeline">
+                
                 <div class="timeline-item">
-                    <span class="timeline-date">2015 - 2018: The Foundation</span>
-                    <h3>Bachelor of Commerce & Computers</h3>
-                    <p>Started my journey at Osmania University, blending business logic with computer science fundamentals. This dual perspective taught me that great code isn't just about syntax; it's about solving real business problems efficiently.</p>
+                    <span class="timeline-date">2015 - 2018: The Hybrid Foundation</span>
+                    <h3>B.Com in Computers (Osmania University)</h3>
+                    <p>My academic foundation blended business logic with computer science. While it wasn't in the curriculum, I spent my college years obsessed with <strong>Web & Mobile App Design</strong>, self-teaching UI/UX and front-end development from every external source I could find.</p>
                 </div>
+
                 <div class="timeline-item">
-                    <span class="timeline-date">2018 - 2019: The Builder Phase</span>
-                    <h3>Full Stack Developer at Quadrant Resources</h3>
-                    <p>Dove headfirst into enterprise development. I spent these years building tangible tools from scratch—event management portals and internal systems using .NET MVC, React, and SQL. I learned how to architect end-to-end solutions that people actually use.</p>
+                    <span class="timeline-date">2018: From Passion to Profession</span>
+                    <h3>Engineering Trainee (6 Months)</h3>
+                    <p>After graduation, I committed to the technical path. I spent 6 months as an intensive trainee, mastering C#, .NET ecosystems, and foundational coding concepts to transition my self-taught interests into a professional engineering career.</p>
                 </div>
+
                 <div class="timeline-item">
-                    <span class="timeline-date">2019 - 2022: Scaling to the Cloud</span>
-                    <h3>Software Developer at Azure Cosmos DB</h3>
-                    <p>Transitioned into Microsoft to work on globally distributed databases. Here, the scale shifted drastically. I moved from building apps to engineering the underlying cloud infrastructure, automating CI/CD pipelines, and writing telemetry to monitor millions in Azure spend.</p>
+                    <span class="timeline-date">2018 - 2019: Junior Developer Phase</span>
+                    <h3>Junior Developer | Quadrant Technologies</h3>
+                    <p>Started my full-time journey building internal portals and event management systems. This was where I first bridged the gap between commerce requirements and robust software solutions.</p>
                 </div>
+
                 <div class="timeline-item">
-                    <span class="timeline-date">2023 - Present: Ensuring Reliability</span>
-                    <h3>SRE – Azure SQL DB Capacity Management</h3>
-                    <p>Today, I operate at massive scale. I drive the modernization of entire fleets, decommissioning legacy hardware, and integrating Operational AI to catch incidents before they happen. My focus is on turning reactive operational chaos into proactive, automated stability.</p>
+                    <span class="timeline-date">2019 - 2026: The 8-Year Evolution</span>
+                    <h3>SRE & Cloud Engineering | Microsoft</h3>
+                    <p>An 8-year evolution from building small web apps to managing massive cloud infrastructure. Today, at Microsoft, I focus on <strong>Azure SQL DB Capacity & Reliability</strong>, turning operational toil into automated efficiency at a global scale.</p>
                 </div>
+
             </div>
         </div>
 
         <div class="card" id="experience">
-            <h2 class="section-title">Core Systems & Architecture</h2>
+            <h2 class="section-title">Engineering & Architecture</h2>
             <div class="grid-2">
                 <div class="project-card">
-                    <h3>RDFE to PaaSv2 Pipeline</h3>
-                    <p>Engineered automated deployment pipelines to convert legacy architecture, decommissioning 125 rings in 90 days with zero operational downtime.</p>
+                    <h3>Infrastructure Modernization</h3>
+                    <p>Executed the multi-year RDFE to PaaSv2 conversion, decommissioning 125 rings in 90 days with zero service disruption.</p>
                 </div>
                 <div class="project-card">
-                    <h3>Capacity & Telemetry AI</h3>
-                    <p>Integrated KQL, Power BI, and Operational AI to shift live-site triage from manual investigations to proactive, data-driven readiness.</p>
+                    <h3>Data-Driven Operations</h3>
+                    <p>Developed end-to-end Power BI & KQL dashboards for capacity planning, shifting the team from reactive triage to proactive readiness.</p>
                 </div>
                 <div class="project-card">
                     <h3>Azure Cost Architecture</h3>
-                    <p>Built a critical financial module monitoring total Azure spend across subscriptions, with custom AAD authentication and MS-Flow alerting.</p>
+                    <p>Engineered financial modules monitoring millions in Azure spend, integrated with AAD authentication and automated alerting.</p>
                 </div>
                 <div class="project-card">
-                    <h3>Enterprise Web Portals</h3>
-                    <p>Architected full-stack event management and transport solutions using ASP.NET Core, React, and robust SQL backend infrastructures.</p>
+                    <h3>Internal Portal Systems</h3>
+                    <p>Designed and built full-stack management portals using .NET MVC and React, focused on performance tracking and task automation.</p>
                 </div>
             </div>
 
-            <h3 style="margin-top: 2rem;">Technical Arsenal</h3>
+            <h3 style="margin-top: 2rem;">The Technical Arsenal</h3>
             <ul class="skills-list">
-                <li>Azure SQL DB</li><li>Azure Cosmos DB</li><li>C# & .NET Core</li><li>Kusto (KQL)</li><li>React & Node.js</li><li>CI/CD Pipelines</li><li>Power Automate</li><li>T-SQL</li>
+                <li>Azure SQL DB</li><li>Azure Cosmos DB</li><li>C# / .NET Core</li><li>Kusto (KQL)</li><li>CI/CD Pipelines</li><li>React & Node.js</li><li>Power BI</li><li>T-SQL</li>
             </ul>
         </div>
 
         <div id="life">
             <h2 class="section-title">Life, Lens & Kitchen</h2>
-            
             <div class="card">
-                <h3>My Passions</h3>
-        <p>When I step away from the production environment, I am an <strong>avid cook</strong> and passionate photographer. Whether I am architecting cloud infrastructure or experimenting with complex flavors in the kitchen, I approach both with the exact same dedication to iteration, testing, and quality.</p>
+                <h3>My Creative Outlets</h3>
+                <p>When I step away from the keyboard, I am an <strong>avid cook</strong> and a dedicated photographer. I approach a new recipe with the same mindset as a new codebase: experimenting, iterating, and perfecting until the result is exceptional.</p>
                 
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1520772719262-6725bf603504?auto=format&fit=crop&w=500&q=80" alt="Spring Tulips">
+                        <img src="tulips.jpg" alt="Spring Tulips">
                         <div class="gallery-overlay">Skagit Valley Tulips</div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=500&q=80" alt="Nature Photography">
-                        <div class="gallery-overlay">Into the Wild</div>
+                        <img src="nature.jpg" alt="Nature Photography">
+                        <div class="gallery-overlay">Capturing Nature</div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93cb0?auto=format&fit=crop&w=500&q=80" alt="Cooking Biryani">
-                        <div class="gallery-overlay">Kitchen Experiments</div>
+                        <img src="biryani.jpg" alt="Cooking">
+                        <div class="gallery-overlay">Culinary Experiments</div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80" alt="Plated Dish">
-                        <div class="gallery-overlay">The Final Plate</div>
+                        <img src="plating.jpg" alt="Food Presentation">
+                        <div class="gallery-overlay">The Art of Plating</div>
                     </div>
                 </div>
             </div>
@@ -204,13 +209,16 @@
                 <div class="music-icon">🎧</div>
                 <div class="music-text">
                     <h3 style="margin-top: 0;">Currently on Repeat: Telugu Beats</h3>
-                    <p>Code compiles faster with good music. My daily soundtrack is heavily influenced by Telugu music, with artists like Sid Sriram constantly in my rotation. If you need a recommendation, you can't go wrong starting with <strong>"Neevalle"</strong>.</p>
+                    <p>My daily soundtrack is fueled by Telugu music. Whether I'm debugging or designing, artists like <strong>Sid Sriram</strong> (especially "Neevalle") provide the perfect rhythm for a productive day.</p>
                 </div>
             </div>
-
         </div>
 
     </div>
+
+    <footer style="text-align: center; padding: 3rem; color: #666; font-size: 0.9rem;">
+        <p>&copy; 2026 | Built with Code & Passion</p>
+    </footer>
 
 </body>
 </html>
