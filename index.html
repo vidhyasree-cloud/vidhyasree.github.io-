@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio | SRE & AI Operations</title>
+    <title>Professional Portfolio | SRE & Software Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,13 +20,9 @@
             background: var(--dark);
             color: #E2E8F0;
             margin: 0;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
-
-        /* SCROLL REVEAL EFFECT */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* NEON BACKGROUND */
         .bg-glow {
@@ -40,46 +36,69 @@
         nav {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             background: rgba(10, 20, 40, 0.8); backdrop-filter: blur(20px);
-            padding: 0.7rem 2rem; border-radius: 50px; border: 1px solid var(--border);
-            display: flex; gap: 2rem; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 0.6rem 1.5rem; border-radius: 50px; border: 1px solid var(--border);
+            display: flex; gap: 1.5rem; z-index: 1000;
         }
-        nav a { text-decoration: none; color: #94A3B8; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        nav a { text-decoration: none; color: #94A3B8; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
-        /* HERO */
-        header { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .profile-pic { width: 170px; height: 170px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; box-shadow: 0 0 30px rgba(0, 163, 255, 0.3); margin-bottom: 1.5rem; }
-        header h1 { font-size: 4.5rem; margin: 0; letter-spacing: -3px; font-weight: 800; background: linear-gradient(to right, #FFF, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* HERO - COMPRESSED */
+        header { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-top: 50px; }
+        .profile-pic { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; margin-bottom: 1rem; }
+        header h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; font-weight: 800; background: linear-gradient(to right, #FFF, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .btn-group { display: flex; gap: 1rem; margin-top: 2.5rem; }
-        .btn { padding: 0.8rem 1.8rem; border-radius: 50px; text-decoration: none; font-weight: 700; color: white; background: var(--glass); border: 1px solid var(--border); transition: 0.3s; cursor: pointer; }
+        .btn-group { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+        .btn { padding: 0.6rem 1.4rem; border-radius: 50px; text-decoration: none; font-weight: 700; color: white; background: var(--glass); border: 1px solid var(--border); transition: 0.3s; font-size: 0.85rem; }
         .btn-primary { background: var(--primary); border: none; }
-        .btn:hover { transform: translateY(-3px); background: white; color: var(--dark); }
+        .btn:hover { transform: translateY(-2px); background: white; color: var(--dark); }
 
-        /* CONTENT CARDS */
-        .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
-        .card { background: var(--glass); border: 1px solid var(--border); padding: 3rem; border-radius: 30px; backdrop-filter: blur(10px); margin-bottom: 3rem; }
-        .section-tag { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 1rem; display: block; }
+        /* CONTENT */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .section-tag { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.65rem; margin-bottom: 0.5rem; display: block; }
+        
+        /* COMPRESSED GRID FOR ALL WORK */
+        .work-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 1rem; 
+            margin-bottom: 3rem;
+        }
+        .card { 
+            background: var(--glass); 
+            border: 1px solid var(--border); 
+            padding: 1.5rem; 
+            border-radius: 20px; 
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; color: white; }
+        .card p { font-size: 0.85rem; color: #94A3B8; margin: 0; line-height: 1.4; }
+        .date-badge { font-size: 0.7rem; font-weight: 800; color: var(--primary); text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
 
-        /* WORK EXPERIENCE TIMELINE */
-        .timeline { border-left: 2px solid var(--border); padding-left: 2.5rem; }
-        .timeline-item { margin-bottom: 4rem; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -3.15rem; top: 0.5rem; width: 1.1rem; height: 1.1rem; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); }
+        /* SKILLS PILLS */
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .badge { background: rgba(0, 163, 255, 0.1); color: var(--primary); padding: 2px 8px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(0, 163, 255, 0.2); }
 
-        /* PROJECT TILES */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .p-card { background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s; }
-        .p-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.05); transform: translateY(-5px); }
-        .badge { background: rgba(0, 163, 255, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; margin-right: 5px; }
-        .ai-badge { background: linear-gradient(45deg, #7000FF, #00A3FF); color: white; }
+        /* MUSIC & PASSION SECTION - COMPRESSED */
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+        .studio-box { display: flex; align-items: center; gap: 1rem; }
+        .studio-img { width: 100px; height: 100px; border-radius: 15px; object-fit: cover; border: 1px solid var(--border); }
 
-        /* MUSIC & GALLERY */
-        .studio-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
-        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 2rem; }
-        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; transition: 0.4s; opacity: 0.8; }
-        .gallery img:hover { opacity: 1; transform: scale(1.05); }
+        /* GALLERY - COMPRESSED */
+        .gallery-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 1rem; }
+        .gallery-row img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; opacity: 0.7; transition: 0.3s; }
+        .gallery-row img:hover { opacity: 1; transform: scale(1.05); }
 
-        footer { text-align: center; padding: 6rem 0; border-top: 1px solid var(--border); opacity: 0.6; }
+        footer { text-align: center; padding: 4rem 0; border-top: 1px solid var(--border); font-size: 0.8rem; opacity: 0.5; }
+
+        @media (max-width: 900px) {
+            .work-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .work-grid, .split-grid, .gallery-row { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -87,100 +106,89 @@
     <div class="bg-glow"></div>
 
     <nav>
-        <a href="#story">Journey</a>
-        <a href="#projects">Work & AI</a>
-        <a href="#studio">Music</a>
-        <a href="#life">Lens</a>
+        <a href="#work">Experience</a>
+        <a href="#projects">Projects & AI</a>
+        <a href="#passion">Music & Life</a>
     </nav>
 
     <header>
-        <img src="profile.jpg" alt="[Your Name]" class="profile-pic">
+        <img src="profile.jpg" alt="Profile" class="profile-pic">
         <h1>VIDHYA SREE DEVARAJU</h1>
-        <p style="font-size: 1.3rem; color: #94A3B8; max-width: 800px;">Site Reliability Engineer @ Microsoft | AI Operations Strategist | 8 Years of Engineering Excellence</p>
+        <p style="font-size: 1.1rem; color: #94A3B8; max-width: 600px;">Site Reliability Engineer @ Microsoft | 8 Years Expertise in Azure SQL & AI Operations</p>
         
         <div class="btn-group">
             <a href="linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" class="btn btn-primary">LinkedIn</a>
             <button class="btn" onclick="copyEmail()">Copy Gmail</button>
-            <a href="medium.com (Blog)" target="_blank" class="btn">Read AI Blog</a>
+            <a href="medium.com (Blog)" target="_blank" class="btn">Medium</a>
         </div>
     </header>
 
     <div class="container">
         
-        <section id="story" class="reveal">
-            <span class="section-tag">Professional Evolution</span>
-            <div class="card">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <strong style="color: var(--primary);">2023 - Present</strong>
-                        <h3>SRE: Azure SQL DB Capacity Management | Microsoft</h3>
-                        <p>Driving global fleet stability and massive RDFE to PaaSv2 migrations. <strong>Integrating Operational AI</strong> to identify repeat incident patterns and propose automated, script-ready workflows to eliminate toil.</p>
-                        <p style="font-size: 0.9rem; color: #94A3B8;">Focus: Fleet Reliability, AI-Driven Triage, KQL, Capacity Analysis.</p>
+        <section id="work">
+            <span class="section-tag">Career Timeline</span>
+            <div class="work-grid">
+                <div class="card">
+                    <span class="date-badge">2023 - Present</span>
+                    <h3>SRE | Azure SQL DB</h3>
+                    <p>Managing global fleet capacity and modernizing infrastructure (RDFE to PaaSv2). 100% Decommission of legacy Gen3/4 hardware.</p>
+                    <div class="skills-wrap">
+                        <span class="badge">KQL</span><span class="badge">SRE</span><span class="badge">Azure</span>
                     </div>
-                    <div class="timeline-item">
-                        <strong style="color: #94A3B8;">2019 - 2021</strong>
-                        <h3>Software Developer: Cosmos DB | Microsoft</h3>
-                        <p>Architected financial surveillance dashboards and optimized CI/CD pipelines. Leveraged automation to track million-dollar Azure spends with zero manual overhead.</p>
+                </div>
+                <div class="card">
+                    <span class="date-badge">2019 - 2021</span>
+                    <h3>Dev | Cosmos DB</h3>
+                    <p>Developed financial surveillance modules for global subscriptions and optimized CI/CD dashboards with Azure Functions.</p>
+                    <div class="skills-wrap">
+                        <span class="badge">C#</span><span class="badge">AAD</span><span class="badge">Automation</span>
                     </div>
-                    <div class="timeline-item">
-                        <strong style="color: #94A3B8;">2018 - 2019</strong>
-                        <h3>Junior Developer: In-House Projects | Quadrant Tech</h3>
-                        <p>Built enterprise-grade portals from scratch. Transitioned from an <strong>intensive trainee program</strong> to a full-time engineer in 6 months.</p>
+                </div>
+                <div class="card">
+                    <span class="date-badge">2018 - 2019</span>
+                    <h3>Junior Dev | Quadrant</h3>
+                    <p>Architected internal portals (WATS, Office Management, SRK Travels) following 6 months of intensive full-stack training.</p>
+                    <div class="skills-wrap">
+                        <span class="badge">.NET MVC</span><span class="badge">SQL</span><span class="badge">API</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="reveal">
-            <span class="section-tag">High-Impact Work Items</span>
-            <h2 style="font-size: 2.5rem; margin-bottom: 2.5rem;">AI, Automation & Systems</h2>
-            <div class="project-grid">
-                
-                <div class="p-card">
-                    <span class="badge ai-badge">AI Integration</span>
-                    <h3>Operational AI Workflows</h3>
-                    <p>Actively learning and applying AI tools to boost team productivity and accelerate incident root cause identification (RCA).</p>
+        <section id="projects">
+            <span class="section-tag">Key Work Items & AI</span>
+            <div class="work-grid">
+                <div class="card" style="border-color: var(--accent);">
+                    <h3>Operational AI</h3>
+                    <p>Integrating AI tools to accelerate RCA, identify repeat incident patterns, and eliminate operational toil with script-ready workflows.</p>
                 </div>
-
-                <div class="p-card">
-                    <span class="badge">SRE</span>
-                    <h3>Fleet Modernization Engine</h3>
-                    <p>Decommissioned 100% of legacy hardware across National Clouds. Executed 125 ring decommissions in a 90-day window.</p>
+                <div class="card">
+                    <h3>Fleet Migration</h3>
+                    <p>Successfully executed 125 ring decommissions in a 90-day window with 98.28% return rates for National Clouds.</p>
                 </div>
-
-                <div class="p-card">
-                    <span class="badge">Automation</span>
-                    <h3>RCS Workflow Logic</h3>
-                    <p>Engineered automated RCS workflows with built-in validation and dynamic retry logic for high-priority service migrations.</p>
+                <div class="card">
+                    <h3>Capacity BI</h3>
+                    <p>End-to-end Power BI solution utilizing advanced DAX to track global backlogs and vendor resolution counts.</p>
                 </div>
-
-                <div class="p-card">
-                    <span class="badge">Data</span>
-                    <h3>Capacity Power BI BI</h3>
-                    <p>Developed DAX-driven dashboards tracking global ICM backlogs and resolution counts for the vendor queue.</p>
-                </div>
-
             </div>
         </section>
 
-        <section id="studio" class="reveal" style="margin-top: 6rem;">
-            <div class="card" style="background: linear-gradient(45deg, rgba(112, 0, 255, 0.05), transparent);">
-                <div class="studio-grid">
+        <section id="passion">
+            <div class="split-grid">
+                <div class="card studio-box">
+                    <img src="violin.JPG" alt="Violin" class="studio-img">
                     <div>
-                        <span class="badge" style="background: var(--accent); color: white;">Musical Discipline</span>
-                        <h2 style="font-size: 2.5rem; margin-top: 1rem;">Carnatic Violin</h2>
-                        <p>The precision of the strings mirrors the precision of the code. Currently mastering Carnatic Violin—a journey of discipline that strengthens my engineering focus.</p>
+                        <span class="date-badge" style="margin:0;">Carnatic Violin</span>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">Mastering the discipline of strings to enhance my engineering focus.</p>
                     </div>
-                    <img src="violin.jpg" alt="Violin" style="width: 100%; border-radius: 20px; border: 1px solid var(--border);">
+                </div>
+                <div class="card">
+                    <span class="date-badge">Photography & Cooking</span>
+                    <p style="font-size: 0.8rem;">Capturing Skagit Valley tulips and perfecting the "Final Plate" with an SRE mindset.</p>
                 </div>
             </div>
-        </section>
 
-        <section id="life" class="reveal">
-            <span class="section-tag">Life & Lens</span>
-            <h2 style="font-size: 2.5rem;">Photography & Culinary Arts</h2>
-            <p>From the tulip fields of Skagit Valley to my kitchen, I apply an "Avid Cook" mindset: constant iteration and perfect final delivery.</p>
-            <div class="gallery">
+            <div class="gallery-row">
                 <img src="tulips.jpg" alt="Tulips">
                 <img src="biryani.jpg" alt="Cooking">
                 <img src="nature.jpg" alt="Nature">
@@ -191,22 +199,10 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 | SRE @ Microsoft | Engineered with AI & Resilience</p>
+        <p>&copy; 2026 | SRE @ Microsoft | Engineered with Resilience</p>
     </footer>
 
     <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 150) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-
         function copyEmail() {
             var email = "vidya98sree@gmail.com"; 
             navigator.clipboard.writeText(email);
