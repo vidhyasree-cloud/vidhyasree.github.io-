@@ -3,248 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio | Software & SRE Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Professional Portfolio | SRE & Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #005A9C;
-            --accent: #00b4d8;
-            --dark: #0f172a;
-            --text: #334155;
-            --bg: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.9);
+            --primary: #00A3FF;
+            --secondary: #005A9C;
+            --accent: #7000FF;
+            --dark: #050A18;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark);
+            color: #E2E8F0;
             margin: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* ANIMATED BACKGROUND GEMS */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 163, 255, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(112, 0, 255, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 20, 40, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            display: flex; gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        nav a { text-decoration: none; color: #94A3B8; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
         /* HERO HEADER */
         header {
-            height: 75vh;
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
         }
-
+        .profile-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
         .profile-pic {
-            width: 170px;
-            height: 170px;
+            width: 180px; height: 180px;
             border-radius: 50%;
-            border: 4px solid var(--accent);
+            border: 3px solid var(--primary);
             object-fit: cover;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 2;
+        }
+        .profile-glow {
+            position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: var(--primary);
+            filter: blur(30px); opacity: 0.3;
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        header h1 { font-size: 3.8rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
-        header p { font-size: 1.3rem; font-weight: 300; color: #94a3b8; max-width: 800px; margin-top: 1rem; }
+        header h1 { font-size: 4.5rem; margin: 0; font-weight: 800; letter-spacing: -3px; background: linear-gradient(to right, #FFF, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { font-size: 1.4rem; color: #94A3B8; max-width: 700px; margin-top: 1rem; font-weight: 300; }
 
-        /* SOCIAL BUTTONS */
-        .social-hero { display: flex; gap: 1rem; margin-top: 2.5rem; }
-        .btn-social {
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            background: rgba(255,255,255,0.1);
+        .btn-group { display: flex; gap: 1rem; margin-top: 3rem; }
+        .btn {
+            padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+            transition: 0.4s; border: 1px solid var(--glass-border); color: white;
+            background: rgba(255, 255, 255, 0.05);
         }
-        .btn-social:hover { background: white; color: var(--dark); transform: translateY(-3px); }
-        .btn-primary { background: var(--primary); border: none; }
+        .btn-primary { background: var(--primary); border: none; box-shadow: 0 0 20px rgba(0, 163, 255, 0.4); }
+        .btn:hover { transform: translateY(-5px); background: white; color: var(--dark); }
 
-        /* NAVIGATION */
-        nav {
-            position: sticky;
-            top: 0;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: center;
-            padding: 1.2rem;
-            gap: 2.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            z-index: 1000;
-        }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
-
+        /* CONTENT SECTIONS */
         .container { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+        .section-tag { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; display: block; margin-bottom: 1rem; }
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--glass-border);
+            padding: 3.5rem; border-radius: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 4rem;
+        }
 
-        /* TIMELINE SECTION */
-        .story-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
-        .section-tag { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; margin-bottom: 1rem; display: block; }
-        
-        .timeline { border-left: 2px solid #e2e8f0; padding-left: 2.5rem; margin-top: 2rem; }
+        /* TIMELINE */
+        .timeline { border-left: 2px solid var(--glass-border); padding-left: 3rem; position: relative; }
         .timeline-item { margin-bottom: 4rem; position: relative; }
         .timeline-item::before {
-            content: ''; position: absolute; left: -3.2rem; top: 0.4rem; width: 1.2rem; height: 1.2rem;
-            background: var(--primary); border-radius: 50%; border: 4px solid white; box-shadow: 0 0 0 2px var(--primary);
+            content: ''; position: absolute; left: -3.65rem; top: 0.5rem; width: 1.2rem; height: 1.2rem;
+            background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary);
         }
-        .timeline-date { font-weight: bold; color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 0.5rem; }
 
-        /* PROJECTS GRID */
+        /* PROJECTS */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .project-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            border: 1px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2.5rem; border-radius: 24px;
+            border: 1px solid var(--glass-border);
             transition: 0.4s;
         }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(15,23,42,0.08); border-color: var(--primary); }
-        .tech-pill { background: #f1f5f9; padding: 5px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; color: #475569; display: inline-block; margin-top: 1rem; margin-right: 5px; }
-
-        /* GALLERY & LIFESTYLE */
-        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 2.5rem; }
-        .gallery img { width: 100%; height: 280px; object-fit: cover; border-radius: 16px; transition: 0.5s; cursor: pointer; }
-        .gallery img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-        .blog-cta {
-            background: var(--dark);
-            color: white;
-            padding: 4rem;
-            border-radius: 30px;
-            text-align: center;
-            margin: 4rem 0;
-            background-image: radial-gradient(circle at top right, rgba(0, 180, 216, 0.15), transparent);
+        .project-card:hover { 
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        footer { text-align: center; padding: 6rem 0; background: #0f172a; color: #94a3b8; }
+        /* THE STUDIO (MUSIC & ART) */
+        .studio-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+        .violin-img { width: 100%; border-radius: 24px; border: 1px solid var(--glass-border); }
+        .music-badge { background: linear-gradient(45deg, #7000FF, #00A3FF); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; }
+
+        /* GALLERY */
+        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 3rem; }
+        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; transition: 0.5s; opacity: 0.7; }
+        .gallery img:hover { opacity: 1; transform: translateY(-10px) scale(1.05); }
+
+        footer { text-align: center; padding: 8rem 0; border-top: 1px solid var(--glass-border); }
 
         @media (max-width: 768px) {
-            .story-grid { grid-template-columns: 1fr; }
-            header h1 { font-size: 2.8rem; }
+            header h1 { font-size: 3rem; }
+            .studio-grid { grid-template-columns: 1fr; }
             .gallery { grid-template-columns: 1fr 1fr; }
+            nav { gap: 1rem; width: 90%; justify-content: space-around; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="profile.jpg" alt="Profile" class="profile-pic">
-        <h1>VIDHYA SREE DEVARAJU</h1>
-        <p>Software & SRE Engineer | Specializing in Azure SQL DB Capacity & Global Cloud Reliability</p>
-        
-        <div class="social-hero">
-            <a href="linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" class="btn-social btn-primary">LinkedIn</a>
-            <a href="vidya98sree@gmail.com" target="_blank" class="btn-social btn-primary">Gmail</a>
-            <a href="medium.com (Blog)" target="_blank" class="btn-social">Medium Blog</a>
-            <a href="https://github.com/yourusername" target="_blank" class="btn-social">GitHub</a>
-        </div>
-    </header>
+    <div class="bg-glow"></div>
 
     <nav>
         <a href="#story">Journey</a>
-        <a href="#projects">Engineering</a>
-        <a href="#blog">Blog</a>
-        <a href="#life">Life & Lens</a>
+        <a href="#tech">Engineering</a>
+        <a href="#studio">Studio</a>
+        <a href="#life">Lens</a>
     </nav>
+
+    <header>
+        <div class="profile-container">
+            <div class="profile-glow"></div>
+            <img src="profile.jpg" alt="Profile" class="profile-pic">
+        </div>
+        <h1>VIDHYA SREE DEVARAJU</h1>
+        <p>Site Reliability Engineer @ Microsoft | Azure Cloud Architect | Carnatic Musician | Chef</p>
+        
+        <div class="btn-group">
+            <a href="linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" class="btn btn-primary">LinkedIn</a>
+             <a href="mailto:vidya98sree@gmail.com" class="btn">Email Me</a>
+            <a href="medium.com (Blog)" target="_blank" class="btn">Read Blog</a>
+            <a href="#story" class="btn">View Story</a>
+        </div>
+    </header>
 
     <div class="container">
         
-        <section id="story" class="story-grid">
-            <div>
-                <span class="section-tag">The Timeline</span>
-                <h2 style="font-size: 2.5rem; letter-spacing: -1px;">Evolution of an Engineer</h2>
-                <p>My journey is defined by a transition from a Commerce-centric academic background into the heart of Cloud Engineering. I specialize in bridging the gap between business requirements and highly available, automated infrastructure.</p>
-                <p>With an 8-year track record of growth, I have evolved from building local internal portals to managing mission-critical global databases at Microsoft.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-date">2023 - Present</span>
-                    <strong>SRE: Azure SQL DB Capacity Management | Microsoft</strong>
-                    <p>Driving global fleet stability, proactive capacity planning, and massive infrastructure modernization efforts (RDFE to PaaSv2).</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">2019 - 2021</span>
-                    <strong>Software Developer: Cosmos DB | Microsoft</strong>
-                    <p>Engineered financial surveillance modules, automated CI/CD pipelines, and improved globally distributed database dashboards.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">2018 - 2019</span>
-                    <strong>Junior Developer: In-House Projects | Quadrant Tech</strong>
-                    <p>Developed enterprise-grade ticketing engines (WATS), travel management portals (SRK Travels), and internal Office Management Portals.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">2018 (Early)</span>
-                    <strong>The Transformation | Trainee Period</strong>
-                    <p>Learned Software Engineering from scratch. Spent 6 months in intensive training at Quadrant Technologies to bridge the gap from B.Com to C#/.NET Development.</p>
+        <section id="story">
+            <span class="section-tag">8-Year Evolution</span>
+            <div class="card">
+                <div class="story-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem;">
+                    <div>
+                        <h2 style="font-size: 2.5rem; line-height: 1.1; margin-top: 0;">From Commerce to Cloud</h2>
+                        <p style="color: #94A3B8;">I bridge the gap between business requirements and elite technical architecture. My non-traditional path is my greatest engineering asset.</p>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date" style="color: var(--primary);">2023 — Present</span>
+                            <h3>SRE: Azure SQL DB Capacity | Microsoft</h3>
+                            <p>Orchestrating global fleet modernizations and decommissioning legacy hardware with 99.9% reliability.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2019 — 2021</span>
+                            <h3>Software Developer: Cosmos DB | Microsoft</h3>
+                            <p>Engineered financial surveillance systems and optimized globally distributed DB dashboards.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2018 — 2019</span>
+                            <h3>Junior Developer: In-House | Quadrant</h3>
+                            <p>Built enterprise ticketing (WATS) and internal management portals for high-stakes business operations.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">2018 Early</span>
+                            <h3>The Trainee Phase | Quadrant Tech</h3>
+                            <p>A transformative 6-month intensive training from scratch to bridge the B.Com-to-Engineering gap.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" style="margin-top: 6rem;">
-            <span class="section-tag">Key Contributions</span>
-            <h2 style="font-size: 2.5rem; margin-bottom: 4rem;">Technical Accomplishments</h2>
+        <section id="tech">
+            <span class="section-tag">Engineering Arsenal</span>
+            <h2 style="font-size: 3rem; margin-bottom: 3rem;">Global Systems & Scalability</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <h3>Fleet Migration Engine</h3>
-                    <p>Managed the massive decommissioning of 100% of legacy Gen3/Gen4 hardware while ensuring zero customer disruption for Azure SQL DB.</p>
-                    <span class="tech-pill">Azure DevOps</span><span class="tech-pill">SRE</span><span class="tech-pill">KQL</span>
+                    <p>Automated decommission of 125 rings in 90 days for Azure SQL DB with zero customer impact.</p>
+                    <div class="tech-stack">
+                        <span class="music-badge">SRE</span><span class="music-badge">Azure DevOps</span>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Azure Spend Analytics</h3>
-                    <p>Built a critical surveillance module for Cosmos DB calculating total Azure spend with automated anomaly alerting.</p>
-                    <span class="tech-pill">C# .NET</span><span class="tech-pill">Azure Functions</span><span class="tech-pill">AAD</span>
+                    <p>Designed C#/.NET surveillance modules for millions in cloud spend with proactive alerting.</p>
+                    <div class="tech-stack">
+                        <span class="music-badge">C#</span><span class="music-badge">Azure Functions</span>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3>WATS Portal Architecture</h3>
-                    <p>Engineered an event management system with a secure ticketing engine and PayPal API integration for the Washington Telugu Samithi.</p>
-                    <span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL Server</span><span class="tech-pill">Bootstrap</span>
-                </div>
-                <div class="project-card">
-                    <h3>Global Backlog Dashboards</h3>
-                    <p>Architected end-to-end Power BI solutions tracking vendor ICM queues and team resolution metrics globally.</p>
-                    <span class="tech-pill">Power BI</span><span class="tech-pill">DAX</span><span class="tech-pill">Telemetry</span>
+                    <h3>Internal Portal Systems</h3>
+                    <p>Architected full-stack management solutions tracking employee performance and automated tasks.</p>
+                    <div class="tech-stack">
+                        <span class="music-badge">.NET MVC</span><span class="music-badge">SQL Server</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="blog" class="blog-cta">
-            <span class="section-tag" style="color: var(--accent);">Writing</span>
-            <h2 style="font-size: 2.5rem;">Insights on Medium</h2>
-            <p style="color: #cbd5e1; margin-bottom: 2.5rem;">Sharing my experiences in Site Reliability Engineering, Azure Cloud, and the non-traditional path to tech.</p>
-            <a href="YOUR_MEDIUM_URL" target="_blank" class="btn-social btn-primary" style="padding: 1.1rem 3.5rem;">Visit My Blog</a>
+        <section id="studio" style="margin-top: 8rem;">
+            <span class="section-tag">The Arts & Music</span>
+            <div class="card" style="background: linear-gradient(to bottom right, rgba(112, 0, 255, 0.1), transparent);">
+                <div class="studio-grid">
+                    <div>
+                        <span class="music-badge">Violin Artistry</span>
+                        <h2 style="font-size: 3rem; margin-top: 1rem;">Carnatic Music Journey</h2>
+                        <p style="font-size: 1.1rem; color: #cbd5e1;">Just as I find logic in code, I find soul in the strings. I am currently learning **Carnatic Violin**, a journey of precision, discipline, and creative expression that mirrors the complexity of modern engineering.</p>
+                        <p style="color: #94A3B8;">The focus required to master a Raga is the same focus I bring to resolving a complex SRE incident.</p>
+                    </div>
+                    <div>
+                        <img src="violin.jpg" alt="Violin" class="violin-img">
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="life">
-            <span class="section-tag">Life & Lens</span>
-            <h2 style="font-size: 2.5rem;">Photography & Culinary Arts</h2>
-            <p>Whether in the tulip fields of Skagit Valley or the kitchen perfecting a biryani, I approach every passion with an "avid cook" mindset—constant iteration and a drive for quality.</p>
+        <section id="life" style="margin-top: 8rem;">
+            <span class="section-tag">Life Outside Code</span>
+            <h2 style="font-size: 3rem;">Photography & Culinary Arts</h2>
+            <p style="color: #94A3B8; max-width: 600px;">I am an **avid cook** and photographer. From the spring tulips in Skagit Valley to my kitchen, I strive for the perfect "Final Plate."</p>
             <div class="gallery">
-                <img src="tulips.jpg" alt="Photography">
-                <img src="biryani.jpg" alt="Culinary">
+                <img src="tulips.jpg" alt="Tulips">
+                <img src="biryani.jpg" alt="Cooking">
                 <img src="nature.jpg" alt="Nature">
                 <img src="plating.jpg" alt="Plating">
             </div>
         </section>
+
     </div>
 
     <footer>
-        <h3 style="color: white;">Connect & Collaborate</h3>
-        <p>Site Reliability Engineer at Microsoft | Passionate Photographer | Avid Cook</p>
-        <div class="social-hero" style="justify-content: center; margin-top: 1rem;">
-            <a href="YOUR_LINKEDIN_URL" class="btn-social">LinkedIn</a>
-            <a href="YOUR_MEDIUM_URL" class="btn-social">Medium</a>
+        <h2 style="font-size: 2.5rem; background: linear-gradient(to right, #FFF, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Let's Create Something Great</h2>
+        <p>SRE @ Microsoft | Tech Blogger | Musician</p>
+        <div class="btn-group" style="justify-content: center;">
+            <a href="YOUR_LINKEDIN_URL" class="btn btn-primary">LinkedIn</a>
+            <a href="YOUR_MEDIUM_URL" class="btn">Medium</a>
         </div>
-        <p style="margin-top: 5rem; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 | Built for Resilience</p>
+        <p style="margin-top: 5rem; opacity: 0.3; font-size: 0.8rem;">&copy; 2026 | Engineered with Passion & Resonance</p>
     </footer>
 
 </body>
