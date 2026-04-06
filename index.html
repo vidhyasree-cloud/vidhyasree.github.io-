@@ -49,6 +49,16 @@
         header h1 { font-size: 3.5rem; margin: 0 0 1rem 0; letter-spacing: -1px; }
         header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #cbd5e1; }
 
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+
         /* Main Container */
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
         .section-title { font-size: 2rem; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2rem; }
@@ -103,6 +113,7 @@
     </nav>
 
     <header>
+        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
         <h1>VIDHYA SREE DEVARAJU</h1>
         <p>Software & SRE Engineer | Cloud Architect | Photographer | Cooking</p>
     </header>
