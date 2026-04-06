@@ -3,205 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio & Resume</title>
+    <title>My Journey: Code, Camera & Kitchen</title>
     <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            color: #333;
-            background-color: #f4f7f6;
+        /* Modern Reset & Base Styles */
+        :root {
+            --primary: #005A9C;
+            --secondary: #00b4d8;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
         }
-        .container { background: #fff; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        nav { margin-bottom: 2.5rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 1.5rem; }
-        nav a { text-decoration: none; color: #005A9C; font-weight: bold; font-size: 1.1rem; }
-        nav a:hover { color: #003366; }
-        .section { margin-bottom: 3.5rem; }
-        h1 { margin-bottom: 0.2rem; font-size: 2.8rem; color: #111; letter-spacing: -0.5px; }
-        h2 { border-bottom: 3px solid #005A9C; padding-bottom: 0.5rem; margin-top: 2.5rem; color: #222; display: inline-block;}
-        h3 { margin-bottom: 0.2rem; color: #333; font-size: 1.3rem; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            background-color: #f0f2f5;
+        }
         
-        /* Job Styles */
-        .job { margin-bottom: 2.5rem; }
-        .job-title { font-weight: bold; font-size: 1.25rem; margin-bottom: 0.2rem; color: #000; }
-        .company-date { color: #555; font-style: italic; margin-top: 0; font-size: 1rem; }
-        ul { margin-top: 0.5rem; padding-left: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1000;
+        }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 1rem; transition: color 0.3s; }
+        nav a:hover { color: var(--primary); }
 
-        /* Project Grid Styles */
-        .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-        .project-box { background: #f8fbfd; padding: 1.5rem; border-radius: 8px; border: 1px solid #e1e8ed; transition: transform 0.2s ease;}
-        .project-box:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); }
-        .project-title { font-weight: bold; font-size: 1.15rem; margin-bottom: 0.5rem; color: #005A9C; }
-        .tech-stack { font-size: 0.85rem; color: #666; margin-top: 1rem; border-top: 1px solid #eee; padding-top: 0.5rem; }
+        /* Hero Header */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #2a3b4c 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        header h1 { font-size: 3.5rem; margin: 0 0 1rem 0; letter-spacing: -1px; }
+        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #cbd5e1; }
 
-        /* Skill & Hobby Styles */
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-        .skill-category-title { font-weight: bold; margin-bottom: 0.5rem; color: #005A9C; font-size: 1.1rem; }
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; margin: 0; }
-        .skills-list li { background: #eef2f5; border: 1px solid #d1d9e0; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; color: #333; font-weight: 500;}
+        /* Main Container */
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .section-title { font-size: 2rem; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2rem; }
 
-        .hobbies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-        .hobby-box { background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border-left: 4px solid #005A9C; }
+        /* Card Layouts */
+        .card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 2rem; }
+        
+        /* Story Timeline */
+        .timeline { border-left: 3px solid var(--primary); padding-left: 2rem; margin-left: 1rem; }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2.75rem; top: 0.2rem; width: 1rem; height: 1rem;
+            background: var(--primary); border-radius: 50%; border: 4px solid white; box-shadow: 0 0 0 2px var(--primary);
+        }
+        .timeline-date { font-weight: bold; color: var(--primary); margin-bottom: 0.5rem; display: block;}
+        
+        /* Two Column Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .project-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--secondary); }
+
+        /* Skills Badges */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
+        .skills-list li { background: #e0f2fe; color: #0369a1; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+
+        /* Photography & Cooking Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .gallery-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1 / 1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 1rem; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* Music Section */
+        .music-card { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); color: var(--dark); padding: 2rem; border-radius: 12px; display: flex; align-items: center; gap: 2rem;}
+        .music-text { flex: 1; }
+        .music-icon { font-size: 4rem; }
 
         @media (max-width: 768px) {
-            .projects-grid, .skills-grid, .hobbies-grid { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            nav { flex-wrap: wrap; gap: 1rem; padding: 1rem; }
+            .music-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
     <nav>
-        <a href="#about">About Me</a>
-        <a href="#projects">My Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#hobbies">Interests</a>
+        <a href="#story">My Story</a>
+        <a href="#experience">Tech & SRE</a>
+        <a href="#life">Life, Lens & Kitchen</a>
     </nav>
 
-    <div class="section" id="about">
-        <h1>VIDHYA SREE DEVARAJU</h1>
-        <h3>Software & SRE/DevOps Engineer</h3>
-        <p>I am a results-driven Software & SRE/DevOps Engineer with 8+ years of experience spanning CI/CD pipeline automation, scalable full-stack development, and high-availability enterprise cloud infrastructure. I have a proven track record of orchestrating massive fleet migrations across Azure SQL DB and Cosmos DB, and engineering automated workflows to eliminate operational toil and ensure 99.9% reliability.</p>
-        <p>Outside of the production environment, I'm passionate about exploring the outdoors and expressing my creative side through photography and music.</p>
-        <p><strong>Contact:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a> | <strong>GitHub:</strong> <a href="https://github.com/yourusername">@yourusername</a> | <strong>LinkedIn:</strong> <a href="#">Your Profile</a></p>
-    </div>
+    <header>
+        <h1>[Your Name]</h1>
+        <p>Software & SRE Engineer | Cloud Architect | Photographer | Chef</p>
+    </header>
 
-    <div class="section" id="projects">
-        <h2>Featured Projects & Architecture</h2>
-        <p><em>A comprehensive overview of the systems, workflows, and applications I have engineered.</em></p>
-        
-        <div class="projects-grid">
-            <div class="project-box">
-                <div class="project-title">RDFE to PaaSv2 Migration Pipeline</div>
-                <p>Executed a massive, multi-year infrastructure conversion via automated deployment pipelines, successfully decommissioning 125 rings in 90 days. Drove complex SPO to Gen8 and MAZ migrations.</p>
-                <div class="tech-stack"><strong>Tech:</strong> Azure DevOps, CI/CD, Infrastructure as Code</div>
-            </div>
+    <div class="container">
 
-            <div class="project-box">
-                <div class="project-title">Custom RCS Automation Workflows</div>
-                <p>Engineered automated workflows with dynamic retry logic to drastically accelerate MTTR. Integrated operational AI tools to shift live-site triage from manual troubleshooting to proactive resolution.</p>
-                <div class="tech-stack"><strong>Tech:</strong> Git, RCS Automation, IcM Telemetry</div>
-            </div>
-
-            <div class="project-box">
-                <div class="project-title">Azure Cost Monitoring Architecture</div>
-                <p>Independently built a critical financial module calculating total Azure spend across subscriptions. Engineered MS-Flows to proactively alert users and stakeholders of financial anomalies.</p>
-                <div class="tech-stack"><strong>Tech:</strong> C#, .NET Core, MS Power Automate</div>
-            </div>
-
-            <div class="project-box">
-                <div class="project-title">Azure Cosmos DB Dashboard UI</div>
-                <p>Enhanced the main dashboard interface for better operational visibility and collaborated on advanced Power BI reports for comprehensive, real-time data visualization.</p>
-                <div class="tech-stack"><strong>Tech:</strong> C# .NET MVC, Power BI, DAX</div>
-            </div>
-
-            <div class="project-box">
-                <div class="project-title">Event Management & Ticketing Engine</div>
-                <p>Engineered an event-driven architecture featuring secure PayPal integration and highly automated ticketing workflows to streamline large-scale organizational events.</p>
-                <div class="tech-stack"><strong>Tech:</strong> Node.js, React, RESTful APIs, Event-Driven Architecture</div>
-            </div>
-
-            <div class="project-box">
-                <div class="project-title">Internal Office Management Portal</div>
-                <p>Developed a full-stack portal to track employee performance, assign tasks, and facilitate internal communication via custom real-time chat and secure email integrations.</p>
-                <div class="tech-stack"><strong>Tech:</strong> ASP.NET Core, EF6, Bootstrap, SQL Server</div>
+        <div class="card" id="story">
+            <h2 class="section-title">My Story into Tech</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2015 - 2018: The Foundation</span>
+                    <h3>Bachelor of Commerce & Computers</h3>
+                    <p>Started my journey at Osmania University, blending business logic with computer science fundamentals. This dual perspective taught me that great code isn't just about syntax; it's about solving real business problems efficiently.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2018 - 2019: The Builder Phase</span>
+                    <h3>Full Stack Developer at Quadrant Resources</h3>
+                    <p>Dove headfirst into enterprise development. I spent these years building tangible tools from scratch—event management portals and internal systems using .NET MVC, React, and SQL. I learned how to architect end-to-end solutions that people actually use.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2019 - 2022: Scaling to the Cloud</span>
+                    <h3>Software Developer at Azure Cosmos DB</h3>
+                    <p>Transitioned into Microsoft to work on globally distributed databases. Here, the scale shifted drastically. I moved from building apps to engineering the underlying cloud infrastructure, automating CI/CD pipelines, and writing telemetry to monitor millions in Azure spend.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2023 - Present: Ensuring Reliability</span>
+                    <h3>SRE – Azure SQL DB Capacity Management</h3>
+                    <p>Today, I operate at massive scale. I drive the modernization of entire fleets, decommissioning legacy hardware, and integrating Operational AI to catch incidents before they happen. My focus is on turning reactive operational chaos into proactive, automated stability.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="section" id="experience">
-        <h2>Professional Experience</h2>
-        
-        <div class="job">
-            <div class="job-title">Site Reliability Engineer – Azure SQL DB Capacity Management</div>
-            <p class="company-date">Microsoft | Redmond, WA — April 2023 to Present</p>
-            <ul>
-                <li><strong>Infrastructure DevOps:</strong> Executed multi-year RDFE to PaaSv2 conversion via automated deployment pipelines, decommissioning 125 rings in 90 days.</li>
-                <li><strong>Proactive Operations:</strong> Manage daily capacity monitoring. Direct end-to-end triage for complex live-site IcM alerts (GEO DR events), absorbing demand spikes.</li>
-                <li><strong>Technical Debt Reduction:</strong> Decommissioned 100% of legacy Gen3/Gen4 hardware and achieved a 98.28% return rate for Gen7.</li>
+        <div class="card" id="experience">
+            <h2 class="section-title">Core Systems & Architecture</h2>
+            <div class="grid-2">
+                <div class="project-card">
+                    <h3>RDFE to PaaSv2 Pipeline</h3>
+                    <p>Engineered automated deployment pipelines to convert legacy architecture, decommissioning 125 rings in 90 days with zero operational downtime.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Capacity & Telemetry AI</h3>
+                    <p>Integrated KQL, Power BI, and Operational AI to shift live-site triage from manual investigations to proactive, data-driven readiness.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Azure Cost Architecture</h3>
+                    <p>Built a critical financial module monitoring total Azure spend across subscriptions, with custom AAD authentication and MS-Flow alerting.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Enterprise Web Portals</h3>
+                    <p>Architected full-stack event management and transport solutions using ASP.NET Core, React, and robust SQL backend infrastructures.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Technical Arsenal</h3>
+            <ul class="skills-list">
+                <li>Azure SQL DB</li><li>Azure Cosmos DB</li><li>C# & .NET Core</li><li>Kusto (KQL)</li><li>React & Node.js</li><li>CI/CD Pipelines</li><li>Power Automate</li><li>T-SQL</li>
             </ul>
         </div>
 
-        <div class="job">
-            <div class="job-title">Software Engineer – Azure Cosmos DB</div>
-            <p class="company-date">Microsoft | Hyderabad, India — December 2019 to September 2022</p>
-            <ul>
-                <li><strong>Backend Automation:</strong> Developed Azure Functions to automate routine tasks and managed CI/CD deployments via Azure DevOps.</li>
-                <li><strong>Full-Stack Features:</strong> Enhanced Azure Cosmos DB dashboard UI (C# .NET MVC) and collaborated on advanced Power BI reports.</li>
-                <li><strong>Security & Reliability:</strong> Contributed to secure AAD token authentication and resolved complex Cosmos DB incident tickets via TDD.</li>
-            </ul>
+        <div id="life">
+            <h2 class="section-title">Life, Lens & Kitchen</h2>
+            
+            <div class="card">
+                <h3>My Passions</h3>
+                <p>When I step away from the production environment, I channel my creativity into cooking and capturing the world through my lens.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1520772719262-6725bf603504?auto=format&fit=crop&w=500&q=80" alt="Spring Tulips">
+                        <div class="gallery-overlay">Skagit Valley Tulips</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=500&q=80" alt="Nature Photography">
+                        <div class="gallery-overlay">Into the Wild</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93cb0?auto=format&fit=crop&w=500&q=80" alt="Cooking Biryani">
+                        <div class="gallery-overlay">Kitchen Experiments</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80" alt="Plated Dish">
+                        <div class="gallery-overlay">The Final Plate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="music-card">
+                <div class="music-icon">🎧</div>
+                <div class="music-text">
+                    <h3 style="margin-top: 0;">Currently on Repeat: Telugu Beats</h3>
+                    <p>Code compiles faster with good music. My daily soundtrack is heavily influenced by Telugu music, with artists like Sid Sriram constantly in my rotation. If you need a recommendation, you can't go wrong starting with <strong>"Neevalle"</strong>.</p>
+                </div>
+            </div>
+
         </div>
 
-        <div class="job">
-            <div class="job-title">Full Stack Developer</div>
-            <p class="company-date">Quadrant Resources | Hyderabad, India — May 2018 to November 2019</p>
-            <ul>
-                <li><strong>App Development:</strong> Spearheaded full-stack development utilizing ASP.NET Core, MVC 4.0, Node.js, React, and Bootstrap.</li>
-                <li><strong>Event Management:</strong> Engineered an event-driven architecture with secure PayPal integration.</li>
-            </ul>
-        </div>
     </div>
 
-    <div class="section" id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div>
-                <div class="skill-category-title">Cloud & DevOps</div>
-                <ul class="skills-list">
-                    <li>Azure SQL DB</li><li>Azure Cosmos DB</li><li>Azure Functions</li><li>Azure DevOps (CI/CD)</li><li>Hardware Lifecycle</li><li>GEO DR</li><li>Git & RCS Automation</li><li>MS Power Automate</li>
-                </ul>
-            </div>
-            <div>
-                <div class="skill-category-title">Software Engineering</div>
-                <ul class="skills-list">
-                    <li>C# & ASP.NET Core</li><li>.NET MVC 4.0</li><li>React & Node.js</li><li>RESTful APIs</li><li>Event-Driven Arch</li><li>OOP & TDD</li><li>Agile / Scrum</li>
-                </ul>
-            </div>
-            <div>
-                <div class="skill-category-title">Data & Telemetry</div>
-                <ul class="skills-list">
-                    <li>KQL (Kusto)</li><li>SQL Server & T-SQL</li><li>Power BI & DAX</li><li>Entity Framework 6</li><li>IcM Telemetry</li>
-                </ul>
-            </div>
-            <div>
-                <div class="skill-category-title">Front-End UI</div>
-                <ul class="skills-list">
-                    <li>HTML5 & CSS3</li><li>Bootstrap & Xamarin</li><li>Responsive Design</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section" id="education">
-        <h2>Education & Certifications</h2>
-        <div class="job" style="margin-bottom: 1rem;">
-            <div class="job-title">Az-204 Developing Solutions for Microsoft</div>
-            <p class="company-date">Certification</p>
-        </div>
-        <div class="job">
-            <div class="job-title">Bachelor of Commerce & Computers</div>
-            <p class="company-date">Osmania University — 2015 to 2018</p>
-        </div>
-    </div>
-
-    <div class="section" id="hobbies">
-        <h2>Interests & Hobbies</h2>
-        <div class="hobbies-grid">
-            <div class="hobby-box">
-                <h3>📷 Photography & Nature</h3>
-                <p>I love grabbing my phone to practice photography out in nature. Recently, I've been spending time visiting places like Christianson's Nursery and Skagit Valley to capture the spring tulips blooming.</p>
-            </div>
-            <div class="hobby-box">
-                <h3>🎧 Music</h3>
-                <p>When I am coding or just relaxing, I am usually listening to Telugu music. Artists like Sid Sriram (especially tracks like "Neevalle") are always in my heavy rotation.</p>
-            </div>
-        </div>
-    </div>
-
-</div>
 </body>
 </html>
