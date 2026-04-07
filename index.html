@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Principal Infrastructure Strategist</title>
+    <title>Vidhya Sree Devaraju | Infrastructure Architect</title>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
             --accent: #6366f1;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--deep-space); 
@@ -42,65 +42,66 @@
             z-index: 1000; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--border);
         }
-        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; letter-spacing: 2px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 30px; transition: 0.3s; }
         .nav-links a:hover { color: var(--microsoft-blue); }
 
         /* Hero Section */
         header { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: flex-start; padding: 0 10%; position: relative;
+            align-items: center; text-align: center; padding: 0 10%; position: relative;
         }
-        .hero-pre { color: var(--microsoft-blue); font-weight: 700; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px; }
-        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; font-weight: 700; margin-bottom: 25px; }
-        .hero-desc { max-width: 700px; font-size: 1.25rem; color: #94a3b8; font-weight: 300; margin-bottom: 40px; }
+        
+        /* The Profile Component */
+        .profile-container {
+            position: relative; width: 180px; height: 180px; margin-bottom: 30px;
+        }
+        .profile-container::before {
+            content: ''; position: absolute; inset: -8px;
+            background: linear-gradient(45deg, var(--microsoft-blue), var(--accent));
+            border-radius: 50%; z-index: -1; filter: blur(10px); opacity: 0.5;
+        }
+        .profile-img {
+            width: 100%; height: 100%; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--deep-space);
+        }
 
+        .hero-pre { color: var(--microsoft-blue); font-weight: 800; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px; }
+        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; font-weight: 700; margin-bottom: 25px; }
+        
         /* Skill Ribbon */
-        .skill-ribbon { 
-            display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;
-        }
-        .skill-tag { 
-            background: var(--glass); border: 1px solid var(--border); 
-            padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #cbd5e1;
-        }
+        .skill-ribbon { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; max-width: 800px; }
+        .skill-tag { background: var(--glass); border: 1px solid var(--border); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: #94a3b8; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
 
-        /* Strategy Cards */
-        .impact-card {
+        /* Strategy Content */
+        section { padding: 100px 0; border-top: 1px solid var(--border); }
+        .strategy-card {
             background: var(--glass); border: 1px solid var(--border);
-            border-radius: 40px; padding: 60px; margin-bottom: 50px;
-            position: relative; transition: 0.5s; overflow: hidden;
+            border-radius: 40px; padding: 60px; margin-bottom: 40px; transition: 0.5s;
         }
-        .impact-card:hover { border-color: var(--microsoft-blue); background: rgba(255,255,255,0.04); }
-        .impact-card h2 { font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 30px; }
+        .strategy-card:hover { border-color: var(--microsoft-blue); background: rgba(255,255,255,0.04); }
         
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .feature h4 { color: var(--microsoft-blue); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
-        .feature p { color: #94a3b8; font-size: 1rem; }
+        .val-item h4 { color: var(--microsoft-blue); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 15px; }
+        .val-item p { color: #94a3b8; font-size: 0.95rem; }
 
-        /* The Journey Narrative */
-        .journey-box { 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent); 
-            padding: 60px; border-radius: 40px; border: 1px solid var(--border);
-        }
-        .journey-text { font-size: 1.4rem; font-weight: 300; color: #e2e8f0; line-height: 1.7; }
+        /* The Narrative */
+        .narrative-box { background: rgba(99, 102, 241, 0.05); padding: 60px; border-radius: 40px; border: 1px solid var(--border); }
+        .narrative-text { font-size: 1.3rem; font-weight: 300; color: #e2e8f0; line-height: 1.8; }
 
         /* Lifestyle Mosaic */
-        .mosaic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; height: 500px; }
-        .mosaic-item { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+        .mosaic { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .mosaic-item { position: relative; height: 350px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; }
         .mosaic-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .mosaic-item:hover img { transform: scale(1.1); filter: grayscale(1) brightness(0.3); }
-        .mosaic-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .mosaic-item:nth-child(2) { grid-column: span 2; }
-        .mosaic-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; padding: 20px; text-align: center; }
+        .mosaic-overlay { position: absolute; inset: 0; background: rgba(3, 7, 18, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 20px; text-align: center; }
+        .mosaic-item:hover img { transform: scale(1.1); }
         .mosaic-item:hover .mosaic-overlay { opacity: 1; }
 
-        footer { text-align: center; padding: 100px 20px; border-top: 1px solid var(--border); color: #475569; }
-        .cta-btn { background: var(--microsoft-blue); color: white; padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 164, 239, 0.3); }
-
+        footer { text-align: center; padding: 100px 20px; border-top: 1px solid var(--border); }
+        .btn { background: var(--microsoft-blue); color: white; padding: 16px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; margin-top: 30px; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 164, 239, 0.4); }
     </style>
 </head>
 <body>
@@ -108,101 +109,102 @@
     <div class="mesh"></div>
 
     <nav>
-        <div class="nav-logo">V.S.DEVARAJU <span style="color:var(--microsoft-blue)">/</span> ARCHITECT</div>
+        <div class="nav-logo">VIDHYA SREE <span style="color:var(--microsoft-blue)">/</span> ARCHITECT</div>
         <div class="nav-links">
-            <a href="#solutions">Solutions</a>
+            <a href="#strategy">Strategy</a>
             <a href="#narrative">Narrative</a>
             <a href="#lifestyle">Aesthetics</a>
         </div>
     </nav>
 
-    <header data-aos="fade-right">
-        <div class="hero-pre">8 Years of Engineering Excellence</div>
-        <h1 class="hero-title">Cloud Resilience <br><span style="color:var(--microsoft-blue)">at Scale.</span></h1>
-        <p class="hero-desc">
-            Specializing in Azure Infrastructure Strategy, Operational AI, and Proactive Capacity Management for global enterprise fleets. 
+    <header data-aos="zoom-out">
+        <div class="profile-container">
+            <img src="profile.jpg" alt="Vidhya Sree Devaraju" class="profile-img">
+        </div>
+        <div class="hero-pre">8 Years Engineering Evolution</div>
+        <h1 class="hero-title">Infrastructure <br><span style="color:var(--microsoft-blue)">Resilience.</span></h1>
+        <p style="max-width: 750px; font-size: 1.2rem; color: #94a3b8; font-weight: 300;">
+            Specializing in Azure SQL DB Capacity Strategy, Operational AI, and Strategic Lifecycle Management for global cloud fleets.
         </p>
         <div class="skill-ribbon">
             <span class="skill-tag">Azure SQL DB</span>
             <span class="skill-tag">Cosmos DB</span>
             <span class="skill-tag">Operational AI</span>
             <span class="skill-tag">KQL (Kusto)</span>
-            <span class="skill-tag">CI/CD Automation</span>
-            <span class="skill-tag">System Architecture</span>
+            <span class="skill-tag">Full-Stack .NET</span>
+            <span class="skill-tag">Infrastructure Automation</span>
         </div>
-        <div style="margin-top: 50px;">
-            <a href="mailto:vidya98sree@gmail.com" class="cta-btn">Initiate Discussion</a>
-        </div>
+        <a href="mailto:vidya98sree@gmail.com" class="btn">Connect via Gmail</a>
     </header>
 
     <div class="container">
 
-        <section id="solutions">
-            <div class="impact-card" data-aos="fade-up">
-                <div style="color:var(--microsoft-blue); font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px;">01 / INFRASTRUCTURE STRATEGY</div>
-                <h2>Fleet Modernization & AI Ops</h2>
+        <section id="strategy">
+            <div class="strategy-card" data-aos="fade-up">
+                <div style="color:var(--microsoft-blue); font-weight: 800; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 20px;">01 / GLOBAL FLEET STRATEGY</div>
+                <h2>Cloud Modernization & AI Ops</h2>
                 <div class="grid-3">
-                    <div class="feature">
-                        <h4>Strategic Decommissioning</h4>
-                        <p>Directing high-stakes legacy hardware fleet decommissioning while orchestrating 100% adoption of next-gen PaaSv2 environments.</p>
+                    <div class="val-item">
+                        <h4>Strategic Modernization</h4>
+                        <p>Leading complex hardware fleet decommissioning while driving 100% adoption of high-performance PaaSv2 environments for strategic COGS benefits.</p>
                     </div>
-                    <div class="feature">
-                        <h4>Operational AI Integration</h4>
-                        <p>Leveraging LLMs and AI diagnostic tools to automate Root Cause Analysis (RCA), significantly reducing MTTR across SQL DB global regions.</p>
+                    <div class="val-item">
+                        <h4>Operational AI</h4>
+                        <p>Leveraging AI diagnostic tools to automate Incident Root Cause Analysis (RCA), significantly reducing MTTR across global database regions.</p>
                     </div>
-                    <div class="feature">
-                        <h4>Resilient Capacity Logic</h4>
-                        <p>Engineering proactive scaling workflows to absorb global demand spikes, maintaining 24/7 service availability for worldwide customers.</p>
+                    <div class="val-item">
+                        <h4>Proactive Resiliency</h4>
+                        <p>Engineering advanced capacity scaling workflows to absorb global demand spikes, ensuring 24/7 service stability for worldwide enterprise customers.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="impact-card" data-aos="fade-up" style="border-left: 4px solid var(--accent);">
-                <div style="color:var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px;">02 / PRODUCT ENGINEERING</div>
-                <h2>Automated Engineering Systems</h2>
+            <div class="strategy-card" data-aos="fade-up" style="border-left: 4px solid var(--accent);">
+                <div style="color:var(--accent); font-weight: 800; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 20px;">02 / ENGINEERING SYSTEMS</div>
+                <h2>Automated Infrastructure</h2>
                 <div class="grid-3">
-                    <div class="feature">
-                        <h4>Secure Identity Systems</h4>
-                        <p>Architecting multi-platform security modules using IdentityServer3 and AAD Token integration for enterprise-level data isolation.</p>
+                    <div class="val-item">
+                        <h4>Secure Architectures</h4>
+                        <p>Designing multi-platform identity modules using IdentityServer3 and AAD Token integration for secure enterprise data isolation.</p>
                     </div>
-                    <div class="feature">
+                    <div class="val-item">
                         <h4>Proactive Telemetry</h4>
-                        <p>Building real-time monitoring solutions via Kusto (KQL) and MS-Flow to detect cost anomalies and CI/CD build failures before they impact production.</p>
+                        <p>Building real-time monitoring solutions via Kusto (KQL) and MS-Flow to detect anomalies and CI/CD failures before they impact production.</p>
                     </div>
-                    <div class="feature">
-                        <h4>Full-Stack Orchestration</h4>
-                        <p>Transitioning from trainee to onsite leader, delivering complex business portals (WATS, Office Management) from DB design to deployment.</p>
+                    <div class="val-item">
+                        <h4>Full-Stack Mastery</h4>
+                        <p>Evolving from a trainee developer to an onsite leader, delivering business-critical portals (WATS, Office Management) from DB design to deployment.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="narrative">
-            <div class="journey-box" data-aos="zoom-in">
-                <p class="journey-text">
-                    My career began in <strong>2018 with a B.Com in Computers</strong>. This unconventional path instilled a unique dual-perspective: the ability to see <strong>Technical Scale</strong> through the lens of <strong>Business Logic (COGS)</strong>. Over 8 years at Microsoft, I have transformed from a trainee into an onsite Infrastructure Specialist, proving that relentless logic and architectural discipline can bridge any gap.
+            <div class="narrative-box" data-aos="zoom-in">
+                <p class="narrative-text">
+                    I graduated in <strong>2018 with a B.Com in Computers</strong>. This foundation in commerce allows me to see <strong>Technical Infrastructure</strong> through the lens of <strong>Business Value (COGS)</strong>. Over 8 years, I have bridged the gap between code and strategy, evolving from a trainee into an Onsite Specialist at Microsoft. My brand is defined by architectural discipline and relentless logic.
                 </p>
             </div>
         </section>
 
-        <section id="lifestyle" style="padding-top: 150px;">
-            <h2 style="font-family: 'Space Grotesk'; text-align: center; margin-bottom: 50px;">Aesthetic Discipline</h2>
-            <div class="mosaic-grid">
+        <section id="lifestyle">
+            <h2 style="font-family: 'Space Grotesk'; text-align: center; margin-bottom: 60px; font-size: 2.5rem;">Aesthetic Discipline</h2>
+            <div class="mosaic">
                 <div class="mosaic-item" data-aos="fade-up">
-                    <img src="tulips.jpg" alt="Photography">
-                    <div class="mosaic-overlay"><h3>Macro Photography</h3><p>Focus & Precision</p></div>
+                    <img src="tulips.jpg" alt="Nature Photography">
+                    <div class="mosaic-overlay"><h3>Photography</h3><p>Focus & Clarity</p></div>
                 </div>
                 <div class="mosaic-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="biryani.jpg" alt="Culinary">
-                    <div class="mosaic-overlay"><h3>Culinary Arts</h3><p>Complex Synthesis</p></div>
+                    <img src="biryani.jpg" alt="Biryani">
+                    <div class="mosaic-overlay"><h3>Culinary Arts</h3><p>Traditional Biryani</p></div>
                 </div>
                 <div class="mosaic-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="plating.jpg" alt="Design">
-                    <div class="mosaic-overlay"><h3>Visual Plating</h3><p>Design Composition</p></div>
+                    <img src="plating.jpg" alt="Plating">
+                    <div class="mosaic-overlay"><h3>Design Plating</h3><p>Visual Composition</p></div>
                 </div>
                 <div class="mosaic-item" data-aos="fade-up" data-aos-delay="300">
                     <img src="violin.JPG" alt="Music">
-                    <div class="mosaic-overlay"><h3>Carnatic Rhythm</h3><p>Logic in Sound</p></div>
+                    <div class="mosaic-overlay"><h3>Music</h3><p>Logic in Rhythm</p></div>
                 </div>
             </div>
         </section>
@@ -210,11 +212,12 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Vidhya Sree Devaraju | Redmond, Washington</p>
-        <div style="margin-top: 20px; font-size: 1.2rem;">
-            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:#94a3b8; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:vidya98sree@gmail.com" style="color:#94a3b8; margin: 0 10px;"><i class="fa-solid fa-envelope"></i></a>
+        <p style="color: #94a3b8; margin-bottom: 20px;">&copy; 2026 Vidhya Sree Devaraju | Redmond, Washington</p>
+        <div style="font-size: 1.5rem;">
+            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:#f8fafc; margin: 0 15px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:vidya98sree@gmail.com" style="color:#f8fafc; margin: 0 15px;"><i class="fa-solid fa-envelope"></i></a>
         </div>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">Microsoft Redmond • All Rights Reserved</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
