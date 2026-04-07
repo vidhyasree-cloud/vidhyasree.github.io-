@@ -3,169 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Portfolio</title>
+    <title>Vidhya Sree Devaraju | Strategic Infrastructure Portfolio</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --az-blue: #0078d4;
             --ai-purple: #8b5cf6;
-            --bg-deep: #020617;
+            --bg-deep: #050a18;
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
-        body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: #f1f5f9; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: #f1f5f9; line-height: 1.6; overflow-x: hidden; }
 
-        /* Navigation */
+        /* Modern Navigation */
         nav { 
             position: fixed; width: 100%; padding: 20px 5%; 
-            background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(15px); 
+            background: rgba(5, 10, 24, 0.85); backdrop-filter: blur(15px); 
             z-index: 1000; border-bottom: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
         }
-        .brand { font-family: 'Space Grotesk'; font-weight: 700; color: #fff; font-size: 1.2rem; letter-spacing: 1px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; }
-        .nav-socials a { color: #fff; margin-left: 15px; font-size: 1.1rem; opacity: 0.7; transition: 0.3s; }
-        .nav-socials a:hover { opacity: 1; color: var(--az-blue); }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--az-blue); }
 
-        /* Header */
+        /* Executive Header */
         header { 
-            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            text-align: center; padding: 120px 20px;
+            height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; padding: 120px 20px 60px;
         }
-        .profile-wrap { width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--az-blue); padding: 5px; margin-bottom: 25px; }
-        .profile-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
-        .hero-tag { color: var(--az-blue); font-weight: 600; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 3px solid var(--az-blue); padding: 5px; margin-bottom: 30px; object-fit: cover; }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 15px; }
+        .hero-tag { color: var(--ai-purple); font-weight: 600; text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 20px; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
-        /* Impact Grid (No Counts, Just Value) */
-        section { padding: 80px 0; border-top: 1px solid var(--border); }
-        .sec-title { font-family: 'Space Grotesk'; font-size: 2rem; color: #fff; margin-bottom: 40px; }
+        /* Section Styling */
+        section { padding: 100px 0; border-top: 1px solid var(--border); }
+        .sec-title { font-family: 'Space Grotesk'; font-size: 2.2rem; color: #fff; margin-bottom: 50px; }
 
-        .value-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px; border-radius: 24px; margin-bottom: 30px; transition: 0.3s; position: relative; }
-        .value-card:hover { border-color: var(--az-blue); background: rgba(255,255,255,0.05); }
-        .value-card h3 { color: #fff; font-family: 'Space Grotesk'; font-size: 1.5rem; margin-bottom: 15px; }
+        /* Strategic Impact Cards */
+        .impact-card { 
+            background: var(--card-bg); border: 1px solid var(--border); padding: 45px; border-radius: 24px; 
+            margin-bottom: 40px; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .impact-card:hover { border-color: var(--az-blue); background: rgba(255,255,255,0.06); transform: translateY(-5px); }
+        .impact-card h3 { color: #fff; font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 20px; }
         
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .feature-item h4 { color: var(--az-blue); margin-bottom: 8px; font-size: 1rem; text-transform: uppercase; }
-        .feature-item p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-item h4 { color: var(--az-blue); margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .feature-item p { color: #94a3b8; font-size: 0.95rem; }
 
-        /* Journey Styling */
-        .story-box { background: rgba(0, 120, 212, 0.05); border: 1px solid var(--az-blue); padding: 40px; border-radius: 20px; }
-        .story-box p { font-size: 1.1rem; color: #cbd5e1; font-weight: 300; line-height: 1.8; }
+        /* The Story Section */
+        .story-wrapper { background: linear-gradient(135deg, rgba(0,120,212,0.1), rgba(139,92,246,0.1)); padding: 50px; border-radius: 24px; border: 1px solid var(--border); }
+        .story-wrapper p { font-size: 1.2rem; color: #cbd5e1; font-weight: 300; line-height: 1.8; }
 
-        /* Hobby Grid */
-        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .hobby-box { position: relative; height: 280px; border-radius: 12px; overflow: hidden; cursor: pointer; }
-        .hobby-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .hobby-box:hover img { transform: scale(1.1); filter: brightness(0.4); }
-        .hobby-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; text-align: center; padding: 15px; }
-        .hobby-box:hover .hobby-info { opacity: 1; }
+        /* Lifestyle Grid */
+        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .hobby-item { position: relative; height: 350px; border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
+        .hobby-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .hobby-item:hover img { transform: scale(1.1); filter: brightness(0.4); }
+        .hobby-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; text-align: center; padding: 20px; }
+        .hobby-item:hover .hobby-info { opacity: 1; }
 
-        footer { text-align: center; padding: 80px 20px; color: #475569; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid var(--border); color: #475569; }
+
+        /* Copy Email Functionality */
+        .copy-btn { background: var(--az-blue); color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; margin-top: 20px; transition: 0.3s; }
+        .copy-btn:hover { background: var(--ai-purple); transform: scale(1.05); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand">VIDHYA SREE</div>
+        <div class="brand">VIDHYA SREE DEVARAJU</div>
         <div class="nav-links">
             <a href="#solutions">Solutions</a>
             <a href="#journey">Journey</a>
             <a href="#lifestyle">Lifestyle</a>
         </div>
-        <div class="nav-socials">
-            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://medium.com" target="_blank"><i class="fa-brands fa-medium"></i></a>
-            <a href="mailto:vidya98sree@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <div style="margin-left: 20px;">
+            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:white; margin-left: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:vidya98sree@gmail.com" style="color:white; margin-left: 15px;"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </nav>
 
-    <header>
-        <div class="profile-wrap">
-            <img src="profile.jpg" alt="Vidhya Sree Devaraju">
-        </div>
-        <div class="hero-tag">Cloud Infrastructure Specialist</div>
+    <header data-aos="fade-up">
+        <img src="profile.jpg" alt="Vidhya Sree Devaraju" class="profile-img">
+        <div class="hero-tag">Strategic Infrastructure Specialist</div>
         <h1>Vidhya Sree Devaraju</h1>
-        <p style="max-width: 700px; color: #94a3b8; font-size: 1.2rem; font-weight: 300;">
-            Architecting high-performance Azure environments through <strong>Operational AI</strong> and <strong>Proactive Capacity Management</strong>. 
-            Bridging the gap between Commerce and Code for 8 years.
+        <p style="max-width: 800px; color: #94a3b8; font-size: 1.3rem; margin-top: 20px;">
+            Architecting <strong>Azure Infrastructure</strong> resilience through Operational AI and 
+            Automated Workflows. Turning complex data into enterprise-level stability.
         </p>
+        <button class="copy-btn" onclick="copyEmail()">Copy Business Email</button>
     </header>
 
     <div class="container">
 
         <section id="solutions">
-            <h2 class="sec-title">Strategic Impact Portfolio</h2>
+            <h2 class="sec-title" data-aos="fade-right">Strategic Impact Portfolio</h2>
 
-            <div class="value-card">
-                <div style="color: var(--az-blue); font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase;">Azure SQL DB Capacity | Microsoft Redmond</div>
-                <h3>Infrastructure Modernization & AI Operations</h3>
+            <div class="impact-card" data-aos="fade-up">
+                <div style="color: var(--az-blue); font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Cloud Modernization | Azure SQL DB</div>
+                <h3>Infrastructure Transformation & AI Ops</h3>
                 <div class="feature-grid">
                     <div class="feature-item">
-                        <h4>AI-Driven Triage</h4>
-                        <p>Integrating AI tools to accelerate Incident RCA and eliminate operational toil within the SQL DB ecosystem.</p>
+                        <h4><i class="fa-solid fa-robot"></i> Operational AI</h4>
+                        <p>Integrating AI-driven tools into daily operational workflows to boost productivity and accelerate Root Cause Analysis (RCA).</p>
                     </div>
                     <div class="feature-item">
-                        <h4>Strategic Decommissioning</h4>
-                        <p>Leading the historic transition of legacy hardware fleets to modern Gen7/Gen8 infrastructure for maximum COGS benefit.</p>
+                        <h4><i class="fa-solid fa-gears"></i> RCS Automation</h4>
+                        <p>Engineering automated workflows with dynamic retry logic to eliminate operational toil and ensure threshold stability.</p>
                     </div>
                     <div class="feature-item">
-                        <h4>Capacity Logic</h4>
-                        <p>Engineering proactive planning workflows that absorb sudden demand spikes, ensuring 24/7 global service stability.</p>
+                        <h4><i class="fa-solid fa-microchip"></i> Hardware Strategy</h4>
+                        <p>Leading the historic decommission of legacy fleets and driving 100% adoption of PaaSv2 for COGS benefits.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="value-card" style="border-color: rgba(35, 134, 54, 0.2);">
-                <div style="color: #238636; font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase;">Engineering Systems | Cosmos DB & Full Stack</div>
+            <div class="impact-card" data-aos="fade-up" style="border-left: 4px solid var(--ai-purple);">
+                <div style="color: var(--ai-purple); font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Engineering Systems | Cosmos DB & Portals</div>
                 <h3>Automated Product Engineering</h3>
                 <div class="feature-grid">
                     <div class="feature-item">
-                        <h4>Telemetry Dashboards</h4>
-                        <p>Building end-to-end DAX solutions and spend analysis modules to track global subscription efficiency.</p>
+                        <h4>System Automation</h4>
+                        <p>Managing CI/CD build phases and authoring PowerShell scripts for large-scale disk cleanups and scale set updates.</p>
                     </div>
                     <div class="feature-item">
                         <h4>Secure Architecture</h4>
-                        <p>Implementing AAD Token integration and IdentityServer3 SSO for multi-platform enterprise security.</p>
+                        <p>Designing secure modules using AAD Token integration and IdentityServer3 SSO for multi-platform security.</p>
                     </div>
                     <div class="feature-item">
-                        <h4>System Automation</h4>
-                        <p>Authoring PowerShell and MS-Flow workflows for CI/CD pipeline monitoring and automated incident reporting.</p>
+                        <h4>Strategic Reporting</h4>
+                        <p>Utilizing MS-Flow and Kusto (KQL) to create proactive notification systems for cost anomalies and build failures.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="journey">
-            <h2 class="sec-title">From B.Com to Technical Leadership</h2>
-            <div class="story-box">
+            <h2 class="sec-title" data-aos="fade-right">Technical Evolution</h2>
+            <div class="story-wrapper" data-aos="zoom-in">
                 <p>
-                    I graduated in <strong>2018 with a B.Com in Computers</strong>. While my formal education was in Commerce, my logic was built for Engineering. Over the last 8 years, I have evolved from a trainee developer into a Cloud Infrastructure specialist. My background gives me a unique advantage: I don't just see the code; I see the <strong>Business Logic (COGS)</strong> and <strong>Operational Efficiency</strong> that drives enterprise value.
+                    I graduated in <strong>2018 with a B.Com in Computers</strong>. While my foundation was in Commerce, my logic was built for software engineering. Over the last <strong>8 years</strong>, I have evolved from a .NET developer into an Infrastructure Specialist. My background allows me to view technical solutions through the lens of <strong>Business Logic (COGS)</strong> and <strong>Operational Efficiency</strong>.
                 </p>
             </div>
         </section>
 
         <section id="lifestyle">
-            <h2 class="sec-title">Life Beyond the Fleet</h2>
+            <h2 class="sec-title" data-aos="fade-up">Beyond the Infrastructure</h2>
             <div class="hobby-grid">
-                <div class="hobby-box">
+                <div class="hobby-item" data-aos="flip-left">
                     <img src="tulips.jpg" alt="Photography">
                     <div class="hobby-info"><h3>Photography</h3><p>Nature & Macro Tulips</p></div>
                 </div>
-                <div class="hobby-box">
+                <div class="hobby-item" data-aos="flip-right">
                     <img src="biryani.jpg" alt="Culinary">
-                    <div class="hobby-info"><h3>Culinary</h3><p>Traditional Biryani</p></div>
+                    <div class="hobby-info"><h3>Culinary Arts</h3><p>Biryani Specialization</p></div>
                 </div>
-                <div class="hobby-box">
-                    <img src="plating.jpg" alt="Aesthetics">
-                    <div class="hobby-info"><h3>Plating</h3><p>Culinary Aesthetics</p></div>
+                <div class="hobby-item" data-aos="flip-left">
+                    <img src="plating.jpg" alt="Plating">
+                    <div class="hobby-info"><h3>Design Plating</h3><p>Culinary Aesthetics</p></div>
                 </div>
-                <div class="hobby-box">
+                <div class="hobby-item" data-aos="flip-right">
                     <img src="violin.JPG" alt="Music">
                     <div class="hobby-info"><h3>Music</h3><p>Carnatic Learning</p></div>
                 </div>
@@ -179,5 +185,14 @@
         <p style="margin-top: 15px; font-size: 0.8rem;">&copy; 2026 All Rights Reserved. Vidhya Sree Devaraju</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function copyEmail() {
+            navigator.clipboard.writeText("vidya98sree@gmail.com");
+            alert("Business Email copied to clipboard!");
+        }
+    </script>
 </body>
 </html>
