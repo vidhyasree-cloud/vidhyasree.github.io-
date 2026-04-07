@@ -11,200 +11,196 @@
     
     <style>
         :root {
-            --microsoft-blue: #00a4ef;
-            --deep-space: #030712;
-            --glass: rgba(255, 255, 255, 0.02);
+            --az-blue: #0078d4;
+            --ai-purple: #8b5cf6;
+            --bg-deep: #050a18;
+            --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
-            --accent: #6366f1;
+            --accent: #ff9f43;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--deep-space); 
-            color: #f8fafc; 
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background Mesh */
-        .mesh {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -20%, #1e1b4b, transparent),
-                        radial-gradient(circle at 0% 100%, #020617, transparent);
-            z-index: -1;
+            background: var(--bg-deep); 
+            color: #f1f5f9; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            background: radial-gradient(circle at center, #111827 0%, var(--bg-deep) 100%);
         }
 
         /* Navigation */
         nav { 
-            position: fixed; width: 100%; padding: 25px 8%; 
-            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(20px); 
-            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--border);
+            position: fixed; width: 100%; padding: 20px 5%; 
+            background: rgba(5, 10, 24, 0.85); backdrop-filter: blur(15px); 
+            z-index: 1000; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; letter-spacing: 2px; }
-        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 30px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--microsoft-blue); }
+        .nav-brand { font-family: 'Space Grotesk'; font-weight: 700; color: #fff; font-size: 1.1rem; letter-spacing: 2px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--az-blue); }
 
-        /* Hero Section */
+        /* Executive Header */
         header { 
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; padding: 0 10%; position: relative;
+            height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; padding: 120px 20px 60px;
         }
         
-        /* The Profile Component */
-        .profile-container {
+        /* The PROFILE IMAGE styling */
+        .profile-wrap {
             position: relative; width: 180px; height: 180px; margin-bottom: 30px;
         }
-        .profile-container::before {
-            content: ''; position: absolute; inset: -8px;
-            background: linear-gradient(45deg, var(--microsoft-blue), var(--accent));
-            border-radius: 50%; z-index: -1; filter: blur(10px); opacity: 0.5;
+        .profile-wrap::before {
+            content: ''; position: absolute; inset: -10px;
+            background: linear-gradient(45deg, var(--az-blue), var(--ai-purple));
+            border-radius: 50%; z-index: -1; filter: blur(15px); opacity: 0.6;
         }
-        .profile-img {
-            width: 100%; height: 100%; border-radius: 50%;
-            object-fit: cover; border: 3px solid var(--deep-space);
+        .profile-wrap img {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--bg-deep); box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .hero-pre { color: var(--microsoft-blue); font-weight: 800; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 15px; }
-        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; font-weight: 700; margin-bottom: 25px; }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 15px; color: #fff; }
+        .hero-tag { color: var(--ai-purple); font-weight: 600; text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 20px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+
+        /* Strategic Impact Cards */
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .sec-title { font-family: 'Space Grotesk'; font-size: 2.2rem; color: #fff; margin-bottom: 50px; }
+
+        .impact-card { 
+            background: var(--card-bg); border: 1px solid var(--border); padding: 45px; border-radius: 24px; 
+            margin-bottom: 40px; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .impact-card:hover { border-color: var(--az-blue); background: rgba(255,255,255,0.06); transform: translateY(-5px); }
+        .impact-card h3 { color: #fff; font-family: 'Space Grotesk'; font-size: 1.6rem; margin-bottom: 20px; }
         
-        /* Skill Ribbon */
-        .skill-ribbon { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; max-width: 800px; }
-        .skill-tag { background: var(--glass); border: 1px solid var(--border); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; color: #94a3b8; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-item h4 { color: var(--az-blue); margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .feature-item p { color: #94a3b8; font-size: 0.95rem; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        /* Story Section */
+        .story-wrapper { background: linear-gradient(135deg, rgba(0,120,212,0.05), rgba(139,92,246,0.05)); padding: 50px; border-radius: 24px; border: 1px solid var(--border); }
+        .story-wrapper p { font-size: 1.2rem; color: #cbd5e1; font-weight: 300; line-height: 1.8; }
 
-        /* Strategy Content */
-        section { padding: 100px 0; border-top: 1px solid var(--border); }
-        .strategy-card {
-            background: var(--glass); border: 1px solid var(--border);
-            border-radius: 40px; padding: 60px; margin-bottom: 40px; transition: 0.5s;
-        }
-        .strategy-card:hover { border-color: var(--microsoft-blue); background: rgba(255,255,255,0.04); }
-        
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .val-item h4 { color: var(--microsoft-blue); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 15px; }
-        .val-item p { color: #94a3b8; font-size: 0.95rem; }
+        /* Lifestyle Mosaic (Uses your 4 images) */
+        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .hobby-item { position: relative; height: 350px; border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
+        .hobby-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .hobby-item:hover img { transform: scale(1.1); filter: brightness(0.4); }
+        .hobby-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; text-align: center; padding: 20px; }
+        .hobby-item:hover .hobby-info { opacity: 1; }
 
-        /* The Narrative */
-        .narrative-box { background: rgba(99, 102, 241, 0.05); padding: 60px; border-radius: 40px; border: 1px solid var(--border); }
-        .narrative-text { font-size: 1.3rem; font-weight: 300; color: #e2e8f0; line-height: 1.8; }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid var(--border); color: #475569; }
 
-        /* Lifestyle Mosaic */
-        .mosaic { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .mosaic-item { position: relative; height: 350px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; }
-        .mosaic-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .mosaic-overlay { position: absolute; inset: 0; background: rgba(3, 7, 18, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 20px; text-align: center; }
-        .mosaic-item:hover img { transform: scale(1.1); }
-        .mosaic-item:hover .mosaic-overlay { opacity: 1; }
-
-        footer { text-align: center; padding: 100px 20px; border-top: 1px solid var(--border); }
-        .btn { background: var(--microsoft-blue); color: white; padding: 16px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; margin-top: 30px; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 164, 239, 0.4); }
+        /* Interactive Elements */
+        .copy-btn { background: var(--az-blue); color: white; border: none; padding: 12px 28px; border-radius: 50px; cursor: pointer; font-weight: 600; margin-top: 20px; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .copy-btn:hover { background: var(--ai-purple); transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-    <div class="mesh"></div>
-
     <nav>
-        <div class="nav-logo">VIDHYA SREE <span style="color:var(--microsoft-blue)">/</span> ARCHITECT</div>
+        <div class="nav-brand">VIDHYA SREE DEVARAJU</div>
         <div class="nav-links">
             <a href="#strategy">Strategy</a>
-            <a href="#narrative">Narrative</a>
-            <a href="#lifestyle">Aesthetics</a>
+            <a href="#journey">Journey</a>
+            <a href="#lifestyle">Lifestyle</a>
+        </div>
+        <div style="margin-left: 20px;">
+            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:white; margin-left: 15px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:vidya98sree@gmail.com" style="color:white; margin-left: 15px;"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </nav>
 
-    <header data-aos="zoom-out">
-        <div class="profile-container">
-            <img src="profile.jpg" alt="Vidhya Sree Devaraju" class="profile-img">
+    <header data-aos="fade-up">
+        <div class="profile-wrap">
+            <img src="profile.jpg" alt="Vidhya Sree Devaraju">
         </div>
-        <div class="hero-pre">8 Years Engineering Evolution</div>
-        <h1 class="hero-title">Infrastructure <br><span style="color:var(--microsoft-blue)">Resilience.</span></h1>
-        <p style="max-width: 750px; font-size: 1.2rem; color: #94a3b8; font-weight: 300;">
-            Specializing in Azure SQL DB Capacity Strategy, Operational AI, and Strategic Lifecycle Management for global cloud fleets.
+        
+        <div class="hero-tag">Strategic Infrastructure Specialist</div>
+        <h1>Vidhya Sree Devaraju</h1>
+        <p style="max-width: 800px; color: #94a3b8; font-size: 1.3rem; margin-top: 20px;">
+            Driving 8 years of software excellence at Microsoft. Delivering high-performance <strong>Azure Infrastructure</strong> 
+            through Operational AI and Automated Workflows.
         </p>
-        <div class="skill-ribbon">
-            <span class="skill-tag">Azure SQL DB</span>
-            <span class="skill-tag">Cosmos DB</span>
-            <span class="skill-tag">Operational AI</span>
-            <span class="skill-tag">KQL (Kusto)</span>
-            <span class="skill-tag">Full-Stack .NET</span>
-            <span class="skill-tag">Infrastructure Automation</span>
+        <div style="margin-top: 30px;">
+            <a href="mailto:vidya98sree@gmail.com" class="copy-btn">Connect via Gmail</a>
         </div>
-        <a href="mailto:vidya98sree@gmail.com" class="btn">Connect via Gmail</a>
     </header>
 
     <div class="container">
 
         <section id="strategy">
-            <div class="strategy-card" data-aos="fade-up">
-                <div style="color:var(--microsoft-blue); font-weight: 800; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 20px;">01 / GLOBAL FLEET STRATEGY</div>
-                <h2>Cloud Modernization & AI Ops</h2>
-                <div class="grid-3">
-                    <div class="val-item">
-                        <h4>Strategic Modernization</h4>
-                        <p>Leading complex hardware fleet decommissioning while driving 100% adoption of high-performance PaaSv2 environments for strategic COGS benefits.</p>
+            <h2 class="sec-title" data-aos="fade-right">Strategic Impact Portfolio</h2>
+
+            <div class="impact-card" data-aos="fade-up">
+                <div style="color: var(--az-blue); font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Cloud Modernization | Azure SQL DB</div>
+                <h3>Infrastructure Transformation & AI Ops</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4><i class="fa-solid fa-robot"></i> Operational AI Integration</h4>
+                        <p>Leveraging AI tools to accelerate incident investigation and Root Cause Analysis (RCA), directly reducing MTTR and boosting team productivity.</p>
                     </div>
-                    <div class="val-item">
-                        <h4>Operational AI</h4>
-                        <p>Leveraging AI diagnostic tools to automate Incident Root Cause Analysis (RCA), significantly reducing MTTR across global database regions.</p>
+                    <div class="feature-item">
+                        <h4><i class="fa-solid fa-gears"></i> Strategic Automation</h4>
+                        <p>Engineered automated RCS workflows with built-in validation and dynamic retry logic to ensure threshold stability and eliminate toil.</p>
                     </div>
-                    <div class="val-item">
-                        <h4>Proactive Resiliency</h4>
-                        <p>Engineering advanced capacity scaling workflows to absorb global demand spikes, ensuring 24/7 service stability for worldwide enterprise customers.</p>
+                    <div class="feature-item">
+                        <h4><i class="fa-solid fa-microchip"></i> Hardware Lifecycle</h4>
+                        <p>Leading historic decommissioning of legacy fleets while driving 100% adoption of modern PaaSv2 infrastructure for COGS benefits.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="strategy-card" data-aos="fade-up" style="border-left: 4px solid var(--accent);">
-                <div style="color:var(--accent); font-weight: 800; font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 20px;">02 / ENGINEERING SYSTEMS</div>
-                <h2>Automated Infrastructure</h2>
-                <div class="grid-3">
-                    <div class="val-item">
-                        <h4>Secure Architectures</h4>
-                        <p>Designing multi-platform identity modules using IdentityServer3 and AAD Token integration for secure enterprise data isolation.</p>
+            <div class="impact-card" data-aos="fade-up" style="border-left: 4px solid var(--ai-purple);">
+                <div style="color: var(--ai-purple); font-weight: 700; margin-bottom: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Product Engineering | Cosmos DB & Portals</div>
+                <h3>Automated Product Ecosystems</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4>CI/CD Systems</h4>
+                        <p>Monitoring build and test pipelines and authoring PowerShell scripts for large-scale disk cleanups and automated scale set updates.</p>
                     </div>
-                    <div class="val-item">
-                        <h4>Proactive Telemetry</h4>
-                        <p>Building real-time monitoring solutions via Kusto (KQL) and MS-Flow to detect anomalies and CI/CD failures before they impact production.</p>
+                    <div class="feature-item">
+                        <h4>Identity Security</h4>
+                        <p>Designed secure modules using AAD Token integration and IdentityServer3 SSO for multi-platform enterprise security.</p>
                     </div>
-                    <div class="val-item">
-                        <h4>Full-Stack Mastery</h4>
-                        <p>Evolving from a trainee developer to an onsite leader, delivering business-critical portals (WATS, Office Management) from DB design to deployment.</p>
+                    <div class="feature-item">
+                        <h4>Advanced Monitoring</h4>
+                        <p>Utilizing MS-Flow and Kusto (KQL) to create real-time notification systems for spend anomalies and build failures.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="narrative">
-            <div class="narrative-box" data-aos="zoom-in">
-                <p class="narrative-text">
-                    I graduated in <strong>2018 with a B.Com in Computers</strong>. This foundation in commerce allows me to see <strong>Technical Infrastructure</strong> through the lens of <strong>Business Value (COGS)</strong>. Over 8 years, I have bridged the gap between code and strategy, evolving from a trainee into an Onsite Specialist at Microsoft. My brand is defined by architectural discipline and relentless logic.
+        <section id="journey">
+            <h2 class="sec-title" data-aos="fade-right">Technical Evolution</h2>
+            <div class="story-wrapper" data-aos="zoom-in">
+                <p>
+                    I graduated in <strong>2018 with a B.Com in Computers</strong>. Transitioning from a major in Commerce to a career in Software Engineering required a relentless passion for logic and creation. Over the last <strong>8 years</strong>, I have evolved into an Infrastructure Specialist. My background allows me to solve technical problems with an eye on <strong>Business Impact (COGS)</strong> and <strong>Strategic Efficiency</strong>.
                 </p>
             </div>
         </section>
 
         <section id="lifestyle">
-            <h2 style="font-family: 'Space Grotesk'; text-align: center; margin-bottom: 60px; font-size: 2.5rem;">Aesthetic Discipline</h2>
-            <div class="mosaic">
-                <div class="mosaic-item" data-aos="fade-up">
-                    <img src="tulips.jpg" alt="Nature Photography">
-                    <div class="mosaic-overlay"><h3>Photography</h3><p>Focus & Clarity</p></div>
+            <h2 class="sec-title" data-aos="fade-up">Life Beyond the Fleet</h2>
+            <div class="hobby-grid">
+                <div class="hobby-item" data-aos="flip-left">
+                    <img src="tulips.jpg" alt="Photography">
+                    <div class="hobby-info"><h3>Photography</h3><p>Macro & Nature Tulips</p></div>
                 </div>
-                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="biryani.jpg" alt="Biryani">
-                    <div class="mosaic-overlay"><h3>Culinary Arts</h3><p>Traditional Biryani</p></div>
+                <div class="hobby-item" data-aos="flip-right">
+                    <img src="biryani.jpg" alt="Culinary">
+                    <div class="hobby-info"><h3>Culinary Arts</h3><p>Biryani Specialization</p></div>
                 </div>
-                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="hobby-item" data-aos="flip-left">
                     <img src="plating.jpg" alt="Plating">
-                    <div class="mosaic-overlay"><h3>Design Plating</h3><p>Visual Composition</p></div>
+                    <div class="hobby-info"><h3>Design Plating</h3><p>Culinary Aesthetics</p></div>
                 </div>
-                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="hobby-item" data-aos="flip-right">
                     <img src="violin.JPG" alt="Music">
-                    <div class="mosaic-overlay"><h3>Music</h3><p>Logic in Rhythm</p></div>
+                    <div class="hobby-info"><h3>Music</h3><p>Carnatic Learning</p></div>
                 </div>
             </div>
         </section>
@@ -212,17 +208,13 @@
     </div>
 
     <footer>
-        <p style="color: #94a3b8; margin-bottom: 20px;">&copy; 2026 Vidhya Sree Devaraju | Redmond, Washington</p>
-        <div style="font-size: 1.5rem;">
-            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:#f8fafc; margin: 0 15px;"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:vidya98sree@gmail.com" style="color:#f8fafc; margin: 0 15px;"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">Microsoft Redmond • All Rights Reserved</p>
+        <p>Vidhya Sree Devaraju | Redmond, Washington</p>
+        <p style="margin-top: 15px; font-size: 0.8rem;">&copy; 2026 <strong>All Rights Reserved. Vidhya Sree Devaraju</strong></p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
 </html>
