@@ -3,175 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Strategic Portfolio</title>
+    <title>Vidhya Sree Devaraju | Principal Infrastructure Strategist</title>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #00d2ff;
-            --accent: #a855f7;
-            --dark: #020617;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --microsoft-blue: #00a4ef;
+            --deep-space: #030712;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #6366f1;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Outfit', sans-serif; 
-            background: var(--dark); 
-            color: #f1f5f9; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--deep-space); 
+            color: #f8fafc; 
+            line-height: 1.6;
             overflow-x: hidden;
-            background: radial-gradient(circle at 0% 0%, #0f172a 0%, var(--dark) 50%);
         }
 
-        /* Interactive Background */
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; opacity: 0.4; }
+        /* Animated Background Mesh */
+        .mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #1e1b4b, transparent),
+                        radial-gradient(circle at 0% 100%, #020617, transparent);
+            z-index: -1;
+        }
 
+        /* Navigation */
         nav { 
-            position: fixed; width: 100%; padding: 25px 5%; 
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(20px); 
+            position: fixed; width: 100%; padding: 25px 8%; 
+            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(20px); 
             z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--border);
         }
-        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--microsoft-blue); }
 
+        /* Hero Section */
         header { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; padding: 0 20px;
+            align-items: flex-start; padding: 0 10%; position: relative;
         }
-        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 20px; }
-        .hero-tagline { font-size: 1.4rem; color: var(--primary); font-weight: 300; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 30px; }
+        .hero-pre { color: var(--microsoft-blue); font-weight: 700; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px; }
+        .hero-title { font-family: 'Space Grotesk'; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; font-weight: 700; margin-bottom: 25px; }
+        .hero-desc { max-width: 700px; font-size: 1.25rem; color: #94a3b8; font-weight: 300; margin-bottom: 40px; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-
-        /* Strategic Cards with Logic Toggle */
-        .strategy-card {
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 30px; padding: 50px; margin-bottom: 40px;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+        /* Skill Ribbon */
+        .skill-ribbon { 
+            display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;
         }
-        .strategy-card:hover { border-color: var(--primary); transform: translateY(-10px); background: rgba(255,255,255,0.05); }
+        .skill-tag { 
+            background: var(--glass); border: 1px solid var(--border); 
+            padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #cbd5e1;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 5%; }
+
+        /* Strategy Cards */
+        .impact-card {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 40px; padding: 60px; margin-bottom: 50px;
+            position: relative; transition: 0.5s; overflow: hidden;
+        }
+        .impact-card:hover { border-color: var(--microsoft-blue); background: rgba(255,255,255,0.04); }
+        .impact-card h2 { font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 30px; }
         
-        .logic-content { max-height: 0; overflow: hidden; transition: 0.5s ease; color: #94a3b8; font-size: 0.95rem; border-top: 0px solid transparent; margin-top: 0; }
-        .logic-content.active { max-height: 300px; border-top: 1px solid var(--glass-border); margin-top: 25px; padding-top: 25px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .feature h4 { color: var(--microsoft-blue); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .feature p { color: #94a3b8; font-size: 1rem; }
 
-        .toggle-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 20px; border-radius: 50px; cursor: pointer; font-family: 'Space Grotesk'; font-weight: 700; margin-top: 20px; transition: 0.3s; }
-        .toggle-btn:hover { background: var(--primary); color: var(--dark); }
-
-        /* Modern Hobby Parallax */
-        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .hobby-item { 
-            height: 350px; border-radius: 20px; overflow: hidden; position: relative; 
-            cursor: pointer; perspective: 1000px; border: 1px solid var(--glass-border);
+        /* The Journey Narrative */
+        .journey-box { 
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent); 
+            padding: 60px; border-radius: 40px; border: 1px solid var(--border);
         }
-        .hobby-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-        .hobby-overlay {
-            position: absolute; inset: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 25px;
-            opacity: 0; transition: 0.5s;
-        }
-        .hobby-item:hover img { transform: scale(1.1) rotate(1deg); filter: brightness(0.4); }
-        .hobby-item:hover .hobby-overlay { opacity: 1; }
+        .journey-text { font-size: 1.4rem; font-weight: 300; color: #e2e8f0; line-height: 1.7; }
 
-        footer { text-align: center; padding: 100px 20px; border-top: 1px solid var(--glass-border); color: #475569; }
+        /* Lifestyle Mosaic */
+        .mosaic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; height: 500px; }
+        .mosaic-item { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+        .mosaic-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .mosaic-item:hover img { transform: scale(1.1); filter: grayscale(1) brightness(0.3); }
+        .mosaic-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .mosaic-item:nth-child(2) { grid-column: span 2; }
+        .mosaic-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; padding: 20px; text-align: center; }
+        .mosaic-item:hover .mosaic-overlay { opacity: 1; }
+
+        footer { text-align: center; padding: 100px 20px; border-top: 1px solid var(--border); color: #475569; }
+        .cta-btn { background: var(--microsoft-blue); color: white; padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 164, 239, 0.3); }
+
     </style>
 </head>
 <body>
 
+    <div class="mesh"></div>
+
     <nav>
-        <div class="nav-logo">VSD <span style="color:var(--primary)">•</span> STRATEGY</div>
-        <div style="display: flex; gap: 20px;">
-            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:#fff;"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-            <a href="mailto:vidya98sree@gmail.com" style="color:#fff;"><i class="fa-solid fa-paper-plane fa-lg"></i></a>
+        <div class="nav-logo">V.S.DEVARAJU <span style="color:var(--microsoft-blue)">/</span> ARCHITECT</div>
+        <div class="nav-links">
+            <a href="#solutions">Solutions</a>
+            <a href="#narrative">Narrative</a>
+            <a href="#lifestyle">Aesthetics</a>
         </div>
     </nav>
 
-    <header data-aos="zoom-in">
-        <div class="hero-tagline">Architecting Resilience</div>
-        <h1 class="hero-title">Beyond <br><span style="color:var(--primary)">Capacity.</span></h1>
-        <p style="max-width: 600px; color: #94a3b8; font-size: 1.2rem; font-weight: 300;">
-            8 Years of Software Engineering. Specialized in Azure Infrastructure, Operational AI, and Strategic Automation.
+    <header data-aos="fade-right">
+        <div class="hero-pre">8 Years of Engineering Excellence</div>
+        <h1 class="hero-title">Cloud Resilience <br><span style="color:var(--microsoft-blue)">at Scale.</span></h1>
+        <p class="hero-desc">
+            Specializing in Azure Infrastructure Strategy, Operational AI, and Proactive Capacity Management for global enterprise fleets. 
         </p>
+        <div class="skill-ribbon">
+            <span class="skill-tag">Azure SQL DB</span>
+            <span class="skill-tag">Cosmos DB</span>
+            <span class="skill-tag">Operational AI</span>
+            <span class="skill-tag">KQL (Kusto)</span>
+            <span class="skill-tag">CI/CD Automation</span>
+            <span class="skill-tag">System Architecture</span>
+        </div>
+        <div style="margin-top: 50px;">
+            <a href="mailto:vidya98sree@gmail.com" class="cta-btn">Initiate Discussion</a>
+        </div>
     </header>
 
     <div class="container">
-        
-        <div class="strategy-card" data-aos="fade-up">
-            <h4 style="color: var(--primary); margin-bottom: 10px; letter-spacing: 2px;">01. CLOUD MODERNIZATION</h4>
-            <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 20px;">Azure SQL DB Strategy</h2>
-            <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 20px;">
-                Directing the transition of legacy global hardware fleets to high-performance, modern Azure SQL architectures.
-            </p>
-            <ul style="list-style: none; display: flex; gap: 15px; flex-wrap: wrap;">
-                <li style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">#OPERATIONAL_AI</li>
-                <li style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">#HARDWARE_DECOM</li>
-                <li style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">#CAPACITY_LOGIC</li>
-            </ul>
-            
-            <button class="toggle-btn" onclick="toggleLogic(this)">VIEW ARCHITECTURAL LOGIC</button>
-            <div class="logic-content">
-                <strong>Stakeholder Impact:</strong> By implementing automated RCS workflows with dynamic retry logic, we eliminated operational toil and moved from reactive incident management to proactive fleet readiness.
-            </div>
-        </div>
 
-        <div class="strategy-card" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), transparent);" data-aos="fade-up">
-            <h2 style="font-family: 'Space Grotesk'; margin-bottom: 20px;">The Career Evolution</h2>
-            <p style="font-size: 1.2rem; line-height: 1.8; font-weight: 300;">
-                Graduated in **2018 with a B.Com in Computers**. Over the last 8 years, I bridged the gap between Commerce logic and Cloud scale. From building full-stack event portals to leading onsite infrastructure strategy at **Microsoft**, my brand is built on technical adaptability and strategic efficiency.
-            </p>
-        </div>
+        <section id="solutions">
+            <div class="impact-card" data-aos="fade-up">
+                <div style="color:var(--microsoft-blue); font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px;">01 / INFRASTRUCTURE STRATEGY</div>
+                <h2>Fleet Modernization & AI Ops</h2>
+                <div class="grid-3">
+                    <div class="feature">
+                        <h4>Strategic Decommissioning</h4>
+                        <p>Directing high-stakes legacy hardware fleet decommissioning while orchestrating 100% adoption of next-gen PaaSv2 environments.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Operational AI Integration</h4>
+                        <p>Leveraging LLMs and AI diagnostic tools to automate Root Cause Analysis (RCA), significantly reducing MTTR across SQL DB global regions.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Resilient Capacity Logic</h4>
+                        <p>Engineering proactive scaling workflows to absorb global demand spikes, maintaining 24/7 service availability for worldwide customers.</p>
+                    </div>
+                </div>
+            </div>
 
-        <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 40px; text-align: center;" data-aos="fade-up">Lifestyle & Artistry</h2>
-        <div class="hobby-grid">
-            <div class="hobby-item" data-aos="flip-left">
-                <img src="tulips.jpg" alt="Photography">
-                <div class="hobby-overlay">
-                    <h3>Nature Photography</h3>
-                    <p>Skagit Valley Tulips</p>
+            <div class="impact-card" data-aos="fade-up" style="border-left: 4px solid var(--accent);">
+                <div style="color:var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 20px;">02 / PRODUCT ENGINEERING</div>
+                <h2>Automated Engineering Systems</h2>
+                <div class="grid-3">
+                    <div class="feature">
+                        <h4>Secure Identity Systems</h4>
+                        <p>Architecting multi-platform security modules using IdentityServer3 and AAD Token integration for enterprise-level data isolation.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Proactive Telemetry</h4>
+                        <p>Building real-time monitoring solutions via Kusto (KQL) and MS-Flow to detect cost anomalies and CI/CD build failures before they impact production.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Full-Stack Orchestration</h4>
+                        <p>Transitioning from trainee to onsite leader, delivering complex business portals (WATS, Office Management) from DB design to deployment.</p>
+                    </div>
                 </div>
             </div>
-            <div class="hobby-item" data-aos="flip-right" data-aos-delay="100">
-                <img src="biryani.jpg" alt="Culinary">
-                <div class="hobby-overlay">
-                    <h3>Culinary Arts</h3>
-                    <p>Traditional Biryani</p>
+        </section>
+
+        <section id="narrative">
+            <div class="journey-box" data-aos="zoom-in">
+                <p class="journey-text">
+                    My career began in <strong>2018 with a B.Com in Computers</strong>. This unconventional path instilled a unique dual-perspective: the ability to see <strong>Technical Scale</strong> through the lens of <strong>Business Logic (COGS)</strong>. Over 8 years at Microsoft, I have transformed from a trainee into an onsite Infrastructure Specialist, proving that relentless logic and architectural discipline can bridge any gap.
+                </p>
+            </div>
+        </section>
+
+        <section id="lifestyle" style="padding-top: 150px;">
+            <h2 style="font-family: 'Space Grotesk'; text-align: center; margin-bottom: 50px;">Aesthetic Discipline</h2>
+            <div class="mosaic-grid">
+                <div class="mosaic-item" data-aos="fade-up">
+                    <img src="tulips.jpg" alt="Photography">
+                    <div class="mosaic-overlay"><h3>Macro Photography</h3><p>Focus & Precision</p></div>
+                </div>
+                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="biryani.jpg" alt="Culinary">
+                    <div class="mosaic-overlay"><h3>Culinary Arts</h3><p>Complex Synthesis</p></div>
+                </div>
+                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="plating.jpg" alt="Design">
+                    <div class="mosaic-overlay"><h3>Visual Plating</h3><p>Design Composition</p></div>
+                </div>
+                <div class="mosaic-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="violin.JPG" alt="Music">
+                    <div class="mosaic-overlay"><h3>Carnatic Rhythm</h3><p>Logic in Sound</p></div>
                 </div>
             </div>
-            <div class="hobby-item" data-aos="flip-left" data-aos-delay="200">
-                <img src="plating.jpg" alt="Plating">
-                <div class="hobby-overlay">
-                    <h3>Design Plating</h3>
-                    <p>Culinary Aesthetics</p>
-                </div>
-            </div>
-            <div class="hobby-item" data-aos="flip-right" data-aos-delay="300">
-                <img src="violin.JPG" alt="Music">
-                <div class="hobby-overlay">
-                    <h3>Carnatic Music</h3>
-                    <p>Musical Rhythm</p>
-                </div>
-            </div>
-        </div>
+        </section>
 
     </div>
 
-    <footer data-aos="fade-in">
-        <p>&copy; 2026 | All Rights Reserved. Vidhya Sree Devaraju</p>
-        <p style="margin-top: 10px; opacity: 0.5;">Microsoft Redmond • Redmond, WA</p>
+    <footer>
+        <p>&copy; 2026 Vidhya Sree Devaraju | Redmond, Washington</p>
+        <div style="margin-top: 20px; font-size: 1.2rem;">
+            <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" target="_blank" style="color:#94a3b8; margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:vidya98sree@gmail.com" style="color:#94a3b8; margin: 0 10px;"><i class="fa-solid fa-envelope"></i></a>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        function toggleLogic(btn) {
-            const content = btn.nextElementSibling;
-            content.classList.toggle('active');
-            btn.innerText = content.classList.contains('active') ? "HIDE LOGIC" : "VIEW ARCHITECTURAL LOGIC";
-        }
+        AOS.init({ duration: 1200, once: true });
     </script>
 </body>
 </html>
