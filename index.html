@@ -23,56 +23,42 @@
         
         .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
-        /* Navigation */
         nav {
             padding: 25px 0; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 100;
         }
         .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; letter-spacing: -1px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-left: 30px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-left: 30px; text-transform: uppercase; }
 
-        /* Header Section */
-        header { padding: 100px 0 60px; display: flex; align-items: center; gap: 50px; border-bottom: 1px solid var(--border); }
-        .profile-wrap { position: relative; flex-shrink: 0; }
-        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        header { padding: 80px 0 60px; display: flex; align-items: center; gap: 50px; border-bottom: 1px solid var(--border); }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
-        .header-content { flex-grow: 1; }
-        .label { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; display: block; }
-        h1 { font-family: 'Space Grotesk'; font-size: 3.8rem; line-height: 1; letter-spacing: -3px; margin-bottom: 25px; }
-        .objective { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; font-weight: 300; }
+        h1 { font-family: 'Space Grotesk'; font-size: 3.5rem; line-height: 1; letter-spacing: -3px; margin-bottom: 20px; }
+        .objective { font-size: 1rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; }
 
-        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 40px; letter-spacing: -1px; font-weight: 500; }
+        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+        h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 40px; letter-spacing: -1px; color: var(--accent); }
 
-        /* Experience Timeline */
         .exp-block { margin-bottom: 50px; }
-        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .exp-company { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .exp-date { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
-        h3 { font-family: 'Space Grotesk'; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
-        .exp-list { list-style: none; }
-        .exp-list li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); position: relative; padding-left: 20px; }
-        .exp-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; }
+        .exp-company { font-size: 0.8rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .exp-date { font-size: 0.85rem; color: var(--text-muted); }
+        h3 { font-family: 'Space Grotesk'; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        
+        .project-details { list-style: none; padding-left: 0; }
+        .project-details li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); position: relative; padding-left: 20px; }
+        .project-details li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
-        /* In-House Projects Grid */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .project-card { padding: 35px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; }
-        .project-card:hover { border-color: var(--accent); background: #fff; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.04); }
+        .in-house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .in-house-card { padding: 30px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); }
+        .in-house-card h4 { font-family: 'Space Grotesk'; margin-bottom: 15px; font-size: 1.2rem; }
 
-        /* Hobbies */
         .hobby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .hobby-item { position: relative; height: 200px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
-        .hobby-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .hobby-label { position: absolute; bottom: 0; width: 100%; padding: 10px; background: rgba(255,255,255,0.9); font-size: 0.7rem; font-weight: 700; text-align: center; color: var(--text-main); }
+        .hobby-item { height: 180px; border-radius: 8px; overflow: hidden; position: relative; }
+        .hobby-item img { width: 100%; height: 100%; object-fit: cover; }
+        .hobby-label { position: absolute; bottom: 0; width: 100%; background: rgba(255,255,255,0.9); padding: 5px; font-size: 0.7rem; font-weight: 700; text-align: center; }
 
-        footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
-
-        @media (max-width: 900px) {
-            header { flex-direction: column; text-align: center; }
-            h1 { font-size: 2.8rem; }
-            .hobby-grid { grid-template-columns: 1fr 1fr; }
-        }
+        footer { padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -81,71 +67,80 @@
         <nav>
             <div class="nav-logo">VIDHYASREE DEVARAJU</div>
             <div class="nav-links">
-                <a href="#experience">Expertise</a>
-                <a href="#inhouse">In-House Projects</a>
-                <a href="mailto:vidya98sree@gmail.com">Contact</a>
+                <a href="#experience">Impact</a>
+                <a href="#in-house">In-House Builds</a>
+                <a href="#hobbies">Interests</a>
             </div>
         </nav>
 
         <header>
-            <div class="profile-wrap">
-                <img src="profile.jpg" alt="Vidhyasree Devaraju" class="profile-img">
-            </div>
-            <div class="header-content">
-                <span class="label">Software Engineer // Microsoft Vendor</span>
+            <img src="profile.jpg" alt="Vidhyasree Devaraju" class="profile-img">
+            <div>
                 <h1>Systems & AI <br> Engineering.</h1>
-                <p class="objective">Results-driven Software Engineer with 8 years of expertise. Specializing in Azure SQL Capacity Management, Fleet Resiliency, and Agentic AI workflows at Microsoft.</p>
+                <p class="objective">Results-driven Software Engineer with 8 years of experience. A Microsoft Vendor (via Quadrant Resources) specializing in Azure SQL Capacity Management, Fleet Resiliency, and automated AI diagnostics.</p>
             </div>
         </header>
 
         <section id="experience">
-            <h2>Professional Impact</h2>
+            <h2>Professional Experience</h2>
             
             <div class="exp-block">
                 <div class="exp-header">
-                    <span class="exp-company">Quadrant Resources // Microsoft</span>
-                    <span class="exp-date">2021 — PRESENT</span>
+                    <span class="exp-company">Quadrant Resources // Microsoft Vendor</span>
+                    <span class="exp-date">Jan 2022 — Present</span>
                 </div>
                 <h3>Azure SQL DB Capacity Management (Redmond)</h3>
-                <ul class="exp-list">
-                    <li>Directing worldwide Data Utilization Analysis to ensure regional resiliency.</li>
-                    <li>Utilizing Kusto (KQL), Service Fabric, and XTS for global fleet orchestration.</li>
-                    <li>Identifying bottlenecks and executing corrective node re-sizing and migrations.</li>
+                <ul class="project-details">
+                    <li>Analyze data regularly to identify areas requiring attention and take corrective actions for worldwide regions.</li>
+                    <li>Objective: Ensure Minimal Utilization Percentage to avoid hot segments and potential customer data issues.</li>
+                    <li>Utilize Kusto (KQL), PowerShell, Service Fabric Explorer, and Power BI for fleet-wide telemetry.</li>
+                    <li>Manage Node Re-sizing and Migrations to optimize regional efficiency and resource utilization.</li>
+                    <li>Analyze worldwide regions to identify capacity needs and request new capacity in specific areas.</li>
                 </ul>
             </div>
 
             <div class="exp-block">
                 <div class="exp-header">
-                    <span class="exp-company">Quadrant Resources // Microsoft</span>
+                    <span class="exp-company">Quadrant Resources // Microsoft Vendor</span>
                     <span class="exp-date">2019 — 2021</span>
                 </div>
-                <h3>Azure Cosmos DB Engineering Systems</h3>
-                <ul class="exp-list">
-                    <li>Developed sub-spend calculation modules using AAD Token authentication.</li>
-                    <li>Implemented Single Sign-On (SSO) for enterprise scale using IdentityServer3.</li>
-                    <li>Orchestrated PowerShell automation for disk clean-ups across Azure scale sets.</li>
+                <h3>Azure Cosmos DB Engineering Systems (Offshore)</h3>
+                <ul class="project-details">
+                    <li>Developed an individual module to calculate total Azure Spend for subscriptions across environments.</li>
+                    <li>Implemented secure AAD Token integration and SSO using IdentityServer3.</li>
+                    <li>Automated build phase monitoring using MS-Flows to trigger IcM incidents for build failures.</li>
+                    <li>Involved in creating Azure Functions and writing Unit Test cases using Moq.</li>
+                    <li>Performed PowerShell scripts for disk clean-ups and Windows updates in Azure scale sets.</li>
+                    <li>Authored and maintained technical TSGs using .md files for engineering workflows.</li>
                 </ul>
             </div>
         </section>
 
-        <section id="inhouse">
-            <h2>In-House Technical Builds</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <span class="label" style="font-size: 0.6rem;">Agentic AI // 2026 Focus</span>
-                    <h3>Incident Investigator</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">Autonomous AI engine for log analysis. Built to reduce MTTR via RAG workflows.</p>
-                    <a href="https://github.com/vidhyasree/agentic-incident-investigator" style="color: var(--accent); text-decoration: none; font-size: 0.75rem; font-weight: 800;">EXPLORE CODE →</a>
+        <section id="in-house">
+            <h2>In-House Project Portfolio</h2>
+            <div class="in-house-grid">
+                <div class="in-house-card">
+                    <h4>WATS Portal (Event Management)</h4>
+                    <ul class="project-details">
+                        <li>Developed a ticketing and event browsing system using .NET MVC 4.0.</li>
+                        <li>Designed UI with HTML5, jQuery, and CSS; created stored procedures in SQL Server.</li>
+                        <li>Implemented Form-based Authentication and full Database Design.</li>
+                    </ul>
                 </div>
-                <div class="project-card">
-                    <span class="label" style="font-size: 0.6rem;">Enterprise Portal</span>
-                    <h3>Office Management</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">Full-stack task and performance tracking system built with ASP.NET MVC.</p>
+                <div class="in-house-card">
+                    <h4>Office Management Portal</h4>
+                    <ul class="project-details">
+                        <li>System to track employee performance, attendance, and task assignments.</li>
+                        <li>Features: Chatting, leave requests, billing, and customer payment dues.</li>
+                        <li>Developed with .NET MVC, Entity Framework 6, and SQL Server 2012.</li>
+                    </ul>
                 </div>
-                <div class="project-card">
-                    <span class="label" style="font-size: 0.6rem;">Event Systems</span>
-                    <h3>WATS Portal</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">End-to-end ticketing platform with secure form-based authentication.</p>
+                <div class="in-house-card">
+                    <h4>SRK Travels Management</h4>
+                    <ul class="project-details">
+                        <li>Digitized manual tour bookings into a fully automated transport solution.</li>
+                        <li>Managed employee and customer data mapping through T-SQL and Joins.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -153,7 +148,7 @@
         <section id="hobbies">
             <h2>Interests & Aesthetics</h2>
             <div class="hobby-grid">
-                <div class="hobby-item"><img src="biryani.jpg" alt="Culinary"><div class="hobby-label">Culinary Arts</div></div>
+                <div class="hobby-item"><img src="biryani.jpg" alt="Cooking"><div class="hobby-label">Culinary Arts</div></div>
                 <div class="hobby-item"><img src="tulips.jpg" alt="Photography"><div class="hobby-label">Photography</div></div>
                 <div class="hobby-item"><img src="violin.JPG" alt="Music"><div class="hobby-label">Music</div></div>
                 <div class="hobby-item"><img src="plating.jpg" alt="Design"><div class="hobby-label">Visual Plating</div></div>
@@ -162,6 +157,7 @@
 
         <footer>
             <p>&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
+            <p style="margin-top: 10px; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent);">AZ-204 CERTIFIED DEVELOPER</p>
         </footer>
     </div>
 
