@@ -3,214 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhyasree | AI System Architect</title>
+    <title>Vidhyasree Devaraju | AI System Architect</title>
     
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #00d2ff;
-            --ai-glow: #a855f7;
-            --bg-deep: #020617;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --accent: #000000; /* Pure Black for ultimate decency */
+            --border: #f3f4f6;
+            --section-gap: 100px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--bg-deep); color: #f8fafc; overflow-x: hidden;
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); color: var(--text-primary); 
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
         }
 
-        /* Glassmorphism Navigation */
-        nav { 
-            position: fixed; width: 100%; padding: 15px 5%; 
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(15px); 
-            z-index: 1000; border-bottom: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center;
+        /* Clean Navigation */
+        nav {
+            padding: 30px 10%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 100;
         }
-        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; margin-left: 40px; }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* Interactive Tabs Header */
-        .tab-container {
-            padding-top: 120px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+
+        /* Hero: Content First */
+        header { padding: 120px 0 80px; }
+        .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 20px; display: block; }
+        h1 { font-family: 'Space Grotesk'; font-size: 3.5rem; line-height: 1.1; letter-spacing: -2px; margin-bottom: 30px; }
+        .hero-desc { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; font-weight: 300; }
+
+        section { padding-bottom: var(--section-gap); }
+        h2 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin-bottom: 40px; letter-spacing: -1px; }
+
+        /* Experience: Timeline Style */
+        .work-item { border-bottom: 1px solid var(--border); padding: 40px 0; display: grid; grid-template-columns: 250px 1fr; gap: 40px; }
+        .work-date { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
+        .work-title { font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; }
+        .work-company { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        .work-details { list-style: none; }
+        .work-details li { margin-bottom: 12px; position: relative; padding-left: 20px; color: var(--text-secondary); }
+        .work-details li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+        /* Projects: List Style */
+        .project-card { background: #fafafa; padding: 50px; border-radius: 4px; margin-bottom: 30px; }
+        .project-tag { font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+        .project-name { font-family: 'Space Grotesk'; font-size: 1.5rem; margin: 15px 0; }
+        .project-desc { color: var(--text-secondary); margin-bottom: 30px; }
+        .btn-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+        /* Skills: Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .skill-cat h4 { font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; color: var(--text-secondary); }
+        .skill-list { list-style: none; font-size: 0.95rem; line-height: 2; }
+
+        footer { border-top: 1px solid var(--border); padding: 60px 0; display: flex; justify-content: space-between; color: var(--text-secondary); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .work-item { grid-template-columns: 1fr; gap: 10px; }
         }
-        .tab-btn {
-            padding: 12px 25px; border-radius: 50px; border: 1px solid var(--border);
-            background: transparent; color: #94a3b8; cursor: pointer; font-weight: 600;
-            transition: 0.4s; font-size: 0.85rem; text-transform: uppercase;
-        }
-        .tab-btn.active {
-            background: var(--primary); color: #020617; border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-        }
-
-        /* Content Sections */
-        .content-section { display: none; padding: 60px 8%; animation: fadeIn 0.6s ease; }
-        .content-section.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Grid Layouts */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-
-        /* Project & Blog Cards */
-        .card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            padding: 30px; border-radius: 24px; position: relative;
-            transition: 0.4s; overflow: hidden; height: 100%;
-        }
-        .card:hover { 
-            border-color: var(--primary); background: rgba(255,255,255,0.06); 
-            transform: translateY(-5px);
-        }
-        .tag { font-size: 0.7rem; font-weight: 800; color: var(--ai-glow); text-transform: uppercase; margin-bottom: 10px; display: block; }
-        
-        /* Modal Style Popups (Pure CSS) */
-        .btn-more { margin-top: 20px; background: none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 700; }
-        .btn-more:hover { background: var(--primary); color: #020617; }
-
-        /* Timeline for Work History */
-        .timeline-item { padding-left: 30px; border-left: 2px solid var(--border); margin-bottom: 40px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; }
-
-        /* Hobbies Mosaic */
-        .hobby-img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); font-size: 0.8rem; color: #64748b; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">VIDHYASREE <span style="color:white">//</span> AI OPS</div>
-        <div>
-            <a href="https://github.com/vidhyasree" style="color:white; font-size: 1.2rem;"><i class="fa-brands fa-github"></i></a>
+        <div class="nav-logo">VIDHYASREE DEVARAJU</div>
+        <div class="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Stack</a>
+            <a href="mailto:vidya98sree@gmail.com">Contact</a>
         </div>
     </nav>
 
-    <div class="tab-container">
-        <button class="tab-btn active" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-btn" onclick="openTab(event, 'work')">Work Stuff</button>
-        <button class="tab-btn" onclick="openTab(event, 'blog')">AI Blog</button>
-        <button class="tab-btn" onclick="openTab(event, 'hobbies')">Hobbies</button>
+    <div class="container">
+        <header>
+            <span class="label">System Engineer & AI Architect</span>
+            <h1>Building Resilient <br>Systems at Scale.</h1>
+            <p class="hero-desc">8 years of engineering evolution. Currently specializing in AI-driven incident automation and Azure fleet strategy at Microsoft.</p>
+        </header>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            
+            <div class="work-item">
+                <div class="work-date">2018 — PRESENT</div>
+                <div class="work-content">
+                    <h3 class="work-title">Onsite Specialist // Microsoft</h3>
+                    <span class="work-company">Redmond, Washington</span>
+                    <ul class="work-details">
+                        <li>Directing global hardware lifecycle management for Azure Fleet.</li>
+                        <li>Automated Incident Root Cause Analysis (RCA) reducing MTTR by 30%.</li>
+                        <li>Achieved 100% legacy decommissioning via automated KQL workflows.</li>
+                        <li>Managed secure identity modules for large-scale enterprise data isolation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="work-item">
+                <div class="work-date">2018 EARLY</div>
+                <div class="work-content">
+                    <h3 class="work-title">Systems Engineer Trainee</h3>
+                    <span class="work-company">The Foundation</span>
+                    <ul class="work-details">
+                        <li>Developed core understanding of software lifecycle and capacity resiliency.</li>
+                        <li>Engineered proactive telemetry solutions for CI/CD pipeline monitoring.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured AI Work</h2>
+            
+            <div class="project-card">
+                <span class="project-tag">HERO PROJECT // AGENTIC AI</span>
+                <h3 class="project-name">Agentic Incident Investigator</h3>
+                <p class="project-desc">An autonomous RAG-based engine that monitors system logs, interprets anomalies using SLMs, and provides resolution playbooks instantly.</p>
+                <a href="https://github.com/vidhyasree/agentic-incident-investigator" class="btn-link">Review Repository</a>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">RESEARCH // 2026</span>
+                <h3 class="project-name">AI Learning Vault</h3>
+                <p class="project-desc">A structured technical repository documenting experiments with LangChain, CrewAI, and Small Language Model (SLM) optimization.</p>
+                <a href="https://github.com/vidhyasree/ai-learning-vault-2026" class="btn-link">Explore Research</a>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-cat">
+                    <h4>AI Orchestration</h4>
+                    <ul class="skill-list">
+                        <li>LangChain</li>
+                        <li>CrewAI</li>
+                        <li>Agentic RAG</li>
+                        <li>Fine-tuning (SLMs)</li>
+                    </ul>
+                </div>
+                <div class="skill-cat">
+                    <h4>Infrastructure</h4>
+                    <ul class="skill-list">
+                        <li>Azure Fleet</li>
+                        <li>Docker / K8s</li>
+                        <li>Kusto (KQL)</li>
+                        <li>FastAPI</li>
+                    </ul>
+                </div>
+                <div class="skill-cat">
+                    <h4>Core Tools</h4>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>SQL / NoSQL</li>
+                        <li>GitHub Actions</li>
+                        <li>IdentityServer3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div>&copy; 2026 Vidhyasree Devaraju</div>
+            <div class="nav-links">
+                <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152" style="margin:0">LinkedIn</a>
+                <a href="https://github.com/vidhyasree">GitHub</a>
+            </div>
+        </footer>
     </div>
 
-    <section id="projects" class="content-section active">
-        <div class="grid">
-            <div class="card">
-                <span class="tag">AI AGENTS</span>
-                <h3>Agentic Incident Investigator</h3>
-                <p style="color: #94a3b8; margin-top: 10px;">Autonomous RAG system that analyzes server logs and suggests fixes in real-time.</p>
-                <a href="https://github.com/vidhyasree/agentic-incident-investigator" target="_blank" class="btn-more" style="text-decoration: none; display: inline-block;">View on GitHub</a>
-            </div>
-            <div class="card">
-                <span class="tag">CLOUD INFRA</span>
-                <h3>Azure Fleet Resiliency Tool</h3>
-                <p style="color: #94a3b8; margin-top: 10px;">Python-based automation for managing hardware lifecycle and PaaS conversions.</p>
-                <button class="btn-more" onclick="alert('System Details: 100% Decommissioning achieved via automated Kusto scripts.')">Read Details</button>
-            </div>
-        </div>
-    </section>
-
-<section id="work" class="content-section">
-    <div class="timeline">
-        <div class="timeline-item">
-            <h4 style="color: var(--primary);">Onsite Specialist @ Microsoft (Redmond)</h4>
-            <p style="font-size: 0.8rem; color: #64748b;">2018 - Present</p>
-            <p style="margin-top: 10px; color: #cbd5e1;">Managing SQL DB regions, MTTR reduction, and AI diagnostics integration.</p>
-        </div>
-    </div>
-
-    <h3 style="margin: 40px 0 20px; font-family: 'Space Grotesk'; color: var(--primary);">Technical Testimonials</h3>
-    <div class="grid">
-        <div class="card" style="border-left: 3px solid var(--ai-glow);">
-            <i class="fa-solid fa-quote-left" style="color: var(--ai-glow); font-size: 1.5rem; margin-bottom: 15px;"></i>
-            <p style="font-style: italic; color: #cbd5e1; line-height: 1.6;">
-                "Vidhyasree's approach to automating incident RCA using AI has significantly reduced our regional MTTR. A forward-thinking engineer who bridges the gap between hardware and intelligence."
-            </p>
-            <div style="margin-top: 20px; display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-user-tie"></i>
-                </div>
-                <div>
-                    <h5 style="color: white;">Senior Engineering Manager</h5>
-                    <p style="font-size: 0.7rem; color: #64748b;">Microsoft Azure Fleet</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card" style="border-left: 3px solid var(--primary);">
-            <i class="fa-solid fa-quote-left" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 15px;"></i>
-            <p style="font-style: italic; color: #cbd5e1; line-height: 1.6;">
-                "Excellent grasp of fleet strategy. Her work on legacy decommissioning was executed with 100% accuracy, showing her deep expertise in global-scale infrastructure."
-            </p>
-            <div style="margin-top: 20px; display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-user-check"></i>
-                </div>
-                <div>
-                    <h5 style="color: white;">Principal Infrastructure Architect</h5>
-                    <p style="font-size: 0.7rem; color: #64748b;">Peer Recommendation</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="blog" class="content-section">
-        <div class="grid">
-            <div class="card">
-                <span class="tag">PROJECTIONS</span>
-                <h3>The Rise of Agentic Ops in 2027</h3>
-                <p style="color: #94a3b8; margin: 10px 0;">Why engineers must stop writing scripts and start building agents.</p>
-                <a href="https://github.com/vidhyasree/ai-learning-vault-2026" class="btn-more" style="text-decoration: none; display: inline-block;">Read Learning Vault</a>
-            </div>
-            <div class="card">
-                <span class="tag">ETHICS</span>
-                <h3>Mitigating AI Bias in RCA</h3>
-                <p style="color: #94a3b8; margin: 10px 0;">Ensuring automated diagnostic tools don't overlook hardware anomalies.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="hobbies" class="content-section">
-        <div class="grid">
-            <div class="card">
-                <img src="biryani.jpg" class="hobby-img" alt="Cooking">
-                <h3>Culinary Arts</h3>
-                <p style="color: #94a3b8;">Mastering traditional Hyderabadi Biryani and modern plating techniques.</p>
-            </div>
-            <div class="card">
-                <img src="violin.JPG" class="hobby-img" alt="Music">
-                <h3>Music & Rhythm</h3>
-                <p style="color: #94a3b8;">Learning Carnatic music to find the logic and structure within rhythm.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2026 VIDHYASREE DEVARAJU // SYSTEM ENGINEER
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        function openTab(evt, tabName) {
-            var i, content, tablinks;
-            content = document.getElementsByClassName("content-section");
-            for (i = 0; i < content.length; i++) {
-                content[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        AOS.init();
-    </script>
 </body>
 </html>
