@@ -25,63 +25,52 @@
 
         /* Navigation */
         nav {
-            padding: 30px 0; display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 0; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 100;
         }
-        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.2rem; letter-spacing: -1px; }
+        .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; letter-spacing: -1px; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-left: 30px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
         /* Header Section */
-        header { padding: 120px 0 80px; display: flex; align-items: center; gap: 60px; border-bottom: 1px solid var(--border); }
+        header { padding: 100px 0 60px; display: flex; align-items: center; gap: 50px; border-bottom: 1px solid var(--border); }
         .profile-wrap { position: relative; flex-shrink: 0; }
-        .profile-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
         .header-content { flex-grow: 1; }
         .label { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; display: block; }
-        h1 { font-family: 'Space Grotesk'; font-size: 4.2rem; line-height: 0.9; letter-spacing: -4px; margin-bottom: 25px; }
-        .objective { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; font-weight: 300; }
+        h1 { font-family: 'Space Grotesk'; font-size: 3.8rem; line-height: 1; letter-spacing: -3px; margin-bottom: 25px; }
+        .objective { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; font-weight: 300; }
 
-        /* General Section Styling */
-        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
-        h2 { font-family: 'Space Grotesk'; font-size: 2.2rem; margin-bottom: 50px; letter-spacing: -1.5px; font-weight: 500; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 40px; letter-spacing: -1px; font-weight: 500; }
 
         /* Experience Timeline */
-        .exp-block { margin-bottom: 80px; }
-        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .exp-company { font-size: 0.8rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .exp-date { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
-        h3 { font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
-        .exp-sub { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 20px; color: var(--text-main); }
+        .exp-block { margin-bottom: 50px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .exp-company { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .exp-date { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        h3 { font-family: 'Space Grotesk'; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
         .exp-list { list-style: none; }
-        .exp-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); position: relative; padding-left: 25px; }
+        .exp-list li { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); position: relative; padding-left: 20px; }
         .exp-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
 
         /* In-House Projects Grid */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { padding: 40px; background: var(--surface); border-radius: 16px; border: 1px solid var(--border); transition: 0.4s; }
-        .project-card:hover { transform: translateY(-10px); border-color: var(--accent); background: #fff; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .project-card { padding: 35px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); transition: 0.3s; }
+        .project-card:hover { border-color: var(--accent); background: #fff; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.04); }
 
-        /* Skills Pill Layout */
-        .skills-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
-        .skill-group h4 { font-family: 'Space Grotesk'; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #fff; border: 1px solid var(--border); padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: 0.3s; }
-        .tag:hover { border-color: var(--accent); color: var(--accent); }
+        /* Hobbies */
+        .hobby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .hobby-item { position: relative; height: 200px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+        .hobby-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .hobby-label { position: absolute; bottom: 0; width: 100%; padding: 10px; background: rgba(255,255,255,0.9); font-size: 0.7rem; font-weight: 700; text-align: center; color: var(--text-main); }
 
-        /* Hobbies Mosaic */
-        .hobby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .hobby-item { position: relative; height: 240px; border-radius: 12px; overflow: hidden; }
-        .hobby-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: 0.5s; }
-        .hobby-label { position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 700; text-align: center; transform: translateY(100%); transition: 0.3s; }
-        .hobby-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .hobby-item:hover .hobby-label { transform: translateY(0); }
-
-        footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); }
+        footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
 
         @media (max-width: 900px) {
-            header { flex-direction: column; text-align: center; padding-top: 60px; }
-            h1 { font-size: 3rem; }
+            header { flex-direction: column; text-align: center; }
+            h1 { font-size: 2.8rem; }
             .hobby-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
@@ -90,11 +79,10 @@
 
     <div class="container">
         <nav>
-            <div class="nav-logo">VIDHYASREE DEVARAJU <span style="color:var(--accent)">.</span></div>
+            <div class="nav-logo">VIDHYASREE DEVARAJU</div>
             <div class="nav-links">
                 <a href="#experience">Expertise</a>
-                <a href="#inhouse">In-House Builds</a>
-                <a href="#skills">Tech Stack</a>
+                <a href="#inhouse">In-House Projects</a>
                 <a href="mailto:vidya98sree@gmail.com">Contact</a>
             </div>
         </nav>
@@ -104,9 +92,9 @@
                 <img src="profile.jpg" alt="Vidhyasree Devaraju" class="profile-img">
             </div>
             <div class="header-content">
-                <span class="label">Senior Software Engineer // Microsoft Vendor</span>
-                <h1>Architecting Systems <br> With Intelligence.</h1>
-                <p class="objective">Results-driven Software Engineer with 8 years of experience. Specializing in Azure SQL Capacity Management and high-scale Cloud Infrastructure. Passionate about bridging the gap between hardware telemetry and Agentic AI.</p>
+                <span class="label">Software Engineer // Microsoft Vendor</span>
+                <h1>Systems & AI <br> Engineering.</h1>
+                <p class="objective">Results-driven Software Engineer with 8 years of expertise. Specializing in Azure SQL Capacity Management, Fleet Resiliency, and Agentic AI workflows at Microsoft.</p>
             </div>
         </header>
 
@@ -119,12 +107,10 @@
                     <span class="exp-date">2021 — PRESENT</span>
                 </div>
                 <h3>Azure SQL DB Capacity Management (Redmond)</h3>
-                <span class="exp-sub">Software Engineer // Data Analysis & Regional Utilization</span>
                 <ul class="exp-list">
-                    <li>Directing worldwide Data Utilization Analysis to maintain optimal thresholds across regions.</li>
-                    <li>Utilizing Kusto (KQL), Service Fabric Explorer, and XTS for global fleet orchestration.</li>
-                    <li>Identifying capacity bottlenecks and executing corrective node re-sizing and migrations.</li>
-                    <li>Developing Power BI telemetry to provide 24/7 visibility into global data segments.</li>
+                    <li>Directing worldwide Data Utilization Analysis to ensure regional resiliency.</li>
+                    <li>Utilizing Kusto (KQL), Service Fabric, and XTS for global fleet orchestration.</li>
+                    <li>Identifying bottlenecks and executing corrective node re-sizing and migrations.</li>
                 </ul>
             </div>
 
@@ -134,10 +120,8 @@
                     <span class="exp-date">2019 — 2021</span>
                 </div>
                 <h3>Azure Cosmos DB Engineering Systems</h3>
-                <span class="exp-sub">Software Developer // Global Distributed Databases</span>
                 <ul class="exp-list">
                     <li>Developed sub-spend calculation modules using AAD Token authentication.</li>
-                    <li>Built automated build/test phase pipelines with integrated IcM incident triggers.</li>
                     <li>Implemented Single Sign-On (SSO) for enterprise scale using IdentityServer3.</li>
                     <li>Orchestrated PowerShell automation for disk clean-ups across Azure scale sets.</li>
                 </ul>
@@ -148,77 +132,38 @@
             <h2>In-House Technical Builds</h2>
             <div class="project-grid">
                 <div class="project-card">
+                    <span class="label" style="font-size: 0.6rem;">Agentic AI // 2026 Focus</span>
+                    <h3>Incident Investigator</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">Autonomous AI engine for log analysis. Built to reduce MTTR via RAG workflows.</p>
+                    <a href="https://github.com/vidhyasree/agentic-incident-investigator" style="color: var(--accent); text-decoration: none; font-size: 0.75rem; font-weight: 800;">EXPLORE CODE →</a>
+                </div>
+                <div class="project-card">
                     <span class="label" style="font-size: 0.6rem;">Enterprise Portal</span>
-                    <h3>Office Management Ecosystem</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 15px 0;">A full-stack task and performance tracking system for internal management auditing.</p>
-                    <ul class="exp-list" style="font-size: 0.85rem;">
-                        <li>Built with ASP.NET MVC and Entity Framework.</li>
-                        <li>Automated leave requests and task assignment telemetry.</li>
-                    </ul>
+                    <h3>Office Management</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">Full-stack task and performance tracking system built with ASP.NET MVC.</p>
                 </div>
                 <div class="project-card">
                     <span class="label" style="font-size: 0.6rem;">Event Systems</span>
                     <h3>WATS Portal</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 15px 0;">End-to-end event management and ticketing platform for large-scale community events.</p>
-                    <ul class="exp-list" style="font-size: 0.85rem;">
-                        <li>Implemented secure form-based authentication.</li>
-                        <li>Designed high-performance SQL stored procedures for rapid data retrieval.</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <span class="label" style="font-size: 0.6rem;">Logistics</span>
-                    <h3>SRK Travels Management</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 15px 0;">Digitized manual tour and transport logistics for regional fleet operations.</p>
-                    <ul class="exp-list" style="font-size: 0.85rem;">
-                        <li>Refactored manual processes into a digital .NET architecture.</li>
-                        <li>Optimized database schemas for tour and customer data mapping.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Stack</h2>
-            <div class="skills-wrap">
-                <div class="skill-group">
-                    <h4>Core Languages</h4>
-                    <div class="tags">
-                        <span class="tag">C# .NET</span> <span class="tag">.NET Core</span> <span class="tag">SQL Server</span> <span class="tag">Kusto</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Cloud & AI</h4>
-                    <div class="tags">
-                        <span class="tag">Azure</span> <span class="tag">Cosmos DB</span> <span class="tag">Azure Functions</span> <span class="tag">LangChain</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>DevOps & Scripting</h4>
-                    <div class="tags">
-                        <span class="tag">Git</span> <span class="tag">PowerShell</span> <span class="tag">MS Flow</span> <span class="tag">Azure DevOps</span>
-                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 15px 0;">End-to-end ticketing platform with secure form-based authentication.</p>
                 </div>
             </div>
         </section>
 
         <section id="hobbies">
-            <h2>Lifestyle & Aesthetics</h2>
+            <h2>Interests & Aesthetics</h2>
             <div class="hobby-grid">
                 <div class="hobby-item"><img src="biryani.jpg" alt="Culinary"><div class="hobby-label">Culinary Arts</div></div>
-                <div class="hobby-item"><img src="tulips.jpg" alt="Photography"><div class="hobby-label">Nature Photography</div></div>
-                <div class="hobby-item"><img src="violin.JPG" alt="Music"><div class="hobby-label">Carnatic Music</div></div>
-                <div class="hobby-item"><img src="plating.jpg" alt="Design"><div class="hobby-label">Visual Composition</div></div>
+                <div class="hobby-item"><img src="tulips.jpg" alt="Photography"><div class="hobby-label">Photography</div></div>
+                <div class="hobby-item"><img src="violin.JPG" alt="Music"><div class="hobby-label">Music</div></div>
+                <div class="hobby-item"><img src="plating.jpg" alt="Design"><div class="hobby-label">Visual Plating</div></div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 Vidhyasree Devaraju | Redmond, Washington | vidya98sree@gmail.com</p>
-            <p style="margin-top: 15px; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent);">AZ-204 CERTIFIED // MICROSOFT VENDOR</p>
+            <p>&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
         </footer>
     </div>
 
-    <script>
-        // Smooth hover effect logic can be added here if needed
-    </script>
 </body>
 </html>
