@@ -62,6 +62,52 @@
         footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
         @media (max-width: 768px) { h1 { font-size: 2.5rem; } header { flex-direction: column; text-align: center; } }
+/* Education & Learning Specific Styles */
+#education .grid-3 {
+    gap: 25px;
+    margin-top: 20px;
+}
+
+#education .project-block {
+    border-top: 4px solid var(--accent); /* Adds a top bar to signify importance */
+    background: #ffffff; /* Brighter background to stand out from the surface color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    height: 100%; /* Keeps cards equal height */
+    display: flex;
+    flex-direction: column;
+}
+
+#education h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+#education .project-env {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+}
+
+/* Specific styling for the AI Curriculum list */
+#education .bullet-list li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+#education .bullet-list li strong {
+    color: var(--text-main);
+}
+
+/* Hover effect for the cards */
+#education .project-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
+}
+        
     </style>
 </head>
 <body>
@@ -252,20 +298,34 @@ Data utilization is a crucial aspect that directly impacts business performance.
             </div>
         </section>
 
-        <section id="hobbies">
-            <h2>Interests</h2>
-            <div style="display: flex; gap: 20px; justify-content: center;">
-                <div style="text-align:center;">
-                    <img src="biryani.jpg" style="width:200px; height:150px; object-fit:cover; border-radius:8px;">
-                    <p><strong>Culinary Arts</strong></p>
-                </div>
-                <div style="text-align:center;">
-                    <img src="violin.JPG" style="width:200px; height:150px; object-fit:cover; border-radius:8px;">
-                    <p><strong>Carnatic Music</strong></p>
-                </div>
-            </div>
-        </section>
+        <section id="education">
+    <h2>Education & Professional Learning</h2>
+    <div class="grid-3">
+        <div class="project-block">
+            <span class="project-env">Degree</span>
+            <h4>Bachelor of Technology (B.Tech)</h4>
+            <p class="desc-text">Computer Science and Engineering</p>
+            <p style="font-weight: 700; color: var(--accent);">Passed Out: 2018</p>
+        </div>
 
+        <div class="project-block">
+            <span class="project-env">AI Curriculum</span>
+            <h4>Active Learning & Courses</h4>
+            <ul class="bullet-list" style="font-size: 0.85rem;">
+                <li><strong>Deep Learning Specialization</strong> – Focus on Transformer architectures.</li>
+                <li><strong>Generative AI with LLMs</strong> – Mastering LangChain & RAG.</li>
+                <li><strong>Azure AI Engineer</strong> – Integrating Cognitive Services.</li>
+            </ul>
+        </div>
+
+        <div class="project-block">
+            <span class="project-env">Certification</span>
+            <h4>Microsoft Certified</h4>
+            <p class="desc-text">AZ-204: Developing Solutions for Microsoft Azure</p>
+            <p style="font-weight: 700; color: var(--accent);">Issued 2020</p>
+        </div>
+    </div>
+</section>
         <footer>
             <p>&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
             <p style="margin-top: 10px; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px;">QUADRANT RESOURCES // MICROSOFT VENDOR</p>
