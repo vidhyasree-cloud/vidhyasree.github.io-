@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya sree Devaraju | Senior AI System Engineer</title>
+    <title>Vidhya Sree Devaraju | Senior AI System Engineer</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,7 +31,6 @@
         .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-left: 30px; text-transform: uppercase; }
 
         header { padding: 80px 0; display: flex; align-items: center; gap: 50px; border-bottom: 1px solid var(--border); }
-        .profile-wrap { flex-shrink: 0; }
         .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--surface); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
         h1 { font-family: 'Space Grotesk'; font-size: 3.5rem; line-height: 1; letter-spacing: -3px; margin-bottom: 20px; }
@@ -40,8 +39,15 @@
         section { padding: 80px 0; border-bottom: 1px solid var(--border); }
         h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 40px; letter-spacing: -1px; color: var(--accent); }
 
-        details { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; padding: 20px; transition: all 0.3s ease; }
-        details[open] { background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        /* GitHub Repo Styling */
+        .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
+        .repo-card { padding: 25px; background: #fff; border: 1px solid var(--border); border-radius: 8px; transition: all 0.2s ease; text-decoration: none; display: block; }
+        .repo-card:hover { border-color: var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05); transform: translateY(-2px); }
+        .repo-name { font-family: 'Space Grotesk'; font-weight: 700; color: var(--accent); font-size: 1.1rem; margin-bottom: 10px; }
+        .repo-badge { font-size: 0.65rem; border: 1px solid var(--border); padding: 2px 8px; border-radius: 12px; color: var(--text-muted); font-weight: 600; margin-left: 10px;}
+        .repo-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; }
+
+        details { background: var(--surface); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px; padding: 20px; }
         summary { cursor: pointer; font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.2rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
         summary::after { content: 'SHOW FULL DATA +'; font-size: 0.7rem; color: var(--accent); letter-spacing: 1px; font-weight: 800; }
         details[open] summary::after { content: 'HIDE DETAILS -'; }
@@ -54,21 +60,11 @@
         .bullet-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { padding: 25px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); height: 100%; }
+        .card { padding: 25px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); }
         
         footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
         @media (max-width: 768px) { h1 { font-size: 2.5rem; } header { flex-direction: column; text-align: center; } }
-
-        .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
-        .repo-card { padding: 25px; background: #fff; border: 1px solid var(--border); border-radius: 8px; transition: all 0.2s ease; text-decoration: none; display: block; position: relative; }
-        .repo-card:hover { border-color: var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .repo-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-        .repo-name { font-family: 'Space Grotesk'; font-weight: 700; color: var(--accent); font-size: 1.1rem; text-decoration: none; }
-        .repo-badge { font-size: 0.65rem; border: 1px solid var(--border); padding: 2px 8px; border-radius: 12px; color: var(--text-muted); font-weight: 600; }
-        .repo-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; min-height: 40px; }
-        .repo-lang { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; color: var(--text-main); }
-        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; } 
     </style>
 </head>
 <body>
@@ -79,7 +75,7 @@
             <div class="nav-links">
                 <a href="#repos">AI Repositories</a>
                 <a href="#experience">Cloud Experience</a>
-                <a href="#in-house">In-House Projects</a>
+                <a href="#in-house">Internal Projects</a>
                 <a href="#hobbies">Interests</a>
             </div>
         </nav>
@@ -87,172 +83,119 @@
         <header>
             <div class="profile-wrap"><img src="profile.jpg" alt="Vidhyasree Devaraju" class="profile-img"></div>
             <div>
-                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;">Software Engineer // Microsoft Vendor</span>
+                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;">Software Engineer // Microsoft Vendor (Quadrant Resources)</span>
                 <h1>Systems & <br>Cloud Engineering.</h1>
-                <p class="objective">Results-driven Software Engineer with 8 years of experience in designing and implementing high-quality cloud and web solutions. Expertise in Azure Fleet Resiliency, Cosmos DB, and Agentic AI workflows.</p>
+                <p class="objective">Results-driven Software Engineer with 8 years of experience. Expert in designing and implementing high-quality cloud and web solutions with a focus on Azure Fleet Resiliency, Cosmos DB, and Agentic AI workflows.</p>
             </div>
         </header>
 
         <section id="repos">
-            <h2>Popular Repositories</h2>
+            <h2>Active AI Repositories</h2>
             <div class="repo-grid">
                 <a href="https://github.com/vidhyasree/vidhyasree.github.io-" target="_blank" class="repo-card">
-                    <div class="repo-header">
-                        <span class="repo-name">vidhyasree.github.io-</span>
-                        <span class="repo-badge">Public</span>
-                    </div>
-                    <p class="repo-desc">Professional portfolio and system engineering documentation.</p>
-                    <div class="repo-lang">
-                        <span class="dot" style="background: #e34c26;"></span> HTML
-                    </div>
+                    <div class="repo-name">vidhyasree.github.io- <span class="repo-badge">Public</span></div>
+                    <p class="repo-desc">Professional portfolio source code and AI system documentation.</p>
                 </a>
-
                 <a href="https://github.com/vidhyasree/agentic-incident-investigator" target="_blank" class="repo-card">
-                    <div class="repo-header">
-                        <span class="repo-name">agentic-incident-investigator</span>
-                        <span class="repo-badge">Public</span>
-                    </div>
+                    <div class="repo-name">agentic-investigator <span class="repo-badge">Public</span></div>
                     <p class="repo-desc">Automating Azure live-site incident investigations using autonomous agents.</p>
-                    <div class="repo-lang">
-                        <span class="dot" style="background: #3572A5;"></span> Python
-                    </div>
                 </a>
-
                 <a href="https://github.com/vidhyasree/ai-learning-vault-2026" target="_blank" class="repo-card">
-                    <div class="repo-header">
-                        <span class="repo-name">ai-learning-vault-2026</span>
-                        <span class="repo-badge">Public</span>
-                    </div>
-                    <p class="repo-desc">Daily research, technical notes, and industry projections for Agentic AI and System Engineering.</p>
-                    <div class="repo-lang">
-                        <span class="dot" style="background: #f1e05a;"></span> Research / Notes
-                    </div>
+                    <div class="repo-name">ai-learning-vault <span class="repo-badge">Public</span></div>
+                    <p class="repo-desc">Technical notes and projections for Agentic AI and System Engineering architecture.</p>
                 </a>
             </div>
         </section>
 
         <section id="experience">
-            <h2>Microsoft Azure // Fleet Operations</h2>
+            <h2>Professional Experience</h2>
             
             <details>
-                <summary>Azure SQL DB Capacity Management (2018 — Present)</summary>
-                <span class="project-env">Redmond, WA | XTS, Kusto, PowerShell, Service Fabric, Power BI</span>
+                <summary>Azure SQL DB Capacity Management | Microsoft (Vendor)</summary>
+                <p class="project-env">Quadrant Resources (Redmond, WA) | April 2021 — Till Date | v-vdevaraju@microsoft.com</p>
                 
-                <span class="section-tag">Value Adds</span>
+                <span class="section-tag">Project Overview & Objectives</span>
                 <ul class="bullet-list">
-                    <li>Proactive Capacity Management: Played a central role in Azure SQL DB short-term capacity planning, actively absorbing sudden demand spikes and ensuring uninterrupted service stability.</li>
-                    <li>Standardized Incident Triage: Streamlined investigation workflows by leveraging Kusto (KQL), SQL, and IcM telemetry, significantly reducing manual effort and accelerating root cause identification.</li>
-                    <li>Global Team Synergy: Acted as a reliable, strategic bridge between onshore and offshore teams, ensuring seamless coordination on capacity planning and live-site incident mitigation.</li>
-                    <li>Executive Communication: Elevated the quality of stakeholder reporting by transforming complex technical data into clear, professional incident updates and status reports.</li>
-                    <li>Process Automation: Continuously identify repeat incident patterns and proposed automated, script-ready workflows to eliminate operational toil.</li>
-                </ul>
-
-                <span class="section-tag">AI Work</span>
-                <ul class="bullet-list">
-                    <li>Operational AI Integration: Actively learning and applying AI tools into daily operational workflows to boost team productivity and accelerate incident investigations.</li>
-                </ul>
-
-                <span class="section-tag">Business Benefits Achieved</span>
-                <ul class="bullet-list">
-                    <li>Service Reliability & MTTR: Accelerated incident detection and resolution times, drastically reducing potential customer impact and improving overall Azure SQL DB availability.</li>
-                    <li>Infrastructure Modernization: Successfully achieved adoption of PaaSv2 (from a sellable vCore perspective) ahead of projected timelines for COGS benefits.</li>
-                    <li>Legacy Hardware Decommissioning: Reached a historic milestone by fully decommissioning of Gen3 & Gen4 hardware and achieving a high return rate for Gen7, drastically reducing technical debt.</li>
-                    <li>High-Value Customer Success: Drove Zonal onboarding progress for Business Critical and Premium DBs, successfully pushing completion rates for eligible S500 customers.</li>
-                    <li>Data-Driven Operations: Shifted the operational paradigm from reactive, manual investigations to proactive, data-driven capacity analysis and readiness.</li>
-                </ul>
-
-                <span class="section-tag">Core Operations & Major Milestones</span>
-                <ul class="bullet-list">
-                    <li>Critical Infrastructure Migrations: Successfully driving complex fleet transitions, including SPO migration to Gen8, QCS migration, and MAZ migration from Regional to MAZ rings.</li>
-                    <li>RDFE to PaaSv2 Conversion: Executed the massive multi-year effort to fully migrate the fleet, including sending rings to Decom within a 90-day window to cover all Zonal and AMD conversions.</li>
-                    <li>SPO Pool Stabilization: Transitioned SPO pool applications to modern Gen7/Gen8 hardware, actively mitigating long-standing incidents related to high CPU usage.</li>
-                    <li>Daily Fleet Operations: Managed ongoing Azure SQL DB capacity monitoring, short-term planning, and live-site incident mitigation.</li>
-                    <li>Root Cause Analysis (RCA): Spearheaded deep-dive investigations utilizing IcM dashboards and historical data to permanently resolve recurring infrastructure anomalies.</li>
-                    <li>Comprehensive Incident Management: Directed end-to-end triage, investigation, and mitigation for a diverse array of IcM alerts. Expertly managed complex, high-priority live-site scenarios, including GEO DR events and specialized monitor alerts.</li>
-                    <li>RCS Workflow Automation: Continuously engineered and refined RCS automation workflows to execute commands with built-in validation and dynamic retry logic.</li>
-                    <li>Release & Deployment Management: Actively participated in Change Advisory Board (CAB) processes, overseeing seamless CI/CD pipeline integrations.</li>
-                    <li>Developed an end-to-end Power BI dashboard utilizing advanced DAX queries for the Azure SQL DB Capacity Management team to track vendor queues and ICM backlogs.</li>
-                    <li>Resiliency & Configuration Rollouts: Implemented critical fallback settings and orchestrated their timely deployment to client environments.</li>
+                    <li>Primary Focus: Data Analysis and Utilization in worldwide regions to ensure minimal utilization percentages, avoiding hot segments and customer data loss.</li>
+                    <li>Business Performance Impact: Identifying areas requiring more attention and resources to effectively manage data and prevent excessive usage problems.</li>
+                    <li>Resource Optimization: Regularly analyzing data using **XTS, Kusto, PowerShell, Service Fabric Explorer, and Power BI** to improve overall efficiency.</li>
+                    <li>Corrective Strategy: Periodically performing analysis to maintain minimal utilization and requesting capacity in specific areas as needed.</li>
+                    <li>Migrations & Operations: Managing Node Re-size operations and large-scale fleet migrations to maintain service reliability.</li>
                 </ul>
             </details>
 
             <details>
-                <summary>Azure Cosmos DB Engineering Systems (2019 — 2021)</summary>
-                <span class="project-env">Hyderabad | C#, ASP.NET, Cosmos DB, Azure Functions, Power BI, MS Flow</span>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 15px 0;">Azure Cosmos DB is Microsoft's globally distributed, multi-model database service enabling elastic scale of throughput and storage across geographic regions.</p>
+                <summary>Azure Cosmos DB | Microsoft (Vendor)</summary>
+                <p class="project-env">Quadrant Resources (Hyderabad/Offshore) | Dec 2019 — Sept 2021 | v-viddev@microsoft.com</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 15px 0;">Cosmos DB is Microsoft's globally distributed database enabling elastic scale across geographic regions while remaining highly available for any operation.</p>
                 
-                <span class="section-tag">Incident Tracking & Reporting</span>
+                <span class="section-tag">Module I: Dashboard Responsibility</span>
                 <ul class="bullet-list">
-                    <li>Created comprehensive Power BI reports for incident tracking.</li>
-                    <li>Wrote complex DAX queries to show accurate, real-time data for engineering health.</li>
-                </ul>
-
-                <span class="section-tag">Module/Team I: Dashboard</span>
-                <ul class="bullet-list">
-                    <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
-                    <li>Worked on AAD Token and writing unit test cases for owned services.</li>
-                    <li>Implemented MS-Flows to trigger notifications for Azure costs and exceptions.</li>
+                    <li>Individually developed a module to calculate the total Azure Spend for environment subscriptions.</li>
+                    <li>Worked on AAD Token integration and developed unit test cases using **Moq**.</li>
+                    <li>Built MS-Flows to trigger notifications for azure costs and exceptions.</li>
                     <li>Involved in creating Azure Functions and managing deployment processes.</li>
                 </ul>
 
-                <span class="section-tag">Module/Team II: Engineering Systems</span>
+                <span class="section-tag">Module II: Engineering Systems Responsibility</span>
                 <ul class="bullet-list">
                     <li>Monitored pipelines in both Build and Test phases.</li>
-                    <li>Utilized MS-Flows to send daily reports and auto-create IcMs for build failures.</li>
-                    <li>Gathered requirements directly from clients and updated Technical Support Guides (TSGs).</li>
-                    <li>Wrote PowerShell scripts for disk clean ups and updates in Azure Scale Sets.</li>
+                    <li>Engineered MS-Flows for daily reporting and automated IcM creation for build failures.</li>
+                    <li>Interacted directly with clients for requirement gathering and updated Technical Support Guides (TSGs) via .md files.</li>
+                    <li>Wrote PowerShell scripts for disk cleanups and Windows updates on Azure Scale Sets.</li>
                 </ul>
             </details>
         </section>
 
         <section id="in-house">
-            <h2>Professional In-House Builds</h2>
+            <h2>Internal Projects (Quadrant Resources)</h2>
+            <p class="project-env" style="margin-bottom: 20px;">May 2018 — Nov 2019</p>
             <div class="grid-3">
                 <div class="card">
-                    <span class="project-env">WATS Portal</span>
-                    <h4>Event Management</h4>
+                    <h4>WATS Portal (Event Management)</h4>
                     <details>
-                        <summary>View Details</summary>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 10px 0;">Developed an Event Management System for WATA, streamlining organization and ticketing. Users browse events, purchase tickets securely, and receive updates.</p>
+                        <summary>Project Details</summary>
                         <ul class="bullet-list" style="font-size: 0.85rem;">
-                            <li>Role: .NET Developer</li>
-                            <li>Stack: .NET MVC 4.0, EF6, SQL 2012</li>
-                            <li>Designed UI with HTML5, jQuery, and CSS.</li>
-                            <li>Created stored procedures for inserting, deleting, and updating data.</li>
-                            <li>Implemented Form-based Authentication and full Database Design.</li>
+                            <li>Streamlined ticketing and event browsing for Washington Telugu Samithi (WATA).</li>
+                            <li>Stack: .NET MVC 4.0, EF6, SQL 2012, Bootstrap.</li>
+                            <li>Created complex T-SQL code, Joins, and Stored Procedures.</li>
+                            <li>Designed UI with HTML5 and jQuery; implemented Form-based Authentication.</li>
                         </ul>
                     </details>
                 </div>
 
                 <div class="card">
-                    <span class="project-env">Office Portal</span>
-                    <h4>Corporate Ops</h4>
+                    <h4>Office Management Portal</h4>
                     <details>
-                        <summary>View Details</summary>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 10px 0;">Application to track performance, attendance, projects, tasks, emails, and chat. Includes billing and customer dues modules.</p>
+                        <summary>Project Details</summary>
                         <ul class="bullet-list" style="font-size: 0.85rem;">
-                            <li>Role: .NET Developer</li>
-                            <li>Developed employee reporting (WHO) authorities module.</li>
-                            <li>Handled debugging and supporting internet browsers with MVC architecture.</li>
-                            <li>Created complex SQL joins and T-SQL code for applications.</li>
+                            <li>Tracked employee performance, attendance, projects, and task assignments.</li>
+                            <li>Integrated team chat, leave requests, and email notifications.</li>
+                            <li>Built customer module for tracking billing details, payments, and dues.</li>
+                            <li>Managed reporting authorities (WHO) module database design.</li>
                         </ul>
                     </details>
                 </div>
 
                 <div class="card">
-                    <span class="project-env">SRK Travels</span>
-                    <h4>Logistics Solution</h4>
+                    <h4>SRK Travels (Logistics Solution)</h4>
                     <details>
-                        <summary>View Details</summary>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 10px 0;">Transport solution organizing tours across multiple districts. Automated previously manual processes for tours, employees, and customers.</p>
+                        <summary>Project Details</summary>
                         <ul class="bullet-list" style="font-size: 0.85rem;">
-                            <li>Role: .NET Developer</li>
-                            <li>Refactored manual data entry into automated digital records.</li>
-                            <li>Experience in full lifecycle: developing, testing, and debugging.</li>
-                            <li>Participated in daily scrums with project leads.</li>
+                            <li>Automated manual transport processes for nationwide tour management.</li>
+                            <li>Maintained detailed digital records for tours, employees, and customers.</li>
+                            <li>Designed UI for district-level transport coordination using MVC architecture.</li>
                         </ul>
                     </details>
                 </div>
+            </div>
+        </section>
+
+        <section id="certification">
+            <h2>Certifications & Declaration</h2>
+            <div class="card">
+                <p><strong>AZ-204: Developing Solutions for Microsoft Azure</strong> (Issued 2020)</p>
+                <p style="margin-top: 20px; font-style: italic; font-size: 0.85rem; color: var(--text-muted);">"I hereby declare that all the details mentioned above are true to the best of my knowledge and ability."</p>
             </div>
         </section>
 
@@ -260,19 +203,19 @@
             <h2>Lifestyle & Interests</h2>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
-                    <img src="biryani.jpg" style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:15px;">
+                    <img src="biryani.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                     <strong>Culinary Arts</strong>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <img src="violin.JPG" style="width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:15px;">
+                    <img src="violin.JPG" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
                     <strong>Carnatic Music</strong>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 Vidhyasree Devaraju | Redmond, Washington | vidya98sree@gmail.com</p>
-            <p style="margin-top: 15px; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px;">AZ-204 CERTIFIED // MICROSOFT VENDOR</p>
+            <p>&copy; 2026 Vidhya Sree Devaraju | Redmond, Washington | vidya98sree@gmail.com</p>
+            <p style="margin-top: 15px; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px;">QUADRANT RESOURCES // MICROSOFT VENDOR</p>
         </footer>
     </div>
 
