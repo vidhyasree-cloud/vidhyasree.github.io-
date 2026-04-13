@@ -29,6 +29,7 @@
         }
         .nav-logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-left: 30px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--accent); }
 
         header { padding: 80px 0; display: flex; align-items: center; gap: 50px; border-bottom: 1px solid var(--border); }
         .profile-wrap { flex-shrink: 0; }
@@ -39,6 +40,8 @@
 
         section { padding: 80px 0; border-bottom: 1px solid var(--border); }
         h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 40px; letter-spacing: -1px; color: var(--accent); }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
         .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
         .repo-card { padding: 25px; background: #fff; border: 1px solid var(--border); border-radius: 8px; transition: all 0.2s ease; text-decoration: none; display: block; }
@@ -62,51 +65,31 @@
         footer { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
         @media (max-width: 768px) { h1 { font-size: 2.5rem; } header { flex-direction: column; text-align: center; } }
-/* Education & Learning Specific Styles */
-#education .grid-3 {
-    gap: 25px;
-    margin-top: 20px;
-}
 
-#education .project-block {
-    border-top: 4px solid var(--accent); /* Adds a top bar to signify importance */
-    background: #ffffff; /* Brighter background to stand out from the surface color */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    height: 100%; /* Keeps cards equal height */
-    display: flex;
-    flex-direction: column;
-}
+        /* Education & Learning Specific Styles */
+        #education .project-block, #ai-specialization .card {
+            border-top: 4px solid var(--accent); 
+            background: #ffffff; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            height: 100%; 
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            border-radius: 12px;
+        }
 
-#education h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    color: var(--text-main);
-}
+        #education h4, #ai-specialization h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
 
-#education .project-env {
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    margin-bottom: 5px;
-}
-
-/* Specific styling for the AI Curriculum list */
-#education .bullet-list li {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin-bottom: 8px;
-}
-
-#education .bullet-list li strong {
-    color: var(--text-main);
-}
-
-/* Hover effect for the cards */
-#education .project-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
-    transition: all 0.3s ease;
-}
+        #education .project-block:hover, #ai-specialization .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
         
     </style>
 </head>
@@ -117,6 +100,7 @@
             <div class="nav-logo">VIDHYA SREE DEVARAJU</div>
             <div class="nav-links">
                 <a href="#ai-specialization">AI Specialization</a>
+                <a href="#stack-radar">Tech Stack</a>
                 <a href="#experience">Microsoft Projects</a>
                 <a href="#in-house">In-House Projects</a>
             </div>
@@ -131,40 +115,58 @@
             </div>
         </header>
 
- <section id="ai-specialization">
-    <h2>AI Specialization & Masteries</h2>
-    <div class="grid-3">
-        <div class="card">
-            <span class="project-env">Orchestration</span>
-            <h4>Agentic Workflows</h4>
-            <ul class="bullet-list" style="font-size: 0.85rem;">
-                <li>Implementing <strong>LangChain</strong> and <strong>LangGraph</strong> for autonomous system investigators.</li>
-                <li>Developing stateful agents that can "reason" through Azure live-site incident logs.</li>
-                <li>Researching <strong>RAG</strong> architectures to bridge enterprise data with LLMs.</li>
-            </ul>
-        </div>
+        <section id="ai-specialization">
+            <h2>AI Specialization & Masteries</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="project-env">Orchestration</span>
+                    <h4>Agentic Workflows</h4>
+                    <ul class="bullet-list" style="font-size: 0.85rem;">
+                        <li>Implementing <strong>LangChain</strong> and <strong>LangGraph</strong> for autonomous system investigators.</li>
+                        <li>Developing stateful agents that can "reason" through Azure live-site incident logs.</li>
+                        <li>Researching <strong>RAG</strong> architectures to bridge enterprise data with LLMs.</li>
+                    </ul>
+                </div>
 
-        <div class="card">
-            <span class="project-env">Systems Integration</span>
-            <h4>Applied AIOps</h4>
-            <ul class="bullet-list" style="font-size: 0.85rem;">
-                <li>Studying LLM-based <strong>Root Cause Analysis (RCA)</strong> to automate triage for fleet incidents.</li>
-                <li>Engineering prompts to transform complex <strong>Kusto (KQL)</strong> results into actionable AI insights.</li>
-                <li>Focused on reducing <strong>MTTR</strong> (Mean Time To Recovery) using intelligent agent monitoring.</li>
-            </ul>
-        </div>
+                <div class="card">
+                    <span class="project-env">Systems Integration</span>
+                    <h4>Applied AIOps</h4>
+                    <ul class="bullet-list" style="font-size: 0.85rem;">
+                        <li>Studying LLM-based <strong>Root Cause Analysis (RCA)</strong> to automate triage for fleet incidents.</li>
+                        <li>Engineering prompts to transform complex <strong>Kusto (KQL)</strong> results into actionable AI insights.</li>
+                        <li>Focused on reducing <strong>MTTR</strong> (Mean Time To Recovery) using intelligent agent monitoring.</li>
+                    </ul>
+                </div>
 
-        <div class="card">
-            <span class="project-env">Scalability</span>
-            <h4>AI Infrastructure</h4>
-            <ul class="bullet-list" style="font-size: 0.85rem;">
-                <li>Evaluating <strong>Vector Databases</strong> (like Pinecone) for high-dimensional telemetry storage.</li>
-                <li>Researching <strong>LLMOps</strong>—applying the same resiliency used in Azure SQL to AI model production.</li>
-                <li>Tracking industry shifts in model fine-tuning and domain-specific LLM performance.</li>
-            </ul>
-        </div>
-    </div>
-</section>
+                <div class="card">
+                    <span class="project-env">Scalability</span>
+                    <h4>AI Infrastructure</h4>
+                    <ul class="bullet-list" style="font-size: 0.85rem;">
+                        <li>Evaluating <strong>Vector Databases</strong> (like Pinecone) for high-dimensional telemetry storage.</li>
+                        <li>Researching <strong>LLMOps</strong>—applying the same resiliency used in Azure SQL to AI model production.</li>
+                        <li>Tracking industry shifts in model fine-tuning and domain-specific LLM performance.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="stack-radar">
+            <h2>Systems & AI Stack</h2>
+            <div class="repo-grid">
+                <div class="repo-card">
+                    <span class="section-tag">Backend & Cloud</span>
+                    <p class="desc-text">.NET Core, Azure Functions, Microservices, SQL Server, Cosmos DB, Azure Fleet Management.</p>
+                </div>
+                <div class="repo-card">
+                    <span class="section-tag">Observability (AIOps)</span>
+                    <p class="desc-text">Kusto (KQL), Azure Data Explorer, Power BI (DAX), IcM Triage, Telemetry Analysis.</p>
+                </div>
+                <div class="repo-card">
+                    <span class="section-tag">AI Orchestration</span>
+                    <p class="desc-text">LangChain, LangGraph, OpenAI API, RAG Architecture, Vector Databases (Pinecone).</p>
+                </div>
+            </div>
+        </section>
 
         <section id="experience">
             <h2>Microsoft Projects (Quadrant Resources)</h2>
@@ -291,45 +293,36 @@ Data utilization is a crucial aspect that directly impacts business performance.
         </section>
 
         <section id="education">
-    <h2>Education & Professional Learning</h2>
-    <div class="grid-3">
-        <div class="project-block">
-            <span class="project-env">Degree</span>
-            <h4>Bachelor of Commerce (B.Com Computer Application)</h4>
-            <p class="desc-text">Specialization in Computer Applications</p>
-            <p style="font-weight: 700; color: var(--accent);">Passed Out: 2018</p>
-        </div>
+            <h2>Education & Professional Learning</h2>
+            <div class="grid-3">
+                <div class="project-block">
+                    <span class="project-env">Degree</span>
+                    <h4>Bachelor of Commerce (B.Com Computer Application)</h4>
+                    <p class="desc-text">Specialization in Computer Applications</p>
+                    <p style="font-weight: 700; color: var(--accent);">Passed Out: 2018</p>
+                </div>
 
-        <div class="project-block">
-            <span class="project-env">AI Curriculum</span>
-            <h4>Active Learning & Courses</h4>
-            <ul class="bullet-list" style="font-size: 0.85rem;">
-                <li><strong>Deep Learning Specialization</strong> – Focus on Transformer architectures.</li>
-                <li><strong>Generative AI with LLMs</strong> – Mastering LangChain & RAG.</li>
-                <li><strong>Azure AI Engineer</strong> – Integrating Cognitive Services.</li>
-            </ul>
-        </div>
+                <div class="project-block">
+                    <span class="project-env">AI Curriculum</span>
+                    <h4>Active Learning & Courses</h4>
+                    <ul class="bullet-list" style="font-size: 0.85rem;">
+                        <li><strong>Deep Learning Specialization</strong> – Focus on Transformer architectures.</li>
+                        <li><strong>Generative AI with LLMs</strong> – Mastering LangChain & RAG.</li>
+                        <li><strong>Azure AI Engineer</strong> – Integrating Cognitive Services.</li>
+                    </ul>
+                </div>
 
-        <div class="project-block">
-            <span class="project-env">Certification</span>
-            <h4>Microsoft Certified</h4>
-            <p class="desc-text">AZ-204: Developing Solutions for Microsoft Azure</p>
-            <p style="font-weight: 700; color: var(--accent);">Issued 2020</p>
-        </div>
-    </div>
-</section>
+                <div class="project-block">
+                    <span class="project-env">Certification</span>
+                    <h4>Microsoft Certified</h4>
+                    <p class="desc-text">AZ-204: Developing Solutions for Microsoft Azure</p>
+                    <p style="font-weight: 700; color: var(--accent);">Issued 2020</p>
+                </div>
+            </div>
+        </section>
+
         <section id="certification">
             <div class="project-block" style="text-align: center;">
                 <h3>Certification & Declaration</h3>
-                <p style="margin: 15px 0;"><strong>AZ-204: Developing Solutions for Microsoft Azure</strong> (Issued 2020)</p>
-                <p style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 15px;">"I hereby declare that all the details mentioned above are true to the best of my knowledge and ability."</p>
-            </div>
-        </section>
-        <footer>
-            <p>&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
-            <p style="margin-top: 10px; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px;">QUADRANT RESOURCES // MICROSOFT VENDOR</p>
-        </footer>
-    </div>
-
-</body>
-</html>
+                <div style="margin: 20px 0; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <p><strong>DP-600: Azure
