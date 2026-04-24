@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Senior Cloud SRE & Full-Stack Architect</title>
+    <title>Vidhya Sree Devaraju | Senior Cloud SRE & Systems Architect</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -12,8 +12,7 @@
 
     <style>
         :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.85); --border: rgba(48, 54, 61, 0.5); }
-        
-        * { cursor: none; } /* Custom System Cursor */
+        * { cursor: auto; } /* Standard cursor for better usability, but high-end design */
 
         body { 
             background: var(--bg); 
@@ -25,18 +24,14 @@
 
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
         
-        /* Custom Cursor */
-        #cursor { position: fixed; width: 10px; height: 10px; background: var(--neon); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s; }
-        #cursor-follower { position: fixed; width: 30px; height: 30px; border: 1px solid var(--neon); border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.15s; }
-
         .system-card { 
             background: var(--panel); 
             backdrop-filter: blur(25px); 
             border: 1px solid var(--border); 
-            border-radius: 0px; /* Brutalist sharp edges */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 4px;
+            transition: all 0.4s ease;
         }
-        .system-card:hover { border-color: var(--neon); transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1); }
+        .system-card:hover { border-color: var(--neon); box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1); }
 
         .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 4px; }
 
@@ -50,19 +45,13 @@
         .bullet-list li::before { content: "»"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
 
         .glitch { font-family: 'Syncopate'; position: relative; display: inline-block; }
-        .glitch::after { content: attr(data-text); position: absolute; left: 2px; text-shadow: -1px 0 red; clip: rect(0, 900px, 0, 0); animation: noise 2s infinite linear alternate-reverse; }
-
-        @keyframes noise { 0% { clip: rect(42px, 9999px, 44px, 0); } 100% { clip: rect(12px, 9999px, 90px, 0); } }
-
         .tech-pill { border: 1px solid var(--border); padding: 4px 12px; font-size: 10px; font-weight: 700; color: #8b949e; text-transform: uppercase; }
         
-        footer { border-top: 1px solid var(--border); background: #010409; padding: 100px 0 50px 0; }
+        footer { border-top: 1px solid var(--border); background: #010409; padding: 80px 0 50px 0; }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
     <canvas id="bg-canvas"></canvas>
 
     <nav class="fixed w-full z-50 glass py-6 px-10 border-b border-white/5 backdrop-blur-xl">
@@ -71,11 +60,11 @@
             <div class="flex items-center gap-10">
                 <div class="hidden lg:flex gap-10 text-[10px] font-bold tracking-[0.3em]">
                     <a href="#experience" class="hover:text-cyan-400">01_EXPERIENCE</a>
-                    <a href="#stack" class="hover:text-cyan-400">02_SYSTEMS</a>
-                    <a href="#in-house" class="hover:text-cyan-400">03_PROJECTS</a>
+                    <a href="#in-house" class="hover:text-cyan-400">02_IN_HOUSE</a>
+                    <a href="mailto:vidya98sree@gmail.com" class="hover:text-cyan-400">03_CONTACT</a>
                 </div>
                 <span class="text-[9px] font-bold text-green-400 flex items-center gap-2">
-                    <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span> SYSTEM_STABLE
+                    <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span> SYSTEM_HEALTH: OK
                 </span>
             </div>
         </div>
@@ -85,94 +74,54 @@
         
         <header class="mb-48 grid lg:grid-cols-2 gap-20 items-center">
             <div class="animate__animated animate__fadeInLeft">
-                <span class="tag block mb-6">// SENIOR_SRE_UPLINK_2026</span>
+                <span class="tag block mb-6">// REDMOND_UPLINK_SESSION_2026</span>
                 <h1 class="text-6xl md:text-8xl font-bold mb-10 leading-none uppercase" style="font-family: 'Syncopate';">
                     CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
                 </h1>
-                <p class="text-slate-400 max-w-xl text-xl font-light">
-                    7th year senior architect specializing in Microsoft ecosystem resilience. Built on 7 years of deep-stack engineering across distributed Azure clusters and mission-critical database tiers.
+                <p class="text-slate-400 max-w-xl text-xl font-light leading-relaxed">
+                    Senior Systems Architect with 7 years of specialized expertise in the Microsoft ecosystem. Orchestrating high-resiliency cloud solutions and full-stack distributed systems.
                 </p>
             </div>
             <div class="flex justify-center animate__animated animate__fadeInRight">
-                <div class="relative w-80 h-80">
-                    <div class="absolute -inset-4 border border-cyan-400/20 animate-spin-slow"></div>
-                    <img src="https://github.com/vidhyasree-cloud.png" alt="Profile" class="w-full h-full object-cover filter grayscale contrast-125">
+                <div class="relative w-72 h-72">
+                    <div class="absolute -inset-4 border border-cyan-400/20 animate-pulse"></div>
+                    <img src="profile.jpg" alt="Vidhya Sree" class="w-full h-full object-cover filter grayscale contrast-125 shadow-2xl">
                 </div>
             </div>
         </header>
 
-        <section id="stack" class="mb-48">
-            <h2 class="text-2xl font-bold mb-16 flex items-center gap-6" style="font-family: 'Syncopate';">
-                <span class="h-px w-20 bg-cyan-400"></span> FULL_STACK_METRICS
-            </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="system-card p-10">
-                    <span class="tag mb-6 block">Languages & Core</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">C#.NET</span><span class="tech-pill">POWERSHELL</span><span class="tech-pill">JAVASCRIPT</span><span class="tech-pill">T-SQL</span><span class="tech-pill">KQL</span>
-                    </div>
-                </div>
-                <div class="system-card p-10">
-                    <span class="tag mb-6 block">Cloud & Infra</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">AZURE FUNCTIONS</span><span class="tech-pill">COSMOS DB</span><span class="tech-pill">MS FLOW</span><span class="tech-pill">SERVICE FABRIC</span>
-                    </div>
-                </div>
-                <div class="system-card p-10">
-                    <span class="tag mb-6 block">Web & DevTools</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">REACT.JS</span><span class="tech-pill">ANGULAR</span><span class="tech-pill">GIT</span><span class="tech-pill">MOQ</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="experience" class="mb-48">
             <h2 class="text-2xl font-bold mb-16 flex items-center gap-6" style="font-family: 'Syncopate';">
-                <span class="h-px w-20 bg-cyan-400"></span> PROFESSIONAL_RECORDS
+                <span class="h-px w-20 bg-cyan-400"></span> PROFESSIONAL_LOGS
             </h2>
 
             <div class="system-card p-12 mb-10 border-l-4 border-l-cyan-400">
-                <div class="flex flex-col md:flex-row justify-between mb-8">
-                    <h3 class="text-3xl font-bold">Azure SQL DB Capacity Management</h3>
-                    <span class="tag opacity-50">Jan 2022 — Present | v-vdevaraju@microsoft.com</span>
-                </div>
-                <p class="text-slate-300 mb-8 text-lg">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. Data Utilization is a crucial aspect that directly impacts Business Performance. It helps in identifying the areas that require more Attention and Resources. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency. We will be using XTS, Kusto, PowerShell, Service Fabric Explorer, Power BI. We will analyze the data regularly to identify any areas that require attention and take corrective actions accordingly.</p>
+                <h3 class="text-3xl font-bold mb-2">Azure SQL DB Capacity Management</h3>
+                <span class="tag opacity-50 block mb-6">April 2022 — Present | v-vdevaraju@microsoft.com</span>
+                <p class="text-slate-300 mb-8 leading-relaxed">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. Data Utilization is a crucial aspect that directly impacts Business Performance. It helps in identifying the areas that require more Attention and Resources. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency. We will be using XTS, Kusto, PowerShell, Service Fabric Explorer, Power BI. We will analyze the data regularly to identify any areas that require attention and take corrective actions accordingly.</p>
                 <details open>
-                    <summary>Impact Log & Node Migrations</summary>
+                    <summary>Impact & Node Migrations</summary>
                     <ul class="bullet-list">
-                        <li>The data analysis will be done periodically to ensure that the Utilization Percentage is always maintained at the minimal level.</li>
-                        <li>If we need capacity will request the capacity in Particular areas needed.</li>
-                        <li>In conclusion, the project deals with Data Utilization Analysis in Worldwide regions to ensure Minimal Utilization Percentage and avoid customer data loss.</li>
+                        <li>Periodic data analysis to ensure Utilization Percentage is maintained at the minimal level.</li>
+                        <li>Capacity requests in particular areas as needed based on regular analysis.</li>
                         <li>Migrations: Node Re-size.</li>
                     </ul>
                 </details>
             </div>
 
             <div class="system-card p-12 mb-10">
-                <div class="flex flex-col md:flex-row justify-between mb-8">
-                    <h3 class="text-3xl font-bold">Azure Cosmos DB</h3>
-                    <span class="tag opacity-50">Dec 2019 — Sept 2021 | v-viddev@microsoft.com</span>
-                </div>
+                <h3 class="text-3xl font-bold mb-2">Azure Cosmos DB</h3>
+                <span class="tag opacity-50 block mb-6">Dec 2019 — Sept 2021 | v-viddev@microsoft.com</span>
                 <p class="text-slate-400 mb-8 italic">Description: Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. Cosmos DB enables you to elastically and independently scale throughput and storage across any number of Azure's geographic regions. There are multiple teams which are working separately for continuous integration, continuous deployment, backup and restore, dashboard etc.</p>
                 <details>
-                    <summary>Module I: Dashboard Responsibilities</summary>
+                    <summary>Responsibilities: Dashboard & Engineering Systems</summary>
                     <ul class="bullet-list">
                         <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
                         <li>Worked on AAD Token.</li>
                         <li>Involved in writing test cases to perform unit testing for few services which I was owned.</li>
-                        <li>Worked on the on the MS-Flows which trigger notification to the user for azure cast and exceptions, if there are any.</li>
-                        <li>Involved in creating Azure Functions and involvement in deployment process.</li>
-                    </ul>
-                </details>
-                <details>
-                    <summary>Module II: Engineering Systems Responsibilities</summary>
-                    <ul class="bullet-list">
-                        <li>Involved in monitoring pipeline in Build phase as well as Test phase.</li>
-                        <li>Worked on many Microsoft-flows to send reports on daily basis, creating IcM ’s whenever build failed in given pipeline.</li>
-                        <li>Directly interacting with the clients and gathering new requirements.</li>
-                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates in Azure file server and azure scale sets.</li>
-                        <li>Participated in Daily and Weekly status meetings with Team as well as Client.</li>
+                        <li>Worked on the on the MS-Flows which trigger notification to the user for azure cast and exceptions.</li>
+                        <li>Monitoring pipeline in Build phase as well as Test phase.</li>
+                        <li>PowerShell scripts to perform disk clean ups and windows updates.</li>
                         <li>Worked on appropriate TSGs using .md files.</li>
                     </ul>
                 </details>
@@ -181,19 +130,20 @@
 
         <section id="in-house" class="mb-48">
             <h2 class="text-2xl font-bold mb-16 flex items-center gap-6" style="font-family: 'Syncopate';">
-                <span class="h-px w-20 bg-cyan-400"></span> IN-HOUSE_PORTFOLIO
+                <span class="h-px w-20 bg-cyan-400"></span> IN-HOUSE_ENGINEERING_PORTFOLIO
             </h2>
             <div class="grid grid-cols-1 gap-12">
+                
                 <div class="system-card p-12">
-                    <h4 class="text-2xl font-bold mb-4">WATS Portal</h4>
-                    <span class="tag mb-6 block">.NET MVC 4.0, EF6, LINQ, SQL 2012</span>
-                    <p class="text-slate-400 mb-8">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the organization and ticketing process for events. The system enables users to seamlessly browse upcoming events, purchase tickets securely, and receive event-related updates.</p>
+                    <h4 class="text-2xl font-bold mb-2">Office Management Portal</h4>
+                    <span class="tag mb-6 block">Internal Project // .NET MVC 4.0 // SQL 2012</span>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Office Management Portal is an application that helps the management to track employee’s performance, maintain employee’s attendance, projects that company undertook, assign tasks and track them. Other features include sending/receiving emails, leave requests, and billing modules where customers can view details and dues.</p>
                     <details>
-                        <summary>Technical Execution</summary>
+                        <summary>Technical Implementation Log</summary>
                         <ul class="bullet-list">
                             <li>Participated in daily scrums with the project lead to meet requirements and deadlines.</li>
-                            <li>Experience in developing, testing, debugging, and supporting C#, ASP.Net different internet browsers with MVC architecture.</li>
-                            <li>Designed the UI using HTML5, JQuery and CSS.</li>
+                            <li>Experience in developing, testing, debugging, and supporting C#, ASP. Net different internet browsers with MVC architecture.</li>
+                            <li>Designed the UI using HTML5, jQuery and CSS.</li>
                             <li>Created stored procedures for inserting, deleting and updating screens data into database using SQL Server.</li>
                             <li>Created Login Forms and implemented Form-based Authentication to authenticate the users.</li>
                             <li>Created Database Design and Created Tables according to requirements.</li>
@@ -201,23 +151,36 @@
                         </ul>
                     </details>
                 </div>
-                
+
                 <div class="system-card p-12">
-                    <h4 class="text-2xl font-bold mb-4">SRK Travels</h4>
-                    <span class="tag mb-6 block">Legacy Automation // .NET MVC 4.0</span>
-                    <p class="text-slate-400 mb-8">Description: Tours & Travels Management System Transport solution to the different companies situated locally in the many districts and it organizes tour to various Part of the country. Earlier all the Processes were done manually.</p>
+                    <h4 class="text-2xl font-bold mb-2">WATS Portal</h4>
+                    <span class="tag mb-6 block">.NET MVC 4.0 // Bootstrap // EF6</span>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the organization and ticketing process for events. Secure ticket browsing and updates implemented via a user-friendly interface.</p>
                     <details>
-                        <summary>Technical Execution</summary>
+                        <summary>Technical Implementation Log</summary>
                         <ul class="bullet-list">
-                            <li>Participated in daily scrums with the project lead to meet requirements and deadlines.</li>
-                            <li>Experience in developing, testing, debugging, and supporting C#, ASP. Net different internet browsers with MVC architecture.</li>
-                            <li>Designed the UI using HTML5, jQuery and CSS.</li>
-                            <li>Created stored procedures for inserting, deleting and updating screens data into database using SQL Server.</li>
+                            <li>Designed the UI using HTML5, JQuery and CSS.</li>
                             <li>Created Login Forms and implemented Form-based Authentication to authenticate the users.</li>
-                            <li>Created complex Stored Procedures, Functions, Tables and other T-SQL code and SQL joins for applications.</li>
+                            <li>Created Database Design and Created Tables according to requirements.</li>
+                            <li>Created complex Stored Procedures, Functions, and T-SQL joins for applications.</li>
                         </ul>
                     </details>
                 </div>
+
+                <div class="system-card p-12">
+                    <h4 class="text-2xl font-bold mb-2">SRK Travels</h4>
+                    <span class="tag mb-6 block">Legacy Automation // .NET stack</span>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Tours & Travels Management System refactoring. Earlier all processes were done manually. Developed to organize tours to various parts of the country while maintaining employee and customer details.</p>
+                    <details>
+                        <summary>Technical Implementation Log</summary>
+                        <ul class="bullet-list">
+                            <li>Developed, tested, and supported C# / ASP.NET across browsers with MVC architecture.</li>
+                            <li>Created stored procedures for inserting, deleting and updating screens data into database.</li>
+                            <li>Created Database Design and Created Tables according to requirements.</li>
+                        </ul>
+                    </details>
+                </div>
+
             </div>
         </section>
 
@@ -225,39 +188,27 @@
 
     <footer>
         <div class="container mx-auto px-10">
-            <div class="grid lg:grid-cols-3 gap-20">
+            <div class="grid lg:grid-cols-2 gap-20">
                 <div>
-                    <div class="glitch text-2xl font-bold mb-10" data-text="CONTACT.UPLINK" style="font-family: 'Syncopate';">CONTACT.UPLINK</div>
+                    <div class="glitch text-xl font-bold mb-8" style="font-family: 'Syncopate';">CONTACT_UPLINK</div>
                     <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block mb-2 hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
-                    <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
-                </div>
-                <div>
-                    <div class="text-xs font-bold tracking-[0.5em] text-slate-500 mb-10 uppercase">System Network</div>
-                    <div class="flex gap-10">
-                        <a href="#" class="hover:text-cyan-400 transition-colors">LINKEDIN</a>
-                        <a href="#" class="hover:text-cyan-400 transition-colors">GITHUB</a>
-                    </div>
-                </div>
-                <div class="text-right">
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-loose">
-                        &copy; 2026 VIDHYA SREE DEVARAJU<br>
-                        ALL RIGHTS RESERVED // REDMOND, WA<br>
-                        INSTANCE_01 // SECURE DEPLOYMENT
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-6">
+                        © 2026 VIDHYA SREE DEVARAJU // ALL RIGHTS RESERVED
                     </p>
+                </div>
+                <div class="lg:text-right">
+                    <div class="text-[10px] text-slate-500 uppercase tracking-[0.5em] mb-4">Uplink Status</div>
+                    <div class="flex lg:justify-end gap-10">
+                        <a href="https://github.com/vidhyasree-cloud" class="hover:text-cyan-400 transition-colors uppercase text-xs font-bold tracking-widest">GITHUB</a>
+                        <a href="https://www.linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" class="hover:text-cyan-400 transition-colors uppercase text-xs font-bold tracking-widest">LINKEDIN</a>
+                          <a href="https://medium.com/@vidya98sree" class="hover:text-cyan-400 transition-colors uppercase text-xs font-bold tracking-widest">Medium</a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // System Cursor
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursor-follower');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            follower.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-        });
-
         // 3D Matrix Background
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -266,11 +217,11 @@
 
         const starGeo = new THREE.BufferGeometry();
         const starPos = [];
-        for(let i=0; i<4000; i++) {
+        for(let i=0; i<3000; i++) {
             starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
         }
         starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const starMat = new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.5 });
+        const starMat = new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2, transparent: true, opacity: 0.5 });
         const stars = new THREE.Points(starGeo, starMat);
         scene.add(stars);
         camera.position.z = 800;
