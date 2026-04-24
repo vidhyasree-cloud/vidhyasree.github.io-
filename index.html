@@ -12,237 +12,162 @@
 
     <style>
         :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.9); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; }
+        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
         
-        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); border-radius: 4px; }
+        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
         .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
         
-        #console-logs { min-height: 100px; font-family: 'Courier New', monospace; color: var(--neon); opacity: 0.8; }
-        .cursor { display: inline-block; width: 8px; height: 15px; background: var(--neon); animation: blink 1s infinite; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        /* Mobile-First Console Adjustment */
+        #console-logs { min-height: 120px; font-family: 'Courier New', monospace; font-size: 10px; }
+        @media (min-width: 768px) { #console-logs { font-size: 11px; } }
 
-        .project-card { border-left: 3px solid var(--neon); padding-left: 2rem; margin-bottom: 4rem; transition: 0.3s; }
-        .project-card:hover { background: rgba(0, 242, 255, 0.02); }
-        
-        details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1rem; }
-        summary { cursor: pointer; padding: 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; }
-        
-        .bullet-list { list-style: none; padding: 1.5rem 2rem; }
-        .bullet-list li { font-size: 0.85rem; color: #8b949e; margin-bottom: 10px; position: relative; padding-left: 20px; }
-        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
+        /* Project Card Responsive Spacing */
+        .project-card { border-left: 3px solid var(--neon); padding-left: 1.5rem; margin-bottom: 3rem; }
+        @media (min-width: 1024px) { .project-card { padding-left: 2.5rem; margin-bottom: 5rem; } }
 
-        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 4px 12px; font-size: 10px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin: 2px; display: inline-block; }
+        details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1rem; width: 100%; }
+        summary { cursor: pointer; padding: 1rem; font-weight: 700; font-size: 0.8rem; color: var(--neon); }
+        
+        .bullet-list { list-style: none; padding: 1rem; }
+        @media (min-width: 768px) { .bullet-list { padding: 1.5rem 2rem; } }
+
+        /* Smooth Image Transition */
+        .profile-img { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 glass py-4 px-10 border-x-0 border-t-0">
+    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="font-bold text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="hidden md:flex gap-8 text-[9px] font-bold tracking-widest">
-                <a href="#highlights" class="hover:text-cyan-400">01_HIGHLIGHTS</a>
-                <a href="#experience" class="hover:text-cyan-400">02_PROJECT_LOGS</a>
-                <a href="#footer" class="hover:text-cyan-400">03_CONTACT</a>
+            <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
+            <div class="text-[8px] md:text-[10px] font-bold text-green-400 flex items-center gap-2 uppercase tracking-widest">
+                <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> <span class="hidden xs:inline">SYSTEM_HEALTH:</span> OK
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-40 pb-20">
+    <main class="max-w-7xl mx-auto px-6 pt-32 md:pt-48 pb-20">
         
-        <header class="grid lg:grid-cols-2 gap-16 items-center mb-32">
-            <div>
-                <span class="tag block mb-4">// REDMOND_SESSION_UPLINK_2026</span>
-                <h1 class="text-6xl md:text-8xl font-bold mb-8 uppercase" style="font-family: 'Syncopate';">RELIABILITY<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">SYSTEMS</span></h1>
-                <p class="text-slate-400 text-xl font-light">
-                    Over 7 years of specialized expertise in designing, analyzing, and implementing mission-critical cloud ecosystems at Microsoft.
+        <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24 lg:mb-48">
+            <div class="w-full lg:w-3/5 text-center lg:text-left">
+                <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
+                    CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0">
+                    7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.
                 </p>
-                <div class="mt-8 flex gap-4">
-                    <div class="glass p-4 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">AZ-204</span><br><span class="tag opacity-50">Certified</span>
+                
+                <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+                    <div class="glass p-3 md:p-4 border-cyan-400/20 text-center w-28 md:w-32">
+                        <span class="text-lg md:text-2xl font-bold">AZ-204</span><br><span class="tag opacity-50">Solution</span>
                     </div>
-                    <div class="glass p-4 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">DP-600</span><br><span class="tag opacity-50">Microsoft Fabric</span>
+                    <div class="glass p-3 md:p-4 border-cyan-400/20 text-center w-28 md:w-32">
+                        <span class="text-lg md:text-2xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric</span>
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center">
-               <img src="profile.jpg"  alt="Vidhyasree Devaraju"  class="w-72 h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 transition-all duration-500 object-cover">
+
+            <div class="w-full lg:w-2/5 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-2 md:-inset-4 border border-cyan-400/20 rounded-full animate-pulse group-hover:border-cyan-400/50 transition-colors"></div>
+                    <img src="profile.jpg" alt="Profile" 
+                         class="profile-img w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 object-cover aspect-square">
+                </div>
             </div>
         </header>
 
-        <section id="highlights" class="mb-32 glass p-10">
-            <h2 class="tag mb-8 block">Career_Highlights_Telemetry</h2>
-            <ul class="bullet-list grid md:grid-cols-2 gap-x-12">
-                <li>7 Years (5+ Core Dev) in software design, analysis, and implementation of cloud/web applications.</li>
-                <li>Deep technical stack: C#, ASP.NET MVC, Cosmos DB, Web API, ADO.NET, and SQL Server.</li>
-                <li>Expertise in Stored Procedures, Functions, Triggers, and Performance Tuning.</li>
-                <li>SDLC Architecture specialist including Unit Testing with Moq.</li>
-                <li>Advanced implementation of SSO using IdentityServer3 for Mobile and Web.</li>
-                <li>Experience in DevOps (CI/CD) and Agile/Scrum methodologies.</li>
-                <li>Hands-on with MS Flows, Azure Functions, and RDLC Reports.</li>
-                <li>Proven mobile dev history with Apache Cordova, Android Studio, and .apk generation.</li>
-            </ul>
-        </section>
-
-        <div class="glass p-6 mb-32 font-mono text-[11px] border-cyan-400/20">
+        <div class="glass p-4 md:p-6 mb-24 lg:mb-32 font-mono border-cyan-400/20 overflow-hidden">
+            <div class="flex gap-2 mb-4 opacity-50">
+                <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
+            </div>
             <div id="console-logs"></div>
         </div>
 
         <section id="experience" class="mb-32">
-            <h2 class="text-xl font-bold mb-16 flex items-center gap-4" style="font-family: 'Syncopate'; uppercase"><span class="h-px w-10 bg-cyan-400"></span> INFRASTRUCTURE_PROJECT_SUMMARY</h2>
+            <h2 class="text-lg md:text-xl font-bold mb-12 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
+                <span class="h-px w-8 md:w-12 bg-cyan-400"></span> PROFESSIONAL_LOGS
+            </h2>
 
             <div class="project-card">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-3xl font-bold">Azure SQL DB Capacity Management</h3>
-                        <span class="tag opacity-50">Jan 2022 — Present | v-vdevaraju@microsoft.com</span>
-                    </div>
-                    <div class="text-right"><span class="tech-pill">Kusto</span><span class="tech-pill">XTS</span><span class="tech-pill">Service Fabric</span></div>
-                </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">Focuses on Data Analysis and Utilization in worldwide regions to ensure Minimal Utilization Percentage, avoiding hot segments and customer data issues. Managing resources through XTS, Kusto, PowerShell, Service Fabric Explorer, and Power BI.</p>
-                <details open><summary>Operational Responsibilities & Migrations</summary>
-                <ul class="bullet-list">
-                    <li>Periodic data analysis to maintain minimal utilization levels.</li>
-                    <li>Capacity request management in specific geographic regions.</li>
-                    <li>Ensuring prevention of customer data loss through periodic analysis and corrective actions.</li>
-                    <li>Migrations: Node Re-size.</li>
-                </ul></details>
+                <h3 class="text-xl md:text-2xl lg:text-3xl font-bold mb-2">Azure SQL DB Capacity Management</h3>
+                <span class="tag opacity-50 block mb-6">Microsoft // Redmond, WA</span>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data.</p>
+                <details open>
+                    <summary>Technical Execution Log</summary>
+                    <ul class="bullet-list">
+                        <li>We will be using XTS, Kusto, PowerShell, Service Fabric Explorer, Power BI.</li>
+                        <li>Periodic analysis to maintain minimal utilization levels.</li>
+                        <li>Migrations: Node Re-size.</li>
+                    </ul>
+                </details>
             </div>
 
-            <div class="project-card">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-3xl font-bold">Azure Cosmos DB</h3>
-                        <span class="tag opacity-50">Dec 2019 — Sept 2021 | v-viddev@microsoft.com</span>
-                    </div>
-                    <div class="text-right"><span class="tech-pill">Azure Functions</span><span class="tech-pill">VSTS</span><span class="tech-pill">ADO.NET</span></div>
-                </div>
-                <p class="text-slate-400 text-sm italic mb-6">Globally distributed, multi-model database service scaling elastically across Azure regions.</p>
-                <details><summary>Module I: Dashboard Responsibilities</summary>
-                <ul class="bullet-list">
-                    <li>Developed module calculating total Azure Spend for environment subscriptions.</li>
-                    <li>Worked on AAD Token and unit testing for owned services.</li>
-                    <li>MS-Flows for notification triggers on azure cost and exceptions.</li>
-                    <li>Created Azure Functions and managed deployment processes.</li>
-                </ul></details>
-                <details><summary>Module II: Engineering Systems</summary>
-                <ul class="bullet-list">
-                    <li>Pipeline monitoring for Build and Test phases.</li>
-                    <li>Microsoft-flows for daily reports and IcM creation for build failures.</li>
-                    <li>PowerShell scripts for disk clean ups and windows updates in scale sets.</li>
-                    <li>Direct client requirement gathering and TSG maintenance via .md files.</li>
-                </ul></details>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <h3 class="text-3xl font-bold">Office Management Portal</h3>
-                <span class="tag opacity-50 block mb-6">Quadrant Internal | May 2018 — Nov 2019</span>
-                <p class="text-slate-400 text-sm mb-6">Performance tracking, attendance maintenance, task assignment, and billing module for customers.</p>
-                <details><summary>Full Technical Log</summary>
-                <ul class="bullet-list">
-                    <li>Designed UI using HTML5, jQuery, and CSS with MVC architecture.</li>
-                    <li>Created stored procedures for CRUD operations using SQL Server.</li>
-                    <li>Implemented Form-based Authentication and Login Forms.</li>
-                    <li>Database Design, Table creation, and complex T-SQL code (Functions/Joins).</li>
-                </ul></details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-3xl font-bold">WATS Portal</h3>
-                <span class="tag opacity-50 block mb-6">Event Management System | .NET MVC</span>
-                <p class="text-slate-400 text-sm mb-6">Streamlined organization and ticketing for Washington Telugu Samithi (WATA).</p>
-                <details><summary>Full Technical Log</summary>
-                <ul class="bullet-list">
-                    <li>Developed, tested, and debugged C# / ASP.Net applications across browsers.</li>
-                    <li>UI Design using HTML5, JQuery and CSS.</li>
-                    <li>Stored procedures and Database design tailored to event ticketing requirements.</li>
-                    <li>T-SQL joins and complex code for reporting.</li>
-                </ul></details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-3xl font-bold">SRK Travels</h3>
-                <span class="tag opacity-50 block mb-6">Logistics Automation</span>
-                <p class="text-slate-400 text-sm mb-6">Manual to automated transition for transport solutions and tour organization.</p>
-                <ul class="bullet-list">
-                    <li>C# ASP.Net MVC cross-browser development.</li>
-                    <li>UI design and Stored Procedure creation for tour data.</li>
-                    <li>Database design for maintaining employee and customer details.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="grid md:grid-cols-3 gap-10 mb-32 glass p-10">
-            <div><h4 class="tag mb-4 block">Languages</h4><p class="text-xs text-slate-400">C#.NET, JavaScript, jQuery, Angular 6+, KQL, T-SQL</p></div>
-            <div><h4 class="tag mb-4 block">Tools</h4><p class="text-xs text-slate-400">Azure DevOps, Git, SVN, Jira, Visual Studio 2012-2019, Android Studio</p></div>
-            <div><h4 class="tag mb-4 block">Frameworks</h4><p class="text-xs text-slate-400">.NET Core, ASP.NET MVC, Entity Framework, Web API, Cordova, Ionic</p></div>
-        </section>
     </main>
 
-    <footer id="footer" class="glass border-b-0 border-x-0 pt-16 pb-10 px-8">
+    <footer class="glass border-t border-white/10 pt-16 pb-10 px-6 md:px-10">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-white/5 pb-12 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
                 <div>
                     <h5 class="tag mb-6 block">Uplink_Node</h5>
-                    <div class="space-y-3">
-                        <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
-                        <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
-                    </div>
+                    <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block mb-2 text-sm hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
+                    <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
                 </div>
                 <div>
                     <h5 class="tag mb-6 block">Architecture_Network</h5>
-                    <div class="flex flex-col gap-4">
-                        <a href="https://medium.com/@vidya98sree" target="_blank" class="text-slate-400 hover:text-cyan-400 text-sm flex items-center gap-2 transition-all"><i class="fab fa-medium-m"></i> Technical Writing</a>
-                        <a href="https://github.com/vidhyasree-cloud" target="_blank" class="text-slate-400 hover:text-cyan-400 text-sm flex items-center gap-2 transition-all"><i class="fab fa-github"></i> Repositories</a>
-                        <a href="https://www.linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="text-slate-400 hover:text-cyan-400 text-sm flex items-center gap-2 transition-all"><i class="fab fa-linkedin-in"></i> Professional Network</a>
+                    <div class="flex flex-wrap gap-6 md:gap-10">
+                        <a href="https://github.com/vidhyasree-cloud" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">GITHUB</a>
+                        <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">LINKEDIN</a>
+                        <a href="https://medium.com/@vidya98sree" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">MEDIUM</a>
                     </div>
                 </div>
-                <div class="md:text-right">
-                    <h5 class="tag mb-6 block">Uplink_Status</h5>
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed italic">
+                <div class="lg:text-right">
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-loose">
                         © 2026 VIDHYASREE DEVARAJU<br>
-                        ALL RIGHTS RESERVED // REDMOND, WA<br>
-                        SRE INSTANCE_ACTIVE
+                        7th Year Senior Build // Redmond, WA
                     </p>
                 </div>
             </div>
-            <div class="flex justify-between items-center opacity-20"><span class="text-[7px] tracking-[0.5em] text-slate-500 uppercase">Hybrid_Cloud_Instance_Active</span><span class="text-[7px] tracking-[0.5em] text-slate-500 uppercase">Latency: 12ms</span></div>
         </div>
     </footer>
+
     <script>
-        const msg = [
-            "> Initializing Senior SRE Session...",
-            "> AZ-204 & DP-600 Credentials Verified.",
-            "> [OK] Azure SQL & Cosmos Clusters Healthy.",
-            "> [OK] 7-Year Professional Telemetry Integrated.",
-            "> System Status: OPTIMIZED.",
-            "> Uplink Ready."
-        ];
+        // Console Typewriter
+        const msg = ["> Initializing Responsive SRE Session...", "> Breakpoints set: Mobile/Tablet/Desktop", "> [OK] CSS Flexbox & Grid stable.", "> System Status: ADAPTIVE"];
         let i=0, j=0, cur="";
         function type(){
             if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='cursor'></span>"; j++; setTimeout(type, 30); }
+                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 30); }
                 else{ cur += "<br>"; i++; j=0; setTimeout(type, 800); }
             }
         }
         window.onload = type;
 
+        // Three.js Background
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         const starGeo = new THREE.BufferGeometry();
         const starPos = [];
-        for(let k=0; k<3000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+        for(let k=0; k<2000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
         starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2, transparent: true, opacity: 0.4 }));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.3 }));
         scene.add(stars);
         camera.position.z = 800;
-        function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0003; renderer.render(scene, camera); }
+        function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0002; renderer.render(scene, camera); }
         animate();
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
     </script>
 </body>
 </html>
