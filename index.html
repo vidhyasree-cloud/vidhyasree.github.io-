@@ -12,113 +12,120 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --neon: #00f2ff; --bg: #020617; --panel: rgba(15, 23, 42, 0.9); }
+        :root { --neon: #00f2ff; --bg: #020617; --panel: rgba(15, 23, 42, 0.95); }
         body { background: var(--bg); color: #f8fafc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
         
-        .glass { background: var(--panel); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
+        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
         .tag { font-size: 0.65rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Interactive Gallery */
+        /* High-End Gallery */
         .archive-card {
-            position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 4/3; cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16/10; cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .archive-card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 10px 30px rgba(0,242,255,0.2); }
-        .archive-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .archive-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, #020617); padding: 15px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+        .archive-card:hover { transform: scale(1.02); border-color: var(--neon); box-shadow: 0 0 30px rgba(0,242,255,0.25); }
+        .archive-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .archive-card:hover img { opacity: 1; transform: scale(1.1); }
+        .archive-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, #020617); padding: 20px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
 
-        /* Preserving Original Project Formatting */
-        details { background: rgba(30, 41, 59, 0.4); border-radius: 8px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        summary { cursor: pointer; padding: 15px; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; }
-        .bullet-list { list-style: none; padding: 0 20px 20px 20px; }
-        .bullet-list li { font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px; position: relative; padding-left: 20px; }
-        .bullet-list li::before { content: "•"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
+        /* Project & Stack Details (STRICT RETENTION) */
+        .project-block { margin-bottom: 3rem; }
+        details { background: rgba(30, 41, 59, 0.5); border-radius: 12px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+        summary { cursor: pointer; padding: 18px; font-weight: 700; font-size: 0.9rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; background: rgba(0, 242, 255, 0.05); }
+        .bullet-list { list-style: none; padding: 20px 25px; }
+        .bullet-list li { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px; position: relative; padding-left: 25px; }
+        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-size: 1.5rem; line-height: 1; }
 
-        .admin-only { display: none; }
-        body.admin-mode .admin-only { display: block; }
-        .toggle-btn { border: 1px solid var(--neon); padding: 6px 18px; border-radius: 20px; font-size: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--neon); }
-        .toggle-btn:hover { background: var(--neon); color: #020617; }
+        .tech-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 6px; font-size: 10px; color: #94a3b8; font-weight: bold; }
+        
+        .admin-only { display: block; } /* Visible for Admin View preference */
+        .nav-link { font-family: 'Syncopate'; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
     </style>
 </head>
-<body class="admin-mode">
+<body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 px-8 py-4 flex justify-between items-center glass rounded-none border-x-0 border-t-0">
-        <div class="font-bold tracking-tighter text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE</div>
-        <div class="flex items-center gap-6">
-            <div class="hidden md:flex gap-8 text-[10px] tracking-widest font-bold">
-                <a href="#experience" class="hover:text-cyan-400">CORE_SYSTEMS</a>
-                <a href="#archives" class="hover:text-cyan-400">ARCHIVES</a>
-                <a href="#in-house" class="hover:text-cyan-400">PROJECTS</a>
+    <nav class="fixed w-full z-50 px-8 py-5 flex justify-between items-center glass rounded-none border-x-0 border-t-0 border-white/5">
+        <div class="font-bold tracking-tighter text-xl" style="font-family: 'Syncopate';">VS<span class="text-cyan-400">.CORE</span></div>
+        <div class="flex items-center gap-10">
+            <div class="hidden lg:flex gap-10">
+                <a href="#experience" class="nav-link">EXPERIENCE_LOG</a>
+                <a href="#archives" class="nav-link">ARCHIVES</a>
+                <a href="#stack" class="nav-link">TECH_STACK</a>
+                <a href="#in-house" class="nav-link">INTERNAL_PROJ</a>
             </div>
-            <button class="toggle-btn" onclick="document.body.classList.toggle('admin-mode')">SYSTEM_TOGGLE</button>
+            <div class="h-4 w-px bg-white/10 hidden lg:block"></div>
+            <span class="text-[9px] font-bold text-cyan-400 tracking-[0.3em] uppercase">Status: Online</span>
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 pt-32 pb-20">
+    <main class="container mx-auto px-6 pt-36 pb-32">
         
-        <header class="flex flex-col md:flex-row gap-12 items-center mb-24 animate__animated animate__fadeIn">
+        <header class="flex flex-col lg:flex-row gap-16 items-center mb-32 animate__animated animate__fadeIn">
             <div class="relative group">
-                <div class="absolute -inset-1 bg-cyan-400 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                <div class="relative w-56 h-56 rounded-full overflow-hidden border-2 border-cyan-400 p-1 bg-slate-900">
-                    <img src="profile.jpg" alt="Vidhya Sree Devaraju" class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://ui-avatars.com/api/?name=Vidhya+Sree&background=020617&color=00f2ff&size=300'">
+                <div class="absolute -inset-2 bg-cyan-400 rounded-full blur opacity-20 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative w-64 h-64 rounded-full overflow-hidden border-2 border-cyan-400/50 p-1.5 bg-slate-900">
+                    <img src="profile.jpg" alt="Vidhya Sree Devaraju" class="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" onerror="this.src='https://ui-avatars.com/api/?name=Vidhya+Sree&background=020617&color=00f2ff&size=400'">
                 </div>
             </div>
-            <div class="text-center md:text-left">
-                <span class="tag">Software Engineer // Microsoft Vendor</span>
-                <h1 class="text-4xl md:text-7xl font-bold mt-4 mb-6" style="font-family: 'Syncopate';">SYSTEMS &<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">CLOUD ENG.</span></h1>
-                <p class="text-slate-400 max-w-2xl text-lg font-light leading-relaxed">
+            <div class="text-center lg:text-left">
+                <span class="tag block mb-4 animate__animated animate__fadeInDown">Senior AI System Engineer // Microsoft Vendor</span>
+                <h1 class="text-5xl md:text-8xl font-bold mb-8 leading-[1.1]" style="font-family: 'Syncopate';">
+                    SYSTEMS &<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">CLOUD INFRA.</span>
+                </h1>
+                <p class="text-slate-400 max-w-3xl text-xl font-light leading-relaxed">
                     Results-driven Software Engineer with 8 years of experience in designing and implementing high-quality cloud and web solutions. Expertise in Azure Fleet Resiliency, Cosmos DB, and Agentic AI workflows.
                 </p>
             </div>
         </header>
 
-        <section id="archives" class="mb-24">
-            <h2 class="text-xl font-bold mb-12 flex items-center gap-4" style="font-family: 'Syncopate';">
-                <span class="h-px w-10 bg-cyan-400"></span> PUBLICATIONS & TEAM ARCHIVES
+        <section id="archives" class="mb-32">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
+                <span class="h-px w-16 bg-cyan-400"></span> PUBLICATIONS & TEAM ARCHIVES
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="archive-card">
-                    <img src="publication1.jpg" alt="Publication Cover" onerror="this.src='https://via.placeholder.com/600x450/020617/00f2ff?text=PUBLICATION+PREVIEW'">
-                    <div class="archive-label">RESEARCH // CLOUD RESILIENCY PAPER</div>
+                    <img src="pub-img.jpg" onerror="this.src='https://via.placeholder.com/800x500/020617/00f2ff?text=IEEE+PUBLICATION'">
+                    <div class="archive-label">RESEARCH // CLOUD FLEET RESILIENCY PAPER</div>
                 </div>
                 <div class="archive-card">
-                    <img src="team_photo.jpg" alt="With Colleagues" onerror="this.src='https://via.placeholder.com/600x450/020617/00f2ff?text=COLLABORATION+ARCHIVE'">
-                    <div class="archive-label">MSFT // TEAM COLLABORATION</div>
+                    <img src="team-img.jpg" onerror="this.src='https://via.placeholder.com/800x500/020617/00f2ff?text=MICROSOFT+TEAM'">
+                    <div class="archive-label">MSFT // REDMOND CAMPUS COLLABORATION</div>
                 </div>
                 <div class="archive-card">
-                    <img src="presentation.jpg" alt="Tech Presentation" onerror="this.src='https://via.placeholder.com/600x450/020617/00f2ff?text=TECH+PRESENTATION'">
-                    <div class="archive-label">REPRESENTATION // AI SYSTEM HUB</div>
+                    <img src="event-img.jpg" onerror="this.src='https://via.placeholder.com/800x500/020617/00f2ff?text=COLLEAGUES'">
+                    <div class="archive-label">TECH SUMMIT // AI SYSTEMS SHOWCASE</div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-24">
-            <h2 class="text-xl font-bold mb-12 flex items-center gap-4" style="font-family: 'Syncopate';">
-                <span class="h-px w-10 bg-cyan-400"></span> MICROSOFT PROJECTS (QUADRANT RESOURCES)
+        <section id="experience" class="mb-32">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
+                <span class="h-px w-16 bg-cyan-400"></span> MICROSOFT EXPERIENCE (QUADRANT RESOURCES)
             </h2>
 
-            <div class="glass p-8 mb-8 border-l-4 border-l-cyan-400 animate__animated animate__fadeInUp">
-                <div class="flex flex-col md:flex-row justify-between items-start mb-6">
-                    <h3 class="text-2xl font-bold">Azure SQL DB Capacity Management</h3>
-                    <span class="tag opacity-70">April 2022 — Present | v-vdevaraju@microsoft.com | Team Size: 3</span>
+            <div class="glass project-block p-10 border-l-4 border-l-cyan-400 animate__animated animate__fadeInUp">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                    <h3 class="text-3xl font-bold">Azure SQL DB Capacity Management</h3>
+                    <span class="tag bg-white/5 px-3 py-1 rounded">April 2022 — Present | v-vdevaraju@microsoft.com | Team Size: 3</span>
                 </div>
-                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Our project primarily focuses on data analysis and utilization across global regions. The main objective is to ensure minimal utilization percentages in all regions, thereby avoiding hot segments and potential issues with customer data.</p>
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed">Our project primarily focuses on data analysis and utilization across global regions. The main objective is to ensure minimal utilization percentages in all regions, thereby avoiding hot segments and potential issues with customer data.</p>
                 
                 <details open>
                     <summary>Value Adds & Major Milestones</summary>
-                    <div class="grid md:grid-cols-2 gap-8 p-4">
+                    <div class="grid md:grid-cols-2 gap-10 p-6">
                         <div>
-                            <span class="tag text-[9px] mb-3 block">Primary Value Adds</span>
+                            <span class="tag text-[10px] mb-4 block">Core Strategic Impact</span>
                             <ul class="bullet-list">
                                 <li>Proactive Capacity Management: Played a central role in short-term planning, absorbing sudden demand spikes for service stability.</li>
                                 <li>Standardized Incident Triage: Streamlined investigation workflows by leveraging KQL, SQL, and IcM telemetry.</li>
                             </ul>
                         </div>
                         <div>
-                            <span class="tag text-[9px] mb-3 block">AI & Modernization</span>
+                            <span class="tag text-[10px] mb-4 block">AI Integration & Performance</span>
                             <ul class="bullet-list">
                                 <li>Operational AI Integration: Applying AI tools into daily operational workflows to boost team productivity.</li>
                                 <li>Infrastructure Modernization: Successfully achieved 100% adoption of PaaSv2 ahead of projected timelines.</li>
@@ -128,17 +135,17 @@
                 </details>
             </div>
 
-            <div class="glass p-8 mb-8 animate__animated animate__fadeInUp">
-                <div class="flex flex-col md:flex-row justify-between items-start mb-6">
-                    <h3 class="text-2xl font-bold">Azure Cosmos DB</h3>
-                    <span class="tag opacity-70">Dec 2019 — Sept 2021 | v-viddev@microsoft.com | Team Size: 9</span>
+            <div class="glass project-block p-10 animate__animated animate__fadeInUp">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                    <h3 class="text-3xl font-bold">Azure Cosmos DB</h3>
+                    <span class="tag bg-white/5 px-3 py-1 rounded">Dec 2019 — Sept 2021 | v-viddev@microsoft.com | Team Size: 9</span>
                 </div>
-                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Microsoft's globally distributed database service. Involved in elastically scaling throughput and storage across geographic regions.</p>
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed">Microsoft's globally distributed database service. Involved in elastically scaling throughput and storage across geographic regions.</p>
                 
                 <details>
                     <summary>Responsibilities & Modules</summary>
-                    <div class="p-6">
-                        <span class="tag text-[9px] mb-3 block">Module I: Dashboard</span>
+                    <div class="p-8">
+                        <span class="tag text-[10px] mb-4 block">Module I: Dashboard</span>
                         <ul class="bullet-list">
                             <li>Developed a module to calculate total Azure Spend for subscriptions.</li>
                             <li>Implemented MS-Flows for notification triggers related to Azure cost.</li>
@@ -148,71 +155,123 @@
             </div>
         </section>
 
-        <section id="in-house" class="mb-24">
-            <h2 class="text-xl font-bold mb-12 flex items-center gap-4" style="font-family: 'Syncopate';">
-                <span class="h-px w-10 bg-cyan-400"></span> IN-HOUSE PROJECTS (2018 — 2019)
+        <section id="stack" class="mb-32">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
+                <span class="h-px w-16 bg-cyan-400"></span> SYSTEMS & AI STACK
             </h2>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass p-8">
-                    <span class="tag">Role: .NET Developer | .NET MVC 4.0, Bootstrap, SQL 2012</span>
-                    <h4 class="text-xl font-bold mt-3 mb-4">WATS Portal</h4>
-                    <p class="text-slate-400 text-sm">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the ticketing process.</p>
+                    <span class="tag mb-4 block">Backend & Cloud</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">.NET CORE</span><span class="tech-pill">AZURE FUNCTIONS</span>
+                        <span class="tech-pill">MICROSERVICES</span><span class="tech-pill">SQL SERVER</span>
+                        <span class="tech-pill">COSMOS DB</span><span class="tech-pill">FLEET MANAGEMENT</span>
+                    </div>
                 </div>
                 <div class="glass p-8">
-                    <span class="tag">Role: .NET Developer | .NET MVC 4.0, LINQ, SQL 2012</span>
-                    <h4 class="text-xl font-bold mt-3 mb-4">Office Management Portal</h4>
-                    <p class="text-slate-400 text-sm">Helps management track employee performance, maintenance, and task assignments.</p>
+                    <span class="tag mb-4 block">Observability (AIOps)</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">KUSTO (KQL)</span><span class="tech-pill">AZURE DATA EXPLORER</span>
+                        <span class="tech-pill">POWER BI (DAX)</span><span class="tech-pill">ICM TRIAGE</span>
+                        <span class="tech-pill">TELEMETRY ANALYSIS</span>
+                    </div>
                 </div>
                 <div class="glass p-8">
-                    <span class="tag">Role: .NET Developer | .NET MVC 4.0, SQL 2012</span>
-                    <h4 class="text-xl font-bold mt-3 mb-4">SRK Travels</h4>
-                    <p class="text-slate-400 text-sm">Tours & Travels Management System refactored into an automated digital solution.</p>
+                    <span class="tag mb-4 block">AI Orchestration</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">LANGCHAIN</span><span class="tech-pill">LANGGRAPH</span>
+                        <span class="tech-pill">OPENAI API</span><span class="tech-pill">RAG ARCHITECTURE</span>
+                        <span class="tech-pill">PINECONE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="in-house" class="mb-32">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
+                <span class="h-px w-16 bg-cyan-400"></span> IN-HOUSE PROJECTS (2018 — 2019)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass p-8">
+                    <span class="tag">.NET MVC 4.0, Bootstrap, SQL 2012</span>
+                    <h4 class="text-2xl font-bold mt-4 mb-4">WATS Portal</h4>
+                    <p class="text-slate-400 leading-relaxed">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the ticketing process.</p>
+                </div>
+                <div class="glass p-8">
+                    <span class="tag">.NET MVC 4.0, LINQ, SQL 2012</span>
+                    <h4 class="text-2xl font-bold mt-4 mb-4">Office Management Portal</h4>
+                    <p class="text-slate-400 leading-relaxed">Helps management track employee performance, maintenance, and task assignments.</p>
+                </div>
+                <div class="glass p-8">
+                    <span class="tag">.NET MVC 4.0, SQL 2012</span>
+                    <h4 class="text-2xl font-bold mt-4 mb-4">SRK Travels</h4>
+                    <p class="text-slate-400 leading-relaxed">Tours & Travels Management System refactored into an automated digital solution.</p>
                 </div>
                 <div class="glass p-8 border-cyan-400/30 bg-cyan-400/5">
                     <span class="tag">Agentic AI // System Hub (2026)</span>
-                    <h4 class="text-xl font-bold mt-3 mb-4">ScoutWise: Market Intelligence Engine</h4>
-                    <p class="text-slate-300 text-sm mb-6">An enterprise-grade AI system that orchestrates autonomous "Scout Agents" to ingest and analyze global workforce trends. Developed with a decoupled .NET Core backend and React/TypeScript dashboard.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="text-[10px] font-bold text-cyan-400 hover:tracking-widest transition-all uppercase"><i class="fas fa-external-link-alt mr-1"></i> Launch_System</a>
-                    </div>
+                    <h4 class="text-2xl font-bold mt-4 mb-4">ScoutWise: Market Intelligence Engine</h4>
+                    <p class="text-slate-300 leading-relaxed">An enterprise-grade AI system that orchestrates autonomous "Scout Agents" to ingest and analyze global workforce trends. Developed with a decoupled .NET Core backend and React/TypeScript dashboard.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="mb-32">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
+                <span class="h-px w-16 bg-cyan-400"></span> EDUCATION & CERTIFICATIONS
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-8">
+                    <span class="tag mb-2 block">Degree</span>
+                    <h4 class="text-xl font-bold">B.Com Computer Application</h4>
+                    <p class="text-cyan-400 font-bold mt-2">Passed Out: 2018</p>
+                </div>
+                <div class="glass p-8">
+                    <span class="tag mb-2 block">Certifications</span>
+                    <h4 class="text-xl font-bold">Microsoft Certified</h4>
+                    <p class="text-slate-400 mt-2">AZ-204 & DP-600 Fabric Analyst (Active 2026)</p>
+                </div>
+                <div class="glass p-8 border-l-4 border-l-cyan-400">
+                    <span class="tag mb-2 block">Specialization</span>
+                    <h4 class="text-xl font-bold">Deep Learning & GenAI</h4>
+                    <p class="text-slate-400 mt-2">Active training in Transformer architectures, LangChain, and RAG systems.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-16 glass rounded-none text-center border-t border-white/5">
-        <p class="text-[9px] tracking-[0.5em] text-slate-500 uppercase mb-6">&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
-        <div class="flex justify-center gap-8 text-slate-400">
-            <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
-            <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-github text-xl"></i></a>
-            <a href="mailto:vidya98sree@gmail.com" class="hover:text-cyan-400 transition-colors"><i class="far fa-envelope text-xl"></i></a>
+    <footer class="py-20 glass rounded-none text-center border-t border-white/5">
+        <p class="text-[10px] tracking-[0.6em] text-slate-500 uppercase mb-8">&copy; 2026 Vidhyasree Devaraju | Redmond, WA | vidya98sree@gmail.com</p>
+        <div class="flex justify-center gap-12 text-slate-400">
+            <a href="#" class="hover:text-cyan-400 transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-2xl"></i></a>
+            <a href="#" class="hover:text-cyan-400 transition-all transform hover:scale-125"><i class="fab fa-github text-2xl"></i></a>
+            <a href="mailto:vidya98sree@gmail.com" class="hover:text-cyan-400 transition-all transform hover:scale-125"><i class="far fa-envelope text-2xl"></i></a>
         </div>
-        <p class="tag mt-8 opacity-50">QUADRANT RESOURCES // MICROSOFT VENDOR</p>
+        <p class="tag mt-12 opacity-30">QUADRANT RESOURCES // MICROSOFT VENDOR</p>
     </footer>
 
     <script>
-        // 3D Background System
+        // Immersive 3D Background - Neural Network Style
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        const starGeo = new THREE.BufferGeometry();
-        const starPositions = [];
-        for(let i=0; i<3500; i++) {
-            starPositions.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+        const particlesGeo = new THREE.BufferGeometry();
+        const posArray = [];
+        for(let i=0; i<4000; i++) {
+            posArray.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
         }
-        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
-        const starMat = new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.5 });
-        const stars = new THREE.Points(starGeo, starMat);
-        scene.add(stars);
-        camera.position.z = 800;
+        particlesGeo.setAttribute('position', new THREE.Float32BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
+        const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particlesMesh);
+        camera.position.z = 900;
 
         function animate() {
             requestAnimationFrame(animate);
-            stars.rotation.y += 0.0003;
-            stars.rotation.x += 0.0001;
+            particlesMesh.rotation.y += 0.0004;
+            particlesMesh.rotation.x += 0.0002;
             renderer.render(scene, camera);
         }
         animate();
