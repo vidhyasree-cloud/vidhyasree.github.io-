@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhya Sree Devaraju | Senior AI System Engineer (7th Year)</title>
+    <title>Vidhya Sree Devaraju | Senior AI System Engineer</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -16,24 +16,30 @@
         body { background: var(--bg); color: #f8fafc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
         
-        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
+        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; }
         .tag { font-size: 0.65rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* STRICT CONTENT PRESERVATION STYLES */
-        details { background: rgba(30, 41, 59, 0.5); border-radius: 12px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        /* Interactive Gallery */
+        .archive-card {
+            position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16/9; cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s;
+        }
+        .archive-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.5s; }
+        .archive-card:hover img { opacity: 1; transform: scale(1.05); }
+
+        /* Project Preservation Styles */
+        details { background: rgba(30, 41, 59, 0.5); border-radius: 12px; margin-top: 15px; border: 1px solid rgba(255, 255, 255, 0.05); }
         summary { cursor: pointer; padding: 18px; font-weight: 700; font-size: 0.9rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; background: rgba(0, 242, 255, 0.05); }
         .bullet-list { list-style: none; padding: 20px 25px; }
         .bullet-list li { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 12px; position: relative; padding-left: 20px; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
 
         .tech-pill { background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.3); padding: 2px 8px; border-radius: 4px; font-size: 10px; color: var(--neon); font-weight: bold; }
-        
-        .archive-card {
-            position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16/9; cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
-        }
-        .archive-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
-        .archive-card:hover img { opacity: 1; transform: scale(1.05); }
+
+        footer { padding: 80px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 100px; text-align: center; }
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .footer-email { font-family: 'Syncopate'; font-size: 0.9rem; color: var(--neon); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .footer-email:hover { border-bottom-color: var(--neon); }
     </style>
 </head>
 <body>
@@ -41,17 +47,17 @@
     <canvas id="bg-canvas"></canvas>
 
     <nav class="fixed w-full z-50 px-8 py-5 flex justify-between items-center glass rounded-none border-x-0 border-t-0 border-white/5">
-        <div class="font-bold tracking-tighter text-xl" style="font-family: 'Syncopate';">VIDHYA<span class="text-cyan-400">.LOGS</span></div>
+        <div class="font-bold tracking-tighter text-xl" style="font-family: 'Syncopate';">VIDHYA<span class="text-cyan-400">.7Y</span></div>
         <div class="flex items-center gap-8 text-[10px] tracking-widest font-bold">
             <a href="#experience" class="hover:text-cyan-400">MICROSOFT</a>
             <a href="#archives" class="hover:text-cyan-400">ARCHIVES</a>
-            <a href="#internal" class="hover:text-cyan-400">INTERNAL</a>
+            <a href="#in-house" class="hover:text-cyan-400">ENGINEERING_PORTFOLIO</a>
         </div>
     </nav>
 
     <main class="container mx-auto px-6 pt-36 pb-32">
         
-        <header class="mb-32 animate__animated animate__fadeIn">
+        <header class="mb-32 animate__animated animate__fadeIn text-center lg:text-left">
             <span class="tag">7th Professional Year // Redmond, WA // April 2026</span>
             <h1 class="text-5xl md:text-8xl font-bold mt-4 mb-8 leading-tight" style="font-family: 'Syncopate';">SYSTEMS<br>& <span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">AI ARCHITECT</span></h1>
             <p class="text-slate-400 max-w-3xl text-xl font-light leading-relaxed">
@@ -66,15 +72,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="archive-card">
                     <img src="pub1.jpg" onerror="this.src='https://via.placeholder.com/800x450/020617/00f2ff?text=IEEE+PUBLICATION'">
-                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest">RESEARCH // CLOUD FLEET</div>
+                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest uppercase">Research // Cloud Fleet</div>
                 </div>
                 <div class="archive-card">
                     <img src="team.jpg" onerror="this.src='https://via.placeholder.com/800x450/020617/00f2ff?text=MICROSOFT+COLLEAGUES'">
-                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest">TEAM // REDMOND CAMPUS</div>
+                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest uppercase">Team // Redmond Campus</div>
                 </div>
                 <div class="archive-card">
                     <img src="friends.jpg" onerror="this.src='https://via.placeholder.com/800x450/020617/00f2ff?text=COLLEAGUES'">
-                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest">NETWORK // 2026</div>
+                    <div class="absolute bottom-4 left-4 text-[10px] font-bold tracking-widest uppercase">Network // April 2026</div>
                 </div>
             </div>
         </section>
@@ -87,18 +93,17 @@
             <div class="glass p-8 mb-10 border-l-4 border-l-cyan-400">
                 <div class="flex flex-col md:flex-row justify-between mb-6">
                     <h3 class="text-2xl font-bold">Azure SQL DB Capacity Management</h3>
-                    <span class="tag opacity-70">Jan 2022 — Present (2026) | v-vdevaraju@microsoft.com</span>
+                    <span class="tag opacity-70">Jan 2022 — Present | v-vdevaraju@microsoft.com</span>
                 </div>
-                <p class="text-slate-300 text-sm mb-6 leading-relaxed">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. Data Utilization is a crucial aspect that directly impacts Business Performance. It helps in identifying the areas that require more Attention and Resources. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency. We will be using XTS, Kusto, PowerShell, Service Fabric Explorer, Power BI. We will analyze the data regularly to identify any areas that require attention and take corrective actions accordingly.</p>
+                <p class="text-slate-300 text-sm mb-6 leading-relaxed">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency. We will be using XTS, Kusto, PowerShell, Service Fabric Explorer, Power BI.</p>
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span class="tech-pill">XTS</span><span class="tech-pill">KUSTO</span><span class="tech-pill">POWERSHELL</span><span class="tech-pill">SERVICE FABRIC EXPLORER</span><span class="tech-pill">POWER BI</span>
                 </div>
                 <details open>
                     <summary>Impact & Corrective Actions</summary>
                     <ul class="bullet-list">
-                        <li>The data analysis is done periodically to ensure the Utilization Percentage is always maintained at the minimal level.</li>
-                        <li>Capacity management: requesting capacity in particular areas as needed based on regular analysis.</li>
-                        <li>In conclusion, the project deals with Data Utilization Analysis in Worldwide regions to ensure Minimal Utilization Percentage and avoid customer data loss.</li>
+                        <li>Data analysis is done periodically to ensure the Utilization Percentage is always maintained at the minimal level.</li>
+                        <li>Request capacity in particular areas as needed based on analysis.</li>
                         <li>Migrations: Node Re-size.</li>
                     </ul>
                 </details>
@@ -109,69 +114,83 @@
                     <h3 class="text-2xl font-bold">Azure Cosmos DB</h3>
                     <span class="tag opacity-70">Dec 2019 — Sept 2021 | v-viddev@microsoft.com</span>
                 </div>
-                <p class="text-slate-300 text-sm mb-4">Description: Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. Cosmos DB enables you to elastically and independently scale throughput and storage across any number of Azure's geographic regions. Cosmos DB enables you to build highly responsive and highly available applications worldwide. There are multiple teams which are working separately for continuous integration, continuous deployment, backup and restore, dashboard etc.</p>
-                
+                <p class="text-slate-300 text-sm mb-4">Description: Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. Cosmos DB enables you to elastically and independently scale throughput and storage across any number of Azure's geographic regions. Cosmos DB enables you to build highly responsive and highly available applications worldwide.</p>
                 <details>
-                    <summary>Module I: Dashboard Responsibilities</summary>
+                    <summary>Dashboard Module Responsibilities</summary>
                     <ul class="bullet-list">
                         <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
                         <li>Worked on AAD Token.</li>
                         <li>Involved in writing test cases to perform unit testing for few services which I was owned.</li>
-                        <li>Worked on the on the MS-Flows which trigger notification to the user for azure cast and exceptions, if there are any.</li>
-                        <li>Involved in creating Azure Functions.</li>
-                        <li>Involved in the deployment process.</li>
+                        <li>Worked on the on the MS-Flows which trigger notification to the user for azure cast and exceptions.</li>
+                        <li>Involved in creating Azure Functions and deployment process.</li>
                     </ul>
                 </details>
-
                 <details>
-                    <summary>Module II: Engineering Systems Responsibilities</summary>
+                    <summary>Engineering Systems Responsibilities</summary>
                     <ul class="bullet-list">
                         <li>Involved in monitoring pipeline in Build phase as well as Test phase.</li>
-                        <li>Worked on many Microsoft-flows to send reports on daily basis, creating IcM ’s whenever build failed in given pipeline.</li>
+                        <li>Worked on MS-Flows to send reports on daily basis and creating IcM’s.</li>
                         <li>Directly interacting with the clients and gathering new requirements.</li>
-                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates in Azure file server and azure scale sets.</li>
-                        <li>Participated in Daily and Weekly status meetings with Team as well as Client.</li>
+                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates.</li>
+                        <li>Participated in Daily and Weekly status meetings.</li>
                         <li>Worked on appropriate TSGs using .md files.</li>
                     </ul>
                 </details>
             </div>
         </section>
 
-        <section id="internal" class="mb-32">
+        <section id="in-house" class="mb-32">
             <h2 class="text-2xl font-bold mb-12 flex items-center gap-6" style="font-family: 'Syncopate';">
-                <span class="h-px w-16 bg-cyan-400"></span> INTERNAL PROJECTS (2018 — 2019)
+                <span class="h-px w-16 bg-cyan-400"></span> IN-HOUSE ENGINEERING PORTFOLIO
             </h2>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 gap-8">
                 <div class="glass p-8">
-                    <h4 class="text-xl font-bold mb-2">WATS Portal</h4>
-                    <span class="tag mb-4 block">.NET MVC 4.0, EF6, LINQ, SQL 2012</span>
-                    <p class="text-slate-400 text-xs mb-4">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the organization and ticketing process for events. The system enables users to seamlessly browse upcoming events, purchase tickets securely, and receive event-related updates.</p>
+                    <h4 class="text-2xl font-bold mb-2">WATS Portal</h4>
+                    <span class="tag mb-4 block">.NET MVC 4.0, Bootstrap, EF6, LINQ, SQL 2012</span>
+                    <p class="text-slate-400 text-sm mb-4">Developed an Event Management System for Washington Telugu Samithi (WATA), streamlining the organization and ticketing process for events.</p>
                     <details>
                         <summary>WATS Responsibilities</summary>
-                        <ul class="bullet-list text-[11px]">
-                            <li>Participated in daily scrums with the project lead to meet requirements and deadlines.</li>
-                            <li>Experience in developing, testing, debugging, and supporting C#, ASP.Net different internet browsers with MVC architecture.</li>
-                            <li>Designed the UI using HTML5, JQuery and CSS.</li>
+                        <ul class="bullet-list">
+                            <li>Participated in daily scrums with project lead to meet requirements and deadlines.</li>
+                            <li>Developing, testing, debugging, and supporting C#, ASP.Net different internet browsers with MVC architecture.</li>
+                            <li>Designed UI using HTML5, JQuery and CSS.</li>
                             <li>Created stored procedures for inserting, deleting and updating screens data into database using SQL Server.</li>
                             <li>Created Login Forms and implemented Form-based Authentication to authenticate the users.</li>
-                            <li>Created Database Design and Created Tables according to requirements.</li>
-                            <li>Created complex Stored Procedures, Functions, Tables and other T-SQL code and SQL joins for applications.</li>
+                            <li>Created Database Design, Tables, complex Stored Procedures, Functions, and T-SQL joins.</li>
                         </ul>
                     </details>
                 </div>
+
                 <div class="glass p-8">
-                    <h4 class="text-xl font-bold mb-2">Office Management Portal</h4>
+                    <h4 class="text-2xl font-bold mb-2">Office Management Portal</h4>
                     <span class="tag mb-4 block">.NET MVC 4.0, LINQ, SQL 2012</span>
-                    <p class="text-slate-400 text-xs mb-4">Helps management to track employee’s performance, maintain attendance, projects, assign tasks and track them. Application also gives information about reporting authorities (WHO) and bill details.</p>
+                    <p class="text-slate-400 text-sm mb-4">Application that helps management track employee performance, attendance, projects, assign tasks and track them.</p>
                     <details>
                         <summary>Office Portal Responsibilities</summary>
-                        <ul class="bullet-list text-[11px]">
+                        <ul class="bullet-list">
+                            <li>Designed UI using HTML5, jQuery and CSS.</li>
+                            <li>Created stored procedures for inserting, deleting and updating screens data into database using SQL Server.</li>
+                            <li>Created Login Forms and implemented Form-based Authentication to authenticate the users.</li>
+                            <li>Created Database Design and Created Tables according to requirements.</li>
+                            <li>Created complex Stored Procedures, Functions, Tables and other T-SQL code.</li>
+                        </ul>
+                    </details>
+                </div>
+
+                <div class="glass p-8 border-cyan-400/30">
+                    <h4 class="text-2xl font-bold mb-2">SRK Travels</h4>
+                    <span class="tag mb-4 block">Role: .NET Developer | .NET MVC 4.0, SQL 2012</span>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Description: Tours & Travels Management System Transport solution to the different companies situated locally in the many districts and it organizes tour to various Part of the country. Earlier all the Processes were done manually. The manual Process is done by maintaining the details of the tours. Employee and their customers.</p>
+                    <details>
+                        <summary>SRK Travels Responsibilities</summary>
+                        <ul class="bullet-list">
+                            <li>Participated in daily scrums with the project lead to meet requirements and deadlines.</li>
                             <li>Experience in developing, testing, debugging, and supporting C#, ASP. Net different internet browsers with MVC architecture.</li>
                             <li>Designed the UI using HTML5, jQuery and CSS.</li>
                             <li>Created stored procedures for inserting, deleting and updating screens data into database using SQL Server.</li>
                             <li>Created Login Forms and implemented Form-based Authentication to authenticate the users.</li>
                             <li>Created Database Design and Created Tables according to requirements.</li>
-                            <li>Created complex Stored Procedures, Functions, Tables and T-SQL code.</li>
+                            <li>Created complex Stored Procedures, Functions, Tables and other T-SQL code and SQL joins for applications.</li>
                         </ul>
                     </details>
                 </div>
@@ -180,9 +199,26 @@
 
     </main>
 
-    <footer class="py-20 glass rounded-none text-center border-t border-white/5">
-        <p class="text-[10px] tracking-[0.5em] text-slate-500 uppercase mb-8">&copy; 2026 Vidhyasree Devaraju | Redmond, WA | 7 Years Experience</p>
-        <p class="tag">Certification: AZ-204 Microsoft Certified (Active 2026)</p>
+    <footer class="glass rounded-none border-x-0 border-b-0">
+        <div class="footer-content">
+            <div class="mb-6">
+                <span class="tag block mb-2">Connect via Secure Line</span>
+                <a href="mailto:vidya98sree@gmail.com" class="footer-email">vidya98sree@gmail.com</a>
+            </div>
+            
+            <div class="text-[10px] tracking-[0.5em] text-slate-500 uppercase mb-4">
+                &copy; 2026 VIDHYA SREE DEVARAJU // ALL RIGHTS RESERVED
+            </div>
+            
+            <div class="flex justify-center gap-8 text-slate-400 mb-6">
+                <a href="https://linkedin.com/in/yourusername" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/yourusername" class="hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+
+            <div class="tag opacity-30 text-[8px]">
+                Redmond, WA // Hybrid Deployment // Systems Architecture
+            </div>
+        </div>
     </footer>
 
     <script>
