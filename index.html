@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhyasree Devaraju | Senior Systems Architect</title>
-    
+    <title>VidhyaSree Devaraju | Senior Systems Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
-        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.9); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; }
+        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.95); }
+        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-        
         .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
         .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
-        
-        #console-logs { min-height: 120px; font-family: 'Courier New', monospace; font-size: 11px; }
-
-        /* Project Cards - No Pagination, High Density */
-        .project-card { border-left: 3px solid var(--neon); padding-left: 2rem; margin-bottom: 8rem; position: relative; }
-        .project-card::before { content: ""; position: absolute; left: -8px; top: 0; width: 12px; height: 12px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 15px var(--neon); }
-
-        .nav-link { cursor: pointer; opacity: 0.6; transition: 0.3s; font-size: 10px; font-weight: bold; letter-spacing: 2px; }
-        .nav-link:hover { opacity: 1; color: var(--neon); }
-
-        details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1.5rem; width: 100%; }
-        summary { cursor: pointer; padding: 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; }
-        .bullet-list { list-style: none; padding: 1.5rem; }
-        .bullet-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #8b949e; font-size: 0.85rem; }
-        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
+        .project-card { border-left: 3px solid var(--neon); padding-left: 2rem; margin-bottom: 6rem; position: relative; }
         .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        .bullet-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; color: #8b949e; font-size: 0.85rem; }
+        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
+        section { display: none; }
+        section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -40,153 +28,144 @@
 
     <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="flex gap-8">
-                <span onclick="document.getElementById('header').scrollIntoView()" class="nav-link">SYSTEM_START</span>
-                <span onclick="document.getElementById('experience').scrollIntoView()" class="nav-link">PROJECT_NODES</span>
-                <span onclick="document.getElementById('ai-labs').scrollIntoView()" class="nav-link">AI_LABS</span>
+            <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.ARCH</span></div>
+            <div class="flex gap-8 uppercase text-[10px] font-bold tracking-widest">
+                <span onclick="app.route('home')" class="cursor-pointer hover:text-cyan-400 transition-colors">01_ROOT</span>
+                <span onclick="app.route('exp')" class="cursor-pointer hover:text-cyan-400 transition-colors">02_EXPERIENCE</span>
+                <span onclick="app.route('labs')" class="cursor-pointer hover:text-cyan-400 transition-colors">03_LABS</span>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 md:pt-48 pb-20">
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
         
-        <header id="header" class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24 lg:mb-48">
-            <div class="w-full lg:w-3/5">
-                <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 uppercase leading-none" style="font-family: 'Syncopate';">
-                    CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
-                </h1>
-                <p class="text-slate-400 text-lg md:text-xl font-light">
-                    7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.
-                </p>
-                <div class="mt-8 flex flex-wrap gap-4">
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">AZ-204</span><br><span class="tag opacity-50">Solution</span>
-                    </div>
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric</span>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-2/5 flex justify-center">
-                <img src="profile.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-cyan-400 grayscale contrast-125">
-            </div>
-        </header>
-
-        <div class="glass p-6 mb-32 font-mono border-cyan-400/20 overflow-hidden">
-            <div id="console-logs"></div>
-        </div>
-
-        <section id="experience" class="mb-48">
-            <h2 class="text-xl md:text-2xl font-bold mb-20 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400 inline-block mr-4"></span> ARCHITECTURAL_PROJECT_LOG
-            </h2>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure SQL DB Capacity Management</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (via Quadrant) | Jan 2022 — Present</span>
-                <div class="mb-6"><span class="tech-pill">Kusto</span><span class="tech-pill">XTS</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Power BI</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. Data Utilization is a crucial aspect that directly impacts Business Performance. It helps in identifying the areas that require more Attention and Resources. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency.</p>
-                <details open>
-                    <summary>Technical Execution & Impact</summary>
-                    <ul class="bullet-list">
-                        <li>Regularly analyze data to identify areas requiring attention and take corrective actions accordingly.</li>
-                        <li>Perform periodic data analysis to ensure the Utilization Percentage is always maintained at the minimal level.</li>
-                        <li>Request capacity in particular areas needed based on data-driven triggers.</li>
-                        <li>Conclusion: Managing Data Utilization Analysis in Worldwide regions to ensure minimal utilization and avoid customer data loss.</li>
-                        <li>Migrations: Successfully handled Node Re-size operations.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure Cosmos DB</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (Offshore) | Dec 2019 — Sept 2021</span>
-                <div class="mb-6"><span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">MS Flow</span><span class="tech-pill">Moq</span><span class="tech-pill">VSTS</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. It enables elastic scaling of throughput and storage across any number of Azure's geographic regions, building highly responsive worldwide applications. Data is seamlessly replicated while maintaining high availability.</p>
-                <details>
-                    <summary>Module I: Dashboard Responsibilities</summary>
-                    <ul class="bullet-list">
-                        <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
-                        <li>Worked on AAD Token integration for secure environment access.</li>
-                        <li>Involved in writing test cases to perform unit testing for specific services owned.</li>
-                        <li>Worked on MS-Flows which trigger notifications to the user for azure cost and exceptions.</li>
-                        <li>Involved in creating Azure Functions and managing the deployment process.</li>
-                    </ul>
-                </details>
-                <details>
-                    <summary>Module II: Engineering Systems</summary>
-                    <ul class="bullet-list">
-                        <li>Involved in monitoring pipeline in Build phase as well as Test phase.</li>
-                        <li>Worked on many Microsoft-flows to send reports on daily basis and create IcMs whenever builds failed.</li>
-                        <li>Directly interacting with the clients and gathering new requirements.</li>
-                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates in Azure file server and azure scale sets.</li>
-                        <li>Participated in Daily and Weekly status meetings with Team as well as Client.</li>
-                        <li>Worked on appropriate TSGs using .md files.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS Portal</h3>
-                <span class="tag opacity-50 block mb-4">Event Management // Washington Telugu Samithi</span>
-                <div class="mb-6"><span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">EF6</span><span class="tech-pill">PayPal API</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Developed a robust Event Management System for WATA, streamlining organization and ticketing with secure PayPal gateway integration.</p>
-                <details>
-                    <summary>Technical Execution & Transaction Logic</summary>
-                    <ul class="bullet-list">
-                        <li>Orchestrated project lifecycles within an Agile/Scrum framework.</li>
-                        <li>Engineered high-performance, cross-browser applications utilizing C# and ASP.NET.</li>
-                        <li>Integrated PayPal API payment gateways using EF6 and LINQ for real-time transactions.</li>
-                    </ul>
-                </details>
-            </div>
+        <section id="sec-home" class="active">
+            <header class="mb-24">
+                <span class="tag block mb-4">// SESSION_INIT_2026</span>
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 uppercase" style="font-family: 'Syncopate';">SYSTEMS<br>ARCHITECT</h1>
+                <p class="text-slate-400 text-xl font-light max-w-2xl">Specializing in Microsoft ecosystem resilience, high-scale distributed data, and automated reliability engineering.</p>
+            </header>
+            <div class="glass p-6 font-mono text-[11px] border-cyan-400/20"><div id="console-logs"></div></div>
         </section>
 
-        <section id="ai-labs" class="mb-48">
-            <h2 class="text-xl md:text-2xl font-bold mb-20 uppercase" style="font-family: 'Syncopate';">AI_LABS_&_PUBLICATIONS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass p-8 border-l-2 border-cyan-400">
-                    <span class="tag text-cyan-400">Project_Update_2026</span>
-                    <h4 class="text-xl font-bold mt-4 mb-4">LLM Reliability Agent</h4>
-                    <p class="text-slate-400 text-sm">Developing an automated system that uses LLMs to interpret Kusto log spikes and suggest architectural mitigation strategies in real-time.</p>
-                </div>
-                <div class="glass p-8 border-l-2 border-cyan-400">
-                    <span class="tag text-cyan-400">Publication</span>
-                    <h4 class="text-xl font-bold mt-4 mb-4">Fabric Scaling Patterns</h4>
-                    <p class="text-slate-400 text-sm">Technical paper focusing on high-availability design within the Microsoft Fabric ecosystem.</p>
-                </div>
-            </div>
+        <section id="sec-exp">
+            <h2 class="text-2xl font-bold mb-16 uppercase" style="font-family: 'Syncopate';">Technical_Portfolio</h2>
+            <div id="experience-render"></div>
+        </section>
+
+        <section id="sec-labs">
+            <h2 class="text-2xl font-bold mb-16 uppercase" style="font-family: 'Syncopate';">AI_Labs_&_Pubs</h2>
+            <div id="labs-render" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
     </main>
 
     <script>
-        // TYPEWRITER
-        const msg = ["> Senior SRE Node Active...", "> [OK] Project History Pinned.", "> [OK] System Resilience Verified.", "> Uplink Ready."];
-        let i=0, j=0, cur="";
-        function type(){
-            if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "_"; j++; setTimeout(type, 30); }
-                else{ cur += "<br>"; i++; j=0; setTimeout(type, 800); }
-            }
-        }
-        window.onload = type;
+        /**
+         * CONTENT DATA OBJECT
+         * This is where you add your professional descriptions.
+         */
+        const portfolioData = {
+            experience: [
+                {
+                    title: "Azure SQL DB Capacity Management",
+                    meta: "Microsoft | Jan 2022 — Present",
+                    tech: ["Kusto", "XTS", "PowerShell", "Service Fabric", "Power BI"],
+                    description: "Global Data Utilization Analysis focused on ensuring Minimal Utilization Percentage across worldwide regions to prevent hot segments and optimize cloud resources.",
+                    points: [
+                        "End-to-end Power BI incident tracing using complex DAX and Kusto joins.",
+                        "Orchestrated node re-size operations and data-driven capacity requests.",
+                        "Automated telemetry audits via PowerShell and XTS for efficiency optimization."
+                    ]
+                },
+                {
+                    title: "Azure Cosmos DB",
+                    meta: "Microsoft | 2019 — 2021",
+                    tech: ["Azure Functions", "Cosmos DB", "MS Flow", "AAD Token"],
+                    description: "Scaling throughput and storage across global geographic regions for high-availability worldwide applications.",
+                    modules: [
+                        { name: "Dashboard", items: ["Calculated total Azure Spend for subscriptions.", "Integrated AAD Token for secure environment access.", "Created Azure Functions and automated deployment."] },
+                        { name: "Engineering Systems", items: ["End-to-end incident tracing via Kusto joins.", "Automated IcM creation for pipeline failures.", "Schema preparation and SQL joins from Excel to Stored Procedures."] }
+                    ]
+                },
+                {
+                    title: "WATS Event Portal",
+                    meta: "Washington Telugu Samithi | Internal",
+                    tech: [".NET MVC 4.0", "EF6", "SQL 2012", "Bootstrap"],
+                    description: "Full-stack event management and ticketing system with secure user-identity management.",
+                    points: [
+                        "Built Admin and User views for operational management.",
+                        "Migrated logic from Excel datasets to SQL Stored Procedures and complex joins.",
+                        "Designed responsive UIs using HTML5, jQuery, and CSS3."
+                    ]
+                }
+            ],
+            labs: [
+                { title: "Predictive Resilience Agent", tech: "Azure OpenAI / Python", desc: "Automating TSG generation using Kusto telemetry spikes." },
+                { title: "Fabric Scaling Docs", tech: "DP-600 / Fabric", desc: "Whitepaper on high-availability design for Microsoft Fabric." }
+            ]
+        };
 
-        // THREE.JS
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        const starGeo = new THREE.BufferGeometry();
-        const starPos = [];
-        for(let k=0; k<1500; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
-        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2 }));
-        scene.add(stars); camera.position.z = 800;
-        function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0005; renderer.render(scene, camera); }
-        animate();
+        const app = {
+            init: () => {
+                app.renderExp();
+                app.renderLabs();
+                app.initThree();
+                app.typewriter();
+            },
+            route: (target) => {
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                document.getElementById('sec-' + target).classList.add('active');
+                window.scrollTo(0,0);
+            },
+            renderExp: () => {
+                document.getElementById('experience-render').innerHTML = portfolioData.experience.map(item => `
+                    <div class="project-card">
+                        <h3 class="text-3xl font-bold uppercase mb-2" style="font-family: 'Syncopate';">${item.title}</h3>
+                        <span class="tag opacity-50 block mb-6">${item.meta}</span>
+                        <div class="mb-6">${item.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
+                        <p class="text-slate-300 text-sm mb-6">${item.description}</p>
+                        ${item.points ? `<ul class="bullet-list">${item.points.map(p => `<li>${p}</li>`).join('')}</ul>` : ''}
+                        ${item.modules ? item.modules.map(mod => `
+                            <details class="glass mt-4"><summary class="text-cyan-400 font-bold p-4 uppercase text-xs">${mod.name}</summary>
+                            <ul class="bullet-list">${mod.items.map(mi => `<li>${mi}</li>`).join('')}</ul></details>
+                        `).join('') : ''}
+                    </div>
+                `).join('');
+            },
+            renderLabs: () => {
+                document.getElementById('labs-render').innerHTML = portfolioData.labs.map(l => `
+                    <div class="glass p-8 border-l-2 border-cyan-400">
+                        <span class="tag text-cyan-400 block mb-4">Node_Update</span>
+                        <h4 class="text-xl font-bold mb-2">${l.title}</h4>
+                        <p class="text-slate-400 text-sm mb-4">${l.desc}</p>
+                        <span class="text-[10px] font-mono text-cyan-200 opacity-50">${l.tech}</span>
+                    </div>
+                `).join('');
+            },
+            typewriter: () => {
+                const logs = ["> Booting v2.0.7...", "> Loading System Architecture Projects...", "> [OK] Telemetry Linked.", "> READY."];
+                let i=0; const el = document.getElementById("console-logs");
+                const run = () => { if(i < logs.length) { el.innerHTML += logs[i] + "<br>"; i++; setTimeout(run, 500); } };
+                run();
+            },
+            initThree: () => {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                const starGeo = new THREE.BufferGeometry();
+                const starPos = [];
+                for(let k=0; k<1500; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+                const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2 }));
+                scene.add(stars); camera.position.z = 800;
+                const animate = () => { requestAnimationFrame(animate); stars.rotation.y += 0.0005; renderer.render(scene, camera); };
+                animate();
+            }
+        };
+
+        window.onload = app.init;
     </script>
 </body>
 </html>
