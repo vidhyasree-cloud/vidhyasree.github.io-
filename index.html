@@ -24,7 +24,7 @@
         section { display: none; }
         section.active { display: block; animation: fadeIn 0.4s ease; }
         
-        /* Pagination Logic: Cards are hidden unless 'active' */
+        /* Pagination Logic: Cards are hidden unless 'active-page' */
         .project-card { display: none; border-left: 3px solid var(--neon); padding-left: 1.5rem; margin-bottom: 4rem; }
         .project-card.active-page { display: block; animation: slideUp 0.3s ease; }
         
@@ -37,7 +37,6 @@
         .page-btn { border: 1px solid #30363d; padding: 4px 10px; font-family: monospace; cursor: pointer; font-size: 10px; color: #8b949e; }
         .page-btn.active-btn { background: var(--neon); color: black; font-weight: bold; border-color: var(--neon); }
 
-        /* Original Details/List Styles Preserved */
         details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1rem; width: 100%; }
         summary { cursor: pointer; padding: 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; }
         .bullet-list { list-style: none; padding: 1.5rem; }
@@ -54,9 +53,9 @@
         <div class="flex justify-between items-center max-w-7xl mx-auto">
             <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
             <div class="flex gap-6 text-[10px] font-bold tracking-widest uppercase">
-                <span onclick="route('home')" class="nav-link active-nav" id="btn-home">Node_Main</span>
+                <span onclick="route('home')" class="nav-link active-nav" id="btn-home">Terminal</span>
                 <span onclick="route('experience')" class="nav-link" id="btn-experience">Project_History</span>
-                <span onclick="route('publications')" class="nav-link" id="btn-publications">Publications_AI</span>
+                <span onclick="route('additions')" class="nav-link" id="btn-additions">AI_Labs_&_Pubs</span>
             </div>
         </div>
     </nav>
@@ -65,26 +64,29 @@
         
         <section id="node-home" class="active">
             <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24">
-                <div class="w-full lg:w-3/5">
+                <div class="w-full lg:w-3/5 text-center lg:text-left">
                     <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
-                    <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 uppercase leading-none" style="font-family: 'Syncopate';">
+                    <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
                         CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
                     </h1>
-                    <p class="text-slate-400 text-lg md:text-xl font-light">
+                    <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0">
                         7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.
                     </p>
                 </div>
                 <div class="w-full lg:w-2/5 flex justify-center">
-                    <img src="profile.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-cyan-400 grayscale contrast-125">
+                    <img src="profile.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl">
                 </div>
             </header>
-            <div class="glass p-6 font-mono text-[11px] border-cyan-400/20 overflow-hidden">
+            <div class="glass p-6 mb-24 font-mono border-cyan-400/20 overflow-hidden">
+                <div class="flex gap-2 mb-4 opacity-50">
+                    <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
+                </div>
                 <div id="console-logs"></div>
             </div>
         </section>
 
         <section id="node-experience">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4 border-b border-white/5 pb-6">
                 <h2 class="text-xl md:text-2xl font-bold uppercase" style="font-family: 'Syncopate';">
                     <span class="h-px w-12 bg-cyan-400 inline-block mr-4"></span> DETAILED_PROJECT_SUMMARY
                 </h2>
@@ -135,31 +137,37 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2 uppercase" style="font-family: 'Syncopate';">WATS Portal</h3>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS Portal</h3>
                 <span class="tag opacity-50 block mb-4">Event Management // Washington Telugu Samithi</span>
                 <div class="mb-6">
-                    <span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">EF6</span><span class="tech-pill">PayPal API</span>
+                    <span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">EF6</span><span class="tech-pill">Bootstrap</span><span class="tech-pill">LINQ</span><span class="tech-pill">SQL 2012</span><span class="tech-pill">PayPal API</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Developed a robust Event Management System for WATA, streamlining organization and ticketing.</p>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Developed a robust Event Management System for WATA, streamlining organization and ticketing. Implemented a secure PayPal payment gateway integration for seamless ticket transactions.</p>
                 <details>
-                    <summary>Technical Execution</summary>
-                    <ul class="bullet-list">
-                        <li>Engineered high-performance, cross-browser applications utilizing **C# and ASP.NET**.</li>
-                        <li>Integrated **PayPal API** payment gateways using **EF6 and LINQ**.</li>
-                    </ul>
+                    <summary>Technical Execution & Transaction Logic</summary>
+                   <ul class="bullet-list">
+                    <li>Orchestrated project lifecycles within an Agile/Scrum framework.</li>
+                    <li>Engineered high-performance applications utilizing C# and ASP.NET.</li>
+                    <li>Architected responsive User Interfaces by leveraging HTML5, jQuery, and CSS3.</li>
+                    <li>Integrated PayPal API payment gateways using EF6 and LINQ.</li>
+                </ul>
                 </details>
             </div>
 
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold uppercase tracking-tight" style="font-family: 'Syncopate';">Office Management Portal</h3>
-                <span class="tag opacity-50 block mt-3">Internal Project // Performance Tracking</span>
-                <div class="mb-6"><span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">SQL 2012</span><span class="tech-pill">PayPal API</span></div>
+            <div class="project-card mb-20">
+                <div class="flex flex-col lg:flex-row justify-between lg:items-end mb-8 gap-4 border-b border-white/5 pb-4">
+                    <div class="flex-1"><h3 class="text-2xl lg:text-3xl font-bold uppercase tracking-tight" style="font-family: 'Syncopate';">Office Management Portal</h3>
+                    <span class="tag opacity-50 block mt-3">Internal Project // Performance Tracking</span></div>
+                </div>
+                <div class="mb-6"><span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">EF6</span><span class="tech-pill">SQL 2012</span><span class="tech-pill">PayPal API</span></div>
                 <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Application to track employee performance, attendance, projects, and task assignment.</p>
                 <details open>
-                    <summary>Technical Implementation</summary>
+                    <summary>Technical Implementation & Full-Stack Logic</summary>
                     <ul class="bullet-list">
-                        <li>Developed a high-performance **Seat Booking Engine**.</li>
-                        <li>Implemented advanced **Pagination logic** and data filtering.</li>
+                        <li>Engineered end-to-end, cross-browser applications utilizing C#, ASP.NET, and MVC.</li>
+                        <li>Developed a high-performance Seat Booking Engine.</li>
+                        <li>Implemented advanced Pagination logic and data filtering.</li>
+                        <li>Optimized backend performance by crafting complex T-SQL code.</li>
                     </ul>
                 </details>
             </div>
@@ -167,43 +175,52 @@
             <div class="project-card">
                 <h3 class="text-2xl lg:text-3xl font-bold mb-2">SRK Travels</h3>
                 <span class="tag opacity-50 block mb-4">Logistics & Tour Automation</span>
-                <div class="mb-6"><span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">LINQ to SQL</span></div>
+                <div class="mb-6"><span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">EF6</span><span class="tech-pill">LINQ to SQL</span><span class="tech-pill">PayPal Integration</span><span class="tech-pill">SQL 2012</span></div>
                 <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">A comprehensive Tours & Travels Management System that automated manual transport solutions.</p>
+                <details><summary>Technical Execution</summary><ul class="bullet-list"><li>Architected a robust Seat Booking Engine using LINQ and EF6.</li><li>Integrated secure Payment Gateway APIs (PayPal).</li></ul></details>
             </div>
         </section>
 
-        <section id="node-publications">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 uppercase" style="font-family: 'Syncopate';">System_Design_Adds_&_Labs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="node-additions">
+            <h2 class="text-xl md:text-2xl font-bold mb-16 uppercase" style="font-family: 'Syncopate';">System_Design_&_AI_Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                 <div class="glass p-8 border-l-2 border-cyan-400">
-                    <span class="tag text-cyan-400">Project_Update</span>
-                    <h4 class="text-xl font-bold mt-4">AI Resilience Agent</h4>
-                    <p class="text-slate-400 text-sm mt-4">Developing an automated TSG generator that interprets Kusto log spikes using LLMs to suggest immediate recovery actions.</p>
+                    <span class="tag text-cyan-400">Lab_Release_2026</span>
+                    <h4 class="text-xl font-bold mt-4 mb-4">AI Resilience Agent</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Developing an automated system that monitors Kusto log anomalies to predict SQL DB capacity constraints before threshold breaches occur.</p>
+                    <div class="mt-6"><span class="tech-pill">Azure OpenAI</span><span class="tech-pill">Python</span><span class="tech-pill">KQL</span></div>
                 </div>
                 <div class="glass p-8 border-l-2 border-cyan-400">
                     <span class="tag text-cyan-400">Publication</span>
-                    <h4 class="text-xl font-bold mt-4">Microsoft Ecosystem Reliability</h4>
-                    <p class="text-slate-400 text-sm mt-4">Technical documentation for scaling Azure SQL DB across 20+ global regions.</p>
+                    <h4 class="text-xl font-bold mt-4 mb-4">Fabric Resilience Patterns</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Technical documentation on implementing DP-600 standards for high-availability distributed systems in Microsoft Fabric.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <footer class="glass border-t border-white/10 pt-16 pb-10 px-6 md:px-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
+            <div><h5 class="tag mb-6">Uplink</h5><a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block text-sm">vidya98sree@gmail.com</a></div>
+            <div><h5 class="tag mb-6">Network</h5><div class="flex gap-6"><a href="#" class="text-slate-400 hover:text-cyan-400 text-[10px] font-bold">GITHUB</a><a href="#" class="text-slate-400 hover:text-cyan-400 text-[10px] font-bold">LINKEDIN</a></div></div>
+            <div class="text-right text-[10px] text-slate-500 uppercase tracking-widest italic">© 2026 VIDHYASREE DEVARAJU<br>Redmond, WA</div>
+        </div>
+    </footer>
+
     <script>
         // SPA ROUTER
         function route(target) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
             document.getElementById('node-' + target).classList.add('active');
-            
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-nav'));
             document.getElementById('btn-' + target).classList.add('active-nav');
             window.scrollTo(0,0);
         }
 
-        // AUTOMATIC PAGINATION ENGINE
+        // AUTO-PAGINATION ENGINE (Scans your pinned HTML)
         const cards = document.querySelectorAll('.project-card');
-        const navContainer = document.getElementById('pagination-nav');
+        const nav = document.getElementById('pagination-nav');
 
         function setPage(index) {
             cards.forEach((c, i) => c.classList.toggle('active-page', i === index));
@@ -216,11 +233,11 @@
             btn.innerText = (i + 1).toString().padStart(2, '0');
             btn.className = 'page-btn' + (i === 0 ? ' active-btn' : '');
             btn.onclick = () => setPage(i);
-            navContainer.appendChild(btn);
+            nav.appendChild(btn);
         });
 
-        // TERMINAL LOGS
-        const msg = ["> Session Active: VidhyaSree_v2.0.6", "> Loading Pinned Projects...", "> [OK] System Resilience Logic Verified.", "> Uplink Optimized."];
+        // TYPEWRITER
+        const msg = ["> Session Active: VidhyaSree_7Y", "> Loading Cloud Architecture Node...", "> [OK] Resilience Telemetry Synchronized.", "> Status: OPTIMIZED."];
         let i=0, j=0, cur="";
         function type(){
             if(i<msg.length){
@@ -230,7 +247,7 @@
         }
         window.onload = type;
 
-        // BACKGROUND
+        // THREE.JS BG
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
