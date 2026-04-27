@@ -3,310 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhyasree Devaraju | Senior Systems Architect</title>
-    
+    <title>VidhyaSree | Architecture Node v2.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.9); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.98); }
+        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-        
-        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
-        .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
-        
-        #console-logs { min-height: 120px; font-family: 'Courier New', monospace; font-size: 10px; }
-        @media (min-width: 768px) { #console-logs { font-size: 11px; } }
-
-        .project-card { border-left: 3px solid var(--neon); padding-left: 1.5rem; margin-bottom: 4rem; }
-        @media (min-width: 1024px) { .project-card { padding-left: 2.5rem; margin-bottom: 6rem; } }
-
-        details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1rem; width: 100%; }
-        summary { cursor: pointer; padding: 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; }
-        
-        .bullet-list { list-style: none; padding: 1.5rem; }
-        .bullet-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #8b949e; font-size: 0.85rem; }
+        .glass { background: var(--panel); border: 1px solid #30363d; border-radius: 4px; }
+        .active-nav { color: var(--neon); border-bottom: 2px solid var(--neon); }
+        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 2px 8px; font-size: 10px; color: var(--neon); font-family: monospace; text-transform: uppercase; }
+        .bullet-list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; color: #8b949e; font-size: 0.85rem; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
-
-        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        section { display: none; min-height: 80vh; }
+        section.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .page-btn { border: 1px solid #30363d; padding: 4px 12px; font-family: monospace; cursor: pointer; transition: 0.2s; }
+        .page-btn.active { background: var(--neon); color: #000; font-weight: bold; }
+        details summary { cursor: pointer; color: var(--neon); font-size: 0.8rem; font-weight: bold; margin-top: 1rem; list-style: none; }
     </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
+    <nav class="fixed w-full z-50 glass py-4 px-6">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="text-[8px] md:text-[10px] font-bold text-green-400 flex items-center gap-2 uppercase tracking-widest">
-                <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> SYSTEM_STATUS: STABLE
+            <div class="font-bold text-sm" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
+            <div class="flex gap-6 text-[9px] font-bold tracking-widest">
+                <button onclick="app.router('exp', event)" class="nav-btn active-nav">01_EXPERIENCE</button>
+                <button onclick="app.router('sys', event)" class="nav-btn">02_SYS_DESIGN</button>
+                <button onclick="app.router('pub', event)" class="nav-btn">03_PUBLICATIONS</button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 md:pt-48 pb-20">
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
         
-        <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24 lg:mb-48">
-            <div class="w-full lg:w-3/5 text-center lg:text-left">
-                <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
-                    CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
-                </h1>
-                <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0">
-                    7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.
-                </p>
-                <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">AZ-204</span><br><span class="tag opacity-50">Solution</span>
-                    </div>
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric</span>
-                    </div>
+        <section id="exp" class="active">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+                <h2 class="text-2xl font-bold uppercase" style="font-family: 'Syncopate';">System_History</h2>
+                <div id="exp-pagination" class="flex gap-2"></div>
+            </div>
+            <div id="exp-container" class="space-y-12"></div>
+        </section>
+
+        <section id="sys">
+            <h2 class="text-2xl font-bold uppercase mb-12" style="font-family: 'Syncopate';">Architectural_Specs</h2>
+            <div id="sys-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass p-8 border-l-2 border-cyan-400">
+                    <span class="tech-pill">Drafting</span>
+                    <h3 class="text-xl font-bold mt-4 mb-4">High-Scale Data Ingestion</h3>
+                    <p class="text-slate-400 text-sm">Working on patterns for resilience in multi-region Fabric deployments...</p>
                 </div>
-            </div>
-
-            <div class="w-full lg:w-2/5 flex justify-center">
-                <div class="relative group">
-                    <div class="absolute -inset-4 border border-cyan-400/20 rounded-full animate-pulse"></div>
-                    <img src="profile.jpg" alt="Profile" 
-                         class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 object-cover aspect-square transition-all duration-500">
-                </div>
-            </div>
-        </header>
-
-        <div class="glass p-6 mb-24 lg:mb-32 font-mono border-cyan-400/20 overflow-hidden">
-            <div class="flex gap-2 mb-4 opacity-50">
-                <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
-            </div>
-            <div id="console-logs"></div>
-        </div>
-
-        <section id="experience" class="mb-32">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> DETAILED_PROJECT_SUMMARY
-            </h2>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure SQL DB Capacity Management</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (via Quadrant) | Jan 2022 — Present</span>
-                <div class="mb-6"><span class="tech-pill">Kusto</span><span class="tech-pill">XTS</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Power BI</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data. Data Utilization is a crucial aspect that directly impacts Business Performance. It helps in identifying the areas that require more Attention and Resources. By maintaining a Minimal Utilization percentage, we can effectively manage the data and prevent any problems that might arise due to excessive data usage. This will also help in optimizing the resources and improving overall efficiency.</p>
-                <details open>
-                    <summary>Technical Execution & Impact</summary>
-                    <ul class="bullet-list">
-                        <li>Regularly analyze data to identify areas requiring attention and take corrective actions accordingly.</li>
-                        <li>Perform periodic data analysis to ensure the Utilization Percentage is always maintained at the minimal level.</li>
-                        <li>Request capacity in particular areas needed based on data-driven triggers.</li>
-                        <li>Conclusion: Managing Data Utilization Analysis in Worldwide regions to ensure minimal utilization and avoid customer data loss.</li>
-                        <li>Migrations: Successfully handled Node Re-size operations.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure Cosmos DB</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (Offshore) | Dec 2019 — Sept 2021</span>
-                <div class="mb-6"><span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">MS Flow</span><span class="tech-pill">Moq</span><span class="tech-pill">VSTS</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. It enables elastic scaling of throughput and storage across any number of Azure's geographic regions, building highly responsive worldwide applications. Data is seamlessly replicated while maintaining high availability.</p>
-                
-                <details>
-                    <summary>Module I: Dashboard Responsibilities</summary>
-                    <ul class="bullet-list">
-                        <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
-                        <li>Worked on AAD Token integration for secure environment access.</li>
-                        <li>Involved in writing test cases to perform unit testing for specific services owned.</li>
-                        <li>Worked on MS-Flows which trigger notifications to the user for azure cost and exceptions.</li>
-                        <li>Involved in creating Azure Functions and managing the deployment process.</li>
-                    </ul>
-                </details>
-                
-                <details>
-                    <summary>Module II: Engineering Systems</summary>
-                    <ul class="bullet-list">
-                        <li>Involved in monitoring pipeline in Build phase as well as Test phase.</li>
-                        <li>Worked on many Microsoft-flows to send reports on daily basis and create IcMs whenever builds failed.</li>
-                        <li>Directly interacting with the clients and gathering new requirements.</li>
-                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates in Azure file server and azure scale sets.</li>
-                        <li>Participated in Daily and Weekly status meetings with Team as well as Client.</li>
-                        <li>Worked on appropriate TSGs using .md files.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS Portal</h3>
-                <span class="tag opacity-50 block mb-4">Event Management // Washington Telugu Samithi</span>
-                <div class="mb-6">
-                    <span class="tech-pill">.NET MVC 4.0</span>
-                    <span class="tech-pill">EF6</span>
-                    <span class="tech-pill">Bootstrap</span>
-                    <span class="tech-pill">LINQ</span>
-                    <span class="tech-pill">SQL 2012</span>
-                    <span class="tech-pill">PayPal API</span>
-                </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                    Developed a robust Event Management System for WATA, streamlining organization and ticketing. 
-                    Implemented a secure **PayPal payment gateway** integration for seamless ticket transactions, 
-                    allowing users to browse events, purchase tickets securely, and receive automated updates.
-                </p>
-                <details>
-                    <summary>Technical Execution & Transaction Logic</summary>
-                   <ul class="bullet-list">
-                    <li>Orchestrated project lifecycles within an **Agile/Scrum** framework, ensuring alignment with mission-critical requirements and deadlines.</li>
-                    <li>Engineered high-performance, cross-browser applications utilizing **C# and ASP.NET** with **MVC architecture** from development through production support.</li>
-                    <li>Architected responsive, intuitive User Interfaces by leveraging **HTML5, jQuery, and CSS3** to optimize user engagement.</li>
-                    <li>Developed optimized database objects, including **Stored Procedures** for high-efficiency CRUD operations in **SQL Server 2012**.</li>
-                    <li>Implemented secure identity management by deploying **Form-based Authentication** to safeguard user data and session integrity.</li>
-                    <li>Integrated **PayPal API** payment gateways using **EF6 and LINQ** to facilitate secure, real-time ticket transactions and financial logging.</li>
-                    <li>Modeled complex database schemas and normalized table structures to ensure data integrity and long-term system scalability.</li>
-                    <li>Optimized backend logic through advanced **T-SQL** code, including complex **Stored Procedures, Functions, and SQL joins** for real-time reporting.</li>
-                </ul>
-                </details>
-            </div>
-
-            <div class="project-card mb-20">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-end mb-8 gap-4 border-b border-white/5 pb-4">
-    <div class="flex-1">
-        <h3 class="text-2xl lg:text-3xl font-bold uppercase tracking-tight leading-none" style="font-family: 'Syncopate';">
-            Office Management Portal
-        </h3>
-        <span class="tag opacity-50 block mt-3">Internal Project // Performance Tracking</span>
-    </div>
-</div>
-                    <div class="mb-6">
-    <span class="tech-pill">.NET MVC 4.0</span>
-    <span class="tech-pill">EF6</span>
-    <span class="tech-pill">Bootstrap</span>
-    <span class="tech-pill">LINQ</span>
-    <span class="tech-pill">SQL 2012</span>
-    <span class="tech-pill">PayPal API</span>
-</div>
-
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                    Application to track employee performance, attendance, projects, and task assignment. Features include email integration, leave requests, chatting with the team, and information about reporting authorities (WHO).
-                </p>
-
-                <details open>
-                    <summary>Technical Implementation & Full-Stack Logic</summary>
-                    <ul class="bullet-list">
-                        <li><strong>Orchestrated</strong> the full project lifecycle within an <strong>Agile/Scrum</strong> framework, collaborating with leads to ensure all technical requirements and mission-critical deadlines were met.</li>
-                        <li><strong>Engineered</strong> end-to-end, cross-browser applications utilizing <strong>C#, ASP.NET</strong>, and <strong>MVC architecture</strong>, overseeing everything from initial development to production deployment.</li>
-                        <li><strong>Architected</strong> distinct <strong>User and Admin Views</strong>, implementing role-based access control to provide tailored interfaces for system administrators and end-users.</li>
-                        <li><strong>Developed</strong> a high-performance <strong>Seat Booking Engine</strong>, integrating secure <strong>Payment Gateway APIs (PayPal)</strong> for real-time financial transactions and automated confirmations.</li>
-                        <li><strong>Implemented</strong> advanced <strong>Pagination logic</strong> and data filtering on the server-side to ensure rapid page load times and a seamless UI/UX for large datasets.</li>
-                        <li><strong>Designed</strong> responsive and intuitive interfaces using <strong>HTML5, jQuery, and CSS3</strong>, ensuring full functionality across mobile, tablet, and desktop viewports.</li>
-                        <li><strong>Developed</strong> optimized database objects, including <strong>Stored Procedures</strong> for high-efficiency CRUD operations and secure data entry within <strong>SQL Server 2012</strong>.</li>
-                        <li><strong>Deployed</strong> secure identity management solutions via custom Login Forms and <strong>Form-based Authentication</strong> to safeguard user session data and prevent unauthorized access.</li>
-                        <li><strong>Optimized</strong> backend performance by crafting complex <strong>T-SQL</strong> code, including advanced <strong>Stored Procedures, Functions, and intricate SQL joins</strong> for real-time data reporting.</li>
-                        <li><strong>Modeled</strong> normalized database schemas and table structures from the ground up, prioritizing data integrity and scalability for enterprise-grade applications.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">SRK Travels</h3>
-                <span class="tag opacity-50 block mb-4">Logistics & Tour Automation</span>
-                <div class="mb-6">
-                    <span class="tech-pill">ASP.NET MVC</span>
-                    <span class="tech-pill">EF6</span>
-                    <span class="tech-pill">LINQ to SQL</span>
-                    <span class="tech-pill">PayPal Integration</span>
-                    <span class="tech-pill">SQL 2012</span>
-                </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                    A comprehensive Tours & Travels Management System that automated manual transport solutions for local districts. 
-                    Integrated **automated ticket booking systems** with **PayPal API** to facilitate instant payments for tour packages.
-                </p>
-                <details>
-                    <summary>Technical Execution & Booking Automation</summary>
-                    <ul class="bullet-list">
-                        <li><strong>Orchestrated</strong> project delivery within an <strong>Agile/Scrum</strong> framework, collaborating with leads to ensure all technical requirements and mission-critical deadlines were met.</li>
-                        <li><strong>Engineered</strong> and maintained high-performance, cross-browser compatible applications using <strong>C# and ASP.NET MVC</strong>, overseeing the full lifecycle from design to production support.</li>
-                        <li><strong>Architected</strong> a robust <strong>Seat Booking Engine</strong>, utilizing <strong>LINQ</strong> and <strong>EF6</strong> to manage real-time availability and user reservations.</li>
-                        <li><strong>Integrated</strong> secure <strong>Payment Gateway APIs (PayPal)</strong> to facilitate encrypted financial transactions and automated booking confirmations.</li>
-                        <li><strong>Designed</strong> responsive, user-centric interfaces utilizing <strong>HTML5, jQuery, and CSS3</strong> to optimize accessibility and the end-user journey.</li>
-                        <li><strong>Developed</strong> optimized database objects, including <strong>Stored Procedures</strong> for high-efficiency CRUD operations within <strong>SQL Server 2012</strong>.</li>
-                        <li><strong>Implemented</strong> secure identity management solutions via custom Login Forms and <strong>Form-based Authentication</strong> to safeguard user session data.</li>
-                        <li><strong>Optimized</strong> backend performance by crafting complex <strong>T-SQL</strong> code, including advanced <strong>Stored Procedures, Functions, and intricate SQL joins</strong> for real-time reporting.</li>
-                        <li><strong>Modeled</strong> normalized database schemas and table structures, prioritizing data integrity and scalability for enterprise-grade applications.</li>
-                    </ul>
-                </details>
             </div>
         </section>
+
+        <section id="pub">
+            <h2 class="text-2xl font-bold uppercase mb-12" style="font-family: 'Syncopate';">Published_Artifacts</h2>
+            <div id="pub-container" class="space-y-4"></div>
+        </section>
+
     </main>
 
-    <footer class="glass border-t border-white/10 pt-16 pb-10 px-6 md:px-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/5 pb-12">
-                <div>
-                    <h5 class="tag mb-6 block">Uplink_Node</h5>
-                    <div class="space-y-3">
-                        <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
-                        <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="tag mb-6 block">Architecture_Network</h5>
-                    <div class="flex flex-wrap gap-6 md:gap-10">
-                        <a href="https://github.com/vidhyasree-cloud" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">GITHUB</a>
-                        <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">LINKEDIN</a>
-                        <a href="https://medium.com/@vidya98sree" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">MEDIUM</a>
-                    </div>
-                </div>
-                <div class="lg:text-right">
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-loose italic">
-                        © 2026 VIDHYASREE DEVARAJU<br>
-                        7th Year Senior Build // Redmond, WA
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        const msg = [
-            "> Initializing Senior SRE Session...",
-            "> [OK] Azure SQL & Cosmos Clusters Healthy.",
-            "> [OK] 7-Year Professional Telemetry Integrated.",
-            "> [OK] Responsive Viewports Verified.",
-            "> System Status: OPTIMIZED.",
-            "> Uplink Ready."
-        ];
-        let i=0, j=0, cur="";
-        function type(){
-            if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 30); }
-                else{ cur += "<br>"; i++; j=0; setTimeout(type, 800); }
-            }
-        }
-        window.onload = type;
+        const portfolioData = {
+            experience: [
+                {
+                    title: "Azure SQL DB Capacity Management",
+                    org: "Microsoft (via Quadrant) | Jan 2022 — Present",
+                    tech: ["Kusto", "XTS", "PowerShell", "Service Fabric", "Power BI"],
+                    summary: "Focuses on Data Analysis and Utilization in worldwide regions to ensure Minimal Utilization and avoid hot segments.",
+                    details: [
+                        "Regularly analyze data to identify areas requiring attention.",
+                        "Perform periodic analysis to maintain minimal Utilization Percentage.",
+                        "Request capacity based on data-driven triggers.",
+                        "Successfully handled Node Re-size operations and migrations."
+                    ]
+                },
+                {
+                    title: "Azure Cosmos DB",
+                    org: "Microsoft (Offshore) | Dec 2019 — Sept 2021",
+                    tech: ["Azure Functions", "Cosmos DB", "MS Flow", "Moq", "VSTS"],
+                    summary: "Globally distributed database service. Developed modules for cost tracking and engineering systems.",
+                    details: [
+                        "Module I: Developed subscription spend calculation for environments.",
+                        "Integrated AAD Tokens for secure environment access.",
+                        "Engineered MS-Flows for notification triggers on azure cost/exceptions.",
+                        "Module II: Created PowerShell scripts for disk clean ups and Windows updates in Scale Sets.",
+                        "Managed build and test phase pipelines in Engineering Systems."
+                    ]
+                },
+                {
+                    title: "WATS Portal",
+                    org: "Washington Telugu Samithi // Event Management",
+                    tech: [".NET MVC 4.0", "EF6", "Bootstrap", "LINQ", "SQL 2012", "PayPal API"],
+                    summary: "Robust Event Management System streamlining organization and ticketing with secure PayPal integration.",
+                    details: [
+                        "Orchestrated project lifecycles within Agile/Scrum framework.",
+                        "Architected responsive UIs using HTML5, jQuery, and CSS3.",
+                        "Developed optimized Stored Procedures for high-efficiency CRUD.",
+                        "Integrated PayPal API for real-time ticket transactions."
+                    ]
+                },
+                {
+                    title: "Office Management Portal",
+                    org: "Internal Project // Performance Tracking",
+                    tech: [".NET MVC 4.0", "EF6", "SQL 2012", "PayPal API"],
+                    summary: "Application to track performance, attendance, and task assignment with email integration.",
+                    details: [
+                        "Engineered end-to-end applications using C# and ASP.NET MVC.",
+                        "Developed a high-performance Seat Booking Engine.",
+                        "Implemented advanced server-side Pagination and data filtering.",
+                        "Optimized backend performance with complex T-SQL and SQL joins."
+                    ]
+                },
+                {
+                    title: "SRK Travels",
+                    org: "Logistics & Tour Automation",
+                    tech: ["ASP.NET MVC", "EF6", "LINQ to SQL", "PayPal Integration"],
+                    summary: "Automated manual transport solutions and ticket booking systems.",
+                    details: [
+                        "Architected Seat Booking Engine using LINQ and EF6.",
+                        "Integrated secure Payment Gateway APIs (PayPal).",
+                        "Modeled normalized database schemas for enterprise scalability."
+                    ]
+                },
+                {
+                    title: "AI Resilience Agent (NEW)",
+                    org: "New AI Project // 2026",
+                    tech: ["Python", "Azure OpenAI", "KQL", "Fabric"],
+                    summary: "Predictive analysis tool for system reliability and automated TSG generation.",
+                    details: [
+                        "Utilizing LLMs to analyze Kusto logs for early failure detection.",
+                        "Automating incident response documentation based on historical telemetry."
+                    ]
+                }
+            ],
+            publications: [
+                { title: "Managing Global SQL Capacity at Scale", date: "2025", link: "#" },
+                { title: "SRE Resilience in Microsoft Ecosystems", date: "2024", link: "#" }
+            ]
+        };
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        const starGeo = new THREE.BufferGeometry();
-        const starPos = [];
-        for(let k=0; k<2000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
-        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.3 }));
-        scene.add(stars);
-        camera.position.z = 800;
-        function animate() { 
-            requestAnimationFrame(animate); 
-            stars.rotation.y += 0.001;
-            stars.rotation.x += 0.0005;
-            renderer.render(scene, camera); 
-        }
-        animate();
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        const app = {
+            state: { page: 1, itemsPerPage: 1 },
+
+            init: () => {
+                app.renderExp();
+                app.renderPub();
+                app.initThree();
+            },
+
+            router: (id, e) => {
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
+                e.target.classList.add('active-nav');
+            },
+
+            renderExp: () => {
+                const container = document.getElementById('exp-container');
+                const paginator = document.getElementById('exp-pagination');
+                const start = (app.state.page - 1) * app.state.itemsPerPage;
+                const items = portfolioData.experience.slice(start, start + app.state.itemsPerPage);
+
+                container.innerHTML = items.map(item => `
+                    <div class="project-card border-l-2 border-cyan-400 pl-8">
+                        <h3 class="text-3xl font-bold mb-2 uppercase" style="font-family: 'Syncopate';">${item.title}</h3>
+                        <span class="text-cyan-400 text-[10px] font-bold tracking-widest block mb-6">${item.org}</span>
+                        <div class="flex flex-wrap gap-2 mb-8">${item.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
+                        <p class="text-slate-300 text-base leading-relaxed mb-8 max-w-4xl">${item.summary}</p>
+                        <div class="glass p-8">
+                            <ul class="bullet-list">${item.details.map(d => `<li>${d}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                `).join('');
+
+                const totalPages = Math.ceil(portfolioData.experience.length / app.state.itemsPerPage);
+                paginator.innerHTML = Array.from({length: totalPages}, (_, i) => `
+                    <button onclick="app.setPage(${i+1})" class="page-btn ${app.state.page === i+1 ? 'active' : ''}">${(i+1).toString().padStart(2, '0')}</button>
+                `).join('');
+            },
+
+            setPage: (p) => {
+                app.state.page = p;
+                app.renderExp();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+
+            renderPub: () => {
+                document.getElementById('pub-container').innerHTML = portfolioData.publications.map(p => `
+                    <div class="glass p-6 flex justify-between items-center group hover:border-cyan-400 transition-all cursor-pointer">
+                        <h4 class="font-bold text-sm group-hover:text-cyan-400">${p.title}</h4>
+                        <span class="text-[10px] opacity-50 font-mono">${p.date} // VIEW_PDF</span>
+                    </div>
+                `).join('');
+            },
+
+            initThree: () => {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                const starGeo = new THREE.BufferGeometry();
+                const starPos = [];
+                for(let k=0; k<2000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+                const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2 }));
+                scene.add(stars); camera.position.z = 800;
+                function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0005; renderer.render(scene, camera); }
+                animate();
+            }
+        };
+
+        window.onload = app.init;
     </script>
 </body>
 </html>
