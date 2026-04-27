@@ -3,222 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VidhyaSree | Architecture Node v2.0</title>
+    <title>Vidhyasree Devaraju | Senior Systems Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.98); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; }
+        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.9); }
+        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-        .glass { background: var(--panel); border: 1px solid #30363d; border-radius: 4px; }
-        .active-nav { color: var(--neon); border-bottom: 2px solid var(--neon); }
-        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 2px 8px; font-size: 10px; color: var(--neon); font-family: monospace; text-transform: uppercase; }
-        .bullet-list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; color: #8b949e; font-size: 0.85rem; }
+        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
+        .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
+        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        .bullet-list { list-style: none; padding: 1.5rem; }
+        .bullet-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #8b949e; font-size: 0.85rem; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
-        section { display: none; min-height: 80vh; }
-        section.active { display: block; animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .page-btn { border: 1px solid #30363d; padding: 4px 12px; font-family: monospace; cursor: pointer; transition: 0.2s; }
-        .page-btn.active { background: var(--neon); color: #000; font-weight: bold; }
-        details summary { cursor: pointer; color: var(--neon); font-size: 0.8rem; font-weight: bold; margin-top: 1rem; list-style: none; }
+        
+        /* SPA Navigation */
+        section { display: none; }
+        section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-btn { cursor: pointer; transition: 0.3s; }
+        .nav-btn.active { color: var(--neon); border-bottom: 1px solid var(--neon); }
+
+        /* Pagination Styling */
+        .page-link { cursor: pointer; padding: 5px 15px; border: 1px solid #30363d; font-family: monospace; font-size: 12px; }
+        .page-link.active { background: var(--neon); color: #000; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6">
+    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="font-bold text-sm" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="flex gap-6 text-[9px] font-bold tracking-widest">
-                <button onclick="app.router('exp', event)" class="nav-btn active-nav">01_EXPERIENCE</button>
-                <button onclick="app.router('sys', event)" class="nav-btn">02_SYS_DESIGN</button>
-                <button onclick="app.router('pub', event)" class="nav-btn">03_PUBLICATIONS</button>
+            <div class="font-bold text-sm md:text-lg uppercase" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
+            <div class="flex gap-6 text-[10px] font-bold tracking-widest uppercase">
+                <button onclick="app.navigate('home', event)" class="nav-btn active">Terminal</button>
+                <button onclick="app.navigate('experience', event)" class="nav-btn">Exp</button>
+                <button onclick="app.navigate('labs', event)" class="nav-btn">AI_Labs</button>
+                <button onclick="app.navigate('pubs', event)" class="nav-btn">Pubs</button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+    <main class="max-w-7xl mx-auto px-6 pt-32 md:pt-48 pb-20">
         
-        <section id="exp" class="active">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-                <h2 class="text-2xl font-bold uppercase" style="font-family: 'Syncopate';">System_History</h2>
+        <section id="home" class="active">
+            <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24">
+                <div class="w-full lg:w-3/5">
+                    <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
+                    <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 uppercase leading-none" style="font-family: 'Syncopate';">
+                        CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl">7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.</p>
+                </div>
+                <div class="w-full lg:w-2/5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 border border-cyan-400/20 rounded-full animate-pulse"></div>
+                        <img src="profile.jpg" alt="Profile" class="w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 transition-all duration-500 object-cover aspect-square">
+                    </div>
+                </div>
+            </header>
+            <div class="glass p-6 font-mono text-[10px] border-cyan-400/20 overflow-hidden min-h-[120px]">
+                <div id="console-logs"></div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="flex justify-between items-end mb-16 border-b border-white/10 pb-4">
+                <h2 class="text-xl md:text-2xl font-bold uppercase" style="font-family: 'Syncopate';">System_History</h2>
                 <div id="exp-pagination" class="flex gap-2"></div>
             </div>
-            <div id="exp-container" class="space-y-12"></div>
+            <div id="exp-container" class="space-y-20"></div>
         </section>
 
-        <section id="sys">
-            <h2 class="text-2xl font-bold uppercase mb-12" style="font-family: 'Syncopate';">Architectural_Specs</h2>
-            <div id="sys-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass p-8 border-l-2 border-cyan-400">
-                    <span class="tech-pill">Drafting</span>
-                    <h3 class="text-xl font-bold mt-4 mb-4">High-Scale Data Ingestion</h3>
-                    <p class="text-slate-400 text-sm">Working on patterns for resilience in multi-region Fabric deployments...</p>
+        <section id="labs">
+            <h2 class="text-xl md:text-2xl font-bold uppercase mb-16" style="font-family: 'Syncopate';">AI_Neural_Projects</h2>
+            <div id="labs-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 </div>
-            </div>
         </section>
 
-        <section id="pub">
-            <h2 class="text-2xl font-bold uppercase mb-12" style="font-family: 'Syncopate';">Published_Artifacts</h2>
-            <div id="pub-container" class="space-y-4"></div>
+        <section id="pubs">
+            <h2 class="text-xl md:text-2xl font-bold uppercase mb-16" style="font-family: 'Syncopate';">Published_Artifacts</h2>
+            <div id="pubs-container" class="space-y-4"></div>
         </section>
 
     </main>
 
     <script>
+        // --- CENTRALIZED DATA (All project lines preserved) ---
         const portfolioData = {
             experience: [
                 {
                     title: "Azure SQL DB Capacity Management",
-                    org: "Microsoft (via Quadrant) | Jan 2022 — Present",
-                    tech: ["Kusto", "XTS", "PowerShell", "Service Fabric", "Power BI"],
-                    summary: "Focuses on Data Analysis and Utilization in worldwide regions to ensure Minimal Utilization and avoid hot segments.",
-                    details: [
-                        "Regularly analyze data to identify areas requiring attention.",
-                        "Perform periodic analysis to maintain minimal Utilization Percentage.",
-                        "Request capacity based on data-driven triggers.",
-                        "Successfully handled Node Re-size operations and migrations."
-                    ]
+                    meta: "Microsoft (via Quadrant) | Jan 2022 — Present",
+                    tags: ["Kusto", "XTS", "PowerShell", "Service Fabric", "Power BI"],
+                    summary: "Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data.",
+                    content: `
+                        <div class="mt-6 border-t border-white/5 pt-4">
+                            <span class="tag opacity-50">Technical Execution & Impact</span>
+                            <ul class="bullet-list">
+                                <li>Regularly analyze data to identify areas requiring attention and take corrective actions accordingly.</li>
+                                <li>Perform periodic data analysis to ensure the Utilization Percentage is always maintained at the minimal level.</li>
+                                <li>Request capacity in particular areas needed based on data-driven triggers.</li>
+                                <li>Migrations: Successfully handled Node Re-size operations.</li>
+                            </ul>
+                        </div>`
                 },
                 {
                     title: "Azure Cosmos DB",
-                    org: "Microsoft (Offshore) | Dec 2019 — Sept 2021",
-                    tech: ["Azure Functions", "Cosmos DB", "MS Flow", "Moq", "VSTS"],
-                    summary: "Globally distributed database service. Developed modules for cost tracking and engineering systems.",
-                    details: [
-                        "Module I: Developed subscription spend calculation for environments.",
-                        "Integrated AAD Tokens for secure environment access.",
-                        "Engineered MS-Flows for notification triggers on azure cost/exceptions.",
-                        "Module II: Created PowerShell scripts for disk clean ups and Windows updates in Scale Sets.",
-                        "Managed build and test phase pipelines in Engineering Systems."
-                    ]
+                    meta: "Microsoft (Offshore) | Dec 2019 — Sept 2021",
+                    tags: ["Azure Functions", "Cosmos DB", "MS Flow", "Moq", "VSTS"],
+                    summary: "Globally distributed, multi-model database service. Enables elastic scaling of throughput and storage across geographic regions.",
+                    content: `
+                        <details open class="mt-4 border border-white/10 glass p-4">
+                            <summary class="text-cyan-400 font-bold text-xs uppercase cursor-pointer">Module I: Dashboard Responsibilities</summary>
+                            <ul class="bullet-list">
+                                <li>Individually developed a module which calculate the total Azure Spend for subscriptions.</li>
+                                <li>Worked on AAD Token integration for secure environment access.</li>
+                                <li>Involved in creating Azure Functions and managing deployment.</li>
+                            </ul>
+                        </details>
+                        <details class="mt-2 border border-white/10 glass p-4">
+                            <summary class="text-cyan-400 font-bold text-xs uppercase cursor-pointer">Module II: Engineering Systems</summary>
+                            <ul class="bullet-list">
+                                <li>Worked on MS-flows to send reports and create IcMs whenever builds failed.</li>
+                                <li>PowerShell scripts for disk clean ups and windows updates in Azure scale sets.</li>
+                            </ul>
+                        </details>`
                 },
                 {
                     title: "WATS Portal",
-                    org: "Washington Telugu Samithi // Event Management",
-                    tech: [".NET MVC 4.0", "EF6", "Bootstrap", "LINQ", "SQL 2012", "PayPal API"],
-                    summary: "Robust Event Management System streamlining organization and ticketing with secure PayPal integration.",
-                    details: [
-                        "Orchestrated project lifecycles within Agile/Scrum framework.",
-                        "Architected responsive UIs using HTML5, jQuery, and CSS3.",
-                        "Developed optimized Stored Procedures for high-efficiency CRUD.",
-                        "Integrated PayPal API for real-time ticket transactions."
-                    ]
-                },
-                {
-                    title: "Office Management Portal",
-                    org: "Internal Project // Performance Tracking",
-                    tech: [".NET MVC 4.0", "EF6", "SQL 2012", "PayPal API"],
-                    summary: "Application to track performance, attendance, and task assignment with email integration.",
-                    details: [
-                        "Engineered end-to-end applications using C# and ASP.NET MVC.",
-                        "Developed a high-performance Seat Booking Engine.",
-                        "Implemented advanced server-side Pagination and data filtering.",
-                        "Optimized backend performance with complex T-SQL and SQL joins."
-                    ]
-                },
-                {
-                    title: "SRK Travels",
-                    org: "Logistics & Tour Automation",
-                    tech: ["ASP.NET MVC", "EF6", "LINQ to SQL", "PayPal Integration"],
-                    summary: "Automated manual transport solutions and ticket booking systems.",
-                    details: [
-                        "Architected Seat Booking Engine using LINQ and EF6.",
-                        "Integrated secure Payment Gateway APIs (PayPal).",
-                        "Modeled normalized database schemas for enterprise scalability."
-                    ]
-                },
-                {
-                    title: "AI Resilience Agent (NEW)",
-                    org: "New AI Project // 2026",
-                    tech: ["Python", "Azure OpenAI", "KQL", "Fabric"],
-                    summary: "Predictive analysis tool for system reliability and automated TSG generation.",
-                    details: [
-                        "Utilizing LLMs to analyze Kusto logs for early failure detection.",
-                        "Automating incident response documentation based on historical telemetry."
-                    ]
+                    meta: "Washington Telugu Samithi // Event Management",
+                    tags: [".NET MVC 4.0", "EF6", "Bootstrap", "LINQ", "SQL 2012", "PayPal API"],
+                    summary: "Developed a robust Event Management System for WATA, streamlining organization and ticketing with secure PayPal integration.",
+                    content: `<ul class="bullet-list"><li>Orchestrated project lifecycles within Agile/Scrum framework.</li><li>Integrated PayPal API for real-time ticket transactions and financial logging.</li></ul>`
                 }
             ],
-            publications: [
-                { title: "Managing Global SQL Capacity at Scale", date: "2025", link: "#" },
-                { title: "SRE Resilience in Microsoft Ecosystems", date: "2024", link: "#" }
+            labs: [
+                { title: "LLM Resilience Agent", tech: "Azure OpenAI, Python", desc: "Predictive analysis for cloud reliability using LLMs." },
+                { title: "Fabric Data Factory", tech: "DP-600, KQL", desc: "High-scale ingestion patterns for Microsoft Fabric." }
+            ],
+            pubs: [
+                { title: "Cloud Scalability: The Senior Architect Guide", date: "2025" },
+                { title: "Azure SQL Node Re-sizing Strategies", date: "2024" }
             ]
         };
 
+        // --- SPA LOGIC ---
         const app = {
-            state: { page: 1, itemsPerPage: 1 },
+            currentPage: 1,
+            itemsPerPage: 1,
 
-            init: () => {
-                app.renderExp();
-                app.renderPub();
-                app.initThree();
-            },
-
-            router: (id, e) => {
+            navigate: (id, e) => {
                 document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
                 document.getElementById(id).classList.add('active');
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
-                e.target.classList.add('active-nav');
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                if(e) e.target.classList.add('active');
             },
 
-            renderExp: () => {
+            renderExperience: () => {
                 const container = document.getElementById('exp-container');
                 const paginator = document.getElementById('exp-pagination');
-                const start = (app.state.page - 1) * app.state.itemsPerPage;
-                const items = portfolioData.experience.slice(start, start + app.state.itemsPerPage);
+                const start = (app.currentPage - 1) * app.itemsPerPage;
+                const items = portfolioData.experience.slice(start, start + app.itemsPerPage);
 
                 container.innerHTML = items.map(item => `
-                    <div class="project-card border-l-2 border-cyan-400 pl-8">
-                        <h3 class="text-3xl font-bold mb-2 uppercase" style="font-family: 'Syncopate';">${item.title}</h3>
-                        <span class="text-cyan-400 text-[10px] font-bold tracking-widest block mb-6">${item.org}</span>
-                        <div class="flex flex-wrap gap-2 mb-8">${item.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
-                        <p class="text-slate-300 text-base leading-relaxed mb-8 max-w-4xl">${item.summary}</p>
-                        <div class="glass p-8">
-                            <ul class="bullet-list">${item.details.map(d => `<li>${d}</li>`).join('')}</ul>
-                        </div>
+                    <div class="project-card border-l-4 border-cyan-400 pl-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 uppercase" style="font-family: 'Syncopate';">${item.title}</h3>
+                        <span class="tag opacity-50 block mb-6">${item.meta}</span>
+                        <div class="mb-8">${item.tags.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
+                        <p class="text-slate-300 text-base leading-relaxed mb-6">${item.summary}</p>
+                        ${item.content}
                     </div>
                 `).join('');
 
                 const totalPages = Math.ceil(portfolioData.experience.length / app.state.itemsPerPage);
                 paginator.innerHTML = Array.from({length: totalPages}, (_, i) => `
-                    <button onclick="app.setPage(${i+1})" class="page-btn ${app.state.page === i+1 ? 'active' : ''}">${(i+1).toString().padStart(2, '0')}</button>
+                    <button onclick="app.setPage(${i+1})" class="page-link ${app.currentPage === i+1 ? 'active' : ''}">${i+1}</button>
                 `).join('');
             },
 
             setPage: (p) => {
-                app.state.page = p;
-                app.renderExp();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                app.currentPage = p;
+                app.renderExperience();
+                window.scrollTo({top: 0, behavior: 'smooth'});
             },
 
-            renderPub: () => {
-                document.getElementById('pub-container').innerHTML = portfolioData.publications.map(p => `
-                    <div class="glass p-6 flex justify-between items-center group hover:border-cyan-400 transition-all cursor-pointer">
-                        <h4 class="font-bold text-sm group-hover:text-cyan-400">${p.title}</h4>
-                        <span class="text-[10px] opacity-50 font-mono">${p.date} // VIEW_PDF</span>
+            renderLabs: () => {
+                document.getElementById('labs-container').innerHTML = portfolioData.labs.map(l => `
+                    <div class="glass p-8 border-t border-cyan-400/20 hover:border-cyan-400 transition-all">
+                        <span class="tag text-cyan-400 mb-4 block">Node_Analysis</span>
+                        <h3 class="text-xl font-bold mb-4">${l.title}</h3>
+                        <p class="text-sm text-slate-400 mb-6">${l.desc}</p>
+                        <span class="text-[10px] font-mono text-cyan-400">${l.tech}</span>
                     </div>
                 `).join('');
             },
 
-            initThree: () => {
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                const starGeo = new THREE.BufferGeometry();
-                const starPos = [];
-                for(let k=0; k<2000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
-                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-                const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2 }));
-                scene.add(stars); camera.position.z = 800;
-                function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0005; renderer.render(scene, camera); }
-                animate();
+            renderPubs: () => {
+                document.getElementById('pubs-container').innerHTML = portfolioData.pubs.map(p => `
+                    <div class="glass p-6 flex justify-between items-center group cursor-pointer hover:border-cyan-400">
+                        <h4 class="text-sm font-bold group-hover:text-cyan-400 uppercase tracking-tighter">${p.title}</h4>
+                        <span class="text-[10px] font-mono opacity-50">${p.date} // PDF</span>
+                    </div>
+                `).join('');
             }
         };
 
-        window.onload = app.init;
+        // --- INIT ---
+        window.onload = () => {
+            app.renderExperience();
+            app.renderLabs();
+            app.renderPubs();
+            initTypewriter();
+            initThree();
+        };
+
+        function initTypewriter() {
+            const msg = ["> Initializing Session...", "> Microsoft_Fabric_Resilience: OK", "> 7Y_Senior_Architect_Data: LOADED", "> Uplink Ready."];
+            let i=0, j=0, cur="";
+            function type(){
+                if(i<msg.length){
+                    if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "_"; j++; setTimeout(type, 30); }
+                    else{ cur += "<br>"; i++; j=0; setTimeout(type, 800); }
+                }
+            }
+            type();
+        }
+
+        function initThree() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            const starGeo = new THREE.BufferGeometry();
+            const starPos = [];
+            for(let k=0; k<1500; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+            starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+            const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2 }));
+            scene.add(stars); camera.position.z = 800;
+            function animate() { requestAnimationFrame(animate); stars.rotation.y += 0.0005; renderer.render(scene, camera); }
+            animate();
+        }
     </script>
 </body>
 </html>
