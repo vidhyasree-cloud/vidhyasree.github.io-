@@ -11,144 +11,126 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.9); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.85); }
+        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.5; }
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; }
         
-        .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
-        .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
+        .glass { background: var(--panel); backdrop-filter: blur(12px); border: 1px solid rgba(48, 54, 61, 0.6); }
+        .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         
-        #console-logs { min-height: 120px; font-family: 'Courier New', monospace; font-size: 10px; }
-        @media (min-width: 768px) { #console-logs { font-size: 11px; } }
+        #console-logs { min-height: 100px; font-family: 'Courier New', monospace; font-size: 11px; }
 
-        .project-card { border-left: 3px solid var(--neon); padding-left: 1.5rem; margin-bottom: 4rem; }
-        @media (min-width: 1024px) { .project-card { padding-left: 2.5rem; margin-bottom: 6rem; } }
+        .project-card { border-left: 3px solid var(--neon); padding-left: 1.25rem; margin-bottom: 2.5rem; transition: border-color 0.3s ease; }
+        .project-card:hover { border-left-color: #ffffff; }
 
-        details { background: rgba(22, 27, 34, 0.7); border: 1px solid #30363d; margin-top: 1rem; width: 100%; }
-        summary { cursor: pointer; padding: 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; }
+        details { background: rgba(22, 27, 34, 0.5); border: 1px solid rgba(48, 54, 61, 0.5); margin-top: 0.75rem; width: 100%; border-radius: 4px; overflow: hidden; }
+        summary { cursor: pointer; padding: 0.85rem 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '\f107'; font-family: 'Font Awesome 5 Free'; font-weight: 900; transition: transform 0.2s ease; }
+        details[open] summary::after { transform: rotate(180deg); }
         
-        .bullet-list { list-style: none; padding: 1.5rem; }
-        .bullet-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #8b949e; font-size: 0.85rem; }
+        .bullet-list { list-style: none; padding: 1rem 1.2rem; border-top: 1px solid rgba(48, 54, 61, 0.4); }
+        .bullet-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: #c9d1d9; font-size: 0.85rem; }
+        .bullet-list li:last-child { margin-bottom: 0; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
 
-        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 2px 8px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 4px; display: inline-block; margin-bottom: 4px; border-radius: 2px; background: rgba(0, 242, 255, 0.03); }
         
-        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 8px rgba(0,242,255,0.4); box-shadow: 0 0 12px rgba(0,242,255,0.1); transition: all 0.3s ease; }
-        .btn-neon:hover { background: var(--neon); color: var(--bg); box-shadow: 0 0 20px rgba(0,242,255,0.6); }
+        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 6px rgba(0,242,255,0.3); transition: all 0.2s ease; }
+        .btn-neon:hover { background: var(--neon); color: var(--bg); box-shadow: 0 0 15px rgba(0,242,255,0.5); text-shadow: none; }
     </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
-        <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="flex items-center gap-6">
-                <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn-neon text-[10px] tracking-widest font-bold px-4 py-2 uppercase rounded font-mono">
-                    <i class="fa-solid fa-file-arrow-down mr-2"></i> Download_Resume
+    <nav class="fixed w-full z-50 glass py-3 px-4 md:px-8 border-b border-white/10">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <div class="font-bold text-xs md:text-sm tracking-wider" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
+            <div class="flex items-center gap-4">
+                <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn-neon text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded font-mono">
+                    <i class="fa-solid fa-file-arrow-down mr-1"></i> Resume
                 </a>
-                <div class="hidden sm:flex text-[10px] font-bold text-green-400 items-center gap-2 uppercase tracking-widest">
-                    <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> STATUS: OPEN_TO_OFFERS
+                <div class="hidden sm:flex text-[9px] font-bold text-green-400 items-center gap-1.5 uppercase tracking-widest">
+                    <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> ACTIVE_UPLINK
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 md:pt-48 pb-20">
+    <main class="max-w-5xl mx-auto px-4 pt-24 md:pt-32 pb-12">
         
-        <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24 lg:mb-48">
-            <div class="w-full lg:w-3/5 text-center lg:text-left">
-                <span class="tag block mb-4">// SYSTEMS_ESTABLISHED_2019</span>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
+        <header class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-16">
+            <div class="md:col-span-2 text-center md:text-left">
+                <span class="tag block mb-2">// CORE_SYSTEMS_ARCHIVE</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
                     SOFTWARE<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">ENGINEER</span>
                 </h1>
-                <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Senior Software Engineer specializing in distributed computing systems, backend platform engineering, big data analytics pipelines, and core cloud infrastructure scalability.
+                <p class="text-slate-400 text-base md:text-lg font-light max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    Senior Software Engineer engineering highly scalable distributed backend platforms, processing big data analytics layers, and optimizing large-scale infrastructure systems.
                 </p>
-                <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric Eng</span>
+                <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
+                    <div class="glass py-1.5 px-3 border-cyan-400/20 text-center rounded">
+                        <span class="text-sm font-bold font-mono">DP-600</span> <span class="text-[9px] tag opacity-60 ml-1">Fabric</span>
                     </div>
-                    <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-xl font-bold">AZ-204</span><br><span class="tag opacity-50">Azure Dev</span>
+                    <div class="glass py-1.5 px-3 border-cyan-400/20 text-center rounded">
+                        <span class="text-sm font-bold font-mono">AZ-204</span> <span class="text-[9px] tag opacity-60 ml-1">Azure</span>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full lg:w-2/5 flex justify-center">
-                <div class="relative group">
-                    <div class="absolute -inset-4 border border-cyan-400/20 rounded-full animate-pulse"></div>
+            <div class="flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-2 border border-cyan-400/20 rounded-full animate-pulse"></div>
                     <img src="profile.jpg" alt="Vidhya Sree Devaraju" 
-                         class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 object-cover aspect-square transition-all duration-500">
+                         class="w-36 h-36 md:w-48 md:h-48 rounded-full border-2 border-cyan-400 grayscale contrast-125 hover:grayscale-0 object-cover transition-all duration-300">
                 </div>
             </div>
         </header>
 
-        <div class="glass p-6 mb-24 lg:mb-32 font-mono border-cyan-400/20 overflow-hidden">
-            <div class="flex gap-2 mb-4 opacity-50">
+        <div class="glass p-4 mb-16 font-mono border-cyan-400/20 rounded">
+            <div class="flex gap-1.5 mb-2 opacity-40">
                 <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
             <div id="console-logs"></div>
         </div>
 
-        <section id="system-diagnostic" class="mb-32">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
+        <section id="system-diagnostic" class="mb-16">
+            <h2 class="text-sm font-bold mb-6 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-8 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass p-6 border-l-2 border-cyan-400 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">01</div>
-                    <span class="tag block mb-2">Cluster_Load</span>
-                    <div class="text-3xl font-bold tracking-tight text-white font-mono" id="metric-load">42.8%</div>
-                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                        <div class="bg-cyan-400 h-full animate-pulse" style="width: 42%"></div>
-                    </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass p-4 border-l-2 border-cyan-400 rounded-r relative">
+                    <span class="tag block text-[9px] opacity-70 mb-1">Cluster_Load</span>
+                    <div class="text-xl font-bold font-mono" id="metric-load">42.8%</div>
                 </div>
-                <div class="glass p-6 border-l-2 border-emerald-400 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">02</div>
-                    <span class="tag block mb-2 text-emerald-400">Pipeline_Throughput</span>
-                    <div class="text-3xl font-bold tracking-tight text-emerald-400 font-mono" id="metric-rate">1,402 /s</div>
-                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                        <div class="bg-emerald-400 h-full" style="width: 78%"></div>
-                    </div>
+                <div class="glass p-4 border-l-2 border-emerald-400 rounded-r relative">
+                    <span class="tag block text-[9px] opacity-70 mb-1 text-emerald-400">Throughput</span>
+                    <div class="text-xl font-bold font-mono text-emerald-400" id="metric-rate">1,402/s</div>
                 </div>
-                <div class="glass p-6 border-l-2 border-amber-400 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">03</div>
-                    <span class="tag block mb-2 text-amber-400">Query_Latency</span>
-                    <div class="text-3xl font-bold tracking-tight text-amber-400 font-mono" id="metric-latency">14ms</div>
-                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                        <div class="bg-amber-400 h-full" style="width: 15%"></div>
-                    </div>
+                <div class="glass p-4 border-l-2 border-amber-400 rounded-r relative">
+                    <span class="tag block text-[9px] opacity-70 mb-1 text-amber-400">Query_Latency</span>
+                    <div class="text-xl font-bold font-mono text-amber-400" id="metric-latency">14ms</div>
                 </div>
-                <div class="glass p-6 border-l-2 border-purple-500 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">04</div>
-                    <span class="tag block mb-2 text-purple-400">Token_Uplink</span>
-                    <div class="text-3xl font-bold tracking-tight text-purple-400 font-mono">SECURE</div>
-                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                        <div class="bg-purple-500 h-full" style="width: 100%"></div>
-                    </div>
+                <div class="glass p-4 border-l-2 border-purple-500 rounded-r relative">
+                    <span class="tag block text-[9px] opacity-70 mb-1 text-purple-400">Token_Uplink</span>
+                    <div class="text-xl font-bold font-mono text-purple-400">SECURE</div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-32">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
+        <section id="experience" class="mb-16">
+            <h2 class="text-sm font-bold mb-8 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-8 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
             </h2>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure SQL DB Capacity Management Engine</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (via Quadrant) | Redmond, WA | Jan 2022 — Present</span>
-                <div class="mb-6">
-                    <span class="tech-pill">Kusto (KQL)</span>
-                    <span class="tech-pill">Databricks</span>
-                    <span class="tech-pill">PowerShell Automation</span>
-                    <span class="tech-pill">Service Fabric</span>
-                    <span class="tech-pill">Data Pipelines</span>
-                    <span class="tech-pill">Power BI Analytics</span>
+                <h3 class="text-xl font-bold text-white">Azure SQL DB Capacity Management Engine</h3>
+                <span class="tag opacity-60 block mb-2">Microsoft (via Quadrant) | Jan 2022 — Present</span>
+                <div class="mb-3">
+                    <span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Databricks</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Data Pipelines</span><span class="tech-pill">Power BI</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p class="text-slate-300 text-sm leading-relaxed mb-2">
                     Led worldwide telemetry data analysis strategies, compute asset mapping matrices, and capacity tracking systems across global regions to optimize resource utilization, isolate hardware hotspots, and safeguard multi-cloud infrastructure stability.
                 </p>
                 <details open>
@@ -163,17 +145,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure Cosmos DB Systems Framework</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (Offshore Partner Ecosystem) | Dec 2019 — Sept 2021</span>
-                <div class="mb-6">
-                    <span class="tech-pill">Azure Functions</span>
-                    <span class="tech-pill">Cosmos DB</span>
-                    <span class="tech-pill">CI/CD Pipelines</span>
-                    <span class="tech-pill">C# .NET Core</span>
-                    <span class="tech-pill">PowerShell</span>
-                    <span class="tech-pill">VSTS</span>
+                <h3 class="text-xl font-bold text-white">Azure Cosmos DB Systems Framework</h3>
+                <span class="tag opacity-60 block mb-2">Microsoft (Offshore Partner Ecosystem) | Dec 2019 — Sept 2021</span>
+                <div class="mb-3">
+                    <span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">C# .NET Core</span><span class="tech-pill">PowerShell</span><span class="tech-pill">VSTS</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p class="text-slate-300 text-sm leading-relaxed mb-2">
                     Spearheaded continuous engineering modules, serverless backend data utilities, and systemic validation pipelines backing the platform operations of Microsoft's flagship globally distributed multi-model database service.
                 </p>
                 <details>
@@ -187,25 +164,18 @@
                 </details>
             </div>
 
-            <div class="border-l-3 border-dashed border-cyan-500/30 pl-6 md:pl-10 my-16">
-                <span class="tag block mb-2 text-cyan-400">// Enterprise In-House Solution Engineering</span>
-                <h2 class="text-xl md:text-2xl font-bold uppercase tracking-wider font-mono">
-                    Quadrant Resources Solutions | May 2018 — Nov 2019
-                </h2>
+            <div class="border-l-2 border-dashed border-cyan-500/20 pl-4 my-8">
+                <span class="tag block text-cyan-400 text-[9px]">// Enterprise In-House Solution Engineering</span>
+                <h3 class="text-md font-bold uppercase tracking-wider font-mono text-slate-300">Quadrant Resources Ecosystem</h3>
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS High-Concurrency Web Architecture</h3>
-                <span class="tag opacity-50 block mb-4">In-House Project // Software Developer</span>
-                <div class="mb-6">
-                    <span class="tech-pill">C# .NET MVC 4.0</span>
-                    <span class="tech-pill">Entity Framework 6</span>
-                    <span class="tech-pill">SQL Server 2012</span>
-                    <span class="tech-pill">LINQ</span>
-                    <span class="tech-pill">T-SQL</span>
-                    <span class="tech-pill">Bootstrap</span>
+                <h3 class="text-xl font-bold text-white">WATS High-Concurrency Web Architecture</h3>
+                <span class="tag opacity-60 block mb-2">In-House Project</span>
+                <div class="mb-3">
+                    <span class="tech-pill">C# .NET MVC 4.0</span><span class="tech-pill">Entity Framework 6</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">LINQ</span><span class="tech-pill">T-SQL</span><span class="tech-pill">Bootstrap</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p class="text-slate-300 text-sm leading-relaxed mb-2">
                     Spearheaded the design, full-stack application logic development, and database mapping of an automated event-handling framework built to handle concurrent transaction traffic spikes and real-time inventory updates.
                 </p>
                 <details>
@@ -220,16 +190,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Enterprise Resource Coordination Database</h3>
-                <span class="tag opacity-50 block mb-4">In-House Project // Software Developer</span>
-                <div class="mb-6">
-                    <span class="tech-pill">ASP.NET MVC</span>
-                    <span class="tech-pill">SQL Server 2012</span>
-                    <span class="tech-pill">EF6</span>
-                    <span class="tech-pill">Role-Based Auth (RBAC)</span>
-                    <span class="tech-pill">jQuery</span>
+                <h3 class="text-xl font-bold text-white">Enterprise Resource Coordination Database</h3>
+                <span class="tag opacity-60 block mb-2">In-House Project</span>
+                <div class="mb-3">
+                    <span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">EF6</span><span class="tech-pill">RBAC Auth</span><span class="tech-pill">jQuery</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p class="text-slate-300 text-sm leading-relaxed mb-2">
                     Directed the backend full-stack engineering of an internal resource optimization hub, writing application logic to trace corporate performance matrices, structured attendance logging, and automated client billing systems.
                 </p>
                 <details>
@@ -244,16 +210,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">SRK Logistics Optimization Matrix</h3>
-                <span class="tag opacity-50 block mb-4">In-House Project // Software Developer</span>
-                <div class="mb-6">
-                    <span class="tech-pill">.NET MVC</span>
-                    <span class="tech-pill">SQL Server 2012</span>
-                    <span class="tech-pill">Data Normalization</span>
-                    <span class="tech-pill">LINQ to SQL</span>
-                    <span class="tech-pill">UI Modernization</span>
+                <h3 class="text-xl font-bold text-white">SRK Logistics Optimization Matrix</h3>
+                <span class="tag opacity-60 block mb-2">In-House Project</span>
+                <div class="mb-3">
+                    <span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">Normalization</span><span class="tech-pill">LINQ to SQL</span><span class="tech-pill">UI Modernization</span>
                 </div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p class="text-slate-300 text-sm leading-relaxed mb-2">
                     Led the complete modernization and schema transformation of a legacy, manual transport allocation tracking system into an automated, web-connected logistics scheduling dashboard.
                 </p>
                 <details>
@@ -267,42 +229,27 @@
             </div>
         </section>
 
-        <section id="capabilities" class="mb-32">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
+        <section id="capabilities" class="mb-12">
+            <h2 class="text-sm font-bold mb-6 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-8 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass p-8" style="border-top: 2px solid var(--neon);">
-                    <span class="tag mb-6 block">Data_Architecture</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">Databricks Delta Lake</span>
-                        <span class="tech-pill">Microsoft Fabric</span>
-                        <span class="tech-pill">Kusto (KQL) Telemetry</span>
-                        <span class="tech-pill">Azure SQL / Cosmos DB</span>
-                        <span class="tech-pill">T-SQL Stored Procedures</span>
-                        <span class="tech-pill">Data Pipelines (ETL/ELT)</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass p-5 rounded border-t-2 border-cyan-400">
+                    <span class="tag mb-3 block">Data_Architecture</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Databricks</span><span class="tech-pill">Delta Lake</span><span class="tech-pill">Microsoft Fabric</span><span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Azure SQL</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">T-SQL</span>
                     </div>
                 </div>
-                <div class="glass p-8" style="border-top: 2px solid var(--neon);">
-                    <span class="tag mb-6 block">Cloud_&_Automation</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">Azure OpenAI Integration</span>
-                        <span class="tech-pill">CI/CD Pipeline Operations</span>
-                        <span class="tech-pill">PowerShell & Bash Automation</span>
-                        <span class="tech-pill">Service Fabric Engine</span>
-                        <span class="tech-pill">VSTS / Git Versioning</span>
-                        <span class="tech-pill">IcM Incident Routing</span>
+                <div class="glass p-5 rounded border-t-2 border-cyan-400">
+                    <span class="tag mb-3 block">Cloud_&_Automation</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Azure OpenAI</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Bash</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">VSTS / Git</span><span class="tech-pill">IcM Alerting</span>
                     </div>
                 </div>
-                <div class="glass p-8" style="border-top: 2px solid #ffffff;">
-                    <span class="tag mb-6 block">Core_Software_Development</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">C# .NET / ASP.NET MVC</span>
-                        <span class="tech-pill">Azure Functions (Serverless)</span>
-                        <span class="tech-pill">Entity Framework 6</span>
-                        <span class="tech-pill">RESTful API Design</span>
-                        <span class="tech-pill">React & JavaScript</span>
-                        <span class="tech-pill">Object-Oriented Design (OOD)</span>
+                <div class="glass p-5 rounded border-t-2 border-white/20">
+                    <span class="tag mb-3 block">Software_Engineering</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">C# .NET</span><span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">Azure Functions</span><span class="tech-pill">EF6</span><span class="tech-pill">RESTful APIs</span><span class="tech-pill">React</span><span class="tech-pill">JavaScript</span>
                     </div>
                 </div>
             </div>
@@ -310,47 +257,37 @@
 
     </main>
 
-    <footer class="glass border-t border-white/10 pt-16 pb-10 px-6 md:px-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/5 pb-12">
-                <div>
-                    <h5 class="tag mb-6 block">Secure_Uplink</h5>
-                    <div class="space-y-3 font-mono">
-                        <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
-                        <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
-                    </div>
+    <footer class="glass border-t border-white/10 py-8 px-4 md:px-8">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+            <div>
+                <span class="tag block mb-2">Secure_Uplink</span>
+                <div class="font-mono text-xs space-y-1">
+                    <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block hover:underline">vidya98sree@gmail.com</a>
+                    <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block hover:underline">v-vdevaraju@microsoft.com</a>
                 </div>
-                <div>
-                    <h5 class="tag mb-6 block">Engineering_Networks</h5>
-                    <div class="flex flex-wrap gap-6 md:gap-10">
-                        <a href="https://github.com/vidhyasree-cloud" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">GITHUB</a>
-                        <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">LINKEDIN</a>
-                    </div>
-                </div>
-                <div class="lg:text-right">
-                    <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-loose italic">
-                        © 2026 VIDHYASREE DEVARAJU<br>
-                        Senior Software Engineering // Redmond, WA
-                    </p>
-                </div>
+            </div>
+            <div class="flex justify-center md:justify-start gap-6 font-mono text-[10px] font-bold tracking-widest text-slate-400">
+                <a href="https://github.com/vidhyasree-cloud" target="_blank" class="hover:text-cyan-400 transition-colors">GITHUB</a>
+                <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="hover:text-cyan-400 transition-colors">LINKEDIN</a>
+            </div>
+            <div class="md:text-right font-mono text-[10px] text-slate-500 tracking-wider">
+                &copy; 2026 VIDHYASREE DEVARAJU<br>Senior Software Engineer | Redmond, WA
             </div>
         </div>
     </footer>
 
     <script>
         const msg = [
-            "> Establishing secure HR recruiter onboarding uplink...",
-            "> [OK] Professional 7-Year Software Engineering Matrix Active.",
-            "> [OK] Distributed Core: Databricks, Fabric, KQL, Azure SQL Database [STABLE].",
-            "> [OK] Automation Tracks & Platform Telemetry Pipelines [OPERATIONAL].",
-            "> Resume profile payload completely mapped. Ready for interview deployment.",
-            "> System Status: OPTIMIZED FOR HIRE."
+            "> Establishing secure tech recruiter uplink...",
+            "> [OK] Target verification: OFFICIAL ROLE NAME -> SOFTWARE ENGINEER.",
+            "> [OK] Distributed Telemetry: Databricks, Fabric, KQL, Azure Engines [ONLINE].",
+            "> System Status: OPTIMIZED FOR RECRUITER INSPECTION."
         ];
         let i=0, j=0, cur="";
         function type(){
             if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 15); }
-                else{ cur += "<br>"; i++; j=0; setTimeout(type, 500); }
+                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 12); }
+                else{ cur += "<br>"; i++; j=0; setTimeout(type, 400); }
             }
         }
 
@@ -358,12 +295,11 @@
             const loadEl = document.getElementById('metric-load');
             const rateEl = document.getElementById('metric-rate');
             const latencyEl = document.getElementById('metric-latency');
-            
             if(loadEl && rateEl && latencyEl) {
                 setInterval(() => {
-                    loadEl.innerText = (40 + Math.random() * 8).toFixed(1) + '%';
-                    rateEl.innerText = Math.floor(1350 + Math.random() * 120).toLocaleString() + ' /s';
-                    latencyEl.innerText = Math.floor(12 + Math.random() * 5) + 'ms';
+                    loadEl.innerText = (38 + Math.random() * 8).toFixed(1) + '%';
+                    rateEl.innerText = Math.floor(1380 + Math.random() * 80).toLocaleString() + '/s';
+                    latencyEl.innerText = Math.floor(11 + Math.random() * 4) + 'ms';
                 }, 2500);
             }
         }
@@ -374,28 +310,32 @@
         });
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, powerPreference: "high-performance" });
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        
         const starGeo = new THREE.BufferGeometry();
         const starPos = [];
-        for(let k=0; k<2000; k++) starPos.push(THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000), THREE.MathUtils.randFloatSpread(2000));
+        for(let k=0; k<1200; k++) starPos.push(THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500));
         starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.5, transparent: true, opacity: 0.3 }));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2, transparent: true, opacity: 0.25 }));
         scene.add(stars);
-        camera.position.z = 800;
+        camera.position.z = 700;
+        
         function animate() { 
             requestAnimationFrame(animate); 
-            stars.rotation.y += 0.0008;
-            stars.rotation.x += 0.0003;
+            stars.rotation.y += 0.0004;
+            stars.rotation.x += 0.0001;
             renderer.render(scene, camera); 
         }
         animate();
+        
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-    </script>
+    </style>
 </body>
 </html>
