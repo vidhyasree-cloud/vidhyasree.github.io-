@@ -24,7 +24,7 @@
         .project-card:hover { border-left-color: #ffffff; }
 
         details { background: rgba(22, 27, 34, 0.5); border: 1px solid rgba(48, 54, 61, 0.5); margin-top: 0.5rem; width: 100%; border-radius: 4px; overflow: hidden; display: block; }
-        summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; user-select: none; list-style: none; }
+        summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-between; align-items: center; user-select: none; list-style: none; }
         summary::-webkit-details-marker { display: none; }
         
         summary::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.2s ease; display: inline-block; }
@@ -37,8 +37,12 @@
 
         .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 2px 8px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 4px; display: inline-block; margin-bottom: 4px; border-radius: 2px; background: rgba(0, 242, 255, 0.03); }
         
-        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 6px rgba(0,242,255,0.3); transition: all 0.2s ease; }
+        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 6px rgba(0,242,255,0.3); transition: all 0.2s ease; cursor: pointer; }
         .btn-neon:hover { background: var(--neon); color: var(--bg); box-shadow: 0 0 15px rgba(0,242,255,0.5); text-shadow: none; }
+        
+        /* Modal Infrastructure */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(1, 4, 9, 0.85); z-index: 100; backdrop-filter: blur(8px); }
+        .modal-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; border: 1px solid var(--neon); box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
     </style>
 </head>
 <body>
@@ -49,28 +53,42 @@
         <div class="flex justify-between items-center max-w-6xl mx-auto">
             <div class="font-bold text-xs md:text-sm tracking-wider" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
             <div class="flex items-center gap-4">
+                <button onclick="openInteractiveModal('general')" class="btn-neon text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded font-mono bg-transparent">
+                    <i class="fa-solid fa-terminal mr-1"></i> Diagnostic_Uplink
+                </button>
                 <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn-neon text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded font-mono">
-                    <i class="fa-solid fa-file-arrow-down mr-1"></i> Download_CV
+                    <i class="fa-solid fa-file-arrow-down mr-1"></i> Resume
                 </a>
-                <div class="hidden sm:flex text-[9px] font-bold text-green-400 items-center gap-1.5 uppercase tracking-widest">
-                    <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> SYSTEM_UPLINK_READY
-                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 pt-20 md:pt-24 pb-8">
+    <div id="telemetry-modal" class="modal-overlay" onclick="closeInteractiveModal(event)">
+        <div class="modal-container glass p-6 rounded" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <h3 class="font-bold text-sm uppercase tracking-wider font-mono text-white" id="modal-title">System Execution Sandbox</h3>
+                </div>
+                <button onclick="document.getElementById('telemetry-modal').style.display='none'" class="text-slate-400 hover:text-white font-bold">&times;</button>
+            </div>
+            <div id="modal-content" class="space-y-4">
+                </div>
+        </div>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-4 pt-24 md:pt-32 pb-12">
         
-        <header class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-10">
+        <header class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-12">
             <div class="md:col-span-2 text-center md:text-left">
-                <span class="tag block mb-1">// CORE_SYSTEMS_ENGINEER_PROFILE</span>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
+                <span class="tag block mb-2">// CORE_SYSTEMS_ENGINEER_PROFILE</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
                     SOFTWARE<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">ENGINEER</span>
                 </h1>
                 <p class="text-slate-400 text-sm md:text-base font-light max-w-xl mx-auto md:mx-0 leading-relaxed">
-                    Results-driven and detail-oriented Software Engineer with a proven track record designing and implementing high-availability cloud solutions, enterprise data models, and high-volume backend platforms.
+                    Senior Software Engineer designing high-availability platform mechanics, backend cloud architecture configurations, big data telemetry processing streams, and scalable internal frameworks.
                 </p>
-                <div class="mt-3 flex flex-wrap justify-center md:justify-start gap-2">
+                <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
                     <div class="glass py-1 px-2.5 text-center rounded">
                         <span class="text-xs font-bold font-mono text-white">AZ-204</span> <span class="text-[9px] tag opacity-60 ml-1">Certified</span>
                     </div>
@@ -89,44 +107,47 @@
             </div>
         </header>
 
-        <div class="glass p-4 mb-10 font-mono border-cyan-400/20 rounded">
+        <div class="glass p-4 mb-12 font-mono border-cyan-400/20 rounded">
             <div class="flex gap-1.5 mb-2 opacity-40">
                 <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
             <div id="console-logs"></div>
         </div>
 
-        <section id="system-diagnostic" class="mb-10">
-            <h2 class="text-xs font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-6 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
+        <section id="system-diagnostic" class="mb-12">
+            <h2 class="text-sm font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-6 bg-cyan-400"></span> LIVE_TELEMETRY_LABORATORY <span class="text-[9px] text-slate-500 normal-case font-mono">(Click nodes to run scripts)</span>
             </h2>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <div class="glass p-3 border-l-2 border-cyan-400 rounded-r">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5">Global_Cluster_Load</span>
-                    <div class="text-lg font-bold font-mono" id="metric-load">42.8%</div>
+                <div onclick="openInteractiveModal('sql')" class="glass p-3 border-l-2 border-cyan-400 rounded-r cursor-pointer hover:bg-cyan-500/5 transition-all">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5">Cluster_Load</span>
+                    <div class="text-lg font-bold font-mono flex justify-between items-center" id="metric-load">42.8% <i class="fa-solid fa-code text-[10px] text-cyan-400"></i></div>
                 </div>
-                <div class="glass p-3 border-l-2 border-emerald-400 rounded-r">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-emerald-400">Pipeline_Throughput</span>
-                    <div class="text-lg font-bold font-mono text-emerald-400" id="metric-rate">1,402/s</div>
+                <div onclick="openInteractiveModal('cosmos')" class="glass p-3 border-l-2 border-emerald-400 rounded-r cursor-pointer hover:bg-emerald-500/5 transition-all">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-emerald-400">Throughput</span>
+                    <div class="text-lg font-bold font-mono text-emerald-400 flex justify-between items-center" id="metric-rate">1,402/s <i class="fa-solid fa-bolt text-[10px]"></i></div>
                 </div>
-                <div class="glass p-3 border-l-2 border-amber-400 rounded-r">
+                <div onclick="openInteractiveModal('kql')" class="glass p-3 border-l-2 border-amber-400 rounded-r cursor-pointer hover:bg-amber-500/5 transition-all">
                     <span class="tag block text-[9px] opacity-70 mb-0.5 text-amber-400">Query_Latency_SLA</span>
-                    <div class="text-lg font-bold font-mono text-amber-400" id="metric-latency">14ms</div>
+                    <div class="text-lg font-bold font-mono text-amber-400 flex justify-between items-center" id="metric-latency">14ms <i class="fa-solid fa-chart-line text-[10px]"></i></div>
                 </div>
-                <div class="glass p-3 border-l-2 border-purple-500 rounded-r">
+                <div onclick="openInteractiveModal('sso')" class="glass p-3 border-l-2 border-purple-500 rounded-r cursor-pointer hover:bg-purple-500/5 transition-all">
                     <span class="tag block text-[9px] opacity-70 mb-0.5 text-purple-400">SSO_Identity_Uplink</span>
-                    <div class="text-lg font-bold font-mono text-purple-400">SECURE</div>
+                    <div class="text-lg font-bold font-mono text-purple-400 flex justify-between items-center">SECURE <i class="fa-solid fa-shield-halved text-[10px]"></i></div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-10">
-            <h2 class="text-xs font-bold mb-5 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+        <section id="experience" class="mb-12">
+            <h2 class="text-sm font-bold mb-5 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
                 <span class="h-px w-6 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
             </h2>
 
             <div class="project-card">
-                <h3 class="text-lg font-bold text-white font-mono">Azure SQL DB Capacity Management Engine</h3>
+                <div class="flex justify-between items-start flex-wrap gap-2">
+                    <h3 class="text-lg font-bold text-white font-mono">Azure SQL DB Capacity Management Engine</h3>
+                    <button onclick="openInteractiveModal('sql')" class="btn-neon text-[9px] font-mono font-bold py-1 px-2 rounded"><i class="fa-solid fa-chart-bar mr-1"></i> View_Metrics_Schema</button>
+                </div>
                 <span class="tag opacity-60 block mb-1">Microsoft (via Quadrant) | Software Engineer | Redmond, WA</span>
                 <div class="mb-2">
                     <span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Databricks</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Data Pipelines</span><span class="tech-pill">Power BI</span><span class="tech-pill">XTS</span>
@@ -146,7 +167,10 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-lg font-bold text-white font-mono">Azure Cosmos DB Infrastructure Systems</h3>
+                <div class="flex justify-between items-start flex-wrap gap-2">
+                    <h3 class="text-lg font-bold text-white font-mono">Azure Cosmos DB Infrastructure Systems</h3>
+                    <button onclick="openInteractiveModal('cosmos')" class="btn-neon text-[9px] font-mono font-bold py-1 px-2 rounded"><i class="fa-solid fa-database mr-1"></i> View_Pipeline_Flow</button>
+                </div>
                 <span class="tag opacity-60 block mb-1">Microsoft (Offshore) | Software Engineer</span>
                 <div class="mb-2">
                     <span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">C# .NET Core</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">PowerShell</span><span class="tech-pill">VSTS</span><span class="tech-pill">Moq</span><span class="tech-pill">MS Flow</span>
@@ -174,7 +198,7 @@
                 <h3 class="text-lg font-bold text-white font-mono">WATS Event Organization Framework</h3>
                 <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
                 <div class="mb-2">
-                    <span class="tech-pill">C# .NET MVC 4.0</span><span class="tech-pill">Entity Framework 6</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">LINQ</span><span class="tech-pill">T-SQL</span><span class="tech-pill">Bootstrap</span><span class="tech-pill">IdentityServer</span>
+                    <span class="tech-pill">C# .NET MVC 4.0</span><span class="tech-pill">Entity Framework 6</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">LINQ</span><span class="tech-pill">T-SQL</span><span class="tech-pill">Bootstrap</span><span class="tech-pill">IdentityServer3</span>
                 </div>
                 <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Spearheaded the design, full-stack application logic development, and database mapping of an automated event-handling framework built to handle concurrent transaction traffic spikes and real-time inventory updates.
@@ -184,7 +208,7 @@
                     <ul class="bullet-list">
                         <li>**Led transactional infrastructure engineering**, designing robust relational SQL schemas capable of maintaining strict ACID compliance under intense concurrent load bursts.</li>
                         <li>**Optimized core database integration routines**, scripting specialized T-SQL Stored Procedures, custom functions, and joins to accelerate information mapping speeds.</li>
-                        <li>**Secured backend software pipelines**, developing firm form-based authentication protocols and Single Sign-On (SSO) configurations leveraging IdentityServer tokens.</li>
+                        <li>**Secured backend software pipelines**, developing firm form-based authentication protocols and Single Sign-On (SSO) configurations leveraging IdentityServer3 tokens.</li>
                         <li>**Spearheaded responsive front-end development**, translating requirements into clear asynchronous interface features using HTML5, CSS3, and jQuery to streamline user conversion pipelines.</li>
                     </ul>
                 </details>
@@ -279,10 +303,10 @@
 
     <script>
         const msg = [
-            "> Establishing secure enterprise engineering uplink...",
-            "> [OK] Professional 7-Year Architecture Telemetry Verified.",
-            "> [OK] Stack Assessment: C#, .NET Core, SQL Server, Azure Infrastructure.",
-            "> System Status: OPTIMIZED FOR BIG TECH / FINTECH PLACEMENT."
+            "> Establishing secure tech recruiter uplink...",
+            "> [OK] Target verification: OFFICIAL ROLE NAME -> SOFTWARE ENGINEER.",
+            "> [OK] Interactive Telemetry Engine Initialized [CLICK LAB NODES TO VIEW CODE].",
+            "> System Status: OPTIMIZED FOR BIG TECH / FINTECH INSPECTION."
         ];
         let i=0, j=0, cur="";
         function type(){
@@ -292,17 +316,101 @@
             }
         }
 
+        // Live Telemetry Anharmonic Fluctuations
         function simulateTelemetry() {
             const loadEl = document.getElementById('metric-load');
             const rateEl = document.getElementById('metric-rate');
             const latencyEl = document.getElementById('metric-latency');
             if(loadEl && rateEl && latencyEl) {
                 setInterval(() => {
-                    loadEl.innerText = (38 + Math.random() * 8).toFixed(1) + '%';
-                    rateEl.innerText = Math.floor(1380 + Math.random() * 80).toLocaleString() + '/s';
-                    latencyEl.innerText = Math.floor(11 + Math.random() * 4) + 'ms';
+                    loadEl.childNodes[0].nodeValue = (38 + Math.random() * 8).toFixed(1) + '% ';
+                    rateEl.childNodes[0].nodeValue = Math.floor(1380 + Math.random() * 80).toLocaleString() + '/s ';
+                    latencyEl.childNodes[0].nodeValue = Math.floor(11 + Math.random() * 4) + 'ms ';
                 }, 2500);
             }
+        }
+
+        // Interactive Labs Data Dictionary (Your Practical Interview Notes)
+        const codeSandboxData = {
+            general: {
+                title: "Global Infrastructure Analytics Overview",
+                html: `<p class="text-xs text-slate-400">Centralized workspace holding operational logic components for data exploration, capacity planning, and service reliability matrices.</p>
+                       <div class="p-3 bg-black/40 rounded border border-white/5 font-mono text-xs">
+                           <span class="text-cyan-400">// Primary System Architectural Formula</span><br>
+                           Utilization_SLA = (Total_Compute_Consumed / Total_Regional_Provisioned_Capacity) * 100;<br>
+                           Constraint_Trigger = iff(Utilization_SLA > 85.0, "PROVISION_NODE_RESIZE", "STABLE");
+                       </div>`
+            },
+            sql: {
+                title: "Azure SQL DB capacity Tracing Strategy (KQL)",
+                html: `<p class="text-xs text-slate-400">This production query traces multi-tenant regional saturation parameters inside Azure Data Explorer to identify global cluster hot segments.</p>
+                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-emerald-400 overflow-x-auto">
+DatabaseTelemetry
+| where TimeGenerated > ago(7d)
+| where Region in ("eastus2", "westeurope", "southeastasia")
+| summarize AvgCpu = avg(CpuUtilization), MaxStorage = max(StorageUsedBytes) by Region, ClusterId, EngineVersion
+| extend SpaceUtilizationPercent = (MaxStorage / TotalCapacityBytes) * 100.0
+| where SpaceUtilizationPercent > 80.0 or AvgCpu > 75.0
+| project TimeGenerated, Region, ClusterId, SpaceUtilizationPercent, AvgCpu
+| sort by SpaceUtilizationPercent desc</pre>
+                       <span class="tag text-amber-400">// Power BI Integration Parameter</span>
+                       <p class="text-[11px] text-slate-400">Directly feeding the summarized matrix block above into an enterprise Power BI DirectQuery configuration stream allows executive leadership to monitor cross-regional hardware saturation risk dashboards live.</p>`
+            },
+            cosmos: {
+                title: "Azure Cosmos DB Global Billing Aggregator",
+                html: `<p class="text-xs text-slate-400">Serverless calculation workflow utilized in Azure Functions to parse batch raw environment expenditures metrics securely.</p>
+                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-cyan-400 overflow-x-auto">
+[FunctionName("CalculateSubscriptionSpend")]
+public static async Task&lt;IActionResult&gt; Run(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req, ILogger log)
+{
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    var data = JsonConvert.DeserializeObject&lt;SubscriptionMetricEnvelope&gt;(requestBody);
+    
+    double totalSpend = data.UsageRecords
+        .Where(r => r.Environment == "Staging" || r.Environment == "Production")
+        .Sum(record => record.ResourceRate * record.ConsumedQuantity);
+        
+    return new OkObjectResult(new { TotalAzureSpend = totalSpend, SLA_Compliance = true });
+}</pre>`
+            },
+            kql: {
+                title: "Azure Data Explorer Performance Auditing",
+                html: `<p class="text-xs text-slate-400">Telemetry engine evaluating cross-cluster query completion latency states against system SLA targets.</p>
+                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-amber-400 overflow-x-auto">
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KUSTO"
+| where Category == "QueryStatus"
+| summarize Percentile95 = percentile(DurationMs, 95), TotalQueries = count() by bin(TimeGenerated, 1h)
+| render timechart</pre>`
+            },
+            sso: {
+                title: "IdentityServer3 OpenID Token Integration Core",
+                html: `<p class="text-xs text-slate-400">Security configuration matrix binding cross-platform application requests safely through single sign-on processing modules.</p>
+                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-purple-400 overflow-x-auto">
+app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+{
+    Authority = "https://identity.enterprise.internal",
+    RequiredScopes = new[] { "wats_api", "office_portal_matrix" },
+    DelayLoadMetadataTsProvider = true
+});</pre>`
+            }
+        };
+
+        function openInteractiveModal(key) {
+            const modal = document.getElementById('telemetry-modal');
+            const titleEl = document.getElementById('modal-title');
+            const contentEl = document.getElementById('modal-content');
+            
+            if(modal && codeSandboxData[key]) {
+                titleEl.innerText = codeSandboxData[key].title;
+                contentEl.innerHTML = codeSandboxData[key].html;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeInteractiveModal(e) {
+            document.getElementById('telemetry-modal').style.display = 'none';
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -310,6 +418,7 @@
             simulateTelemetry();
         });
 
+        // Background Scene Configuration
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, powerPreference: "high-performance" });
