@@ -13,23 +13,25 @@
     <style>
         :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.85); }
         body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.5; }
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; }
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; pointer-events: none; }
         
         .glass { background: var(--panel); backdrop-filter: blur(12px); border: 1px solid rgba(48, 54, 61, 0.6); }
         .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         
         #console-logs { min-height: 100px; font-family: 'Courier New', monospace; font-size: 11px; }
 
-        .project-card { border-left: 3px solid var(--neon); padding-left: 1.25rem; margin-bottom: 2.5rem; transition: border-color 0.3s ease; }
+        .project-card { border-left: 3px solid var(--neon); padding-left: 1.25rem; margin-bottom: 2rem; transition: border-color 0.3s ease; }
         .project-card:hover { border-left-color: #ffffff; }
 
-        details { background: rgba(22, 27, 34, 0.5); border: 1px solid rgba(48, 54, 61, 0.5); margin-top: 0.75rem; width: 100%; border-radius: 4px; overflow: hidden; }
-        summary { cursor: pointer; padding: 0.85rem 1.2rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        details { background: rgba(22, 27, 34, 0.5); border: 1px solid rgba(48, 54, 61, 0.5); margin-top: 0.5rem; width: 100%; border-radius: 4px; overflow: hidden; display: block; }
+        summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-content: space-between; align-items: center; user-select: none; list-style: none; }
         summary::-webkit-details-marker { display: none; }
-        summary::after { content: '\f107'; font-family: 'Font Awesome 5 Free'; font-weight: 900; transition: transform 0.2s ease; }
+        
+        /* Fixed FontAwesome Version 6 Mapping */
+        summary::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.2s ease; display: inline-block; }
         details[open] summary::after { transform: rotate(180deg); }
         
-        .bullet-list { list-style: none; padding: 1rem 1.2rem; border-top: 1px solid rgba(48, 54, 61, 0.4); }
+        .bullet-list { list-style: none; padding: 0.85rem 1rem; border-top: 1px solid rgba(48, 54, 61, 0.4); }
         .bullet-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: #c9d1d9; font-size: 0.85rem; }
         .bullet-list li:last-child { margin-bottom: 0; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
@@ -58,79 +60,79 @@
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 pt-24 md:pt-32 pb-12">
+    <main class="max-w-5xl mx-auto px-4 pt-20 md:pt-24 pb-8">
         
-        <header class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-16">
+        <header class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-10">
             <div class="md:col-span-2 text-center md:text-left">
-                <span class="tag block mb-2">// CORE_SYSTEMS_ARCHIVE</span>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
+                <span class="tag block mb-1">// CORE_SYSTEMS_ARCHIVE</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
                     SOFTWARE<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">ENGINEER</span>
                 </h1>
-                <p class="text-slate-400 text-base md:text-lg font-light max-w-xl mx-auto md:mx-0 leading-relaxed">
+                <p class="text-slate-400 text-sm md:text-base font-light max-w-xl mx-auto md:mx-0 leading-relaxed">
                     Senior Software Engineer engineering highly scalable distributed backend platforms, processing big data analytics layers, and optimizing large-scale infrastructure systems.
                 </p>
-                <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
-                    <div class="glass py-1.5 px-3 border-cyan-400/20 text-center rounded">
-                        <span class="text-sm font-bold font-mono">DP-600</span> <span class="text-[9px] tag opacity-60 ml-1">Fabric</span>
+                <div class="mt-3 flex flex-wrap justify-center md:justify-start gap-2">
+                    <div class="glass py-1 px-2.5 text-center rounded">
+                        <span class="text-xs font-bold font-mono">DP-600</span> <span class="text-[9px] tag opacity-60 ml-1">Fabric</span>
                     </div>
-                    <div class="glass py-1.5 px-3 border-cyan-400/20 text-center rounded">
-                        <span class="text-sm font-bold font-mono">AZ-204</span> <span class="text-[9px] tag opacity-60 ml-1">Azure</span>
+                    <div class="glass py-1 px-2.5 text-center rounded">
+                        <span class="text-xs font-bold font-mono">AZ-204</span> <span class="text-[9px] tag opacity-60 ml-1">Azure</span>
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-center">
                 <div class="relative">
-                    <div class="absolute -inset-2 border border-cyan-400/20 rounded-full animate-pulse"></div>
+                    <div class="absolute -inset-1.5 border border-cyan-400/20 rounded-full animate-pulse"></div>
                     <img src="profile.jpg" alt="Vidhya Sree Devaraju" 
-                         class="w-36 h-36 md:w-48 md:h-48 rounded-full border-2 border-cyan-400 grayscale contrast-125 hover:grayscale-0 object-cover transition-all duration-300">
+                         class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-cyan-400 grayscale contrast-125 hover:grayscale-0 object-cover transition-all duration-300">
                 </div>
             </div>
         </header>
 
-        <div class="glass p-4 mb-16 font-mono border-cyan-400/20 rounded">
+        <div class="glass p-4 mb-10 font-mono border-cyan-400/20 rounded">
             <div class="flex gap-1.5 mb-2 opacity-40">
                 <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
             </div>
             <div id="console-logs"></div>
         </div>
 
-        <section id="system-diagnostic" class="mb-16">
-            <h2 class="text-sm font-bold mb-6 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-8 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
+        <section id="system-diagnostic" class="mb-10">
+            <h2 class="text-xs font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-6 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
             </h2>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="glass p-4 border-l-2 border-cyan-400 rounded-r relative">
-                    <span class="tag block text-[9px] opacity-70 mb-1">Cluster_Load</span>
-                    <div class="text-xl font-bold font-mono" id="metric-load">42.8%</div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="glass p-3 border-l-2 border-cyan-400 rounded-r">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5">Cluster_Load</span>
+                    <div class="text-lg font-bold font-mono" id="metric-load">42.8%</div>
                 </div>
-                <div class="glass p-4 border-l-2 border-emerald-400 rounded-r relative">
-                    <span class="tag block text-[9px] opacity-70 mb-1 text-emerald-400">Throughput</span>
-                    <div class="text-xl font-bold font-mono text-emerald-400" id="metric-rate">1,402/s</div>
+                <div class="glass p-3 border-l-2 border-emerald-400 rounded-r">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-emerald-400">Throughput</span>
+                    <div class="text-lg font-bold font-mono text-emerald-400" id="metric-rate">1,402/s</div>
                 </div>
-                <div class="glass p-4 border-l-2 border-amber-400 rounded-r relative">
-                    <span class="tag block text-[9px] opacity-70 mb-1 text-amber-400">Query_Latency</span>
-                    <div class="text-xl font-bold font-mono text-amber-400" id="metric-latency">14ms</div>
+                <div class="glass p-3 border-l-2 border-amber-400 rounded-r">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-amber-400">Query_Latency</span>
+                    <div class="text-lg font-bold font-mono text-amber-400" id="metric-latency">14ms</div>
                 </div>
-                <div class="glass p-4 border-l-2 border-purple-500 rounded-r relative">
-                    <span class="tag block text-[9px] opacity-70 mb-1 text-purple-400">Token_Uplink</span>
-                    <div class="text-xl font-bold font-mono text-purple-400">SECURE</div>
+                <div class="glass p-3 border-l-2 border-purple-500 rounded-r">
+                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-purple-400">Token_Uplink</span>
+                    <div class="text-lg font-bold font-mono text-purple-400">SECURE</div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-16">
-            <h2 class="text-sm font-bold mb-8 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-8 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
+        <section id="experience" class="mb-10">
+            <h2 class="text-xs font-bold mb-5 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-6 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
             </h2>
 
             <div class="project-card">
-                <h3 class="text-xl font-bold text-white">Azure SQL DB Capacity Management Engine</h3>
-                <span class="tag opacity-60 block mb-2">Microsoft (via Quadrant) | Jan 2022 — Present</span>
-                <div class="mb-3">
+                <h3 class="text-lg font-bold text-white font-mono">Azure SQL DB Capacity Management Engine</h3>
+                <span class="tag opacity-60 block mb-1">Microsoft (via Quadrant) | Software Engineer</span>
+                <div class="mb-2">
                     <span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Databricks</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Data Pipelines</span><span class="tech-pill">Power BI</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-2">
+                <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Led worldwide telemetry data analysis strategies, compute asset mapping matrices, and capacity tracking systems across global regions to optimize resource utilization, isolate hardware hotspots, and safeguard multi-cloud infrastructure stability.
                 </p>
                 <details open>
@@ -145,12 +147,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-xl font-bold text-white">Azure Cosmos DB Systems Framework</h3>
-                <span class="tag opacity-60 block mb-2">Microsoft (Offshore Partner Ecosystem) | Dec 2019 — Sept 2021</span>
-                <div class="mb-3">
+                <h3 class="text-lg font-bold text-white font-mono">Azure Cosmos DB Infrastructure Systems</h3>
+                <span class="tag opacity-60 block mb-1">Microsoft | Software Engineer</span>
+                <div class="mb-2">
                     <span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">C# .NET Core</span><span class="tech-pill">PowerShell</span><span class="tech-pill">VSTS</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-2">
+                <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Spearheaded continuous engineering modules, serverless backend data utilities, and systemic validation pipelines backing the platform operations of Microsoft's flagship globally distributed multi-model database service.
                 </p>
                 <details>
@@ -164,18 +166,18 @@
                 </details>
             </div>
 
-            <div class="border-l-2 border-dashed border-cyan-500/20 pl-4 my-8">
-                <span class="tag block text-cyan-400 text-[9px]">// Enterprise In-House Solution Engineering</span>
-                <h3 class="text-md font-bold uppercase tracking-wider font-mono text-slate-300">Quadrant Resources Ecosystem</h3>
+            <div class="border-l-2 border-dashed border-cyan-500/20 pl-3 my-4">
+                <span class="tag block text-cyan-400 text-[9px]">// Enterprise In-House Application Development</span>
+                <h3 class="text-sm font-bold uppercase tracking-wider font-mono text-slate-300">Quadrant Resources In-House Projects</h3>
             </div>
 
             <div class="project-card">
-                <h3 class="text-xl font-bold text-white">WATS High-Concurrency Web Architecture</h3>
-                <span class="tag opacity-60 block mb-2">In-House Project</span>
-                <div class="mb-3">
+                <h3 class="text-lg font-bold text-white font-mono">WATS Event Organization Framework</h3>
+                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
+                <div class="mb-2">
                     <span class="tech-pill">C# .NET MVC 4.0</span><span class="tech-pill">Entity Framework 6</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">LINQ</span><span class="tech-pill">T-SQL</span><span class="tech-pill">Bootstrap</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-2">
+                <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Spearheaded the design, full-stack application logic development, and database mapping of an automated event-handling framework built to handle concurrent transaction traffic spikes and real-time inventory updates.
                 </p>
                 <details>
@@ -190,12 +192,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-xl font-bold text-white">Enterprise Resource Coordination Database</h3>
-                <span class="tag opacity-60 block mb-2">In-House Project</span>
-                <div class="mb-3">
+                <h3 class="text-lg font-bold text-white font-mono">Office Management Portal</h3>
+                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
+                <div class="mb-2">
                     <span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">EF6</span><span class="tech-pill">RBAC Auth</span><span class="tech-pill">jQuery</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-2">
+                <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Directed the backend full-stack engineering of an internal resource optimization hub, writing application logic to trace corporate performance matrices, structured attendance logging, and automated client billing systems.
                 </p>
                 <details>
@@ -210,12 +212,12 @@
             </div>
 
             <div class="project-card">
-                <h3 class="text-xl font-bold text-white">SRK Logistics Optimization Matrix</h3>
-                <span class="tag opacity-60 block mb-2">In-House Project</span>
-                <div class="mb-3">
+                <h3 class="text-lg font-bold text-white font-mono">SRK Travels Optimization Matrix</h3>
+                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
+                <div class="mb-2">
                     <span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">Normalization</span><span class="tech-pill">LINQ to SQL</span><span class="tech-pill">UI Modernization</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed mb-2">
+                <p class="text-slate-300 text-xs leading-relaxed mb-2">
                     Led the complete modernization and schema transformation of a legacy, manual transport allocation tracking system into an automated, web-connected logistics scheduling dashboard.
                 </p>
                 <details>
@@ -229,26 +231,26 @@
             </div>
         </section>
 
-        <section id="capabilities" class="mb-12">
-            <h2 class="text-sm font-bold mb-6 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-8 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
+        <section id="capabilities" class="mb-6">
+            <h2 class="text-xs font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
+                <span class="h-px w-6 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="glass p-5 rounded border-t-2 border-cyan-400">
-                    <span class="tag mb-3 block">Data_Architecture</span>
-                    <div class="flex flex-wrap gap-1.5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="glass p-4 rounded border-t-2 border-cyan-400">
+                    <span class="tag mb-2 block">Data_Architecture</span>
+                    <div class="flex flex-wrap gap-1">
                         <span class="tech-pill">Databricks</span><span class="tech-pill">Delta Lake</span><span class="tech-pill">Microsoft Fabric</span><span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Azure SQL</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">T-SQL</span>
                     </div>
                 </div>
-                <div class="glass p-5 rounded border-t-2 border-cyan-400">
-                    <span class="tag mb-3 block">Cloud_&_Automation</span>
-                    <div class="flex flex-wrap gap-1.5">
+                <div class="glass p-4 rounded border-t-2 border-cyan-400">
+                    <span class="tag mb-2 block">Cloud_&_Automation</span>
+                    <div class="flex flex-wrap gap-1">
                         <span class="tech-pill">Azure OpenAI</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Bash</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">VSTS / Git</span><span class="tech-pill">IcM Alerting</span>
                     </div>
                 </div>
-                <div class="glass p-5 rounded border-t-2 border-white/20">
-                    <span class="tag mb-3 block">Software_Engineering</span>
-                    <div class="flex flex-wrap gap-1.5">
+                <div class="glass p-4 rounded border-t-2 border-white/20">
+                    <span class="tag mb-2 block">Software_Engineering</span>
+                    <div class="flex flex-wrap gap-1">
                         <span class="tech-pill">C# .NET</span><span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">Azure Functions</span><span class="tech-pill">EF6</span><span class="tech-pill">RESTful APIs</span><span class="tech-pill">React</span><span class="tech-pill">JavaScript</span>
                     </div>
                 </div>
@@ -257,16 +259,16 @@
 
     </main>
 
-    <footer class="glass border-t border-white/10 py-8 px-4 md:px-8">
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+    <footer class="glass border-t border-white/10 py-5 px-4 md:px-8">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center text-center md:text-left">
             <div>
-                <span class="tag block mb-2">Secure_Uplink</span>
-                <div class="font-mono text-xs space-y-1">
+                <span class="tag block mb-1">Secure_Uplink</span>
+                <div class="font-mono text-xs space-y-0.5">
                     <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block hover:underline">vidya98sree@gmail.com</a>
                     <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block hover:underline">v-vdevaraju@microsoft.com</a>
                 </div>
             </div>
-            <div class="flex justify-center md:justify-start gap-6 font-mono text-[10px] font-bold tracking-widest text-slate-400">
+            <div class="flex justify-center md:justify-start gap-4 font-mono text-[10px] font-bold tracking-widest text-slate-400">
                 <a href="https://github.com/vidhyasree-cloud" target="_blank" class="hover:text-cyan-400 transition-colors">GITHUB</a>
                 <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="hover:text-cyan-400 transition-colors">LINKEDIN</a>
             </div>
@@ -336,6 +338,6 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-    </style>
+    </script>
 </body>
 </html>
