@@ -1,12 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhyasree Devaraju | Senior Systems Architect</title>
+    <title>Vidhyasree Devaraju | Senior Data & DevOps Engineer</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -31,6 +32,9 @@
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
 
         .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        
+        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 8px rgba(0,242,255,0.4); box-shadow: 0 0 12px rgba(0,242,255,0.1); transition: all 0.3s ease; }
+        .btn-neon:hover { background: var(--neon); color: var(--bg); box-shadow: 0 0 20px rgba(0,242,255,0.6); }
     </style>
 </head>
 <body>
@@ -40,8 +44,13 @@
     <nav class="fixed w-full z-50 glass py-4 px-6 md:px-10 border-b border-white/10">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
             <div class="font-bold text-sm md:text-lg" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="text-[8px] md:text-[10px] font-bold text-green-400 flex items-center gap-2 uppercase tracking-widest">
-                <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> SYSTEM_STATUS: STABLE
+            <div class="flex items-center gap-6">
+                <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn-neon text-[10px] tracking-widest font-bold px-4 py-2 uppercase rounded font-mono">
+                    <i class="fa-solid fa-file-arrow-down mr-2"></i> Download_Resume
+                </a>
+                <div class="hidden sm:flex text-[10px] font-bold text-green-400 items-center gap-2 uppercase tracking-widest">
+                    <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span> STATUS: OPEN_TO_OFFERS
+                </div>
             </div>
         </div>
     </nav>
@@ -50,19 +59,19 @@
         
         <header class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center mb-24 lg:mb-48">
             <div class="w-full lg:w-3/5 text-center lg:text-left">
-                <span class="tag block mb-4">// REDMOND_SESSION_2026</span>
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
-                    CLOUD<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">RELIABILITY</span>
+                <span class="tag block mb-4">// TELEMETRY_ESTABLISHED_2019</span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 lg:mb-10 uppercase leading-none" style="font-family: 'Syncopate';">
+                    DATA ENG<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">& DEV_OPS</span>
                 </h1>
-                <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0">
-                    7th year senior architect specializing in Microsoft ecosystem resilience and high-scale distributed systems.
+                <p class="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Senior Technical Lead specializing in scalable data lakehouse architectures, automated big data orchestration, pipeline intelligence engineering, and highly resilient multi-cloud environments.
                 </p>
                 <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
                     <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">AZ-204</span><br><span class="tag opacity-50">Solution</span>
+                        <span class="text-xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric Eng</span>
                     </div>
                     <div class="glass p-3 border-cyan-400/20 text-center w-32">
-                        <span class="text-2xl font-bold">DP-600</span><br><span class="tag opacity-50">Fabric</span>
+                        <span class="text-xl font-bold">AZ-204</span><br><span class="tag opacity-50">Azure Dev</span>
                     </div>
                 </div>
             </div>
@@ -70,7 +79,7 @@
             <div class="w-full lg:w-2/5 flex justify-center">
                 <div class="relative group">
                     <div class="absolute -inset-4 border border-cyan-400/20 rounded-full animate-pulse"></div>
-                    <img src="profile.jpg" alt="Profile" 
+                    <img src="profile.jpg" alt="Vidhya Sree Devaraju" 
                          class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-2 border-cyan-400 grayscale contrast-125 shadow-2xl hover:grayscale-0 object-cover aspect-square transition-all duration-500">
                 </div>
             </div>
@@ -83,95 +92,127 @@
             <div id="console-logs"></div>
         </div>
 
+        <section id="system-diagnostic" class="mb-32">
+            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
+                <span class="h-px w-12 bg-cyan-400"></span> LIVE_TELEMETRY_ENGINE
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 border-l-2 border-cyan-400 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">01</div>
+                    <span class="tag block mb-2">Cluster_Load</span>
+                    <div class="text-3xl font-bold tracking-tight text-white font-mono" id="metric-load">42.8%</div>
+                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-cyan-400 h-full animate-pulse" style="width: 42%"></div>
+                    </div>
+                </div>
+                <div class="glass p-6 border-l-2 border-emerald-400 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">02</div>
+                    <span class="tag block mb-2 text-emerald-400">Pipeline_Throughput</span>
+                    <div class="text-3xl font-bold tracking-tight text-emerald-400 font-mono" id="metric-rate">1,402 /s</div>
+                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-emerald-400 h-full" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="glass p-6 border-l-2 border-amber-400 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">03</div>
+                    <span class="tag block mb-2 text-amber-400">Query_Latency</span>
+                    <div class="text-3xl font-bold tracking-tight text-amber-400 font-mono" id="metric-latency">14ms</div>
+                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-amber-400 h-full" style="width: 15%"></div>
+                    </div>
+                </div>
+                <div class="glass p-6 border-l-2 border-purple-500 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-2 opacity-10 text-4xl font-mono">04</div>
+                    <span class="tag block mb-2 text-purple-400">Token_Uplink</span>
+                    <div class="text-3xl font-bold tracking-tight text-purple-400 font-mono">SECURE</div>
+                    <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                        <div class="bg-purple-500 h-full" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience" class="mb-32">
             <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> DETAILED_PROJECT_SUMMARY
+                <span class="h-px w-12 bg-cyan-400"></span> CORE_PRODUCTION_HISTORY
             </h2>
 
             <div class="project-card">
                 <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure SQL DB Capacity Management</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (via Quadrant) | Jan 2022 — Present</span>
-                <div class="mb-6"><span class="tech-pill">Kusto</span><span class="tech-pill">XTS</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Power BI</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Our Project Primarily focuses on Data Analysis and Utilization in worldwide regions. The main objective of our Project is to ensure that the Utilization Percentage is Minimal in all the regions, thereby avoiding hot segments and potential troubles of Customer data.</p>
+                <span class="tag opacity-50 block mb-4">Microsoft (via Quadrant) | Redmond, WA | Jan 2022 — Present</span>
+                <div class="mb-6">
+                    <span class="tech-pill">Kusto (KQL)</span>
+                    <span class="tech-pill">Databricks</span>
+                    <span class="tech-pill">PowerShell Automation</span>
+                    <span class="tech-pill">Service Fabric</span>
+                    <span class="tech-pill">Data Pipelines</span>
+                    <span class="tech-pill">Power BI Analytics</span>
+                </div>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                    Spearheaded massive scale Big Data Analysis, Capacity Engineering, and telemetry mapping across global regions to guarantee database optimization, minimize node heatmaps, and avoid data risk constraints.
+                </p>
                 <details open>
-                    <summary>Technical Execution & Impact</summary>
+                    <summary>Technical Execution & Business Impact</summary>
                     <ul class="bullet-list">
-                        <li>Regularly analyze data to identify areas requiring attention and take corrective actions accordingly.</li>
-                        <li>Perform periodic data analysis to ensure the Utilization Percentage is always maintained at the minimal level.</li>
-                        <li>Request capacity in particular areas needed based on data-driven triggers.</li>
-                        <li>Conclusion: Managing Data Utilization Analysis in Worldwide regions to ensure minimal utilization and avoid customer data loss.</li>
-                        <li>Migrations: Successfully handled Node Re-size operations.</li>
+                        <li>Engineered high-frequency, optimized **Kusto (KQL) query streams** to process and audit raw infrastructure telemetry data, proactively mitigating global hotspot thresholds.</li>
+                        <li>Designed dynamic data evaluation models inside **Databricks** and analytics pipelines to keep regional compute load configurations stabilized.</li>
+                        <li>Orchestrated global, cross-regional **Node Re-size operations** and system telemetry migrations smoothly inside active Service Fabric environments.</li>
+                        <li>Leveraged statistical predictive analysis indicators to deploy automated alerting workflows for hardware asset procurement projections.</li>
                     </ul>
                 </details>
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure Cosmos DB</h3>
-                <span class="tag opacity-50 block mb-4">Microsoft (Offshore) | Dec 2019 — Sept 2021</span>
-                <div class="mb-6"><span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">MS Flow</span><span class="tech-pill">Moq</span><span class="tech-pill">VSTS</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. It enables elastic scaling of throughput and storage across geographic regions.</p>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-2">Azure Cosmos DB Infrastructure Systems</h3>
+                <span class="tag opacity-50 block mb-4">Microsoft (Offshore Partner Ecosystem) | Dec 2019 — Sept 2021</span>
+                <div class="mb-6">
+                    <span class="tech-pill">Azure Functions</span>
+                    <span class="tech-pill">Cosmos DB</span>
+                    <span class="tech-pill">CI/CD Pipelines</span>
+                    <span class="tech-pill">C# .NET Core</span>
+                    <span class="tech-pill">PowerShell</span>
+                    <span class="tech-pill">VSTS Integration</span>
+                </div>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                    Designed, supported, and continuously monitored robust testing infrastructures and deployment deployment gates backend supporting Microsoft's globally distributed, multi-model cluster system.
+                </p>
                 <details>
-                    <summary>Module I: Dashboard Responsibilities</summary>
+                    <summary>Module I: Telemetry & Subscription Spend Analytics</summary>
                     <ul class="bullet-list">
-                        <li>Individually developed a module which calculate the total Azure Spend for the subscriptions for Environments.</li>
-                        <li>Worked on AAD Token integration for secure environment access.</li>
-                        <li>Involved in writing test cases to perform unit testing for specific services owned.</li>
-                        <li>Worked on MS-Flows which trigger notifications to the user for azure cost and exceptions.</li>
-                        <li>Involved in creating Azure Functions and managing the deployment process.</li>
+                        <li>Architected an isolated parsing micro-module calculating aggregated subscription cloud spend models across multi-tiered staging sandboxes.</li>
+                        <li>Implemented robust programmatic security handling utilizing explicit **Azure Active Directory (AAD) Token OAuth handling** rules.</li>
+                        <li>Deployed serverless event architecture via **Azure Functions** to ingest real-time platform diagnostics metrics alongside custom notifications interfaces.</li>
                     </ul>
                 </details>
                 <details>
-                    <summary>Module II: Engineering Systems</summary>
+                    <summary>Module II: Continuous Engineering Pipelines & SRE</summary>
                     <ul class="bullet-list">
-                        <li>Involved in monitoring pipeline in Build phase as well as Test phase.</li>
-                        <li>Worked on many Microsoft-flows to send reports on daily basis and create IcMs whenever builds failed.</li>
-                        <li>Directly interacting with the clients and gathering new requirements.</li>
-                        <li>Involved in PowerShell scripts to perform disk clean ups and windows updates.</li>
+                        <li>Owned configuration checking gates for continuous delivery validation in Build and Test phases within VSTS.</li>
+                        <li>Created custom automation flows that parse deployment metrics exceptions, feeding real-time failures into live structural **IcM Tickets**.</li>
+                        <li>Wrote extensive administrative background utilities utilizing **PowerShell** for persistent disk health routines and system cleanups.</li>
                     </ul>
                 </details>
             </div>
 
             <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS Portal</h3>
-                <span class="tag opacity-50 block mb-4">Event Management // Washington Telugu Samithi</span>
-                <div class="mb-6"><span class="tech-pill">.NET MVC 4.0</span><span class="tech-pill">EF6</span><span class="tech-pill">Bootstrap</span><span class="tech-pill">PayPal API</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Developed a robust Event Management System for WATA, streamlining organization and ticketing.</p>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-2">WATS Web Application Framework</h3>
+                <span class="tag opacity-50 block mb-4">Washington Telugu Samithi // Full-Stack Architecture</span>
+                <div class="mb-6">
+                    <span class="tech-pill">ASP.NET MVC 4.0</span>
+                    <span class="tech-pill">Entity Framework 6</span>
+                    <span class="tech-pill">SQL Server</span>
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">Transactional APIs</span>
+                </div>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                    Architected an enterprise-level management application handling high-concurrency ticket distributions and structured multi-tiered relational database interactions.
+                </p>
                 <details>
-                    <summary>Technical Execution & Transaction Logic</summary>
+                    <summary>Database Architecture & Full-Stack Implementation</summary>
                     <ul class="bullet-list">
-                        <li>Architected Relational Data Models: Engineered a high-performance SQL schema from scratch, utilizing XML-based data transfer for complex event configurations and bulk ticket processing.</li>
-                        <li>End-to-End Procedural Logic: Developed optimized T-SQL Stored Procedures to maintain ACID compliance during concurrent transaction peaks, ensuring zero-loss ticket inventory management.</li>
-                        <li>Multi-Tier Presentation Layer: Built a dynamic front-end using React and JavaScript, creating a seamless, asynchronous ticketing workflow for users while maintaining a secure, server-side rendered MVC admin portal.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card mb-20">
-                <h3 class="text-2xl lg:text-3xl font-bold uppercase tracking-tight" style="font-family: 'Syncopate';">Office Management Portal</h3>
-                <span class="tag opacity-50 block mt-3 mb-4">Internal Project // Performance Tracking</span>
-                <div class="mb-6"><span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL 2012</span><span class="tech-pill">EF6</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">Application to track employee performance, attendance, projects, and task assignment.</p>
-                <details open>
-                    <summary>Technical Implementation & Full-Stack Logic</summary>
-                    <ul class="bullet-list">
-                        <li>Full-Stack Role-Based Authorization: Implemented a granular access control system using MVC Filters and JavaScript to serve distinct views—Admin Dashboards for performance/billing and User Views for task/leave management.</li>
-                        <li>Service-Oriented Data Processing: Utilized XML as a lightweight data exchange format between legacy internal modules and the modern MVC controller layer, ensuring cross-module data consistency.</li>
-                        <li>State-Driven UI Components: Leveraged Angular to build complex, reactive state management for real-time task tracking, employee attendance logs, and interactive project timelines.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-2xl lg:text-3xl font-bold mb-2">SRK Travels</h3>
-                <span class="tag opacity-50 block mb-4">Logistics & Tour Automation</span>
-                <div class="mb-6"><span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">LINQ to SQL</span><span class="tech-pill">PayPal Integration</span></div>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">A comprehensive Tours & Travels Management System that automated manual transport solutions.</p>               <details>
-                    <summary>Technical Execution & Booking Automation</summary>
-                    <ul class="bullet-list">
-                        <li>Relational Schema Migration: Led the end-to-end digital transformation of manual tour logistics, designing a normalized SQL database to manage district-wide transport assets and customer lifecycle data.</li>
-                        <li>Automated Scheduling Engine: Engineered backend logic and SQL Schedulers to synchronize fleet availability with tour bookings, utilizing JavaScript-driven validation to prevent resource conflicts.</li>
-                        <li>Unified Admin/User Logic: Developed a comprehensive management interface that toggles between high-level district reports for admins and simplified tour itinerary views for end-users and drivers.</li>
-                        <li>Modeled normalized database schemas prioritizing data integrity and scalability.</li>
+                        <li>Designed robust relational models from scratch utilizing specialized **T-SQL Stored Procedures** to maintain full ACID compliance during concurrent checkouts.</li>
+                        <li>Utilized serialized XML parsing arrays to carry complex parameters across modular transactional code environments smoothly.</li>
+                        <li>Constructed decoupled, responsive user views using **React** coupled securely with single-page server interfaces and administrative portals.</li>
                     </ul>
                 </details>
             </div>
@@ -179,46 +220,42 @@
 
         <section id="capabilities" class="mb-32">
             <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> TECHNICAL_NODES
+                <span class="h-px w-12 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="glass p-8" style="border-top: 2px solid var(--neon);">
-                    <span class="tag mb-6 block">Skill_Stack</span>
+                    <span class="tag mb-6 block">Data_Intelligence</span>
                     <div class="flex flex-wrap gap-2">
-                        <span class="tech-pill">Azure Architecture</span>
-                        <span class="tech-pill">C# .NET</span>
-                        <span class="tech-pill">Kusto (KQL)</span>
-                        <span class="tech-pill">Distributed Systems</span>
+                        <span class="tech-pill">Databricks Delta Lake</span>
+                        <span class="tech-pill">Microsoft Fabric</span>
+                        <span class="tech-pill">Kusto (KQL) Telemetry</span>
+                        <span class="tech-pill">Azure SQL / Cosmos DB</span>
+                        <span class="tech-pill">T-SQL Stored Procedures</span>
+                        <span class="tech-pill">Data Pipelines (ETL/ELT)</span>
                     </div>
                 </div>
-                <div class="glass p-8 border-t-2 border-white/10">
-                    <span class="tag mb-6 block">AI_Works</span>
-                    <div class="space-y-4 opacity-30 font-mono text-[10px]">
-                        <p class="border-b border-white/5 pb-2">> SYSTEM_WAIT: AI_DATA_NULL</p>
-                        <p class="border-b border-white/5 pb-2">> UPLINK_PENDING...</p>
+                <div class="glass p-8" style="border-top: 2px solid var(--neon);">
+                    <span class="tag mb-6 block">AI_&_DevOps_Systems</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Azure OpenAI Service</span>
+                        <span class="tech-pill">CI/CD Automation Pipelines</span>
+                        <span class="tech-pill">PowerShell & Bash Scripting</span>
+                        <span class="tech-pill">Service Fabric Operations</span>
+                        <span class="tech-pill">VSTS / Git Versioning</span>
+                        <span class="tech-pill">IcM Live Incident Tracking</span>
                     </div>
                 </div>
-                <div class="glass p-8 border-t-2 border-white/10">
-                    <span class="tag mb-6 block">System_Design</span>
-                    <div class="space-y-4 opacity-30 font-mono text-[10px]">
-                        <p class="border-b border-white/5 pb-2">> ARCHITECTURE_OFFLINE</p>
-                        <p class="border-b border-white/5 pb-2">> ACCESS_RESTRICTED</p>
+                <div class="glass p-8" style="border-top: 2px solid #ffffff;">
+                    <span class="tag mb-6 block">Core_Software_Engineering</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">C# .NET / ASP.NET MVC</span>
+                        <span class="tech-pill">Azure Functions (Serverless)</span>
+                        <span class="tech-pill">Entity Framework 6</span>
+                        <span class="tech-pill">RESTful API Design</span>
+                        <span class="tech-pill">React & JavaScript</span>
+                        <span class="tech-pill">Object-Oriented Design (OOD)</span>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="publications" class="mb-32">
-            <h2 class="text-xl md:text-2xl font-bold mb-16 flex items-center gap-4 uppercase" style="font-family: 'Syncopate';">
-                <span class="h-px w-12 bg-cyan-400"></span> INTEL_ARCHIVE
-            </h2>
-            <div class="glass p-8 border-r-2 border-cyan-400">
-                <span class="tag mb-4 block">Central_Intel_Repo</span>
-                <p class="text-slate-400 text-sm font-mono italic">
-                    > Accessing publication database... <br>
-                    > [STATUS: NO_ENTRIES_FOUND] <br>
-                    > Please update data source for publication listings.
-                </p>
             </div>
         </section>
 
@@ -228,23 +265,23 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 border-b border-white/5 pb-12">
                 <div>
-                    <h5 class="tag mb-6 block">Uplink_Node</h5>
-                    <div class="space-y-3">
+                    <h5 class="tag mb-6 block">Secure_Uplink</h5>
+                    <div class="space-y-3 font-mono">
                         <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">vidya98sree@gmail.com</a>
                         <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block text-sm hover:tracking-widest transition-all">v-vdevaraju@microsoft.com</a>
                     </div>
                 </div>
                 <div>
-                    <h5 class="tag mb-6 block">Architecture_Network</h5>
+                    <h5 class="tag mb-6 block">Engineering_Networks</h5>
                     <div class="flex flex-wrap gap-6 md:gap-10">
-                        <a href="https://github.com/vidhyasree-cloud" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">GITHUB</a>
-                        <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">LINKEDIN</a>
+                        <a href="https://github.com/vidhyasree-cloud" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">GITHUB</a>
+                        <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors uppercase text-[10px] font-bold tracking-widest">LINKEDIN</a>
                     </div>
                 </div>
                 <div class="lg:text-right">
                     <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-loose italic">
                         © 2026 VIDHYASREE DEVARAJU<br>
-                        7th Year Senior Build // Redmond, WA
+                        Data Infrastructure & Continuous Operations // Redmond, WA
                     </p>
                 </div>
             </div>
@@ -252,23 +289,45 @@
     </footer>
 
     <script>
+        // High-Speed Typing Terminal Payload
         const msg = [
-            "> Initializing Senior SRE Session...",
-            "> [OK] Azure SQL & Cosmos Clusters Healthy.",
-            "> [OK] 7-Year Professional Telemetry Integrated.",
-            "> [OK] Responsive Viewports Verified.",
-            "> System Status: OPTIMIZED.",
-            "> Uplink Ready."
+            "> Establishing secure HR recruiter onboarding uplink...",
+            "> [OK] Professional 7-Year Cloud Telemetry Matrix Active.",
+            "> [OK] Data Systems: Databricks, Fabric, KQL, Azure SQL Database [STABLE].",
+            "> [OK] DevOps Loops & CI/CD Automation Architecture [OPERATIONAL].",
+            "> Resume profile payload completely mapped. Ready for interview deployment.",
+            "> System Status: OPTIMIZED FOR HIRE."
         ];
         let i=0, j=0, cur="";
         function type(){
             if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 30); }
-                else{ cur += "<br>"; i++; j=0; setTimeout(type, 800); }
+                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 15); }
+                else{ cur += "<br>"; i++; j=0; setTimeout(type, 500); }
             }
         }
-        window.onload = type;
 
+        // Live Telemetry Anharmonic Fluctuations 
+        function simulateTelemetry() {
+            const loadEl = document.getElementById('metric-load');
+            const rateEl = document.getElementById('metric-rate');
+            const latencyEl = document.getElementById('metric-latency');
+            
+            if(loadEl && rateEl && latencyEl) {
+                setInterval(() => {
+                    loadEl.innerText = (40 + Math.random() * 8).toFixed(1) + '%';
+                    rateEl.innerText = Math.floor(1350 + Math.random() * 120).toLocaleString() + ' /s';
+                    latencyEl.innerText = Math.floor(12 + Math.random() * 5) + 'ms';
+                }, 2500);
+            }
+        }
+
+        // Trigger Scripts on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            type();
+            simulateTelemetry();
+        });
+
+        // Background WebGL Starfield Scene Design
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
@@ -282,8 +341,8 @@
         camera.position.z = 800;
         function animate() { 
             requestAnimationFrame(animate); 
-            stars.rotation.y += 0.001;
-            stars.rotation.x += 0.0005;
+            stars.rotation.y += 0.0008;
+            stars.rotation.x += 0.0003;
             renderer.render(scene, camera); 
         }
         animate();
