@@ -1,451 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidhyasree Devaraju | Senior Software Engineer</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidhyasree Devaraju | Site Reliability &amp; Software Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#0D1117; --panel:#161B22; --line:#30363D;
+    --text:#E6EDF3; --muted:#8B949E;
+    --blue:#58A6FF; --green:#3FB950; --amber:#D29922; --purple:#BC8CFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px) 0 0/100% 28px, var(--bg);
+    color:var(--text); font-family:'Space Grotesk',sans-serif; line-height:1.55;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:6px;}
+  .eyebrow{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-family:'JetBrains Mono',monospace;}
 
-    <style>
-        :root { --neon: #00f2ff; --bg: #010409; --panel: rgba(13, 17, 23, 0.85); }
-        body { background: var(--bg); color: #f0f6fc; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.5; }
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; pointer-events: none; }
-        
-        .glass { background: var(--panel); backdrop-filter: blur(12px); border: 1px solid rgba(48, 54, 61, 0.6); }
-        .tag { font-size: 0.6rem; color: var(--neon); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        
-        #console-logs { min-height: 100px; font-family: 'Courier New', monospace; font-size: 11px; }
+  .statusbar{background:var(--panel); border-bottom:1px solid var(--line); font-family:'JetBrains Mono',monospace; font-size:11px;}
+  .statusbar .wrap{display:flex; align-items:center; gap:22px; height:36px; overflow-x:auto;}
+  .status-item{display:flex; align-items:center; gap:6px; color:var(--muted); white-space:nowrap;}
+  .dot{width:6px; height:6px; border-radius:50%;}
+  .dot.green{background:var(--green); box-shadow:0 0 6px var(--green);}
+  .dot.amber{background:var(--amber); box-shadow:0 0 6px var(--amber);}
+  .dot.blue{background:var(--blue); box-shadow:0 0 6px var(--blue);}
 
-        .project-card { border-left: 3px solid var(--neon); padding-left: 1.25rem; margin-bottom: 2rem; transition: border-color 0.3s ease; }
-        .project-card:hover { border-left-color: #ffffff; }
+  nav{position:sticky; top:0; z-index:20; background:rgba(13,17,23,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:58px;}
+  nav .logo{font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;}
+  nav .logo .dim{color:var(--muted);}
+  nav ul{list-style:none; display:flex; gap:26px;}
+  nav a{font-size:12.5px; color:var(--muted); text-decoration:none;}
+  nav a:hover{color:var(--text);}
+  .btn{border:1px solid var(--line); color:var(--text); font-size:11.5px; font-family:'JetBrains Mono',monospace; padding:7px 14px; border-radius:5px; text-decoration:none; transition:.15s;}
+  .btn:hover{border-color:var(--blue); color:var(--blue);}
 
-        details { background: rgba(22, 27, 34, 0.5); border: 1px solid rgba(48, 54, 61, 0.5); margin-top: 0.5rem; width: 100%; border-radius: 4px; overflow: hidden; display: block; }
-        summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 700; font-size: 0.85rem; color: var(--neon); display: flex; justify-between; align-items: center; user-select: none; list-style: none; }
-        summary::-webkit-details-marker { display: none; }
-        
-        summary::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.2s ease; display: inline-block; }
-        details[open] summary::after { transform: rotate(180deg); }
-        
-        .bullet-list { list-style: none; padding: 0.85rem 1rem; border-top: 1px solid rgba(48, 54, 61, 0.4); }
-        .bullet-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: #c9d1d9; font-size: 0.85rem; }
-        .bullet-list li:last-child { margin-bottom: 0; }
-        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--neon); font-weight: bold; }
+  .wrap{max-width:1000px; margin:0 auto; padding:0 24px;}
 
-        .tech-pill { border: 1px solid rgba(0, 242, 255, 0.2); padding: 2px 8px; font-size: 9px; font-weight: 700; color: var(--neon); text-transform: uppercase; margin-right: 4px; display: inline-block; margin-bottom: 4px; border-radius: 2px; background: rgba(0, 242, 255, 0.03); }
-        
-        .btn-neon { border: 1px solid var(--neon); color: var(--neon); text-shadow: 0 0 6px rgba(0,242,255,0.3); transition: all 0.2s ease; cursor: pointer; }
-        .btn-neon:hover { background: var(--neon); color: var(--bg); box-shadow: 0 0 15px rgba(0,242,255,0.5); text-shadow: none; }
-        
-        /* Modal Infrastructure */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(1, 4, 9, 0.85); z-index: 100; backdrop-filter: blur(8px); }
-        .modal-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; border: 1px solid var(--neon); box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
-    </style>
+  header.hero{padding:64px 0 44px;}
+  h1.title{font-size:34px; font-weight:600; letter-spacing:-0.01em; max-width:680px;}
+  h1.title .role{color:var(--blue);}
+  .subtitle{margin-top:16px; color:var(--muted); font-size:14.5px; max-width:640px;}
+  .badges{margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;}
+  .badge{font-family:'JetBrains Mono',monospace; font-size:11px; padding:6px 12px; border-radius:5px; border:1px solid var(--line);}
+  .badge.certified{border-color:rgba(63,185,80,0.35); color:var(--green);}
+  .badge.avail{border-color:rgba(88,166,255,0.35); color:var(--blue);}
+
+  section{padding:48px 0; border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:center; gap:10px; margin-bottom:26px;}
+  .section-head .dot{width:8px; height:8px; border-radius:50%; background:var(--blue);}
+  .section-head h2{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-family:'JetBrains Mono',monospace;}
+
+  .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .metric{padding:16px; border-left:3px solid var(--line);}
+  .metric.m-blue{border-left-color:var(--blue);}
+  .metric.m-green{border-left-color:var(--green);}
+  .metric.m-amber{border-left-color:var(--amber);}
+  .metric.m-purple{border-left-color:var(--purple);}
+  .metric-label{font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;}
+  .metric-value{font-family:'JetBrains Mono',monospace; font-size:19px; font-weight:700; margin-top:6px;}
+
+  .job{padding:24px; margin-bottom:16px;}
+  .job-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;}
+  .job-role{font-size:16px; font-weight:600;}
+  .job-org{font-size:12px; color:var(--muted); margin-top:3px; font-family:'JetBrains Mono',monospace;}
+  .job-desc{margin-top:12px; font-size:13.5px; color:var(--muted); max-width:680px;}
+  .pills{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px;}
+  .pill{font-family:'JetBrains Mono',monospace; font-size:10px; padding:3px 9px; border-radius:4px; background:rgba(88,166,255,0.08); color:var(--blue); border:1px solid rgba(88,166,255,0.2);}
+  details{margin-top:14px; border-top:1px solid var(--line); padding-top:12px;}
+  summary{cursor:pointer; font-size:12px; font-weight:600; color:var(--muted); list-style:none; display:flex; align-items:center; gap:6px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:'\25B8'; transition:.15s;}
+  details[open] summary::before{transform:rotate(90deg); display:inline-block;}
+  .bullets{list-style:none; margin-top:10px; padding-left:2px;}
+  .bullets li{position:relative; padding-left:16px; margin-bottom:8px; font-size:13px; color:var(--muted);}
+  .bullets li::before{content:'—'; position:absolute; left:0; color:var(--blue);}
+
+  .subhead{display:flex; align-items:center; gap:10px; margin:26px 0 14px;}
+  .subhead .line{flex:1; height:1px; background:var(--line);}
+  .subhead span{font-size:11px; color:var(--muted); font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:0.06em; white-space:nowrap;}
+
+  .status-tags .done{color:var(--green);}
+  .status-tags .progress{color:var(--amber);}
+  .status-tags .queued{color:var(--muted);}
+  .status-tags .parallel{color:var(--purple);}
+
+  .cap-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .cap-card{padding:18px;}
+  .cap-title{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; font-family:'JetBrains Mono',monospace;}
+
+  footer{padding:32px 0; border-top:1px solid var(--line); font-size:12px; color:var(--muted);}
+  .footer-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;}
+  .footer-grid a{display:block; margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:12px;}
+  .footer-grid a.blue{color:var(--blue);}
+
+  .kql-live{margin-top:30px; max-width:640px; overflow:hidden;}
+  .kql-live-top{display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid var(--line); background:rgba(255,255,255,0.015);}
+  .kql-live-dots{display:flex; gap:5px;}
+  .kql-live-dots span{width:7px; height:7px; border-radius:50%; background:var(--line);}
+  .kql-live-label{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);}
+  .kql-live-body{padding:16px 18px; margin:0; font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.7; color:var(--blue); white-space:pre-wrap; word-break:break-word; min-height:96px;}
+  .kql-cursor{color:var(--green); animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  @media(max-width:720px){
+    .metrics{grid-template-columns:1fr 1fr;}
+    .cap-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; text-align:left !important;}
+  }
+</style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+<div class="statusbar">
+  <div class="wrap">
+    <div class="status-item"><span class="dot green"></span>AZ-204 CERTIFIED (2020)</div>
+    <div class="status-item"><span class="dot blue"></span>AVAILABLE FOR CONTRACT ENGAGEMENTS</div>
+    <div class="status-item"><span class="dot amber"></span>DP-700 IN PROGRESS</div>
+  </div>
+</div>
 
-    <nav class="fixed w-full z-50 glass py-3 px-4 md:px-8 border-b border-white/10">
-        <div class="flex justify-between items-center max-w-6xl mx-auto">
-            <div class="font-bold text-xs md:text-sm tracking-wider" style="font-family: 'Syncopate';">VIDHYA_SREE<span class="text-cyan-400">.7Y</span></div>
-            <div class="flex items-center gap-4">
-                <button onclick="openInteractiveModal('general')" class="btn-neon text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded font-mono bg-transparent">
-                    <i class="fa-solid fa-terminal mr-1"></i> Diagnostic_Uplink
-                </button>
-                <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn-neon text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded font-mono">
-                    <i class="fa-solid fa-file-arrow-down mr-1"></i> Resume
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav>
+  <div class="wrap">
+    <div class="logo">VIDHYA_SREE<span class="dim">.DEV</span></div>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#deepdive">Project Deep Dive</a></li>
+      <li><a href="#learning">Learning</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="Vidhya_Sree_Devaraju_Resume.pdf" download class="btn"><i class="fa-solid fa-file-arrow-down mr-1"></i> Resume</a>
+  </div>
+</nav>
 
-    <div id="telemetry-modal" class="modal-overlay" onclick="closeInteractiveModal(event)">
-        <div class="modal-container glass p-6 rounded" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
-                <div class="flex items-center gap-2">
-                    <span class="h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
-                    <h3 class="font-bold text-sm uppercase tracking-wider font-mono text-white" id="modal-title">System Execution Sandbox</h3>
-                </div>
-                <button onclick="document.getElementById('telemetry-modal').style.display='none'" class="text-slate-400 hover:text-white font-bold">&times;</button>
-            </div>
-            <div id="modal-content" class="space-y-4">
-                </div>
-        </div>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">// site_reliability_&amp;_software_engineer</div>
+    <h1 class="title">Azure-focused <span class="role">Site Reliability &amp; Software Engineer</span></h1>
+    <p class="subtitle">8+ years of Microsoft-stack experience in Azure SQL DB and Cosmos DB capacity management, KQL/PowerShell automation, and telemetry-driven infrastructure planning. Available for contract engagements &mdash; delivers quickly on scoped, high-impact work, from capacity and migration projects to dashboard and reliability builds.</p>
+    <div class="badges">
+      <span class="badge certified"><i class="fa-solid fa-circle-check mr-1"></i>AZ-204 Certified</span>
+      <span class="badge avail"><i class="fa-solid fa-bolt mr-1"></i>Open to Contract Engagements</span>
+      <span class="badge"><i class="fa-solid fa-spinner mr-1"></i>DP-700 In Progress</span>
     </div>
 
-    <main class="max-w-5xl mx-auto px-4 pt-24 md:pt-32 pb-12">
-        
-        <header class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-12">
-            <div class="md:col-span-2 text-center md:text-left">
-                <span class="tag block mb-2">// CORE_SYSTEMS_ENGINEER_PROFILE</span>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 uppercase leading-none tracking-tight" style="font-family: 'Syncopate';">
-                    SOFTWARE<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff;">ENGINEER</span>
-                </h1>
-                <p class="text-slate-400 text-sm md:text-base font-light max-w-xl mx-auto md:mx-0 leading-relaxed">
-                    Senior Software Engineer designing high-availability platform mechanics, backend cloud architecture configurations, big data telemetry processing streams, and scalable internal frameworks.
-                </p>
-                <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
-                    <div class="glass py-1 px-2.5 text-center rounded">
-                        <span class="text-xs font-bold font-mono text-white">AZ-204</span> <span class="text-[9px] tag opacity-60 ml-1">Certified</span>
-                    </div>
-                    <div class="glass py-1 px-2.5 text-center rounded">
-                        <span class="text-xs font-bold font-mono text-white">DP-600</span> <span class="text-[9px] tag opacity-60 ml-1">Fabric</span>
-                    </div>
-                </div>
-            </div>
+    <div class="panel kql-live">
+      <div class="kql-live-top">
+        <div class="kql-live-dots"><span></span><span></span><span></span></div>
+        <span class="kql-live-label">live_query.kql</span>
+      </div>
+      <pre class="kql-live-body"><code id="kql-typer"></code><span class="kql-cursor">&#9608;</span></pre>
+    </div>
+  </div>
+</header>
 
-            <div class="flex justify-center">
-                <div class="relative">
-                    <div class="absolute -inset-1.5 border border-cyan-400/20 rounded-full animate-pulse"></div>
-                    <img src="profile.jpg" alt="Vidhya Sree Devaraju" 
-                         class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-cyan-400 grayscale contrast-125 hover:grayscale-0 object-cover transition-all duration-300">
-                </div>
-            </div>
-        </header>
+<section id="metrics-section">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Track Record</h2></div>
+    <div class="metrics">
+      <div class="panel metric m-blue"><div class="metric-label">Availability Sustained</div><div class="metric-value">99.99%</div></div>
+      <div class="panel metric m-green"><div class="metric-label">MTTR Reduction</div><div class="metric-value">30%</div></div>
+      <div class="panel metric m-amber"><div class="metric-label">Fleet Migration</div><div class="metric-value">125 rings / 90d</div></div>
+      <div class="panel metric m-purple"><div class="metric-label">PaaSv2 Adoption</div><div class="metric-value">100%</div></div>
+      <div class="panel metric m-blue"><div class="metric-label">Gen7 Return Rate</div><div class="metric-value">98.28%</div></div>
+      <div class="panel metric m-green"><div class="metric-label">Zonal Onboarding (S500)</div><div class="metric-value">91.8%</div></div>
+    </div>
+  </div>
+</section>
 
-        <div class="glass p-4 mb-12 font-mono border-cyan-400/20 rounded">
-            <div class="flex gap-1.5 mb-2 opacity-40">
-                <div class="h-2 w-2 rounded-full bg-red-500"></div><div class="h-2 w-2 rounded-full bg-yellow-500"></div><div class="h-2 w-2 rounded-full bg-green-500"></div>
-            </div>
-            <div id="console-logs"></div>
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Professional Experience</h2></div>
+
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Software Engineer</div>
+          <div class="job-org">Microsoft (via Quadrant Technologies) · Seattle, WA · Apr 2022 – Present</div>
         </div>
+      </div>
+      <p class="job-desc">Azure SQL DB Capacity Management — worldwide capacity and utilization analysis to keep regions below hot-segment thresholds and protect customer data.</p>
+      <div class="pills"><span class="pill">KQL</span><span class="pill">PowerShell</span><span class="pill">Power BI</span><span class="pill">Service Fabric</span><span class="pill">Azure SQL DB</span></div>
+      <ul class="bullets">
+        <li>Led worldwide Azure SQL DB capacity and utilization analysis using KQL and PowerShell to sustain 99.99% availability and prevent hot segments.</li>
+        <li>Automated global capacity workflows triggered by real-time telemetry, improving regional resource allocation and optimizing infrastructure spend.</li>
+        <li>Built Power BI telemetry dashboards to support executive infrastructure planning and ongoing health monitoring.</li>
+        <li>Led fleet migrations and node-resizing initiatives across worldwide regions with zero customer downtime.</li>
+      </ul>
+    </div>
 
-        <section id="system-diagnostic" class="mb-12">
-            <h2 class="text-sm font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-6 bg-cyan-400"></span> LIVE_TELEMETRY_LABORATORY <span class="text-[9px] text-slate-500 normal-case font-mono">(Click nodes to run scripts)</span>
-            </h2>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <div onclick="openInteractiveModal('sql')" class="glass p-3 border-l-2 border-cyan-400 rounded-r cursor-pointer hover:bg-cyan-500/5 transition-all">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5">Cluster_Load</span>
-                    <div class="text-lg font-bold font-mono flex justify-between items-center" id="metric-load">42.8% <i class="fa-solid fa-code text-[10px] text-cyan-400"></i></div>
-                </div>
-                <div onclick="openInteractiveModal('cosmos')" class="glass p-3 border-l-2 border-emerald-400 rounded-r cursor-pointer hover:bg-emerald-500/5 transition-all">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-emerald-400">Throughput</span>
-                    <div class="text-lg font-bold font-mono text-emerald-400 flex justify-between items-center" id="metric-rate">1,402/s <i class="fa-solid fa-bolt text-[10px]"></i></div>
-                </div>
-                <div onclick="openInteractiveModal('kql')" class="glass p-3 border-l-2 border-amber-400 rounded-r cursor-pointer hover:bg-amber-500/5 transition-all">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-amber-400">Query_Latency_SLA</span>
-                    <div class="text-lg font-bold font-mono text-amber-400 flex justify-between items-center" id="metric-latency">14ms <i class="fa-solid fa-chart-line text-[10px]"></i></div>
-                </div>
-                <div onclick="openInteractiveModal('sso')" class="glass p-3 border-l-2 border-purple-500 rounded-r cursor-pointer hover:bg-purple-500/5 transition-all">
-                    <span class="tag block text-[9px] opacity-70 mb-0.5 text-purple-400">SSO_Identity_Uplink</span>
-                    <div class="text-lg font-bold font-mono text-purple-400 flex justify-between items-center">SECURE <i class="fa-solid fa-shield-halved text-[10px]"></i></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="mb-12">
-            <h2 class="text-sm font-bold mb-5 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-6 bg-cyan-400"></span> PRODUCTION_WORK_HISTORY
-            </h2>
-
-            <div class="project-card">
-                <div class="flex justify-between items-start flex-wrap gap-2">
-                    <h3 class="text-lg font-bold text-white font-mono">Azure SQL DB Capacity Management Engine</h3>
-                    <button onclick="openInteractiveModal('sql')" class="btn-neon text-[9px] font-mono font-bold py-1 px-2 rounded"><i class="fa-solid fa-chart-bar mr-1"></i> View_Metrics_Schema</button>
-                </div>
-                <span class="tag opacity-60 block mb-1">Microsoft (via Quadrant) | Software Engineer | Redmond, WA</span>
-                <div class="mb-2">
-                    <span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Databricks</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">Data Pipelines</span><span class="tech-pill">Power BI</span><span class="tech-pill">XTS</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed mb-2">
-                    Led worldwide telemetry data analysis strategies, compute asset mapping matrices, and capacity tracking systems across global regions to optimize resource utilization, isolate hardware hotspots, and safeguard multi-cloud infrastructure stability.
-                </p>
-                <details open>
-                    <summary>Technical Execution & System Impact</summary>
-                    <ul class="bullet-list">
-                        <li>**Led worldwide telemetry mapping initiatives**, developing complex backend analytics query loops inside Kusto (KQL) to process high-velocity data streams and preempt cluster saturation.</li>
-                        <li>**Engineered data profiling workflows** via Databricks pipelines to programmatically monitor and compute infrastructure efficiency indicators across global server environments.</li>
-                        <li>**Spearheaded core platform scalability maneuvers**, systematically executing high-impact Service Fabric compute scaling strategies and node structural modifications with zero active down-time.</li>
-                        <li>**Architected predictive alerting frameworks** utilizing scripting paradigms to emit automated diagnostic telemetry signals for structural platform provisioning strategy.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <div class="flex justify-between items-start flex-wrap gap-2">
-                    <h3 class="text-lg font-bold text-white font-mono">Azure Cosmos DB Infrastructure Systems</h3>
-                    <button onclick="openInteractiveModal('cosmos')" class="btn-neon text-[9px] font-mono font-bold py-1 px-2 rounded"><i class="fa-solid fa-database mr-1"></i> View_Pipeline_Flow</button>
-                </div>
-                <span class="tag opacity-60 block mb-1">Microsoft (Offshore) | Software Engineer</span>
-                <div class="mb-2">
-                    <span class="tech-pill">Azure Functions</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">C# .NET Core</span><span class="tech-pill">CI/CD Pipelines</span><span class="tech-pill">PowerShell</span><span class="tech-pill">VSTS</span><span class="tech-pill">Moq</span><span class="tech-pill">MS Flow</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed mb-2">
-                    Spearheaded continuous engineering modules, serverless backend data utilities, and systemic validation pipelines backing the platform operations of Microsoft's flagship globally distributed multi-model database service.
-                </p>
-                <details>
-                    <summary>Technical Execution & System Impact</summary>
-                    <ul class="bullet-list">
-                        <li>**Architected enterprise cloud expenditure modules**, writing performant server-side logic to aggregate and analyze operational telemetry data from multi-tenant staging frameworks.</li>
-                        <li>**Fortified core access security layers**, designing explicit Azure Active Directory (AAD) OAuth token handling mechanics into automated system endpoints.</li>
-                        <li>**Engineered serverless data processing pipelines** via Azure Functions to ingest system-level exceptions and broadcast structural state updates.</li>
-                        <li>**Owned infrastructure testing validation quality gates** within VSTS, automating background scripts to capture system faults and instantly route active logs to structural engineering IcM tickets using custom TSGs.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="border-l-2 border-dashed border-cyan-500/20 pl-3 my-4">
-                <span class="tag block text-cyan-400 text-[9px]">// Enterprise In-House Application Development</span>
-                <h3 class="text-sm font-bold uppercase tracking-wider font-mono text-slate-300">Quadrant Resources In-House Projects</h3>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-lg font-bold text-white font-mono">WATS Event Organization Framework</h3>
-                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
-                <div class="mb-2">
-                    <span class="tech-pill">C# .NET MVC 4.0</span><span class="tech-pill">Entity Framework 6</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">LINQ</span><span class="tech-pill">T-SQL</span><span class="tech-pill">Bootstrap</span><span class="tech-pill">IdentityServer3</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed mb-2">
-                    Spearheaded the design, full-stack application logic development, and database mapping of an automated event-handling framework built to handle concurrent transaction traffic spikes and real-time inventory updates.
-                </p>
-                <details>
-                    <summary>Technical Execution & Database Architecture</summary>
-                    <ul class="bullet-list">
-                        <li>**Led transactional infrastructure engineering**, designing robust relational SQL schemas capable of maintaining strict ACID compliance under intense concurrent load bursts.</li>
-                        <li>**Optimized core database integration routines**, scripting specialized T-SQL Stored Procedures, custom functions, and joins to accelerate information mapping speeds.</li>
-                        <li>**Secured backend software pipelines**, developing firm form-based authentication protocols and Single Sign-On (SSO) configurations leveraging IdentityServer3 tokens.</li>
-                        <li>**Spearheaded responsive front-end development**, translating requirements into clear asynchronous interface features using HTML5, CSS3, and jQuery to streamline user conversion pipelines.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-lg font-bold text-white font-mono">Office Management Portal</h3>
-                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
-                <div class="mb-2">
-                    <span class="tech-pill">ASP.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">EF6</span><span class="tech-pill">RBAC Auth</span><span class="tech-pill">jQuery</span><span class="tech-pill">RDLC Reports</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed mb-2">
-                    Directed the backend full-stack engineering of an internal resource optimization hub, writing application logic to trace corporate performance matrices, structured attendance logging, and automated client billing systems.
-                </p>
-                <details>
-                    <summary>Technical Execution & Software Engineering</summary>
-                    <ul class="bullet-list">
-                        <li>**Spearheaded Role-Based Access Control (RBAC) security frameworks**, structuring secure data visualization gates to cleanly segregate proprietary operational ledgers based on user access flags.</li>
-                        <li>**Engineered highly-performant data access layers** via Entity Framework 6 and targeted LINQ queries to map complex multi-tier system relationships cleanly.</li>
-                        <li>**Programmed corporate telemetry tools**, creating custom operational billing schemas and structured visualization pipelines via server-side RDLC reporting engines.</li>
-                        <li>**Maintained strict code stability within active agile sprints**, performing deep unit testing, browser debugging cycles, and programmatic error isolation routines.</li>
-                    </ul>
-                </details>
-            </div>
-
-            <div class="project-card">
-                <h3 class="text-lg font-bold text-white font-mono">SRK Travels Optimization Matrix</h3>
-                <span class="tag opacity-60 block mb-1">In-House Project // Full Stack Software Engineer</span>
-                <div class="mb-2">
-                    <span class="tech-pill">.NET MVC</span><span class="tech-pill">SQL Server 2012</span><span class="tech-pill">Normalization</span><span class="tech-pill">LINQ to SQL</span><span class="tech-pill">UI Modernization</span><span class="tech-pill">Apache Cordova</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed mb-2">
-                    Led the complete modernization and schema transformation of a legacy, manual transport allocation tracking system into an automated, web-connected logistics scheduling dashboard.
-                </p>
-                <details>
-                    <summary>Technical Execution & Data Strategy</summary>
-                    <ul class="bullet-list">
-                        <li>**Led the digital database legacy migration**, mapping complex unstructured records into a fully normalized, relational SQL database layout to protect long-term information integrity.</li>
-                        <li>**Engineered backend resource logic constraints**, writing optimized database triggers and stored procedures to dynamically prevent fleet scheduling overlaps across regional districts.</li>
-                        <li>**Optimized mobile compilation infrastructure**, utilizing Apache Cordova pipelines to architect, build, and deploy integrated Android mobile software assets directly onto operating system devices.</li>
-                    </ul>
-                </details>
-            </div>
-        </section>
-
-        <section id="capabilities" class="mb-6">
-            <h2 class="text-xs font-bold mb-4 flex items-center gap-3 uppercase tracking-wider" style="font-family: 'Syncopate';">
-                <span class="h-px w-6 bg-cyan-400"></span> SKILL_INFRASTRUCTURE
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div class="glass p-4 rounded border-t-2 border-cyan-400">
-                    <span class="tag mb-2 block">Data_Architecture</span>
-                    <div class="flex flex-wrap gap-1">
-                        <span class="tech-pill">Databricks</span><span class="tech-pill">Delta Lake</span><span class="tech-pill">Microsoft Fabric</span><span class="tech-pill">Kusto (KQL)</span><span class="tech-pill">Azure SQL Server</span><span class="tech-pill">Cosmos DB</span><span class="tech-pill">T-SQL</span>
-                    </div>
-                </div>
-                <div class="glass p-4 rounded border-t-2 border-cyan-400">
-                    <span class="tag mb-2 block">Cloud_&_DevOps</span>
-                    <div class="flex flex-wrap gap-1">
-                        <span class="tech-pill">Azure Cloud Environment</span><span class="tech-pill">CI/CD Continuous Integration</span><span class="tech-pill">PowerShell</span><span class="tech-pill">Service Fabric</span><span class="tech-pill">TFS / SVN / Git</span><span class="tech-pill">IIS Deployment</span><span class="tech-pill">JIRA</span>
-                    </div>
-                </div>
-                <div class="glass p-4 rounded border-t-2 border-white/20">
-                    <span class="tag mb-2 block">Software_Engineering</span>
-                    <div class="flex flex-wrap gap-1">
-                        <span class="tech-pill">C# .NET / .NET Core</span><span class="tech-pill">ASP.NET MVC / Core</span><span class="tech-pill">Azure Functions</span><span class="tech-pill">EF6</span><span class="tech-pill">Web API / REST</span><span class="tech-pill">Angular / React</span><span class="tech-pill">IdentityServer3</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="glass border-t border-white/10 py-5 px-4 md:px-8">
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center text-center md:text-left">
-            <div>
-                <span class="tag block mb-1">Secure_Uplink</span>
-                <div class="font-mono text-xs space-y-0.5">
-                    <a href="mailto:vidya98sree@gmail.com" class="text-cyan-400 block hover:underline">vidya98sree@gmail.com</a>
-                    <a href="mailto:v-vdevaraju@microsoft.com" class="text-cyan-400 block hover:underline">v-vdevaraju@microsoft.com</a>
-                </div>
-            </div>
-            <div class="flex justify-center md:justify-start gap-4 font-mono text-[10px] font-bold tracking-widest text-slate-400">
-                <a href="https://github.com/vidhyasree-cloud" target="_blank" class="hover:text-cyan-400 transition-colors">GITHUB</a>
-                <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="hover:text-cyan-400 transition-colors">LINKEDIN</a>
-            </div>
-            <div class="md:text-right font-mono text-[10px] text-slate-500 tracking-wider">
-                &copy; 2026 VIDHYASREE DEVARAJU<br>Senior Software Engineer | Redmond, WA
-            </div>
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Software Engineer</div>
+          <div class="job-org">Microsoft (via Quadrant Technologies) · Hyderabad, India · Dec 2019 – Sept 2021</div>
         </div>
-    </footer>
+      </div>
+      <p class="job-desc">Azure Cosmos DB — globally distributed, multi-model database service; contributed across Dashboard and Engineering Systems modules.</p>
+      <div class="pills"><span class="pill">Cosmos DB</span><span class="pill">Azure Functions</span><span class="pill">MS Flow</span><span class="pill">Azure AD</span><span class="pill">VSTS</span></div>
+      <ul class="bullets">
+        <li>Built a subscription-wide cost-tracking engine for Cosmos DB environments, improving financial transparency for million-dollar tiers.</li>
+        <li>Reduced MTTR by 30% by integrating Incident Management (IcM) automation with Microsoft Flow and Azure Functions.</li>
+        <li>Automated Azure Scale Set maintenance, including disk cleanups and OS updates, using PowerShell to improve fleet reliability.</li>
+        <li>Implemented Azure AD token-based authentication and service-to-service communication protocols.</li>
+        <li>Monitored CI/CD pipelines across build and test phases; created IcMs on failures and authored TSGs for on-call response.</li>
+      </ul>
+    </div>
 
-    <script>
-        const msg = [
-            "> Establishing secure tech recruiter uplink...",
-            "> [OK] Target verification: OFFICIAL ROLE NAME -> SOFTWARE ENGINEER.",
-            "> [OK] Interactive Telemetry Engine Initialized [CLICK LAB NODES TO VIEW CODE].",
-            "> System Status: OPTIMIZED FOR BIG TECH / FINTECH INSPECTION."
-        ];
-        let i=0, j=0, cur="";
-        function type(){
-            if(i<msg.length){
-                if(j<msg[i].length){ cur += msg[i].charAt(j); document.getElementById("console-logs").innerHTML = cur + "<span class='h-3 w-2 bg-cyan-400 inline-block ml-1 animate-pulse'></span>"; j++; setTimeout(type, 12); }
-                else{ cur += "<br>"; i++; j=0; setTimeout(type, 400); }
-            }
-        }
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Full Stack Developer</div>
+          <div class="job-org">Quadrant Technologies (In-house Projects) · Hyderabad, India · May 2018 – Nov 2019</div>
+        </div>
+      </div>
+      <div class="pills"><span class="pill">.NET MVC</span><span class="pill">SQL Server</span><span class="pill">jQuery</span><span class="pill">PayPal Integration</span></div>
+      <ul class="bullets">
+        <li>Built an event management and ticketing system end-to-end (schema design through UI) using .NET MVC, jQuery, and SQL Server, with separate Admin and User experiences and integrated PayPal payments.</li>
+        <li>Developed an Office Management portal from scratch (schema through UI) using .NET MVC and SQL Server, with separate Admin and User views for attendance, tasks, and billing.</li>
+        <li>Built a seat-booking travel system end-to-end using .NET MVC and SQL Server, with Admin/User views and integrated PayPal payments.</li>
+        <li>Designed stored procedures, triggers, and T-SQL logic to support core application data processing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        // Live Telemetry Anharmonic Fluctuations
-        function simulateTelemetry() {
-            const loadEl = document.getElementById('metric-load');
-            const rateEl = document.getElementById('metric-rate');
-            const latencyEl = document.getElementById('metric-latency');
-            if(loadEl && rateEl && latencyEl) {
-                setInterval(() => {
-                    loadEl.childNodes[0].nodeValue = (38 + Math.random() * 8).toFixed(1) + '% ';
-                    rateEl.childNodes[0].nodeValue = Math.floor(1380 + Math.random() * 80).toLocaleString() + '/s ';
-                    latencyEl.childNodes[0].nodeValue = Math.floor(11 + Math.random() * 4) + 'ms ';
-                }, 2500);
-            }
-        }
+<section id="deepdive">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Project Deep Dive</h2></div>
 
-        // Interactive Labs Data Dictionary (Your Practical Interview Notes)
-        const codeSandboxData = {
-            general: {
-                title: "Global Infrastructure Analytics Overview",
-                html: `<p class="text-xs text-slate-400">Centralized workspace holding operational logic components for data exploration, capacity planning, and service reliability matrices.</p>
-                       <div class="p-3 bg-black/40 rounded border border-white/5 font-mono text-xs">
-                           <span class="text-cyan-400">// Primary System Architectural Formula</span><br>
-                           Utilization_SLA = (Total_Compute_Consumed / Total_Regional_Provisioned_Capacity) * 100;<br>
-                           Constraint_Trigger = iff(Utilization_SLA > 85.0, "PROVISION_NODE_RESIZE", "STABLE");
-                       </div>`
-            },
-            sql: {
-                title: "Azure SQL DB capacity Tracing Strategy (KQL)",
-                html: `<p class="text-xs text-slate-400">This production query traces multi-tenant regional saturation parameters inside Azure Data Explorer to identify global cluster hot segments.</p>
-                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-emerald-400 overflow-x-auto">
-DatabaseTelemetry
-| where TimeGenerated > ago(7d)
-| where Region in ("eastus2", "westeurope", "southeastasia")
-| summarize AvgCpu = avg(CpuUtilization), MaxStorage = max(StorageUsedBytes) by Region, ClusterId, EngineVersion
-| extend SpaceUtilizationPercent = (MaxStorage / TotalCapacityBytes) * 100.0
-| where SpaceUtilizationPercent > 80.0 or AvgCpu > 75.0
-| project TimeGenerated, Region, ClusterId, SpaceUtilizationPercent, AvgCpu
-| sort by SpaceUtilizationPercent desc</pre>
-                       <span class="tag text-amber-400">// Power BI Integration Parameter</span>
-                       <p class="text-[11px] text-slate-400">Directly feeding the summarized matrix block above into an enterprise Power BI DirectQuery configuration stream allows executive leadership to monitor cross-regional hardware saturation risk dashboards live.</p>`
-            },
-            cosmos: {
-                title: "Azure Cosmos DB Global Billing Aggregator",
-                html: `<p class="text-xs text-slate-400">Serverless calculation workflow utilized in Azure Functions to parse batch raw environment expenditures metrics securely.</p>
-                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-cyan-400 overflow-x-auto">
-[FunctionName("CalculateSubscriptionSpend")]
-public static async Task&lt;IActionResult&gt; Run(
-    [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req, ILogger log)
-{
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    var data = JsonConvert.DeserializeObject&lt;SubscriptionMetricEnvelope&gt;(requestBody);
-    
-    double totalSpend = data.UsageRecords
-        .Where(r => r.Environment == "Staging" || r.Environment == "Production")
-        .Sum(record => record.ResourceRate * record.ConsumedQuantity);
-        
-    return new OkObjectResult(new { TotalAzureSpend = totalSpend, SLA_Compliance = true });
-}</pre>`
-            },
-            kql: {
-                title: "Azure Data Explorer Performance Auditing",
-                html: `<p class="text-xs text-slate-400">Telemetry engine evaluating cross-cluster query completion latency states against system SLA targets.</p>
-                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-amber-400 overflow-x-auto">
-AzureDiagnostics
-| where ResourceProvider == "MICROSOFT.KUSTO"
-| where Category == "QueryStatus"
-| summarize Percentile95 = percentile(DurationMs, 95), TotalQueries = count() by bin(TimeGenerated, 1h)
-| render timechart</pre>`
-            },
-            sso: {
-                title: "IdentityServer3 OpenID Token Integration Core",
-                html: `<p class="text-xs text-slate-400">Security configuration matrix binding cross-platform application requests safely through single sign-on processing modules.</p>
-                       <pre class="p-3 bg-black/40 rounded border border-white/5 font-mono text-[11px] text-purple-400 overflow-x-auto">
-app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
-{
-    Authority = "https://identity.enterprise.internal",
-    RequiredScopes = new[] { "wats_api", "office_portal_matrix" },
-    DelayLoadMetadataTsProvider = true
-});</pre>`
-            }
-        };
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Azure SQL DB Capacity Management</div>
+          <div class="job-org">Microsoft · 2018 – Present</div>
+        </div>
+      </div>
+      <p class="job-desc">Owns short-term capacity planning and live-site incident mitigation for Azure SQL DB at global scale — shifting the team from reactive investigation to proactive, data-driven readiness.</p>
+      <details>
+        <summary>Core operations &amp; major milestones</summary>
+        <ul class="bullets">
+          <li>Drove critical infrastructure migrations — SPO to Gen8, QCS migration, and MAZ migration from Regional to MAZ rings.</li>
+          <li>Executed the multi-year RDFE to PaaSv2 conversion, including sending 125 rings to Decom within a 90-day window.</li>
+          <li>Stabilized SPO pool applications by transitioning to Gen7/Gen8 hardware, mitigating long-standing high-CPU incidents.</li>
+          <li>Directed end-to-end triage for high-priority live-site scenarios, including GEO DR events and specialized monitor alerts.</li>
+          <li>Engineered RCS automation workflows with built-in validation and dynamic retry logic to accelerate high-priority resolution.</li>
+          <li>Built an end-to-end Power BI dashboard with advanced DAX, giving full visibility into ICM backlog, acknowledgments, and resolution counts.</li>
+          <li>Participated in Change Advisory Board (CAB) processes, overseeing CI/CD pipeline integrations for safe, compliant rollouts.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Value adds &amp; business impact</summary>
+        <ul class="bullets">
+          <li>Standardized incident triage using KQL, SQL, and IcM telemetry, cutting manual effort and accelerating root cause identification.</li>
+          <li>Acted as a strategic bridge between onshore and offshore teams on capacity planning and incident mitigation.</li>
+          <li>Elevated stakeholder reporting, turning complex technical data into clear executive status updates.</li>
+          <li>Fully decommissioned Gen3/Gen4 hardware and achieved a 98.28% Gen7 return rate, reducing technical debt.</li>
+          <li>Drove Zonal onboarding for Business Critical/Premium DBs to 91.8% completion for eligible S500 customers.</li>
+          <li>Actively applying AI tools to daily operational workflows to boost productivity and accelerate investigations.</li>
+        </ul>
+      </details>
+    </div>
 
-        function openInteractiveModal(key) {
-            const modal = document.getElementById('telemetry-modal');
-            const titleEl = document.getElementById('modal-title');
-            const contentEl = document.getElementById('modal-content');
-            
-            if(modal && codeSandboxData[key]) {
-                titleEl.innerText = codeSandboxData[key].title;
-                contentEl.innerHTML = codeSandboxData[key].html;
-                modal.style.display = 'block';
-            }
-        }
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Azure Cosmos DB — Dashboard &amp; Engineering Systems</div>
+          <div class="job-org">Microsoft · Dec 2019 – Sept 2021 · Team of 9</div>
+        </div>
+      </div>
+      <p class="job-desc">Contributed to Cosmos DB's globally distributed, multi-model database platform across two modules: cost-tracking dashboards and engineering systems reliability.</p>
+      <details>
+        <summary>Highlights</summary>
+        <ul class="bullets">
+          <li>Individually built the module calculating total Azure spend across subscriptions and environments.</li>
+          <li>Implemented AAD token handling and unit-tested owned services.</li>
+          <li>Built MS-Flow notifications for Azure cost and exception alerts, and created Azure Functions supporting the pipeline.</li>
+          <li>Monitored CI/CD build and test pipelines, created IcMs on failure, and authored TSGs (.md) for on-call response.</li>
+          <li>Ran PowerShell-based disk cleanup and OS update automation across Azure file servers and scale sets.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
 
-        function closeInteractiveModal(e) {
-            document.getElementById('telemetry-modal').style.display = 'none';
-        }
+<section id="learning">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Active Learning Pipeline</h2></div>
+    <div class="panel job">
+      <div class="job-top">
+        <div>
+          <div class="job-role">Azure Fabric Data Engineer Associate (DP-700)</div>
+          <div class="job-org">Self-Coached · Databricks Track</div>
+        </div>
+        <span class="badge" style="color:var(--amber); border-color:rgba(210,153,34,0.35);">In Progress</span>
+      </div>
+      <div class="pills">
+        <span class="pill">SQL Joins</span>
+        <span class="pill">PySpark</span>
+        <span class="pill">Pandas</span>
+        <span class="pill">Databricks</span>
+        <span class="pill">Gen AI &amp; Agentic AI</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        window.addEventListener('DOMContentLoaded', () => {
-            type();
-            simulateTelemetry();
-        });
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Technical Skills</h2></div>
+    <div class="cap-grid">
+      <div class="panel cap-card">
+        <div class="cap-title">Cloud &amp; Data</div>
+        <div class="pills"><span class="pill">Azure SQL DB</span><span class="pill">Cosmos DB</span><span class="pill">Azure Functions</span><span class="pill">Key Vault</span><span class="pill">App Service</span><span class="pill">Application Insights</span><span class="pill">Azure Monitor</span><span class="pill">Log Analytics</span></div>
+      </div>
+      <div class="panel cap-card">
+        <div class="cap-title">Analysis &amp; Automation</div>
+        <div class="pills"><span class="pill">KQL (Kusto)</span><span class="pill">PowerShell</span><span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Telemetry Analysis</span><span class="pill">Performance Tuning</span><span class="pill">Capacity Management</span></div>
+      </div>
+      <div class="panel cap-card">
+        <div class="cap-title">Languages &amp; Frameworks</div>
+        <div class="pills"><span class="pill">C#</span><span class="pill">.NET Core</span><span class="pill">ASP.NET MVC</span><span class="pill">ASP.NET Web API</span><span class="pill">SQL</span><span class="pill">Node.js</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span></div>
+      </div>
+      <div class="panel cap-card">
+        <div class="cap-title">Front End</div>
+        <div class="pills"><span class="pill">React</span><span class="pill">Angular</span><span class="pill">React Native</span><span class="pill">Redux</span><span class="pill">RxJS</span><span class="pill">Context API</span><span class="pill">HTML5</span><span class="pill">CSS3/SCSS</span></div>
+      </div>
+      <div class="panel cap-card">
+        <div class="cap-title">DevOps &amp; Tooling</div>
+        <div class="pills"><span class="pill">Azure DevOps Pipelines</span><span class="pill">GitHub Actions</span><span class="pill">CI/CD</span><span class="pill">YAML</span><span class="pill">Git</span><span class="pill">Service Fabric Explorer</span><span class="pill">Moq</span><span class="pill">xUnit/NUnit</span></div>
+      </div>
+      <div class="panel cap-card">
+        <div class="cap-title">Design &amp; UI</div>
+        <div class="pills"><span class="pill">Figma</span><span class="pill">Adobe XD</span><span class="pill">Material UI</span><span class="pill">Tailwind CSS</span><span class="pill">Responsive Design</span><span class="pill">Wireframing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Background Scene Configuration
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, powerPreference: "high-performance" });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        
-        const starGeo = new THREE.BufferGeometry();
-        const starPos = [];
-        for(let k=0; k<1200; k++) starPos.push(THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500));
-        starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
-        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x00f2ff, size: 1.2, transparent: true, opacity: 0.25 }));
-        scene.add(stars);
-        camera.position.z = 700;
-        
-        function animate() { 
-            requestAnimationFrame(animate); 
-            stars.rotation.y += 0.0004;
-            stars.rotation.x += 0.0001;
-            renderer.render(scene, camera); 
-        }
-        animate();
-        
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head"><span class="dot"></span><h2>Certifications &amp; Education</h2></div>
+    <div class="panel job">
+      <ul class="bullets">
+        <li>Microsoft Certified: Azure Developer Associate (AZ-204), 2020</li>
+        <li>Bachelor of Commerce with Computers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:6px;">Secure Uplink</div>
+      <a href="mailto:vidya98sree@gmail.com" class="blue">vidya98sree@gmail.com</a>
+    </div>
+    <div>
+      <div class="eyebrow" style="margin-bottom:6px;">Links</div>
+      <a href="https://github.com/vidhyasree-cloud" target="_blank" class="blue">GitHub</a>
+      <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="blue">LinkedIn</a>
+    </div>
+    <div style="text-align:right;">
+      <div>&copy; 2026 Vidhyasree Devaraju</div>
+      <div>Site Reliability &amp; Software Engineer</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const queries = [
+`DatabaseTelemetry
+| where TimeGenerated > ago(24h)
+| summarize AvgCpu = avg(CpuUtilization) by Region
+| where AvgCpu > 80
+| order by AvgCpu desc`,
+`IcMIncidents
+| where Severity <= 2
+| summarize count() by bin(TimeGenerated, 1h)
+| render timechart`,
+`CapacityMetrics
+| where UtilizationPercent > 85
+| project Region, ClusterId, UtilizationPercent
+| sort by UtilizationPercent desc`
+  ];
+  const el = document.getElementById('kql-typer');
+  if(!el) return;
+  let qIndex = 0, chIndex = 0, deleting = false;
+
+  function tick(){
+    const full = queries[qIndex];
+    if(!deleting){
+      chIndex++;
+      el.textContent = full.slice(0, chIndex);
+      if(chIndex >= full.length){
+        deleting = true;
+        setTimeout(tick, 2200);
+        return;
+      }
+      setTimeout(tick, 22);
+    } else {
+      chIndex -= 3;
+      if(chIndex < 0) chIndex = 0;
+      el.textContent = full.slice(0, chIndex);
+      if(chIndex === 0){
+        deleting = false;
+        qIndex = (qIndex + 1) % queries.length;
+        setTimeout(tick, 400);
+        return;
+      }
+      setTimeout(tick, 10);
+    }
+  }
+  tick();
+})();
+</script>
+
 </body>
 </html>
