@@ -60,8 +60,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Top Status Bar -->
-  <div class="border-b border-slate-800 bg-slate-950/60 backdrop-blur-md sticky top-0 z-50">
+  <!-- Fixed Top Status Bar -->
+  <div class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-xs font-mono text-slate-400 overflow-x-auto custom-scrollbar">
       <div class="flex items-center gap-6 whitespace-nowrap">
         <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 glow-dot-green"></span>AZ-204 CERTIFIED</span>
@@ -69,13 +69,13 @@
         <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400 glow-dot-amber"></span>MICROSOFT FABRIC TRACK</span>
       </div>
       <div class="hidden md:flex items-center gap-4 text-slate-500">
-        <span>LOC: BELLEVUE / SEATTLE, WA</span>
+        <span>LOC: SEATTLE, WA</span>
         <span>SYS: AZURE_ENTERPRISE</span>
       </div>
     </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Main Navigation -->
   <nav class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="font-mono font-bold text-base text-slate-100 tracking-tight">
@@ -93,103 +93,97 @@
     </div>
   </nav>
 
-  <!-- Main Container Layout: Sidebar + Main Content -->
-  <div class="max-w-7xl mx-auto px-6 pt-10 pb-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
+  <!-- Split Grid Layout Container -->
+  <div class="max-w-7xl mx-auto px-6 pt-8 pb-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
     
-    <!-- Left Sidebar: Profile & Hobbies (Sticky on Desktop) -->
-    <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-16 lg:self-start">
+    <!-- LEFT SIDEBAR (Span 4 Columns) -->
+    <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-14 lg:self-start">
       
       <!-- Profile Card -->
-
-<div class="relative w-28 h-28 mx-auto">
-  <!-- CHANGE 'profile.jpg' TO YOUR ACTUAL IMAGE FILE NAME -->
-  <img src="profile.jpg" alt="Vidhyasree Devaraju" class="w-full h-full rounded-full object-cover border-2 border-slate-700 shadow-xl" />
-  <span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-900 glow-dot-green"></span>
-</div>
+      <div class="glass-card rounded-2xl p-6 text-center space-y-4">
+        <div class="relative w-24 h-24 mx-auto">
+          <img src="profile.jpg" alt="Vidhyasree Devaraju" class="w-full h-full rounded-full object-cover border-2 border-slate-700 shadow-xl" onError="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Vidhyasree+Devaraju&background=0D1117&color=38BDF8';" />
+          <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-900 glow-dot-green"></span>
+        </div>
 
         <div>
-          <h2 class="text-xl font-bold text-slate-100">Vidhyasree Devaraju</h2>
-          <p class="text-sky-400 font-mono text-xs mt-1">Senior Cloud SRE &amp; Data Engineer</p>
+          <h2 class="text-lg font-bold text-slate-100">Vidhyasree Devaraju</h2>
+          <p class="text-sky-400 font-mono text-xs mt-0.5">Senior Cloud SRE &amp; Data Engineer</p>
           <p class="text-slate-400 text-xs mt-2 leading-relaxed">
             8+ years architecting high-availability cloud platforms, telemetry systems, and Databricks lakehouse pipelines.
           </p>
         </div>
 
         <div class="pt-3 border-t border-slate-800 flex justify-center gap-4 text-slate-400">
-          <a href="https://github.com/vidhyasree-cloud/agentic-incident-investigator" target="_blank" class="hover:text-sky-400 transition-colors text-base" title="GitHub">
+          <a href="https://github.com/vidhyasree-cloud/agentic-incident-investigator" target="_blank" class="hover:text-sky-400 transition-colors text-sm" title="GitHub">
             <i class="fa-brands fa-github"></i>
           </a>
-          <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="hover:text-sky-400 transition-colors text-base" title="LinkedIn">
+          <a href="https://linkedin.com/in/vidhya-sree-devaraju-8a8a8a152/" target="_blank" class="hover:text-sky-400 transition-colors text-sm" title="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
           </a>
-          <a href="mailto:vidya98sree@gmail.com" class="hover:text-sky-400 transition-colors text-base" title="Email">
+          <a href="mailto:vidya98sree@gmail.com" class="hover:text-sky-400 transition-colors text-sm" title="Email">
             <i class="fa-solid fa-envelope"></i>
           </a>
         </div>
       </div>
 
-      <!-- Beyond the Code / Hobbies Tab -->
-      <div class="glass-card rounded-2xl p-6 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <!-- Beyond the Code / Hobbies -->
+      <div class="glass-card rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
           <h3 class="text-xs font-mono uppercase text-sky-400 font-bold tracking-wider flex items-center gap-2">
             <i class="fa-solid fa-heart text-rose-400"></i> Beyond The Code
           </h3>
           <span class="text-[10px] font-mono text-slate-500">INTERESTS</span>
         </div>
 
-        <div class="space-y-3.5 text-xs text-slate-300">
-          <!-- Hobby 1 -->
-          <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-sm shrink-0">
+        <div class="space-y-2.5 text-xs text-slate-300">
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs shrink-0">
               <i class="fa-solid fa-mountain"></i>
             </div>
             <div>
               <p class="font-semibold text-slate-100">PNW Trail Hiking</p>
-              <p class="text-[11px] text-slate-400 leading-tight">Exploring Washington’s mountain trails, national parks, and alpine lakes.</p>
+              <p class="text-[11px] text-slate-400">Exploring Washington's mountain trails and lakes.</p>
             </div>
           </div>
 
-          <!-- Hobby 2 -->
-          <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div class="p-2 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20 font-mono text-sm shrink-0">
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20 font-mono text-xs shrink-0">
               <i class="fa-solid fa-water"></i>
             </div>
             <div>
               <p class="font-semibold text-slate-100">Lake Kayaking</p>
-              <p class="text-[11px] text-slate-400 leading-tight">Paddling across Issaquah lakes during Pacific Northwest summers.</p>
+              <p class="text-[11px] text-slate-400">Paddling across Issaquah lakes during summer.</p>
             </div>
           </div>
 
-          <!-- Hobby 3 -->
-          <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono text-sm shrink-0">
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono text-xs shrink-0">
               <i class="fa-solid fa-music"></i>
             </div>
             <div>
               <p class="font-semibold text-slate-100">Violin &amp; Music</p>
-              <p class="text-[11px] text-slate-400 leading-tight">Practicing classical violin sessions and exploring musical compositions.</p>
+              <p class="text-[11px] text-slate-400">Classical violin practice and compositions.</p>
             </div>
           </div>
 
-          <!-- Hobby 4 -->
-          <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-sm shrink-0">
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-xs shrink-0">
               <i class="fa-solid fa-film"></i>
             </div>
             <div>
               <p class="font-semibold text-slate-100">Cinema &amp; Film</p>
-              <p class="text-[11px] text-slate-400 leading-tight">Avid movie enthusiast and regular theatergoer.</p>
+              <p class="text-[11px] text-slate-400">Avid movie enthusiast and cinema fan.</p>
             </div>
           </div>
 
-          <!-- Hobby 5 -->
-          <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all">
-            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono text-sm shrink-0">
+          <div class="flex items-start gap-2.5 p-2 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono text-xs shrink-0">
               <i class="fa-solid fa-earth-americas"></i>
             </div>
             <div>
               <p class="font-semibold text-slate-100">Global Travel &amp; Food</p>
-              <p class="text-[11px] text-slate-400 leading-tight">Exploring world cuisines, authentic South Indian biryani, and international destinations.</p>
+              <p class="text-[11px] text-slate-400">World cuisines, South Indian food, and travel.</p>
             </div>
           </div>
         </div>
@@ -197,65 +191,64 @@
 
     </aside>
 
-    <!-- Main Content Area -->
-    <main class="lg:col-span-8 space-y-10">
+    <!-- RIGHT MAIN CONTENT (Span 8 Columns) -->
+    <main class="lg:col-span-8 space-y-8">
       
       <!-- Hero Intro Header -->
-      <header class="space-y-6">
+      <header class="space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-500/20 bg-sky-500/10 text-sky-400 font-mono text-xs font-medium">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> 8+ Years Software &amp; Cloud Systems Experience
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> 8+ Years Experience
         </div>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight leading-tight">
           Senior Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400">SRE &amp; Data Engineer</span>
         </h1>
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Specializing in high-availability cloud infrastructure, KQL telemetry analytics, global capacity engineering, and automated incident mitigation across Microsoft Azure platforms. Experienced in driving multi-year fleet modernizations and full-stack software development.
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Specializing in high-availability cloud infrastructure, KQL telemetry analytics, global capacity engineering, and automated incident mitigation across Microsoft Azure platforms.
         </p>
 
-        <!-- Terminal Component -->
+        <!-- KQL Terminal Box -->
         <div class="terminal-box rounded-xl p-4 shadow-2xl">
-          <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs font-mono text-slate-500">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-xs font-mono text-slate-500">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
             </div>
             <span>azure_telemetry.kql</span>
           </div>
-          <pre class="pt-4 font-mono text-xs text-sky-400 leading-relaxed overflow-x-auto min-h-[120px]"><code id="kql-typer"></code><span class="text-emerald-400 animate-pulse">█</span></pre>
+          <pre class="pt-3 font-mono text-xs text-sky-400 leading-relaxed overflow-x-auto min-h-[100px]"><code id="kql-typer"></code><span class="text-emerald-400 animate-pulse">█</span></pre>
         </div>
       </header>
 
       <!-- Experience Section -->
-      <section id="experience" class="border-t border-slate-800/60 pt-10 space-y-8">
+      <section id="experience" class="border-t border-slate-800/60 pt-8 space-y-6">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-sm">01</div>
-          <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Professional SRE &amp; Engineering Work</h2>
+          <div class="p-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs">01</div>
+          <h2 class="text-base font-bold text-slate-100 uppercase tracking-wider font-mono">Professional SRE &amp; Engineering Work</h2>
         </div>
 
-        <div class="space-y-8">
+        <div class="space-y-6">
           
           <!-- Job 1: Azure SQL DB Capacity Management -->
           <div class="glass-card rounded-xl p-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-3">
               <div>
-                <h3 class="text-lg font-bold text-slate-100">Software Engineer — Azure SQL DB Capacity Management</h3>
-                <p class="text-sky-400 font-mono text-xs mt-1">Microsoft (via Quadrant Technologies) · Seattle, WA</p>
+                <h3 class="text-base font-bold text-slate-100">Software Engineer — Azure SQL DB Capacity Management</h3>
+                <p class="text-sky-400 font-mono text-xs mt-0.5">Microsoft (via Quadrant Technologies) · Seattle, WA</p>
               </div>
-              <span class="px-3 py-1 rounded-md bg-slate-800 text-sky-400 font-mono text-xs font-bold self-start sm:self-auto border border-sky-500/20">Apr 2022 – Present</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-sky-400 font-mono text-xs font-bold self-start sm:self-auto border border-sky-500/20">Apr 2022 – Present</span>
             </div>
             
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <p class="text-slate-300 text-xs sm:text-sm mb-5 leading-relaxed">
               Own short-term capacity planning, live-site incident mitigation, and global fleet operations for Azure SQL DB. Shifted operational workflows from reactive investigation to proactive, telemetry-driven readiness while driving major infrastructure migrations.
             </p>
 
-            <div class="space-y-6">
-              <!-- Core Operations -->
+            <div class="space-y-5">
               <div>
-                <h4 class="text-xs font-mono uppercase text-sky-400 font-bold mb-3 tracking-wider flex items-center gap-2">
+                <h4 class="text-xs font-mono uppercase text-sky-400 font-bold mb-2.5 tracking-wider flex items-center gap-2">
                   <i class="fa-solid fa-gears"></i> Core Operations &amp; Major Milestones
                 </h4>
-                <ul class="grid grid-cols-1 gap-2 text-xs text-slate-300">
+                <ul class="grid grid-cols-1 gap-1.5 text-xs text-slate-300">
                   <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>Infrastructure Fleet Migrations:</strong> Drove complex fleet transitions including SPO migration to Gen8, QCS migration, and MAZ migration from Regional to MAZ rings.</li>
                   <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>RDFE to PaaSv2 Conversion:</strong> Executed multi-year fleet conversion, including routing 125 rings to Decom within a 90-day window covering Zonal and AMD conversions.</li>
                   <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>SPO Pool Stabilization:</strong> Transitioned SPO pool applications to modern Gen7 and Gen8 hardware, permanently mitigating long-standing high-CPU usage incidents.</li>
@@ -266,12 +259,11 @@
                 </ul>
               </div>
 
-              <!-- Value Adds & Impact -->
               <div>
-                <h4 class="text-xs font-mono uppercase text-emerald-400 font-bold mb-3 tracking-wider flex items-center gap-2">
+                <h4 class="text-xs font-mono uppercase text-emerald-400 font-bold mb-2.5 tracking-wider flex items-center gap-2">
                   <i class="fa-solid fa-chart-line"></i> Value Adds &amp; Business Benefits
                 </h4>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-300">
                   <li class="flex items-start gap-2"><span class="text-emerald-400 font-mono">—</span> <strong>Proactive Capacity Management:</strong> Absorbed sudden demand spikes to ensure service stability.</li>
                   <li class="flex items-start gap-2"><span class="text-emerald-400 font-mono">—</span> <strong>Standardized Incident Triage:</strong> Reduced manual investigation effort using KQL, SQL, and IcM telemetry.</li>
                   <li class="flex items-start gap-2"><span class="text-emerald-400 font-mono">—</span> <strong>PaaSv2 Adoption:</strong> Accelerated PaaSv2 adoption ahead of projected timelines for COGS optimization.</li>
@@ -282,41 +274,41 @@
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-6 border-t border-slate-800/80 mt-6">
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">KQL (Kusto)</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">PowerShell</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Power BI (DAX)</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Azure SQL DB</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Service Fabric</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">IcM Telemetry</span>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80 mt-5">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">KQL (Kusto)</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">PowerShell</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Power BI (DAX)</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Azure SQL DB</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Service Fabric</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">IcM Telemetry</span>
             </div>
           </div>
 
           <!-- Job 2: Azure Cosmos DB -->
           <div class="glass-card rounded-xl p-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-3">
               <div>
-                <h3 class="text-lg font-bold text-slate-100">Developer — Azure Cosmos DB (Dashboard &amp; Engineering Systems)</h3>
-                <p class="text-sky-400 font-mono text-xs mt-1">Microsoft (via Quadrant Technologies) · Hyderabad, India</p>
+                <h3 class="text-base font-bold text-slate-100">Developer — Azure Cosmos DB (Dashboard &amp; Engineering Systems)</h3>
+                <p class="text-sky-400 font-mono text-xs mt-0.5">Microsoft (via Quadrant Technologies) · Hyderabad, India</p>
               </div>
-              <span class="px-3 py-1 rounded-md bg-slate-800 text-slate-400 font-mono text-xs self-start sm:self-auto">Dec 2019 – Sept 2021</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 font-mono text-xs self-start sm:self-auto">Dec 2019 – Sept 2021</span>
             </div>
             
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <p class="text-slate-300 text-xs sm:text-sm mb-5 leading-relaxed">
               Contributed to Microsoft's globally distributed, multi-model database service across Dashboard financial analytics and Engineering Systems reliability modules within a 9-engineer team.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                <h4 class="font-mono text-xs uppercase text-indigo-400 font-bold mb-2">Dashboard &amp; Spend Engine</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+              <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-1.5">
+                <h4 class="font-mono text-xs uppercase text-indigo-400 font-bold mb-1">Dashboard &amp; Spend Engine</h4>
                 <p>• Developed subscription-wide Azure spend calculation modules for environments.</p>
                 <p>• Implemented Azure AD token authentication protocols and unit tests for owned services.</p>
                 <p>• Configured MS-Flow notifications triggered by Azure cost thresholds and exceptions.</p>
                 <p>• Built supporting Azure Functions and managed service deployment steps.</p>
               </div>
 
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                <h4 class="font-mono text-xs uppercase text-indigo-400 font-bold mb-2">Engineering Systems &amp; Ops</h4>
+              <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-1.5">
+                <h4 class="font-mono text-xs uppercase text-indigo-400 font-bold mb-1">Engineering Systems &amp; Ops</h4>
                 <p>• Monitored CI/CD build and test phase pipelines in Azure DevOps / VSTS.</p>
                 <p>• Built MS-Flow notifications for daily reporting and automated IcM ticket generation on build failures.</p>
                 <p>• Executed PowerShell automation for disk cleanups and Windows updates on Azure file servers and Scale Sets.</p>
@@ -324,54 +316,54 @@
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-6 border-t border-slate-800/80 mt-6">
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Cosmos DB</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">C#</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Azure Functions</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">MS Flow</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Azure AD</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">PowerShell</span>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80 mt-5">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Cosmos DB</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">C#</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Azure Functions</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">MS Flow</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Azure AD</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">PowerShell</span>
             </div>
           </div>
 
           <!-- Job 3: Quadrant Resources Internal Projects -->
           <div class="glass-card rounded-xl p-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 border-b border-slate-800 pb-3">
               <div>
-                <h3 class="text-lg font-bold text-slate-100">.NET Developer — Internal Enterprise Portals</h3>
-                <p class="text-sky-400 font-mono text-xs mt-1">Quadrant Technologies · Hyderabad, India</p>
+                <h3 class="text-base font-bold text-slate-100">.NET Developer — Internal Enterprise Portals</h3>
+                <p class="text-sky-400 font-mono text-xs mt-0.5">Quadrant Technologies · Hyderabad, India</p>
               </div>
-              <span class="px-3 py-1 rounded-md bg-slate-800 text-slate-400 font-mono text-xs self-start sm:self-auto">May 2018 – Nov 2019</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 font-mono text-xs self-start sm:self-auto">May 2018 – Nov 2019</span>
             </div>
 
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <p class="text-slate-300 text-xs sm:text-sm mb-5 leading-relaxed">
               Architected and delivered multi-tenant web portals end-to-end using .NET MVC, C#, Entity Framework, and SQL Server.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-300">
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-300">
+              <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                 <h4 class="font-mono text-xs text-amber-400 font-bold mb-1">WATS Portal</h4>
-                <p class="text-slate-400 mb-2">Event management &amp; ticketing web application for Washington Telugu Samithi.</p>
-                <p>Form-based authentication, user-friendly booking UI, complex stored procedures, and schema design.</p>
+                <p class="text-slate-400 mb-1.5">Event management &amp; ticketing web app for Washington Telugu Samithi.</p>
+                <p>Form authentication, booking UI, stored procedures, and schema design.</p>
               </div>
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80">
-                <h4 class="font-mono text-xs text-amber-400 font-bold mb-1">Office Management Portal</h4>
-                <p class="text-slate-400 mb-2">Internal operations tracking portal for attendance, task assignment, and billing.</p>
-                <p>Built WHO reporting authority hierarchies, leave request engines, and customer billing modules in MVC.</p>
+              <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                <h4 class="font-mono text-xs text-amber-400 font-bold mb-1">Office Management</h4>
+                <p class="text-slate-400 mb-1.5">Internal operations portal for attendance, tasking, and billing.</p>
+                <p>Built WHO reporting hierarchies, leave engines, and customer billing modules.</p>
               </div>
-              <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                 <h4 class="font-mono text-xs text-amber-400 font-bold mb-1">SRK Travels</h4>
-                <p class="text-slate-400 mb-2">Automated tour and transport management system replacing legacy manual processes.</p>
-                <p>Designed database tables, T-SQL joins, triggers, and responsive HTML5/jQuery interfaces.</p>
+                <p class="text-slate-400 mb-1.5">Automated tour and transport management system.</p>
+                <p>Designed database tables, T-SQL joins, triggers, and jQuery UI interfaces.</p>
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-6 border-t border-slate-800/80 mt-6">
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">.NET MVC 4.0</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">C#</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Entity Framework 6</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">SQL Server 2012</span>
-              <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">T-SQL Stored Procedures</span>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800/80 mt-5">
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">.NET MVC 4.0</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">C#</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">Entity Framework 6</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">SQL Server 2012</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-[11px]">T-SQL Stored Procedures</span>
             </div>
           </div>
 
@@ -379,46 +371,46 @@
       </section>
 
       <!-- Featured Projects Banner -->
-      <section class="border-t border-slate-800/60 pt-10">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-sm">02</div>
-          <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Data Engineering Projects</h2>
+      <section class="border-t border-slate-800/60 pt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs">02</div>
+          <h2 class="text-base font-bold text-slate-100 uppercase tracking-wider font-mono">Data Engineering Projects</h2>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-indigo-500/30 bg-gradient-to-r from-indigo-950/40 via-slate-900/60 to-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="glass-card rounded-2xl p-6 border border-indigo-500/30 bg-gradient-to-r from-indigo-950/40 via-slate-900/60 to-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div class="space-y-2">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono text-xs font-semibold uppercase">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono text-[11px] font-semibold uppercase">
               <i class="fa-solid fa-flask"></i> Technical Lab &amp; Code Deep Dives
             </div>
-            <h3 class="text-xl font-bold text-slate-100">Azure Databricks &amp; ADF Project Portfolio</h3>
-            <p class="text-slate-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            <h3 class="text-lg font-bold text-slate-100">Azure Databricks &amp; ADF Project Portfolio</h3>
+            <p class="text-slate-400 text-xs max-w-2xl leading-relaxed">
               Review detailed architecture diagrams, PySpark notebooks, Unity Catalog security configurations, and dynamic Azure Data Factory ETL control flows on my dedicated project showcase page.
             </p>
           </div>
-          <a href="projects.html" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-indigo-500/25 flex items-center gap-3 whitespace-nowrap self-start sm:self-auto">
+          <a href="projects.html" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-indigo-500/25 flex items-center gap-2.5 whitespace-nowrap self-start sm:self-auto">
             Explore Projects <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </section>
 
       <!-- Skills Matrix -->
-      <section id="skills" class="border-t border-slate-800/60 pt-10">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-sm">03</div>
-          <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Technical Matrix</h2>
+      <section id="skills" class="border-t border-slate-800/60 pt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs">03</div>
+          <h2 class="text-base font-bold text-slate-100 uppercase tracking-wider font-mono">Technical Matrix</h2>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="glass-card rounded-xl p-5">
-            <h4 class="text-xs font-mono uppercase text-sky-400 mb-3 tracking-wider">Cloud SRE &amp; Operations</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div class="glass-card rounded-xl p-4">
+            <h4 class="text-xs font-mono uppercase text-sky-400 mb-2 tracking-wider">Cloud SRE &amp; Operations</h4>
             <p class="text-xs text-slate-300 leading-relaxed font-mono">KQL (Kusto) • PowerShell • Power BI • Service Fabric • Azure SQL DB • Cosmos DB • Azure Monitor</p>
           </div>
-          <div class="glass-card rounded-xl p-5">
-            <h4 class="text-xs font-mono uppercase text-indigo-400 mb-3 tracking-wider">Data Engineering</h4>
+          <div class="glass-card rounded-xl p-4">
+            <h4 class="text-xs font-mono uppercase text-indigo-400 mb-2 tracking-wider">Data Engineering</h4>
             <p class="text-xs text-slate-300 leading-relaxed font-mono">Azure Databricks • ADF • PySpark • Unity Catalog • Delta Lake • Auto Loader • ADLS Gen2</p>
           </div>
-          <div class="glass-card rounded-xl p-5">
-            <h4 class="text-xs font-mono uppercase text-emerald-400 mb-3 tracking-wider">Software Development</h4>
+          <div class="glass-card rounded-xl p-4">
+            <h4 class="text-xs font-mono uppercase text-emerald-400 mb-2 tracking-wider">Software Development</h4>
             <p class="text-xs text-slate-300 leading-relaxed font-mono">C# • .NET Core • ASP.NET MVC • Python • T-SQL • REST APIs • Entity Framework</p>
           </div>
         </div>
@@ -428,9 +420,9 @@
   </div>
 
   <!-- Footer -->
-  <footer id="contact" class="border-t border-slate-800/80 bg-slate-950 py-10 mt-auto">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
-      <div class="space-y-1 text-center md:text-left">
+  <footer id="contact" class="border-t border-slate-800/80 bg-slate-950 py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="space-y-0.5 text-center md:text-left">
         <p class="text-slate-300 font-bold font-mono">Vidhyasree Devaraju</p>
         <p>Senior Cloud SRE &amp; Data Engineer</p>
       </div>
