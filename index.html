@@ -78,12 +78,12 @@
   <!-- Navigation -->
   <nav class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-lg">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-mono font-bold text-base text-slate-100 tracking-tight">
+      <a href="index.html" class="font-mono font-bold text-base text-slate-100 tracking-tight">
         VIDHYA_SREE<span class="text-sky-400">.DEV</span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
         <a href="#experience" class="hover:text-sky-400 transition-colors">SRE Work</a>
-        <a href="#projects" class="hover:text-sky-400 transition-colors">Data Pipelines</a>
+        <a href="projects.html" class="hover:text-sky-400 transition-colors">Data Engineering Projects</a>
         <a href="#skills" class="hover:text-sky-400 transition-colors">Tech Stack</a>
         <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
       </div>
@@ -131,12 +131,12 @@
     </div>
   </header>
 
-  <!-- Experience Section (SRE Focus) -->
+  <!-- Experience Section (Microsoft SRE Work) -->
   <section id="experience" class="border-t border-slate-800/60 py-16">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex items-center gap-3 mb-10">
         <div class="p-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-sm">01</div>
-        <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Professional SRE &amp; Cloud Work</h2>
+        <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Professional SRE &amp; Cloud Experience</h2>
       </div>
 
       <div class="space-y-6">
@@ -186,64 +186,49 @@
             <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">Azure AD</span>
           </div>
         </div>
+
+        <!-- Job 3 -->
+        <div class="glass-card rounded-xl p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+            <div>
+              <h3 class="text-lg font-bold text-slate-100">Full Stack Developer (.NET &amp; SQL)</h3>
+              <p class="text-sky-400 font-mono text-xs">Quadrant Technologies · Hyderabad, India</p>
+            </div>
+            <span class="px-3 py-1 rounded-md bg-slate-800 text-slate-400 font-mono text-xs self-start md:self-auto">May 2018 – Nov 2019</span>
+          </div>
+          <p class="text-slate-400 text-sm mb-4">Developed multi-tenant web portals, ticketing workflows, and transactional database applications using .NET MVC, C#, and SQL Server.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">C#</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">.NET MVC</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">SQL Server</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-slate-300 font-mono text-xs">jQuery</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section (Data Engineering Focus) -->
-  <section id="projects" class="border-t border-slate-800/60 py-16 bg-slate-950/40">
+  <!-- Featured Projects Call-out Banner -->
+  <section class="border-t border-slate-800/60 py-16 bg-slate-950/40">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-center gap-3 mb-10">
+      <div class="flex items-center gap-3 mb-8">
         <div class="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-sm">02</div>
         <h2 class="text-xl font-bold text-slate-100 uppercase tracking-wider font-mono">Data Engineering Projects</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Project 1 -->
-        <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-xs">Architecture</span>
-              <span class="text-slate-500 font-mono text-xs">2026</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-100 mb-2">Azure Databricks Medallion Lakehouse</h3>
-            <p class="text-slate-400 text-sm mb-4">Architected an end-to-end Medallion pipeline (Bronze &rarr; Silver &rarr; Gold) streaming raw JSON/CSV data into Unity Catalog Delta tables using PySpark Auto Loader.</p>
-            <ul class="space-y-1.5 text-xs text-slate-300 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> OAuth 2.0 / Service Principal access via ADLS Gen2</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Auto Loader streaming ingestion with schema evolution</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Gold layer performance tuning with Z-Ordering</li>
-            </ul>
+      <div class="glass-card rounded-2xl p-8 border border-indigo-500/30 bg-gradient-to-r from-indigo-950/40 via-slate-900/60 to-slate-900/80 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono text-xs font-semibold uppercase">
+            <i class="fa-solid fa-flask"></i> Technical Lab &amp; Code Deep Dives
           </div>
-          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800">
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Databricks</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">PySpark</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Unity Catalog</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Delta Lake</span>
-          </div>
+          <h3 class="text-2xl font-bold text-slate-100">Azure Databricks &amp; ADF Project Portfolio</h3>
+          <p class="text-slate-400 text-sm max-w-2xl leading-relaxed">
+            Review detailed architecture diagrams, PySpark notebooks, Unity Catalog security configurations, and dynamic Azure Data Factory ETL control flows on my dedicated project showcase page.
+          </p>
         </div>
-
-        <!-- Project 2 -->
-        <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-xs">Orchestration</span>
-              <span class="text-slate-500 font-mono text-xs">2026</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-100 mb-2">Azure Data Factory (ADF) ETL Workflows</h3>
-            <p class="text-slate-400 text-sm mb-4">Built parameterized ADF pipelines to orchestrate complex data flows, trigger Databricks notebook jobs, and secure credentials using Azure Key Vault.</p>
-            <ul class="space-y-1.5 text-xs text-slate-300 mb-6">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Dynamic parameterization with Lookup &amp; ForEach</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Key Vault linked services for secure secret handling</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Automated REST API payloads for Databricks triggers</li>
-            </ul>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800">
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">ADF</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Key Vault</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">REST APIs</span>
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">Control Flow</span>
-          </div>
-        </div>
+        <a href="projects.html" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-indigo-500/25 flex items-center gap-3 whitespace-nowrap self-start md:self-auto">
+          Explore Projects <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
