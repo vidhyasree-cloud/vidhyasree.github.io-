@@ -259,6 +259,64 @@ processed_df = raw_stream_df.withColumn("ingestion_time", current_timestamp())
     </div>
   </section>
 
+  <!-- Project 4: Azure Capacity Planner MCP Server -->
+  <section class="max-w-6xl mx-auto px-6 py-6 w-full mb-12">
+    <div class="glass-card rounded-2xl p-8 space-y-8">
+
+      <!-- Title Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="px-3 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-semibold uppercase">Project 04 • MCP Server</span>
+          <h2 class="text-2xl font-bold text-slate-100 mt-2">Azure Capacity Planner MCP Server</h2>
+          <p class="text-slate-400 text-sm mt-1">Personal portfolio project — independent, not affiliated with any employer. Python + FastMCP server that turns Azure SQL capacity planning into tools an AI assistant can run: growth projections, ring migrations, decommission pace, zonal readiness, and automation playbooks. Tested live in Claude Desktop.</p>
+        </div>
+      <a href="https://github.com/vidhyasree-cloud/azure-capacity-planner-mcp" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-mono text-xs font-medium transition-all self-start md:self-auto flex items-center gap-2">
+      <i class="fa-brands fa-github text-base"></i> View Repository
+    </a>
+      </div>
+
+      <!-- Highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-indigo-400 font-semibold mb-2">Input-Driven, No Live Azure</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">You supply the numbers; the tools return plans, checklists, and risk flags. It does not read, resize, provision, migrate, or decommission any live Azure resource, and it needs no subscription or credentials.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-sky-400 font-semibold mb-2">Real Capacity Patterns</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">Worked examples are labelled from confirmed capacity work: PaaSv2 adoption to 100% ahead of schedule, zero-downtime ring migrations, Gen3/Gen4 decommission at a 98.28% Gen7 return rate, 125 rings in a 90-day window, and 91.8% zonal onboarding for Business Critical and Premium.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-emerald-400 font-semibold mb-2">Verified Live Example</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">In Claude Desktop, estimate_capacity for 1,000 GB at 5% monthly growth returned 1,795.86 GB at 12 months and 2,155.03 GB with 20% headroom — the tool's output, with its assumptions stated, not a hand calculation.</p>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="space-y-4">
+        <h3 class="text-base font-bold text-slate-200 font-mono flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-indigo-400"></i> Tools
+        </h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300">
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>estimate_capacity:</strong> Compound projections at 3/6/12 months, plus capacity including target headroom.</li>
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>plan_ring_migration:</strong> Five-phase checklist (baseline, pilot, rollout batches with pause gates, validation, rollback trigger) with zero-downtime guardrails.</li>
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>decommission_tracker:</strong> Remaining rings, percent complete, pace needed, and a behind-pace warning.</li>
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>zonal_readiness_check:</strong> Gap to the 91.8% zonal benchmark, with a remediation checklist.</li>
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>rcs_automation_playbook:</strong> Validate, step, dynamic retry with backoff, log every attempt — never retry a destructive step without re-validation.</li>
+          <li class="flex items-start gap-2"><span class="text-indigo-400 font-mono">—</span> <strong>capacity_summary:</strong> The other planners combined into one brief, assumptions listed first.</li>
+        </ul>
+      </div>
+
+      <!-- Skill Pills -->
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Python</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">FastMCP / MCP</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Azure SQL Capacity Planning</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Claude Desktop</span>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="border-t border-slate-800/80 bg-slate-950 py-10 mt-auto">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
