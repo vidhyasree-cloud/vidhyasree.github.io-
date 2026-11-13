@@ -317,6 +317,66 @@ processed_df = raw_stream_df.withColumn("ingestion_time", current_timestamp())
     </div>
   </section>
 
+  <!-- Project 5: Seattle Transit + Weather MCP Server -->
+  <section class="max-w-6xl mx-auto px-6 py-6 w-full mb-12">
+    <div class="glass-card rounded-2xl p-8 space-y-8">
+
+      <!-- Title Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-semibold uppercase">Project 05 • MCP Server</span>
+          <h2 class="text-2xl font-bold text-slate-100 mt-2">Seattle Transit + Weather MCP Server</h2>
+          <p class="text-slate-400 text-sm mt-1">Personal portfolio project — independent, not affiliated with any employer. Python + FastMCP server that gives an AI assistant live Seattle-area transit and weather: current conditions and forecasts, nearby stops, and live next arrivals for King County Metro, Sound Transit Link, and other Puget Sound agencies. Tested live in Claude Desktop.</p>
+        </div>
+      <a href="https://github.com/vidhyasree-cloud/seattle-transit-weather-mcp" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-mono text-xs font-medium transition-all self-start md:self-auto flex items-center gap-2">
+      <i class="fa-brands fa-github text-base"></i> View Repository
+    </a>
+      </div>
+
+      <!-- Highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-sky-400 font-semibold mb-2">Live Data Only</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">Weather is live from Open-Meteo (free, no API key) and transit is live from OneBusAway Puget Sound. Nothing is invented: no fake arrivals, no invented routes, no made-up weather.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-indigo-400 font-semibold mb-2">Predicted, Not Guaranteed</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">Arrivals are predicted times when a vehicle is GPS-tracked, otherwise scheduled times — labelled as such. Weather is a forecast-model value for the coordinates given, not a street-level observation.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <h4 class="font-mono text-xs uppercase text-emerald-400 font-semibold mb-2">Verified Live Example</h4>
+          <p class="text-slate-300 text-xs leading-relaxed">In Claude Desktop, the G Line at 1st Ave &amp; Spring St was predicted at 12:08, about 6 minutes away and 2 minutes behind schedule, then 12:13 and 12:18 every 6 minutes — and get_seattle_weather returned 54°F, feels like 51°F, overcast, 84% humidity.</p>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="space-y-4">
+        <h3 class="text-base font-bold text-slate-200 font-mono flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-sky-400"></i> Tools
+        </h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300">
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>search_place:</strong> Geocode a place name to latitude/longitude via Open-Meteo.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>get_seattle_weather:</strong> Current weather, default downtown Seattle, in Fahrenheit or Celsius.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>get_weather_forecast:</strong> Daily forecast, 1–16 days, with high/low, condition, and rain chance.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>find_transit_stops:</strong> Live stops near a location, with stop id, name, direction, and routes served.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>get_next_arrivals:</strong> Live next arrivals at a stop, predicted vs scheduled, minutes away, and delay.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>get_route_info:</strong> Route details for a OneBusAway route id.</li>
+          <li class="flex items-start gap-2"><span class="text-sky-400 font-mono">—</span> <strong>transit_and_weather:</strong> Weather + nearby stops in one call, plus arrivals when a stop id is given. No trip routing — OneBusAway defers routing to OpenTripPlanner.</li>
+        </ul>
+      </div>
+
+      <!-- Skill Pills -->
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Python</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">FastMCP / MCP</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Open-Meteo</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">OneBusAway Puget Sound</span>
+        <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs">Claude Desktop</span>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="border-t border-slate-800/80 bg-slate-950 py-10 mt-auto">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
